@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://a-little-bear.github.io/"/>
-  <updated>2020-05-05T12:21:08.871Z</updated>
+  <updated>2020-05-05T17:26:22.500Z</updated>
   <id>https://a-little-bear.github.io/</id>
   
   <author>
@@ -17,23 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>page</title>
+    <title>迷你地铁 Mini Metro v0.6.01.2020</title>
     <link href="https://a-little-bear.github.io/posts/undefined/"/>
     <id>https://a-little-bear.github.io/posts/undefined/</id>
-    <published>2020-05-05T12:21:08.000Z</published>
-    <updated>2020-05-05T12:21:08.871Z</updated>
+    <published>2020-05-05T16:49:13.000Z</published>
+    <updated>2020-05-05T17:26:22.500Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>摘要<br>首页显示摘要内容（替换成自己的）</p></blockquote><a id="more"></a><p>正文内容（替换成自己的）</p><p>参考文章:<br><a href="">参考链接</a></p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>摘要<br>Mini Metro 是关于在城市规划中设计地铁线路的策略模拟游戏。通过在站点之间连线让列车通过，还要随着新站点的建设和开放，不断调整线路。你需要利用有限的资源做出最好的设计。</p><a id="more"></a><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>Mini Metro 是关于在城市规划中设计地铁线路的策略模拟游戏。通过在站点之间连线让列车通过，还要随着新站点的建设和开放，不断调整线路。你需要利用有限的资源做出最好的设计。</p><p>在 Mini Metro 中，你将肩负起在飞速发展的城市中涉及地铁的重要任务。城市最初只有三个地铁站，在此基础上，你需要建立新的站点，并在站点之间设计线路，让上下班的通勤者们在路上少花时间。每个站点能容纳的等车乘客数量是有限的，所以你的地铁网络必须设计精密，避免发生拥堵和旅行延误的情况。</p><p>城市在不断扩张的进程中，需要更多的站点，以帮助更多的通勤乘客。对地铁网络的要求也会越来越高。你需要经常重新规划线路，使运输效率最大化。你每周获得的新资源都对建设有所帮助，但你得决定如何分配。</p><p>大多数的地铁方案都会以失败告终。也许站点建设的太快了，也许大量乘客滞留在了站台上。你的地铁线路能维持多长时间运营呢？</p><h4 id="主要功能"><a href="#主要功能" class="headerlink" title="主要功能"></a>主要功能</h4><p>* 游戏既紧张又轻松，既复杂又简单。这怎么可能呢？你自己来玩玩看就知道了。<br>* 三种游戏模式：快速得分的正常模式、没有限制的无尽模式、挑战自我的极限模式。<br>* 在全新的创意模式中按你自己的想法建设地铁网络。<br>* 全球 20 座真实城市（伦敦、纽约、巴黎、柏林、墨尔本、香港、大阪、圣彼得堡、蒙特利尔、旧金山、圣保罗、首尔、华盛顿（哥伦比亚特区）、开罗、伊斯坦布尔、上海、新加坡、斯德哥尔摩、孟买、奥克兰）供您设计地铁线路。每座城市都有独特的颜色主题、设计障碍及生活节奏。<br>* 城市发展具有随机性。每个游戏都不一样。上一个游戏中成功的战略在新的游戏中可能就没什么用了。<br>* 每张地图都是大师之作，你可以达到伦敦地铁之父哈利·贝克那样的水准。你可随心所欲的调整地铁方案，还可把你的杰作作为电脑桌面！<br>* 由 Disasterpeace （Fez 配乐师！）亲自操刀的自动配乐程序，让音乐随管网无尽变化。<br>* 提供夜间模式和色盲模式。<br>* 还有棒棒的列车呢！</p><h4 id="最低配置"><a href="#最低配置" class="headerlink" title="最低配置"></a>最低配置</h4><p>操作系统: Windows XP, Vista, 7, 8, 10 or later<br>处理器: 2 GHz or faster processor<br>内存: 2 GB RAM<br>显卡: Shader Model 4.0<br>DirectX 版本: 9.0c<br>存储空间: 需要 350 MB 可用空间</p><h4 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h4><p>Steam：<a href="https://store.steampowered.com/app/287980">https://store.steampowered.com/app/287980</a>  </p><p>更新日志：<a href="https://store.steampowered.com/news/?appids=287980">https://store.steampowered.com/news/?appids=287980</a></p><p>Google Drive：<a href="https://drive.google.com/file/d/1vboucZ8CeKvp5KW5xbl1hIETRyoK_h4H/view?usp=sharing">https://drive.google.com/file/d/1vboucZ8CeKvp5KW5xbl1hIETRyoK_h4H/view?usp=sharing</a></p></blockquote>]]></content>
     
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;摘要&lt;br&gt;首页显示摘要内容（替换成自己的）&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;摘要&lt;br&gt;Mini Metro 是关于在城市规划中设计地铁线路的策略模拟游戏。通过在站点之间连线让列车通过，还要随着新站点的建设和开放，不断调整线路。你需要利用有限的资源做出最好的设计。&lt;/p&gt;
     
     </summary>
     
     
+      <category term="游戏" scheme="https://a-little-bear.github.io/categories/%E6%B8%B8%E6%88%8F/"/>
+    
+      <category term="电脑游戏" scheme="https://a-little-bear.github.io/categories/%E6%B8%B8%E6%88%8F/%E7%94%B5%E8%84%91%E6%B8%B8%E6%88%8F/"/>
+    
+    
+      <category term="游戏" scheme="https://a-little-bear.github.io/tags/%E6%B8%B8%E6%88%8F/"/>
+    
+      <category term="电脑游戏" scheme="https://a-little-bear.github.io/tags/%E7%94%B5%E8%84%91%E6%B8%B8%E6%88%8F/"/>
+    
+      <category term="策略" scheme="https://a-little-bear.github.io/tags/%E7%AD%96%E7%95%A5/"/>
+    
+      <category term="模拟" scheme="https://a-little-bear.github.io/tags/%E6%A8%A1%E6%8B%9F/"/>
     
   </entry>
   
