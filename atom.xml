@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://a-little-bear.github.io/"/>
-  <updated>2020-05-05T23:08:03.614Z</updated>
+  <updated>2020-05-06T01:58:15.635Z</updated>
   <id>https://a-little-bear.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>test</title>
+    <link href="https://a-little-bear.github.io/p/undefined.html"/>
+    <id>https://a-little-bear.github.io/p/undefined.html</id>
+    <published>2020-05-06T01:58:15.000Z</published>
+    <updated>2020-05-06T01:58:15.635Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>首页显示摘要内容（替换成自己的）</p></blockquote><a id="more"></a><p>正文内容（替换成自己的）</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;首页显示摘要内容（替换成自己的）&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>收藏</title>
