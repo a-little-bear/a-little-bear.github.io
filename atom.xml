@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://a-little-bear.github.io/"/>
-  <updated>2020-05-07T04:36:50.201Z</updated>
+  <updated>2020-05-07T05:30:03.661Z</updated>
   <id>https://a-little-bear.github.io/</id>
   
   <author>
@@ -17,11 +17,39 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>博客经验</title>
+    <title>Html5开发工具</title>
+    <link href="https://a-little-bear.github.io/p/undefined.html"/>
+    <id>https://a-little-bear.github.io/p/undefined.html</id>
+    <published>2020-05-07T05:23:02.000Z</published>
+    <updated>2020-05-07T05:30:03.661Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>如今，HTML5发展飞速，被看做是web开发者创建流行web应用的利器。用HTML5开发的优势主要是这个技术可以进行跨平台进行使用。例如你开发了一款HTML5的游戏，你可以很轻易地移植到UC的开放平台、Opera的游戏中心、Facebook应用平台，甚至可以通过封装的技术发放到App Store或Google Play上，所以它的跨平台性非常强大，这也是大多数人对HTML5有兴趣的主要原因。而且随着各大浏览器对HTML5技术支持的不断完善以及 HTML5技术的不断成熟，未来 HTML5必将改变我们创建Web应用程序的方式。下面就向大家推荐多款优秀的HTML5开发工具，帮助你更高效的编写HTML5应用。</p><a id="more"></a><h2 id="1-Adobe-Dreamweaver-CS6"><a href="#1-Adobe-Dreamweaver-CS6" class="headerlink" title="1. Adobe Dreamweaver CS6"></a><strong>1. Adobe Dreamweaver CS6</strong></h2><p>Dreamweaver CS6是世界顶级软件厂商Adobe推出的一套拥有可视化编辑界面，用于制作并编辑网站和移动应用程序的网页设计软件。由于Dreamweaver支持代码、拆分、设计、实时视图等多种方式来创作、编写和修改网页，对于初级人员，你可以无需编写任何代码就能快速创建Web页面。其成熟的代码编辑工具更适用于Web开发高级人员的创作！</p><p>**<br>**</p><p>*<em><img src="https://atts.w3cschool.cn/attachments/day_161106/201611061810118280.png" alt=" Adobe Dreamweaver CS6"><br>*</em></p><h2 id="2-Adobe-Edge"><a href="#2-Adobe-Edge" class="headerlink" title="2. Adobe Edge"></a><strong>2. Adobe Edge</strong></h2><p>Adobe Edge是一个用HTML5、CSS、Java开发动态互动内容的设计工具。它的一个重要功能是web工具包界面，用于方便确保在不同浏览器中架构的一致性，此外，Adobe Edge还将整合TypeKit这样的字体服务。通过Edge设计的内容可以兼容iOS和Android设备，也可以运行在火狐、Chrome、Safari和IE9等主流浏览器上。</p><p><img src="https://atts.w3cschool.cn/attachments/day_161106/201611061811066097.png" alt="Adobe Edge"></p><h2 id="3-DevExtreme"><a href="#3-DevExtreme" class="headerlink" title="3. DevExtreme"></a><strong>3. DevExtreme</strong></h2><p>DevExtreme Complete Subion是性能最优的HTML5,CSS和Java移动开发框架，可以直接在Visual Studio集成开发环境，构建iOS，Android，Tizen和Windows Phone 8应用程序。DevExtreme包含 PhoneJS 和 ChartJS 两个原生UI组件，并且提供源代码。目前，DevExtreme支持VS2010/2012/2013集成开发环境，兼容Android 4+、iOS5+、Windows 8、Window Phone 8、Tizen五大移动平台，是Visual Studio开发人员开发跨平台移动产品的首选工具。</p><p><img src="https://atts.w3cschool.cn/attachments/day_161106/201611061837113354.png" alt="DevExtreme"></p><p>**<br>**</p><h2 id="4-JetBrains-WebStorm"><a href="#4-JetBrains-WebStorm" class="headerlink" title="4. JetBrains WebStorm"></a><strong>4. JetBrains WebStorm</strong></h2><p>WebStorm 是jetbrains公司旗下一款JavaScript开发工具。被广大中国JS开发者誉为“Web前端开发神器”、“最强大的HTML5编辑器”、“最智能的JavaS IDE”等。与IntelliJ IDEA同源，继承了IntelliJ IDEA强大的JS部分的功能。</p><p><img src="https://atts.w3cschool.cn/attachments/day_161106/201611061839082588.png" alt="JetBrains WebStorm"></p><h2 id="5-Sencha-Architect"><a href="#5-Sencha-Architect" class="headerlink" title="5. Sencha Architect"></a><strong>5. Sencha Architect</strong></h2><p>在开发移动和桌面应用的工具中，Sencha的定位是HTML5可视化应用开发。开发团队可以在一个单一集成的环境中完成应用的设计、开发和部署。开发者还可以开发Sencha Touch2和Ext JS4 Java应用，并实时预览。</p><p><img src="https://atts.w3cschool.cn/attachments/day_161106/201611061839409823.png" alt="Sencha Architect"></p><h2 id="6、Initializr"><a href="#6、Initializr" class="headerlink" title="6、Initializr"></a>6、Initializr</h2><p>Initializr 是制作 HTML5 网站最好的入门辅助开发工具，你可以使用提供的特色模板快速生成网站，也可以自定义，Initializr 会为你生成代码简洁的可定制的网页模板。</p><p><img src="https://atts.w3cschool.cn/attachments/day_161106/201611061841193670.png" alt="Initializr"></p><h2 id="7、HTML5demos"><a href="#7、HTML5demos" class="headerlink" title="7、HTML5demos"></a>7、HTML5demos</h2><p>想知道你的浏览器是否支持 HTML5 Canvas 吗？想知道 Safari 是否可以运行简单的 HTML5 聊天客户端吗？HTML5demos 会告诉你每一个HTML5特性在哪些浏览器中支持。</p><p><img src="https://atts.w3cschool.cn/attachments/day_161106/201611061843477655.png" alt="HTML5demos"></p><h2 id="8、HTML5-Tracker"><a href="#8、HTML5-Tracker" class="headerlink" title="8、HTML5 Tracker"></a>8、HTML5 Tracker</h2><p>想了解 HTML5的最新动向吗? 使用 HTML5 Tracker 吧，它可以跟踪 HTML5 最新修订信息。</p><p><img src="https://atts.w3cschool.cn/attachments/day_161106/201611061845214481.png" alt="HTML5 Tracker"></p><h2 id="9、HTML5-visual-cheat-sheet"><a href="#9、HTML5-visual-cheat-sheet" class="headerlink" title="9、HTML5 visual cheat sheet"></a>9、HTML5 visual cheat sheet</h2><p>想要快速超找一个标签或者属性吗？看看这个非常酷的速查手册吧，每个Web开发人员的必备。</p><p><img src="https://atts.w3cschool.cn/attachments/day_161106/201611061847004449.png" alt="HTML5 visual cheat sheet"></p><h2 id="10、Switch-To-HTML5"><a href="#10、Switch-To-HTML5" class="headerlink" title="10、Switch To HTML5"></a>10、<strong>Switch To HTML5</strong></h2><p>Switch To HTML5 是一个基础而实用的模板生成工具。如果你开始一个新项目，可以到这里获取免费的 HTML5 网站模板。</p><p><img src="https://atts.w3cschool.cn/attachments/day_161106/201611061848025892.png" alt="Switch To HTML5"></p><p>**<br>**</p><h2 id="11、HTML5-Test"><a href="#11、HTML5-Test" class="headerlink" title="11、HTML5 Test"></a><strong>11、HTML5 Test</strong></h2><p>你浏览器准备好迎接 HTML5 革命了吗？HTML5 Test 将告诉你。这个网站会为你当前使用的浏览器生成一份对video、audio、canvas等等特性的支持情况的完整报告。</p><p><img src="https://atts.w3cschool.cn/attachments/day_161106/201611061849465274.png" alt="HTML5 Test"></p><h2 id="12、Lime-JS"><a href="#12、Lime-JS" class="headerlink" title="12、Lime JS"></a>12、Lime JS</h2><p>LimeJS 是一个 HTML5 游戏开发框架，用于快速构建运行于触屏设备和桌面浏览器的游戏。非常棒的HTML5开发工具，一定要用用试试。</p><p><img src="https://atts.w3cschool.cn/attachments/day_161106/201611061853373723.png" alt="Lime JS"></p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;如今，HTML5发展飞速，被看做是web开发者创建流行web应用的利器。用HTML5开发的优势主要是这个技术可以进行跨平台进行使用。例如你开发了一款HTML5的游戏，你可以很轻易地移植到UC的开放平台、Opera的游戏中心、Facebook应用平台，甚至可以通过封装的技术发放到App Store或Google Play上，所以它的跨平台性非常强大，这也是大多数人对HTML5有兴趣的主要原因。而且随着各大浏览器对HTML5技术支持的不断完善以及 HTML5技术的不断成熟，未来 HTML5必将改变我们创建Web应用程序的方式。下面就向大家推荐多款优秀的HTML5开发工具，帮助你更高效的编写HTML5应用。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="其他" scheme="https://a-little-bear.github.io/categories/%E5%85%B6%E4%BB%96/"/>
+    
+    
+      <category term="开发工具" scheme="https://a-little-bear.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="经验" scheme="https://a-little-bear.github.io/tags/%E7%BB%8F%E9%AA%8C/"/>
+    
+      <category term="网站" scheme="https://a-little-bear.github.io/tags/%E7%BD%91%E7%AB%99/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>博客相关的经验</title>
     <link href="https://a-little-bear.github.io/p/undefined.html"/>
     <id>https://a-little-bear.github.io/p/undefined.html</id>
     <published>2020-05-07T04:32:03.000Z</published>
-    <updated>2020-05-07T04:36:50.201Z</updated>
+    <updated>2020-05-07T05:30:26.769Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>一些最后解决博客相关问题的答案</p><a id="more"></a><h6 id="hexo文章内toc生成"><a href="#hexo文章内toc生成" class="headerlink" title="hexo文章内toc生成"></a>hexo文章内toc生成</h6><p><a href="https://yelog.org/2019/09/24/3-hexo-toc/">https://yelog.org/2019/09/24/3-hexo-toc/</a></p><h6 id="Hexo设置跳过渲染"><a href="#Hexo设置跳过渲染" class="headerlink" title="Hexo设置跳过渲染"></a>Hexo设置跳过渲染</h6><p><a href="https://alaxn.github.io/a819c9cf/">https://alaxn.github.io/a819c9cf/</a></p><h6 id="一些html游戏源码"><a href="#一些html游戏源码" class="headerlink" title="一些html游戏源码"></a>一些html游戏源码</h6><p><a href="https://www.w3cschool.cn/html5/html5-game2.html">https://www.w3cschool.cn/html5/html5-game2.html</a></p><p><a href="https://blog.csdn.net/weixin_30493401/article/details/96779316">https://blog.csdn.net/weixin_30493401/article/details/96779316</a></p></blockquote>]]></content>
     
@@ -35,10 +63,8 @@
     
       <category term="其他" scheme="https://a-little-bear.github.io/categories/%E5%85%B6%E4%BB%96/"/>
     
-      <category term="博客经验" scheme="https://a-little-bear.github.io/categories/%E5%85%B6%E4%BB%96/%E5%8D%9A%E5%AE%A2%E7%BB%8F%E9%AA%8C/"/>
     
-    
-      <category term="博客经验" scheme="https://a-little-bear.github.io/tags/%E5%8D%9A%E5%AE%A2%E7%BB%8F%E9%AA%8C/"/>
+      <category term="经验" scheme="https://a-little-bear.github.io/tags/%E7%BB%8F%E9%AA%8C/"/>
     
   </entry>
   
