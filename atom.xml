@@ -66,33 +66,6 @@
   </entry>
   
   <entry>
-    <title>github pages与travis ci运作原理</title>
-    <link href="https://a-little-bear.github.io/p/8465.html"/>
-    <id>https://a-little-bear.github.io/p/8465.html</id>
-    <published>2020-05-08T03:19:36.000Z</published>
-    <updated>2020-05-08T03:23:53.818Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>转载自：<a href="https://www.cnblogs.com/zhangnan35/p/10830010.html">https://www.cnblogs.com/zhangnan35/p/10830010.html</a></p><p>（虽然看不懂但是发上来以后慢慢看就对了嘿嘿）</p><a id="more"></a><p>　　当说到自动部署的时候，我很反感那些一上来就balabala说怎么操作的博文文章，照着别人的做法有样学样，经常会因为与自己项目实际情况不符而出现各种问题。</p><p>　　比如说github和travis，首先应该搞明白，他们之间是如何运作的。</p><p>　　首先，github pages是集成在github里面，可以解析静态的文件，并渲染成页面的。所以最简单的github pages应该是这样，新建一个项目，项目里面包含一个index.html。在项目的settings中打开github pages。搞定！</p><p>　　但问题是，我们很多的实际项目，比如vue-cli项目。不是一开始就有静态文件的，而是需要手动通过npm run build或yarn build来打包生成。可能有人会说：我本地可以配置静态文件的导出目录，将静态文件导出到github pages能识别的路径。比如根目录或者根目录下的docs文件夹，在本地先run build，然后再把静态文件push到github上，供github pages解析渲染。</p><p>　　但如果要弄成这样，还叫自动化部署吗？还叫持续集成交付吗？所以问题的关键是：<strong>需要找到一个东西，可以帮我们run build，同时生成的静态文件也要放在github pages可以解析的路径里</strong>。程序员每次推代码只关心代码本身，不关心打包过程和静态文件应该存放在哪儿。</p><p>　　github本身是没有这个环境来run build的，谁有呢？travis有。</p><p>　　所以他们的运作过程是这样的：<strong>程序员往github上推了代码 –&gt; travis检测了到程序员这一行为 –&gt;拉取最新的项目代码到travis –&gt; 在travis的虚拟机中对这个项目进行run build –&gt; 生成静态文件 –&gt; 将静态文件传回给github的可识别目录，供github pages解析渲染。</strong></p><p>　　说得直白一点：你推了项目到github上，travis把你的项目给克隆过去了，然后在travis的小黑屋的帮你打包静态文件，最后送还静态文件到你的github上。</p><p>　　搞清楚了运作原理，接下来才是一些实施细节。</p><p><strong>1，travis怎么知道程序员推了代码到github?</strong></p><p>　　travis与github是一对好基友，在travis的社区级官网（<a href="https://travis-ci.org/）里，可以用github账号登录，登录之后，即代表你的github对travis进行了Oauth授权，travis可以访问你的所有项目列表，同时，只要你手动打开监听开关，travis就可以监听指定项目的活动状态，比如有没有推代码。">https://travis-ci.org/）里，可以用github账号登录，登录之后，即代表你的github对travis进行了Oauth授权，travis可以访问你的所有项目列表，同时，只要你手动打开监听开关，travis就可以监听指定项目的活动状态，比如有没有推代码。</a></p><p><img src="https://img2018.cnblogs.com/blog/1328957/201906/1328957-20190603110026245-489517988.png" alt="img"></p><p><strong>2.监听到了github活动之后，诸如克隆代码，run build，返还静态文件这些操作细节在哪里配置？</strong></p><p>　　在github项目的根目录下新建一个<strong>.travis.yml</strong>的shell脚本文件，当travis监听到github项目活动时，就会在项目的根目录下找这个脚本文件，如果找到了，就执行文件里的内容。由于travis跟github是好基友，并不需要在你的项目中安装其他什么杂七杂八的东西来支持.travis.yml,直接新建即可。但注意必须严格起这个名字。下面是一个vue-cli项目的详细注解的shell脚本文件。</p><p><img src="https://img2018.cnblogs.com/blog/1328957/201906/1328957-20190603112520134-950881975.png" alt="img"></p><p><strong>3.travis对github项目的读写操作需要授权，如何授权？</strong></p><p>　　在github/settings/developer settings/personal access tokens中，新建一个token，如下图：</p><p><img src="https://img2018.cnblogs.com/blog/1328957/201906/1328957-20190603113314376-1142083275.png" alt="img"></p><p>　　除了不准travis直接删掉我的github项目，其他的权限我都给了。生成之后在travis-ci.org中打开指定项目的settings，将token复制到到项目的环境变量中，并给他取个名字，如下图：</p><p><img src="https://img2018.cnblogs.com/blog/1328957/201906/1328957-20190603113922522-598665350.png" alt="img"></p><p>　　比如我取的名字是<strong>GITHUB_TOKEN</strong>，那在.travis.yml执行的脚本里，通过<strong>$GITHUB_TOKEN</strong>就可以拿到这个授权码。</p><p><strong>4.放到指定github路径中供github pages解析，那哪些路径才是有效的？</strong></p><p>　　在github的项目的settings中，可以看到pages一栏，可以看到合理的解析路径一共有以下几种：</p><p><img src="https://img2018.cnblogs.com/blog/1328957/201906/1328957-20190603114420763-1770715283.png" alt="img"></p><p>　　在这里我们选择第一种，为什么是gh-pages分支？因为travis在向github返还打包好的静态文件时，travis也是非常担心怕覆盖掉程序员写的代码，所以往master分支推还是往其他什么dev、develop、test分支推，只要是程序员自己建的分支，都有风险。<strong>这时候就需要有一个特定分支，这个分支不需要程序员自己建，而是travis来建，并且里面只存放静态文件，专门用于供github pages解析。</strong>这个travis默认新建的分支名，就叫<strong>gh-pages</strong>。在我的github项目中点开gh-pages分支，也可以看到这个分支的操作者是travis而不是我。</p><p><img src="https://img2018.cnblogs.com/blog/1328957/201906/1328957-20190603115519143-1927131330.png" alt="img"></p><p><strong>5.travis ci跑完后页面静态资源无法加载，报404错误？</strong></p><p>　　这个问题属于vue-cli项目的打包配置问题了。默认情况下，Vue CLI 会假设你的应用是被部署在一个域名的根路径上，如<strong><a href="https://www.apps.com。">https://www.apps.com。</a></strong>如果应用被部署在一个子路径上，你就需要用这个选项指定这个子路径。例如，如果你的应用被部署在 <strong><a href="https://www.apps.com/my-app/">https://www.apps.com/my-app/</a></strong>，则设置 <code>publicPath</code> 为 <strong>/my-app/</strong><code>。</code>所以要在vue-cli3.x项目的根目录下，新建一个vue.config.js文件配置一下publicPath。</p><p><img src="https://img2018.cnblogs.com/blog/1328957/201906/1328957-20190603120438144-773424723.png" alt="img"></p><p>　　当然可以用“./”相对路径来实现，不过相对路径在一些场景中会有问题。比如当使用基于 HTML5 <code>history.pushState</code> 的路由时，或者当使用 <code>pages</code> 选项构建多页面应用时。所以还是不要用相对路径这种投机取巧的方法。在完成这一系列操作后，可以看到最终效果：一个vue-cli项目的默认界面。</p><p><img src="https://img2018.cnblogs.com/blog/1328957/201906/1328957-20190603134746286-1794326479.png" alt="img"></p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;转载自：&lt;a href=&quot;https://www.cnblogs.com/zhangnan35/p/10830010.html&quot;&gt;https://www.cnblogs.com/zhangnan35/p/10830010.html&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;（虽然看不懂但是发上来以后慢慢看就对了嘿嘿）&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="其他" scheme="https://a-little-bear.github.io/categories/%E5%85%B6%E4%BB%96/"/>
-    
-    
-      <category term="Github Page" scheme="https://a-little-bear.github.io/tags/Github-Page/"/>
-    
-      <category term="Travis Ci" scheme="https://a-little-bear.github.io/tags/Travis-Ci/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Html5开发工具</title>
     <link href="https://a-little-bear.github.io/p/8230.html"/>
     <id>https://a-little-bear.github.io/p/8230.html</id>
