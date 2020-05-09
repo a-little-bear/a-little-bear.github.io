@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://a-little-bear.github.io/"/>
-  <updated>2020-05-08T12:32:56.966Z</updated>
+  <updated>2020-05-09T02:12:04.317Z</updated>
   <id>https://a-little-bear.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Microsoft Edge v81.0.416.72 绿色增强版本</title>
+    <link href="https://a-little-bear.github.io/p/dda0.html"/>
+    <id>https://a-little-bear.github.io/p/dda0.html</id>
+    <published>2020-05-09T02:01:54.000Z</published>
+    <updated>2020-05-09T02:12:04.317Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>微软Edge浏览器独立发行版于2020年1月15日正式上线。Microsoft Edge，基于谷歌Chromium内核，全新界面更加清爽现代化，全面支持全局翻译、阅读模式、第三方扩展插件以及人声语音朗读等各种功能。此外，全新独立版内存占用大幅优化，相对来说更省电、流畅，较适合笔记本用户，全面支持兼容所有平台。</p><a id="more"></a><p>下载地址（可用idm多线程）：<a href="https://wp.alittlebear.tk/dda0/">https://wp.alittlebear.tk/dda0/</a></p><p><img src="https://cdn.jsdelivr.net/gh/a-little-bear/picture/img/20200508215954.png" alt=""></p><p><strong>此版特点</strong></p><p>微软Edge浏览器增强版，由shuax基于官方正式版打包而成，绑定便携化注入模块Edge++增强软件，强制实现flash插件支持，解除了Adobe Flash Player地区不相容限制和移除警告提示，增强了标签页功能。</p><p><strong>增强功能：</strong></p><p>双击关闭标签页<br>保留最后标签页（点X不行）（防止关闭最后一个标签页时关闭浏览器）<br>鼠标悬停标签栏滚动<br>按住右键时滚轮滚动标签栏<br>移除flash锁区，移除2020年过期警告（下载、加载flash需要你自己处理）<br>移除管理员运行警告<br>移除开发者模式警告<br>便携设计，程序放在App目录，数据放在Data目录（兼容原版数据，但重装系统换电脑会丢数据）<br>移除更新错误警告（因为是便携版没有自动更新功能）</p><p><strong>如何使用？</strong><br>解压后运行App/msedge.exe即可。<br>由于是便携版，不会和其它版本冲突，不想用了可以直接删掉整个文件夹。</p><p><strong>如何更新？</strong><br>升级先把老版本App重命名为App2。<br>然后把新下载的所有文件覆盖到老文件夹内。<br>包括App、Data和说明.txt。<br>运行测试正常后可以安全删除App2老版本。<br>建议保留上个版本压缩包以便出问题时还原。</p><p>增强功能通过edge++.dll实现，并修改了msedge.exe主程序，可能会报毒。<br>鼠标手势推荐使用全局手势软件，比如MouseInc。</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;微软Edge浏览器独立发行版于2020年1月15日正式上线。Microsoft Edge，基于谷歌Chromium内核，全新界面更加清爽现代化，全面支持全局翻译、阅读模式、第三方扩展插件以及人声语音朗读等各种功能。此外，全新独立版内存占用大幅优化，相对来说更省电、流畅，较适合笔记本用户，全面支持兼容所有平台。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="软件" scheme="https://a-little-bear.github.io/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+      <category term="浏览器" scheme="https://a-little-bear.github.io/categories/%E8%BD%AF%E4%BB%B6/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+    
+      <category term="浏览器" scheme="https://a-little-bear.github.io/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>那些古怪又让人忧心的问题</title>
