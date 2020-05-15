@@ -35,7 +35,7 @@ function playMusic(data, playendcallback) {
         theme: 'default',
         music: data,
         target: '.music',
-        autoplay: false
+        autoplay: true
     }, function () {
         var index;
         index = lastIndex + 1;
