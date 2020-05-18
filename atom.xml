@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://a-little-bear.github.io/"/>
-  <updated>2020-05-18T15:18:08.610Z</updated>
+  <updated>2020-05-18T16:07:12.094Z</updated>
   <id>https://a-little-bear.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>电子书阅读器 Calibre v4.16</title>
+    <link href="https://a-little-bear.github.io/p/2212.html"/>
+    <id>https://a-little-bear.github.io/p/2212.html</id>
+    <published>2020-05-18T15:49:35.000Z</published>
+    <updated>2020-05-18T16:07:12.094Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>Calibre电子书阅读器是一个“一站式”的电子书解决方案，它可以全面满足你的电子书需求。Calibre是免费的，源代码开放，拥有跨平台的设计，可在Linux， OS X和Windows操作系统中运行。<br>Calibre电子书阅读器它是一个完整的电子图书馆，包括图书馆管理，格式转换，新闻，将材料转换为电子书，以及电子书阅读器同步功能、整合进电子图书阅读器。</p><a id="more"></a><p>主页：<a href="https://calibre-ebook.com/">https://calibre-ebook.com/</a><br>更新日志：<a href="https://calibre-ebook.com/whats-new">https://calibre-ebook.com/whats-new</a></p><p>Windows 便携+64位 下载<br>OneDrive下载; <a href="https://alilin-my.sharepoint.com/:f:/g/personal/alittlebear_yam_ink/Ek5xmbahKLpAjpdURofYXf8BkQagM8dgK8U5p1hIrR-2kg">https://alilin-my.sharepoint.com … gM8dgK8U5p1hIrR-2kg</a><br>备用网盘下载：<a href="https://wp.alittlebear.tk/2212/">https://wp.alittlebear.tk/2212/</a></p><p>Windows:<br><a href="https://www.fosshub.com/Calibre.html/calibre-4.16.0.msi">https://www.fosshub.com/Calibre.html/calibre-4.16.0.msi</a><br><a href="https://github.com/kovidgoyal/calibre/releases/download/v4.16.0/calibre-4.16.0.msi">https://github.com/kovidgoyal/calibre/releases/download/v4.16.0/calibre-4.16.0.msi</a></p><p>Windows x64:<br><a href="https://www.fosshub.com/Calibre.html/calibre-64bit-4.16.0.msi">https://www.fosshub.com/Calibre.html/calibre-64bit-4.16.0.msi</a><br><a href="https://github.com/kovidgoyal/calibre/releases/download/v4.16.0/calibre-64bit-4.16.0.msi">https://github.com/kovidgoyal/calibre/releases/download/v4.16.0/calibre-64bit-4.16.0.msi</a></p><p>Mac:<br><a href="https://www.fosshub.com/Calibre.html/calibre-4.16.0.dmg">https://www.fosshub.com/Calibre.html/calibre-4.16.0.dmg</a><br><a href="https://github.com/kovidgoyal/calibre/releases/download/v4.16.0/calibre-4.16.0.dmg">https://github.com/kovidgoyal/calibre/releases/download/v4.16.0/calibre-4.16.0.dmg</a></p><p>Linux:<br><a href="https://calibre-ebook.com/download_linux">https://calibre-ebook.com/download_linux</a></p><p>便携版:<br><a href="https://www.fosshub.com/Calibre.html/calibre-portable-installer-4.16.0.exe">https://www.fosshub.com/Calibre.html/calibre-portable-installer-4.16.0.exe</a><br><a href="https://github.com/kovidgoyal/calibre/releases/download/v4.16.0/calibre-portable-installer-4.16.0.exe">https://github.com/kovidgoyal/calibre/releases/download/v4.16.0/calibre-portable-installer-4.16.0.exe</a></p><p><img src="https://i.loli.net/2020/05/18/16AzLCTGhBocSjt.png" alt=""></p><p><img src="https://i.loli.net/2020/05/18/H65eztISTKRkQl7.png" alt=""></p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Calibre电子书阅读器是一个“一站式”的电子书解决方案，它可以全面满足你的电子书需求。Calibre是免费的，源代码开放，拥有跨平台的设计，可在Linux， OS X和Windows操作系统中运行。&lt;br&gt;Calibre电子书阅读器它是一个完整的电子图书馆，包括图书馆管理，格式转换，新闻，将材料转换为电子书，以及电子书阅读器同步功能、整合进电子图书阅读器。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="软件" scheme="https://a-little-bear.github.io/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+      <category term="工具" scheme="https://a-little-bear.github.io/categories/%E8%BD%AF%E4%BB%B6/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="书籍" scheme="https://a-little-bear.github.io/categories/%E4%B9%A6%E7%B1%8D/"/>
+    
+      <category term="工具" scheme="https://a-little-bear.github.io/categories/%E4%B9%A6%E7%B1%8D/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="阅读软件" scheme="https://a-little-bear.github.io/tags/%E9%98%85%E8%AF%BB%E8%BD%AF%E4%BB%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>Markdown编辑器 Typora v0.9.86</title>
@@ -195,7 +225,7 @@
     <link href="https://a-little-bear.github.io/p/cb11.html"/>
     <id>https://a-little-bear.github.io/p/cb11.html</id>
     <published>2020-05-08T12:22:13.000Z</published>
-    <updated>2020-05-08T12:32:56.966Z</updated>
+    <updated>2020-05-18T16:07:30.596Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>前NASA成员、美国最火科普博客xkcd幽默问答集</p><p>What If ?: Serious Scientific Answers to Absurd Hypothetical Questions</p><a id="more"></a><p><a href="http://wp.alittlebear.tk/cb11/">http://wp.alittlebear.tk/cb11/</a></p><h5 id="内容简介-·-·-·-·-·-·"><a href="#内容简介-·-·-·-·-·-·" class="headerlink" title="内容简介 · · · · · ·"></a>内容简介 · · · · · ·</h5><p>「未读•探索家」重磅推出，2015年最有趣的书!再荒诞的问题都可能有一个科学答案！牛排从多高的地方掉下来正好能烤熟？哭多了会脱水吗？如果把一辈子亲吻所用的力气用在一个亲吻，会产生多大引力？全人类搬离地球需要几步？所有好奇心都值得被满足2014年全美最畅销趣味科普书：美国亚马逊畅销书榜NO.1持续2周，入选2014年度最佳图书，上市后横扫《纽约时报》《出版人周刊》《华尔街时报》等各大图书榜，迄今稳居各大排行榜前列！天才作者，前NASA员工、网络最火科普专栏What If合集：作者曾在NASA制造机器人，后来成为科普漫画家，玩转物理、天文、生物、化学、数学各学科知识，轻松接招粉丝们提出的脑洞大开的问题，配上xkcd风格的火柴人漫画，幽默机智的答案让人拍案叫绝！国内外人气爆棚，粉丝众多：国外诸多一线媒体、TED演讲人、天文学家、科普作家联…</p><h5 id="作者简介-·-·-·-·-·-·"><a href="#作者简介-·-·-·-·-·-·" class="headerlink" title="作者简介 · · · · · ·"></a>作者简介 · · · · · ·</h5><p>兰道尔•门罗（Randall Munroe），曾在NASA工作，制造机器人。2006年成为全职网络漫画家，是美国最热门科普漫画网站xkcd的创立者。本书就是他的What If科普问答专栏合集。国际天文学联合会最近将小行星4942命名为“门罗”。如果“门罗小行星”撞上地球，很可能会导致大灭绝。</p><h5 id="目录-·-·-·-·-·-·"><a href="#目录-·-·-·-·-·-·" class="headerlink" title="目录 · · · · · ·"></a>目录 · · · · · ·</h5><p>免责声明 1<br>简介 1<br>No.1 全球风暴 2<br>No.2相对论棒球 5<br>No.3乏燃料游泳池 7<br>No.4那些古怪而又让人忧心的问题合集 一 9<br>No.5纽约式时间机器 9<br>No.6随机伴侣 15<br>No.7激光笔 18<br>No.8元素周期墙 23<br>No.9大家一起跳 28<br>No.10一摩尔鼹鼠 31<br>No.11疯狂电吹风 35<br>No.12那些古怪而又让人忧心的问题合集 二 40<br>No.13最后的人类之光 41<br>No.14机枪飞行背包 46<br>No.15匀速上升 49<br>No.16 那些古怪而又让人忧心的问题合集 三 51<br>No.17太空潜水艇 53<br>No.18短回答环节 56<br>No.19闪电 60<br>No.20那些古怪而又让人忧心的问题合集 四 63<br>No.21人力计算机 63<br>No.22小世界 68<br>No.23牛排坠落 70<br>No.24冰球一击 74<br>No. 25普通感冒 76<br>No.26半空的杯子 81<br>No.27那些古怪而又让人忧心的问题合集 五 89<br>No.28外星天文学家 90<br>No.29消失的DNA 94<br>No.30星级塞斯纳 99<br>No.31那些古怪而又让人忧心的问题合集 六 105<br>No.32尤达大师 107<br>No.33飞越州 110<br>No.34氦气球降落伞 115<br>No.35人类大迁徙 118<br>No.36那些古怪而又让人忧心的问题合集 七 121<br>No.37自体繁殖 122<br>No.38高掷比赛 129<br>No.39致命中微子 135<br>No.40那些古怪而又让人忧心的问题合集 八 139<br>No.41飞越减速带 141<br>No.42走失的人 145<br>No.43轨道速度 149<br>No.44联邦快递VS互联网 154<br>No.45自由落体 157<br>No.46那些古怪而又让人忧心的问题合集 九 163<br>No.47斯巴达勇士 164<br>No.48把海水抽干 168<br>No.49把海水抽干（续集） 175<br>No.50论Twitter的无穷性 188<br>No.51乐高大桥 193<br>No.52最长的落日 198<br>No.53随机祝福电话 204<br>No.54那些古怪而又让人忧心的问题合集 十 209<br>No.55地球扩张 209<br>No.56无重力射箭 218<br>No.57太阳熄灭之日 223<br>No.58纸质版维基百科 228<br>No.59 Facebook之死亡国 233<br>No.60日不落帝国的日落 239<br>No.61搅拌加热 244<br>No.62汇聚闪电 250<br>No.63最孤独的人 256<br>No.64那些古怪而又让人忧心的问题合集 十一 260<br>No.65雨滴 262<br>No.66 SAT靠猜 268<br>No.67中子子弹 270<br>No.68那些古怪而又让人忧心的问题合集 十二 282<br>No.69里氏15级地震 283<br>致谢 291</p></blockquote>]]></content>
     
@@ -209,6 +239,8 @@
     
     
       <category term="书籍" scheme="https://a-little-bear.github.io/categories/%E4%B9%A6%E7%B1%8D/"/>
+    
+      <category term="电子书" scheme="https://a-little-bear.github.io/categories/%E4%B9%A6%E7%B1%8D/%E7%94%B5%E5%AD%90%E4%B9%A6/"/>
     
     
       <category term="书籍" scheme="https://a-little-bear.github.io/tags/%E4%B9%A6%E7%B1%8D/"/>
