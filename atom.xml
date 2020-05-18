@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://a-little-bear.github.io/"/>
-  <updated>2020-05-18T16:50:02.869Z</updated>
+  <updated>2020-05-18T17:02:22.926Z</updated>
   <id>https://a-little-bear.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>图片浏览器 XnView MP v0.96.2</title>
+    <link href="https://a-little-bear.github.io/p/6536.html"/>
+    <id>https://a-little-bear.github.io/p/6536.html</id>
+    <published>2020-05-18T16:55:40.000Z</published>
+    <updated>2020-05-18T17:02:22.926Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>XnView MP是XnView Classic的增强版本。它是功能强大的跨平台媒体浏览器，查看器和转换器。兼容500多种格式。</p><a id="more"></a><p>特征：<br>无与伦比的兼容性<br>XnView MP支持500多种图像格式（包括多页和动画静态格式APNG，TIFF，GIF，ICO等），并可以导出为大约70种不同的文件格式。</p><p>批量转换<br>XnView MP带有易于使用但功能强大的批处理转换模块。该模块也为XnConvert供电</p><p>优化性能<br>在性能方面已进行了相当大的改进（速度优化的加载，改进的缓存，多核处理，64位版本等）。</p><p>多平台<br>现在支持32位和64位版本的Windows，Mac OS X和Linux</p><p>全球兼容<br>XnView MP最终提供了Unicode支持。多种语言的增强翻译以及全新便捷的模块化界面。</p><p>以及更多…<br>几乎所有标准XnView最受欢迎的功能都保留在XnView MP中，并且实际上已经对许多功能进行了调整和增强。</p><p>需要更多系统（Mac+Linux）请去官网下载</p><p>官网：<a href="https://www.xnview.com/en/">https://www.xnview.com/en/</a></p><p>下载：<a href="https://www.xnview.com/en/xnviewmp/">https://www.xnview.com/en/xnviewmp/</a></p><p>32位安装：<a href="https://download.xnview.com/XnViewMP-win.exe">https://download.xnview.com/XnViewMP-win.exe</a></p><p>64位安装：<a href="https://download.xnview.com/XnViewMP-win-x64.exe">https://download.xnview.com/XnViewMP-win-x64.exe</a></p><p>32位便携：<a href="https://download.xnview.com/XnViewMP-win.zip">https://download.xnview.com/XnViewMP-win.zip</a></p><p>64位安装：<a href="https://download.xnview.com/XnViewMP-win-x64.zip">https://download.xnview.com/XnViewMP-win-x64.zip</a></p><p>OneDrive：<a href="https://alilin-my.sharepoint.com/:f:/g/personal/alittlebear_yam_ink/Eo0bKv27I9REviqQUzcuVO8BA-V_96tHFjyrTXw6o0Reqg">https://alilin-my.sharepoint.com/:f:/g/personal/alittlebear_yam_ink/Eo0bKv27I9REviqQUzcuVO8BA-V_96tHFjyrTXw6o0Reqg</a></p><p>备用网盘：<a href="https://wp.alittlebear.tk/6536/">https://wp.alittlebear.tk/6536/</a></p><p><img src="https://i.loli.net/2020/05/19/iPl2Gk5AXsdJQRB.png" alt=""></p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;XnView MP是XnView Classic的增强版本。它是功能强大的跨平台媒体浏览器，查看器和转换器。兼容500多种格式。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="软件" scheme="https://a-little-bear.github.io/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+      <category term="工具" scheme="https://a-little-bear.github.io/categories/%E8%BD%AF%E4%BB%B6/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="图片浏览器" scheme="https://a-little-bear.github.io/tags/%E5%9B%BE%E7%89%87%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>图片浏览器 XnView v2.49.3 Extended 官方中文</title>
