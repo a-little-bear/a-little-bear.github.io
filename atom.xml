@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://a-little-bear.github.io/"/>
-  <updated>2020-05-18T16:07:12.094Z</updated>
+  <updated>2020-05-18T16:50:02.869Z</updated>
   <id>https://a-little-bear.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>图片浏览器 XnView v2.49.3 Extended 官方中文</title>
+    <link href="https://a-little-bear.github.io/p/4cde.html"/>
+    <id>https://a-little-bear.github.io/p/4cde.html</id>
+    <published>2020-05-18T16:36:52.000Z</published>
+    <updated>2020-05-18T16:50:02.869Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>XnView 支持查看大约150种文件格式(比如说ping、jpeg、targa、tiff、gif、bmp等)。XnView同时还支持动画gif、多页面tiff、多图像图标以及mpeg、avi、wav、aiff和Quicktime格式的文件。XnView是老牌好用的图片浏览工具了。优点是滚轮友好、界面简洁、自带大量的滤镜和照片拼接等功能，缺点开启高质量缩放后太卡（采样太高）没有实际操作意义。鼠标模式是框选（可修改）。</p><a id="more"></a><p>官网：<a href="https://www.xnview.com/en/">https://www.xnview.com/en/</a></p><p>官方下载页面：<a href="https://www.xnview.com/en/xnview/#downloads">https://www.xnview.com/en/xnview/#downloads</a></p><p>官方最新版下载（安装版）：<a href="https://download.xnview.com/XnView-win-full.exe">https://download.xnview.com/XnView-win-full.exe</a></p><p>官方最新版下载（便携版）：<a href="https://download.xnview.com/XnView-win-full.zip">https://download.xnview.com/XnView-win-full.zip</a></p><p>OneDrive：<a href="https://alilin-my.sharepoint.com/:f:/g/personal/alittlebear_yam_ink/Enc4KNw_G-1Foal7lZ7AE90BPpFDWcFANRbvWwOhgbOrUQ">https://alilin-my.sharepoint.com/:f:/g/personal/alittlebear_yam_ink/Enc4KNw_G-1Foal7lZ7AE90BPpFDWcFANRbvWwOhgbOrUQ</a></p><p>备用网盘：<a href="https://wp.alittlebear.tk/4cde/">https://wp.alittlebear.tk/4cde/</a></p><p>软件特色：</p><ul><li>打开图片速度极快</li><li>功能齐全,且很实用</li><li>基本不占资源</li><li>界面美观,支持换肤</li><li>其具有的右键预览功能非常实用(可通过提供的XnShellEx.exe自主安装)</li><li>体积小,不占什么空间</li></ul><p><img src="https://i.loli.net/2020/05/19/XkbJ23WUQxHsfde.png" alt=""></p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;XnView 支持查看大约150种文件格式(比如说ping、jpeg、targa、tiff、gif、bmp等)。XnView同时还支持动画gif、多页面tiff、多图像图标以及mpeg、avi、wav、aiff和Quicktime格式的文件。XnView是老牌好用的图片浏览工具了。优点是滚轮友好、界面简洁、自带大量的滤镜和照片拼接等功能，缺点开启高质量缩放后太卡（采样太高）没有实际操作意义。鼠标模式是框选（可修改）。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="软件" scheme="https://a-little-bear.github.io/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+      <category term="工具" scheme="https://a-little-bear.github.io/categories/%E8%BD%AF%E4%BB%B6/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="图片浏览器" scheme="https://a-little-bear.github.io/tags/%E5%9B%BE%E7%89%87%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>电子书阅读器 Calibre v4.16</title>
