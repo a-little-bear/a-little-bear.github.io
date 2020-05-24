@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://a-little-bear.github.io/"/>
-  <updated>2020-05-20T12:12:33.010Z</updated>
+  <updated>2020-05-24T16:30:09.263Z</updated>
   <id>https://a-little-bear.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>10个硬币问题</title>
+    <link href="https://a-little-bear.github.io/p/19a5.html"/>
+    <id>https://a-little-bear.github.io/p/19a5.html</id>
+    <published>2020-05-24T16:11:32.000Z</published>
+    <updated>2020-05-24T16:30:09.263Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>能否放下第十枚硬币</p></blockquote><a id="more"></a><div style="position: relative; padding: 30% 45%;"><iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="https://player.bilibili.com/player.html?aid=75806660&bvid=BV1HJ411U7zT&cid=129682422&page=1&as_wide=1&high_quality=1&danmaku=0" frameborder="no" scrolling="no" allowfullscreen="true"></iframe></div>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;能否放下第十枚硬币&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="影视推荐" scheme="https://a-little-bear.github.io/categories/%E5%BD%B1%E8%A7%86%E6%8E%A8%E8%8D%90/"/>
+    
+      <category term="视频" scheme="https://a-little-bear.github.io/categories/%E5%BD%B1%E8%A7%86%E6%8E%A8%E8%8D%90/%E8%A7%86%E9%A2%91/"/>
+    
+    
+      <category term="视频" scheme="https://a-little-bear.github.io/tags/%E8%A7%86%E9%A2%91/"/>
+    
+  </entry>
   
   <entry>
     <title>Biped 只只大冒险 v1.4</title>
@@ -526,9 +553,9 @@
     <link href="https://a-little-bear.github.io/p/d4ad.html"/>
     <id>https://a-little-bear.github.io/p/d4ad.html</id>
     <published>2020-05-07T04:32:03.000Z</published>
-    <updated>2020-05-19T13:37:21.961Z</updated>
+    <updated>2020-05-24T17:04:20.708Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>一些最后解决博客相关问题的答案</p><a id="more"></a><h6 id="hexo文章内toc生成"><a href="#hexo文章内toc生成" class="headerlink" title="hexo文章内toc生成"></a>hexo文章内toc生成</h6><p><a href="https://yelog.org/2019/09/24/3-hexo-toc/">https://yelog.org/2019/09/24/3-hexo-toc/</a></p><h6 id="Hexo设置跳过渲染"><a href="#Hexo设置跳过渲染" class="headerlink" title="Hexo设置跳过渲染"></a>Hexo设置跳过渲染</h6><p><a href="https://alaxn.github.io/a819c9cf/">https://alaxn.github.io/a819c9cf/</a></p><h6 id="一些html游戏源码"><a href="#一些html游戏源码" class="headerlink" title="一些html游戏源码"></a>一些html游戏源码</h6><p><a href="https://www.w3cschool.cn/html5/html5-game2.html">https://www.w3cschool.cn/html5/html5-game2.html</a></p><p><a href="https://blog.csdn.net/weixin_30493401/article/details/96779316">https://blog.csdn.net/weixin_30493401/article/details/96779316</a></p><h5 id="The-requested-URL-returned-error-500"><a href="#The-requested-URL-returned-error-500" class="headerlink" title="The requested URL returned error: 500:"></a>The requested URL returned error: 500:</h5><p><a href="https://blog.csdn.net/github_38851471/article/details/89478755">https://blog.csdn.net/github_38851471/article/details/89478755</a></p><h5 id="在Markdown中实现内容及代码块折叠操作："><a href="#在Markdown中实现内容及代码块折叠操作：" class="headerlink" title="在Markdown中实现内容及代码块折叠操作："></a>在Markdown中实现内容及代码块折叠操作：</h5><p><a href="https://blog.csdn.net/qq_40802448/article/details/103136825?utm_medium=distribute.pc_relevant.none-task-blog-baidujs-4">https://blog.csdn.net/qq_40802448/article/details/103136825?utm_medium=distribute.pc_relevant.none-task-blog-baidujs-4</a></p><h5 id="Markdown语法大全："><a href="#Markdown语法大全：" class="headerlink" title="Markdown语法大全："></a>Markdown语法大全：</h5><p><a href="https://www.cnblogs.com/liugang-vip/p/6337580.html">https://www.cnblogs.com/liugang-vip/p/6337580.html</a></p><h5 id="重装node，hexo提示：no-layout-index-html"><a href="#重装node，hexo提示：no-layout-index-html" class="headerlink" title="重装node，hexo提示：no layout:index.html:"></a>重装node，hexo提示：no layout:index.html:</h5><p><a href="https://www.52pojie.cn/thread-1182369-1-1.html">https://www.52pojie.cn/thread-1182369-1-1.html</a></p><p><a href="https://github.com/hexojs/hexo/issues/4281">https://github.com/hexojs/hexo/issues/4281</a></p></blockquote><p>开仓库的问题：</p><h5 id="Git遇到Unable-to-create-‘E-xxx-git-index-lock’-File-exists-的解决办法"><a href="#Git遇到Unable-to-create-‘E-xxx-git-index-lock’-File-exists-的解决办法" class="headerlink" title="Git遇到Unable to create ‘E:/xxx/.git/index.lock’: File exists.的解决办法"></a>Git遇到Unable to create ‘E:/xxx/.git/index.lock’: File exists.的解决办法</h5><p><a href="https://blog.csdn.net/tangkthh/article/details/90412139">https://blog.csdn.net/tangkthh/article/details/90412139</a></p><h5 id="github-用git-bash上传项目-最后提示-Everything-up-to-date-但没传上去"><a href="#github-用git-bash上传项目-最后提示-Everything-up-to-date-但没传上去" class="headerlink" title="github 用git bash上传项目　最后提示　Everything up-to-date　但没传上去"></a>github 用git bash上传项目　最后提示　Everything up-to-date　但没传上去</h5><p><a href="https://www.cnblogs.com/wenbinshen/p/9069851.html">https://www.cnblogs.com/wenbinshen/p/9069851.html</a></p><h5 id="git身份验证失败"><a href="#git身份验证失败" class="headerlink" title="git身份验证失败"></a>git身份验证失败</h5><p><a href="https://blog.csdn.net/linyunping/article/details/80694863">https://blog.csdn.net/linyunping/article/details/80694863</a></p><p>FTP上传：</p><p><a href="https://blog.csdn.net/suny2020/article/details/88785016">https://blog.csdn.net/suny2020/article/details/88785016</a></p><p>php上传到服务器打不开（No input file specified）：</p><p><a href="https://yq.aliyun.com/articles/34240">https://yq.aliyun.com/articles/34240</a></p><p>discuz：目录未找到或者无法访问./data/template</p><p><a href="https://blog.csdn.net/CityzenOldwang/article/details/60586992">https://blog.csdn.net/CityzenOldwang/article/details/60586992</a></p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>一些最后解决博客相关问题的答案</p><a id="more"></a><h6 id="hexo文章内toc生成"><a href="#hexo文章内toc生成" class="headerlink" title="hexo文章内toc生成"></a>hexo文章内toc生成</h6><p><a href="https://yelog.org/2019/09/24/3-hexo-toc/">https://yelog.org/2019/09/24/3-hexo-toc/</a></p><h6 id="Hexo设置跳过渲染"><a href="#Hexo设置跳过渲染" class="headerlink" title="Hexo设置跳过渲染"></a>Hexo设置跳过渲染</h6><p><a href="https://alaxn.github.io/a819c9cf/">https://alaxn.github.io/a819c9cf/</a></p><h6 id="一些html游戏源码"><a href="#一些html游戏源码" class="headerlink" title="一些html游戏源码"></a>一些html游戏源码</h6><p><a href="https://www.w3cschool.cn/html5/html5-game2.html">https://www.w3cschool.cn/html5/html5-game2.html</a></p><p><a href="https://blog.csdn.net/weixin_30493401/article/details/96779316">https://blog.csdn.net/weixin_30493401/article/details/96779316</a></p><h5 id="The-requested-URL-returned-error-500"><a href="#The-requested-URL-returned-error-500" class="headerlink" title="The requested URL returned error: 500:"></a>The requested URL returned error: 500:</h5><p><a href="https://blog.csdn.net/github_38851471/article/details/89478755">https://blog.csdn.net/github_38851471/article/details/89478755</a></p><h5 id="在Markdown中实现内容及代码块折叠操作："><a href="#在Markdown中实现内容及代码块折叠操作：" class="headerlink" title="在Markdown中实现内容及代码块折叠操作："></a>在Markdown中实现内容及代码块折叠操作：</h5><p><a href="https://blog.csdn.net/qq_40802448/article/details/103136825?utm_medium=distribute.pc_relevant.none-task-blog-baidujs-4">https://blog.csdn.net/qq_40802448/article/details/103136825?utm_medium=distribute.pc_relevant.none-task-blog-baidujs-4</a></p><h5 id="Markdown语法大全："><a href="#Markdown语法大全：" class="headerlink" title="Markdown语法大全："></a>Markdown语法大全：</h5><p><a href="https://www.cnblogs.com/liugang-vip/p/6337580.html">https://www.cnblogs.com/liugang-vip/p/6337580.html</a></p><h5 id="重装node，hexo提示：no-layout-index-html"><a href="#重装node，hexo提示：no-layout-index-html" class="headerlink" title="重装node，hexo提示：no layout:index.html:"></a>重装node，hexo提示：no layout:index.html:</h5><p><a href="https://www.52pojie.cn/thread-1182369-1-1.html">https://www.52pojie.cn/thread-1182369-1-1.html</a></p><p><a href="https://github.com/hexojs/hexo/issues/4281">https://github.com/hexojs/hexo/issues/4281</a></p></blockquote><h5 id="关于博客园内嵌入bilibili视频"><a href="#关于博客园内嵌入bilibili视频" class="headerlink" title="关于博客园内嵌入bilibili视频"></a><a href="https://www.cnblogs.com/wkfvawl/p/12268980.html">关于博客园内嵌入bilibili视频</a></h5><h5 id="JS如何在页面中插入HTML代码"><a href="#JS如何在页面中插入HTML代码" class="headerlink" title="JS如何在页面中插入HTML代码"></a>JS如何在页面中插入HTML代码</h5><p><a href="https://bbs.csdn.net/topics/330255909">https://bbs.csdn.net/topics/330255909</a></p><p>开仓库的问题：</p><h5 id="Git遇到Unable-to-create-‘E-xxx-git-index-lock’-File-exists-的解决办法"><a href="#Git遇到Unable-to-create-‘E-xxx-git-index-lock’-File-exists-的解决办法" class="headerlink" title="Git遇到Unable to create ‘E:/xxx/.git/index.lock’: File exists.的解决办法"></a>Git遇到Unable to create ‘E:/xxx/.git/index.lock’: File exists.的解决办法</h5><p><a href="https://blog.csdn.net/tangkthh/article/details/90412139">https://blog.csdn.net/tangkthh/article/details/90412139</a></p><h5 id="github-用git-bash上传项目-最后提示-Everything-up-to-date-但没传上去"><a href="#github-用git-bash上传项目-最后提示-Everything-up-to-date-但没传上去" class="headerlink" title="github 用git bash上传项目　最后提示　Everything up-to-date　但没传上去"></a>github 用git bash上传项目　最后提示　Everything up-to-date　但没传上去</h5><p><a href="https://www.cnblogs.com/wenbinshen/p/9069851.html">https://www.cnblogs.com/wenbinshen/p/9069851.html</a></p><h5 id="git身份验证失败"><a href="#git身份验证失败" class="headerlink" title="git身份验证失败"></a>git身份验证失败</h5><p><a href="https://blog.csdn.net/linyunping/article/details/80694863">https://blog.csdn.net/linyunping/article/details/80694863</a></p><p>FTP上传：</p><p><a href="https://blog.csdn.net/suny2020/article/details/88785016">https://blog.csdn.net/suny2020/article/details/88785016</a></p><p>php上传到服务器打不开（No input file specified）：</p><p><a href="https://yq.aliyun.com/articles/34240">https://yq.aliyun.com/articles/34240</a></p><p>discuz：目录未找到或者无法访问./data/template</p><p><a href="https://blog.csdn.net/CityzenOldwang/article/details/60586992">https://blog.csdn.net/CityzenOldwang/article/details/60586992</a></p>]]></content>
     
     <summary type="html">
     
@@ -539,32 +566,6 @@
     
     
       <category term="其他" scheme="https://a-little-bear.github.io/categories/%E5%85%B6%E4%BB%96/"/>
-    
-    
-      <category term="经验" scheme="https://a-little-bear.github.io/tags/%E7%BB%8F%E9%AA%8C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>郭沫若的读书经验</title>
-    <link href="https://a-little-bear.github.io/p/18sd.html"/>
-    <id>https://a-little-bear.github.io/p/18sd.html</id>
-    <published>2020-05-07T03:30:37.000Z</published>
-    <updated>2020-05-08T12:27:19.071Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>读书读到57岁了，当然有些经验可谈，希望能提供读者一些参考。<br>读书的方法大体上要看自己是为了什么目的，有为学习而读书，有为研究而读书，有为创作而读书，有为娱乐而读书。目的不同，方法也就不免有些差异。</p><a id="more"></a><h3 id="为学习而读书"><a href="#为学习而读书" class="headerlink" title="为学习而读书"></a>为学习而读书</h3><p>可以说是每一个人的基本要求。一个人自发蒙以采，到学成一种技艺，养成一种人格为止，所受的教育，都是为了这个目的。学校的课程，大体上都是强迫性的，非读不可。进步的国家要培养健全的国民，一定有周密的国民教育课程，每个人都必须经历，这是无庸置疑的。<br>一个人有相对的择业的自由，但所学的课程，一经择定，便必须完成一定的职业教育课程，这是不由自主的。例如我在大学时代学的是医学，则解剖学、生理学、病理学、药理学、细菌学以及各种临床或应用医学的教科书，便非读不可，不读你便不能成为医学家。即使学校毕了业，学问也不能毕业，你必须向这方面锲而不舍地追求，然后才能进步，不然你便只好落伍了。我自己因为两耳重听的关系，大学毕业后便中止了医学，故今天不敢自命为医学家，别人也不这样看待我。</p><h3 id="为研究而读书"><a href="#为研究而读书" class="headerlink" title="为研究而读书"></a>为研究而读书</h3><p>这或许是狭义的读书方式。譬如研究一门特殊学问，或者特殊问题，凡关于那门学问或那个问题的一切书籍和资料，必须尽可能把它们全都搜罗，把它们读到滚瓜烂熟，这样，你对于那个问题便有了充分的把握，你就可以成为该门学问的权威。<br>在研究上，你自然有充分的自由，但如果你是有责任心的人，你的自由依然是相对的而非绝对的。<br>例如我有研究古代史的志趣，为了完成这志趣，我下了一番苦功，把甲骨文字和青铜器上的铭文完全征服了。这些都是进步人士视为落后的东西，一向被人认为是一些吃饱了饭没事做的古董家拿来消磨时日的东西，因此当我在研究这些资料的时候，也曾受过进步人士的非难，指责我为玩物丧志的人。然而我忍受着这些斥责，把我的志趣贯彻了。在今天凡是有志于古代文化研究的人，似乎都沿着我的旧路走。<br>为研究而读书，我的方法是(一)直探本源，不受前人的束缚；(二)搜罗一切资料，集腋成裘；(三)对于资料毫不容情、毫不惜力地加以检查，而且必须彻底，绝不放松。这样研究才会有成绩。</p><h3 id="为创作而读书"><a href="#为创作而读书" class="headerlink" title="为创作而读书"></a>为创作而读书</h3><p>实际上就是观摩的意思。<br>我也是搞文艺工作的人，不自量力，差不多一切的文艺形式都尝试过。诗歌、小说、戏剧、评论，我都大胆地写过一些。为了培养写作能力，我曾耽读过古今中外一些名人的作品。这样的读书，自可以说是为创作而读书，但在这儿我有一些体会，我想把它表白出来。<br>我自己在写作上每每有这样的一种准备的步骤。譬如我要写剧本，我便先把莎士比亚或莫里哀的剧本读它一两本；要写小说，我便先把托尔斯泰或福楼拜的小说读它一两篇。读时也不必全部读完，有时仅仅读几页或几行，便可以得到一些启示，而不可遏止地刺激我写作的兴趣。<br>别的朋友有没有这种习性，我不知道，但我感觉到这的确是很有效的一种读书方法。</p><h3 id="为娱乐而读书"><a href="#为娱乐而读书" class="headerlink" title="为娱乐而读书"></a>为娱乐而读书</h3><p>这应该是人人所有的经验。那些在街头巷尾贪读公仔书的朋友们，应该都是这种类型的读书人。的确，读书本身就是一种娱乐。文体轻松的书，插图多的书，读熟了自己喜欢的书，版本好、装潢精美的书，研究有素而资料丰富的书……，在工作的闲暇，读起采的确可以使人忘却疲劳而增进生活乐趣。当然，这是应该有限制的。书本种类繁多，质素不一，必须加以选择。滥读一些无病呻吟，而又对身心有害的读物，反而会得不偿失，弄巧反拙。<br>我拉杂地写了这些，不愿再从这儿总结出教条来，请读者们自己去吸取吧。</p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;读书读到57岁了，当然有些经验可谈，希望能提供读者一些参考。&lt;br&gt;读书的方法大体上要看自己是为了什么目的，有为学习而读书，有为研究而读书，有为创作而读书，有为娱乐而读书。目的不同，方法也就不免有些差异。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="书籍" scheme="https://a-little-bear.github.io/categories/%E4%B9%A6%E7%B1%8D/"/>
-    
-      <category term="阅读经验" scheme="https://a-little-bear.github.io/categories/%E4%B9%A6%E7%B1%8D/%E9%98%85%E8%AF%BB%E7%BB%8F%E9%AA%8C/"/>
     
     
       <category term="经验" scheme="https://a-little-bear.github.io/tags/%E7%BB%8F%E9%AA%8C/"/>
