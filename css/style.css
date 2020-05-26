@@ -12,7 +12,7 @@ body {
   z-index: -1;
   opacity: 0.01;
   transition: opacity 1s;
-  background: url("https://api.btstu.cn/sjbz/api.php?lx=fengjing&format=images&method=pc") center 0 no-repeat;
+  background: url("https://api.lyiqk.cn/scenery") center 0 no-repeat;
   background-size: cover;
   opacity: 1;
   background-attachment: fixed;
