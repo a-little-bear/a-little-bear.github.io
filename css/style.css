@@ -12,14 +12,14 @@ body {
   z-index: -1;
   opacity: 0.01;
   transition: opacity 1s;
-  background: url("https://api.btstu.cn/sjbz/?lx=dongman&format=images&method=pc") center 0 no-repeat;
+  background: url("https://api.btstu.cn/sjbz/api.php?lx=fengjing&format=images&method=pc") center 0 no-repeat;
   background-size: cover;
   opacity: 1;
   background-attachment: fixed;
 }
 @media screen and (max-width: screen-tablet -1) {
   body {
-    background-image: url("https://api.btstu.cn/sjbz/?lx=dongman&format=images&method=mobile");
+    background-image: url("https://api.btstu.cn/sjbz/api.php?lx=fengjing&format=images&method=mobile");
   }
 }
 /*body
@@ -11401,7 +11401,7 @@ a.navbar-item.is-active,
   overflow: auto;
 }
 .navbar-highlight {
-  background-color: #fff !important;
+  background-color: rgba(255,255,255,0.9) !important;
 }
 .gt-container .gt-comment-owner {
   padding: 0.2em 0.2em !important;
