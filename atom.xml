@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://a-little-bear.github.io/"/>
-  <updated>2020-05-25T16:47:22.079Z</updated>
+  <updated>2020-05-27T15:40:51.273Z</updated>
   <id>https://a-little-bear.github.io/</id>
   
   <author>
@@ -17,23 +17,25 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>一个好用的魔改版goindex</title>
+    <title>魔改版goindex</title>
     <link href="https://a-little-bear.github.io/p/480f/"/>
     <id>https://a-little-bear.github.io/p/480f/</id>
     <published>2020-05-25T16:46:04.000Z</published>
-    <updated>2020-05-25T16:47:22.079Z</updated>
+    <updated>2020-05-27T15:40:51.273Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>项目地址 <a href="https://github.com/Aicirou/goindex-theme-acrou">https://github.com/Aicirou/goindex-theme-acrou</a></p><a id="more"></a><p>项目地址 <a href="https://github.com/Aicirou/goindex-theme-acrou">https://github.com/Aicirou/goindex-theme-acrou</a>  </p><p>除了多盘切换、Http Basic Auth、分页加载、在线播放等功能外，还拥有、 网格视图模式、html渲染，并且支持快速部署  </p><p>开发者demo <a href="https://oss.achirou.workers.dev/">https://oss.achirou.workers.dev/</a>   </p><p>自己尝试搭建了一个：<a href="https://yun.alittlebear.tk/0:/">https://yun.alittlebear.tk/0:/</a>  </p><p>功能挺齐全的，支持搜索不错，背景还是2233，还支持多国语言</p></blockquote>]]></content>
+    <content type="html"><![CDATA[<blockquote><p><a href="https://github.com/Aicirou/goindex-theme-acrou">https://github.com/Aicirou/goindex-theme-acrou</a></p><a id="more"></a><p>除了多盘切换、Http Basic Auth、分页加载、在线播放等功能外，还拥有、 网格视图模式、html渲染，并且支持快速部署  </p><p>开发者demo <a href="https://oss.achirou.workers.dev/">https://oss.achirou.workers.dev/</a>   </p><p>自己尝试搭建了一个：<a href="https://yun.alittlebear.tk/0:/">https://yun.alittlebear.tk/0:/</a>  </p><p>功能挺齐全的，支持搜索不错，背景还是2233，还支持多国语言</p></blockquote>]]></content>
     
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;项目地址 &lt;a href=&quot;https://github.com/Aicirou/goindex-theme-acrou&quot;&gt;https://github.com/Aicirou/goindex-theme-acrou&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/Aicirou/goindex-theme-acrou&quot;&gt;https://github.com/Aicirou/goindex-theme-acrou&lt;/a&gt;&lt;/p&gt;
     
     </summary>
     
     
       <category term="其他" scheme="https://a-little-bear.github.io/categories/%E5%85%B6%E4%BB%96/"/>
+    
+      <category term="网盘" scheme="https://a-little-bear.github.io/categories/%E5%85%B6%E4%BB%96/%E7%BD%91%E7%9B%98/"/>
     
     
       <category term="经验" scheme="https://a-little-bear.github.io/tags/%E7%BB%8F%E9%AA%8C/"/>
