@@ -11413,7 +11413,6 @@ hr {
   content: '' !important;
   z-index: -1 !important;
   opacity: 0.01 !important;
-  transition: opacity 1s !important;
   background: url("https://i.loli.net/2020/05/29/EjFUo7R2D1xrSAH.gif") !important;
   opacity: 1 !important;
   background-attachment: fixed !important;
