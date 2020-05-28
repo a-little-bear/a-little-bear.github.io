@@ -8,7 +8,7 @@
     window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
         window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
     // const
-    var starDensity = 1.5; //0.216;
+    var starDensity = 0.5; //0.216;
     var speedCoeff = 0.10; //0.05;
     var canva = document.getElementById('universe');
 
