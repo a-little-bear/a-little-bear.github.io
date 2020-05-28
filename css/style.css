@@ -12392,8 +12392,9 @@ body.night {
   z-index: -1 !important;
   opacity: 0.01 !important;
   transition: opacity 1s !important;
-  background: url("https://img.zcool.cn/community/0386b1c569edd1b6ac7256cb0a7781d.gif") !important;
+  background: url("https://i.loli.net/2020/05/29/EjFUo7R2D1xrSAH.gif") !important;
   opacity: 1 !important;
+  background-attachment: fixed !important;
 }
 .night .hljs {
   display: block;
