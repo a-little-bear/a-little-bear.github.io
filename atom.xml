@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://a-little-bear.github.io/"/>
-  <updated>2020-05-27T19:02:20.854Z</updated>
+  <updated>2020-05-28T00:06:17.601Z</updated>
   <id>https://a-little-bear.github.io/</id>
   
   <author>
@@ -17,11 +17,35 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>阅读app书源</title>
+    <link href="https://a-little-bear.github.io/p/2a8d/"/>
+    <id>https://a-little-bear.github.io/p/2a8d/</id>
+    <published>2020-05-28T00:04:37.000Z</published>
+    <updated>2020-05-28T00:06:17.601Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p><a href="https://gitee.com/vpq/yd">https://gitee.com/vpq/yd</a></p><a id="more"></a><p>上面这个链接还是挺不错的。</p><p>另外说一下改背景：界面下方长按自定义。</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://gitee.com/vpq/yd&quot;&gt;https://gitee.com/vpq/yd&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="其他" scheme="https://a-little-bear.github.io/categories/%E5%85%B6%E4%BB%96/"/>
+    
+      <category term="书源" scheme="https://a-little-bear.github.io/categories/%E5%85%B6%E4%BB%96/%E4%B9%A6%E6%BA%90/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Windows10 安卓模拟器 蓝屏解决</title>
     <link href="https://a-little-bear.github.io/p/78e1/"/>
     <id>https://a-little-bear.github.io/p/78e1/</id>
     <published>2020-05-27T18:58:28.000Z</published>
-    <updated>2020-05-27T19:02:20.854Z</updated>
+    <updated>2020-05-27T23:54:22.610Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>网上全是关闭Hyper-V的，终于从一堆网页中找到了正确的。。。  </p><a id="more"></a><p>这个是第一个找到的：<a href="https://blog.csdn.net/uddiqpl/article/details/85058407">https://blog.csdn.net/uddiqpl/article/details/85058407</a>  </p><p>我照做之后还是蓝屏，但是完完全全按照第二个的图片做，就没问题了 </p><p><a href="https://blog.csdn.net/qq_35272131/article/details/89843601">https://blog.csdn.net/qq_35272131/article/details/89843601</a>  </p><p>以前要开win10自带虚拟机，动过相关设置，好麻烦  </p><p>Windows10兼容模拟器太差劲了（想开原版的每次都要调整设置）</p><p><img src="https://cdn.jsdelivr.net/gh/a-little-bear/picture/img/20200527150211.png" alt=""></p><p><img src="https://cdn.jsdelivr.net/gh/a-little-bear/picture/img/20190505134500954.png" alt=""></p></blockquote>]]></content>
     
@@ -248,11 +272,11 @@
   </entry>
   
   <entry>
-    <title>10个硬币问题</title>
+    <title>英语口语</title>
     <link href="https://a-little-bear.github.io/p/19a5/"/>
     <id>https://a-little-bear.github.io/p/19a5/</id>
     <published>2020-05-24T16:11:32.000Z</published>
-    <updated>2020-05-27T23:54:12.219Z</updated>
+    <updated>2020-05-28T00:03:40.461Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>看了一会挺不错的，年代有点久远，所以这个画质。。。别在意haha</p><a id="more"></a></blockquote><p><video><source src="http://pan.alittlebear.tk/0:/zw/%E8%8B%B1%E6%96%87%E5%8F%A3%E8%AF%AD.mp4" type="video/mp4"></video></p>]]></content>
     
@@ -548,32 +572,6 @@
     
     
       <category term="MD编辑器" scheme="https://a-little-bear.github.io/tags/MD%E7%BC%96%E8%BE%91%E5%99%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>gif录制软件 ScreenToGif v2.20.1</title>
-    <link href="https://a-little-bear.github.io/p/1f78/"/>
-    <id>https://a-little-bear.github.io/p/1f78/</id>
-    <published>2020-05-18T14:25:14.000Z</published>
-    <updated>2020-05-18T14:36:47.050Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>Screen To Gif是一个高度直观的应用程序，旨在帮助用户生成自己的动画。该程序具有多种自定义选项，例如添加文本字符串或棕褐色效果。</p><a id="more"></a><p>官网：<a href="https://www.screentogif.com/?l=zh_cn">https://www.screentogif.com/?l=zh_cn</a><br>下载页面：<a href="https://www.screentogif.com/downloads.html?l=zh_cn">https://www.screentogif.com/downloads.html?l=zh_cn</a><br>便携版：<a href="https://github.com/NickeManarin/ScreenToGif/releases/download/2.24.2/ScreenToGif.2.24.2.Portable.zip">https://github.com/NickeManarin/ … 2.24.2.Portable.zip</a>  或者：<a href="https://alilin-my.sharepoint.com/personal/alittlebear_yam_ink/_layouts/52/download.aspx?share=Ecu3zU7-j_hBnE8lmGT5Z48BXsdElhENcsxNXq44Urz0Tw">OneDrive直链</a> 或者：<a href="https://wp.alittlebear.tk/1f78/ScreenToGif.2.24.2.Portable.zip">自己搭建的网盘</a><br>安装版：<a href="https://github.com/NickeManarin/ScreenToGif/releases/download/2.24.2/ScreenToGif.2.24.2.Setup.msi">https://github.com/NickeManarin/ … if.2.24.2.Setup.msi</a>  或者：<a href="https://alilin-my.sharepoint.com/personal/alittlebear_yam_ink/_layouts/52/download.aspx?share=EcaRlhSYHBBEkGN4m39Py-EBnrwoGV7sfv2uFPPyjZoxaA">OneDrive直链</a> 或者：<a href="https://wp.alittlebear.tk/1f78/ScreenToGif.2.24.2.Setup.msi">自己搭建的网盘</a></p></blockquote><blockquote><p>定制的整个世界</p><p>该应用程序记录当前的显示屏幕，将每个屏幕截图保存为一个框架，并允许用户在生成输出文件之前编辑这些图片。</p><p>该工具非常不错的功能之一是内置的“编辑器”功能非常强大，并且可以进行很多用户自定义。</p><p>可以插入简短的文字说明或标题。一个真正伟大的功能是用户可以完全控制显示计时器。例如，可以创建一个动画，在短短几帧内显示特定消息。</p><p>还支持导入或导出帧，这意味着可以将常用图像（BMP，JPG，GIF和PNG）插入到新创建的动画中。</p><p>所有基本的图像修改工具均可用<br>该程序具有高度的灵活性，并允许用户通过添加逐帧裁剪，旋转和翻转效果来调整其屏幕记录。</p><p>认为这些选项过于严格的用户还应该知道Screen To Gif可以添加棕褐色，像素化，模糊，负片，彩色和灰度滤镜。而且，如果所有其他方法都失败了，则可以使用“自由绘图”选项来完全解放用户的想象力！</p><p>一个有趣的选项是“速度修改器”。这使用户可以加快或减慢其动画。这是模糊动画无关部分的完美方法！</p><p>生成高度定制的动画的整体优秀程序<br>Screen To Gif包含许多功能，无论是高级用户还是休闲用户都将发现它很棒。有很多功能可以在输出文件中添加特定的样式，并且干净的界面确实非常适合当前的工作。</p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;Screen To Gif是一个高度直观的应用程序，旨在帮助用户生成自己的动画。该程序具有多种自定义选项，例如添加文本字符串或棕褐色效果。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="软件" scheme="https://a-little-bear.github.io/categories/%E8%BD%AF%E4%BB%B6/"/>
-    
-      <category term="工具" scheme="https://a-little-bear.github.io/categories/%E8%BD%AF%E4%BB%B6/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="录像软件" scheme="https://a-little-bear.github.io/tags/%E5%BD%95%E5%83%8F%E8%BD%AF%E4%BB%B6/"/>
     
   </entry>
   
