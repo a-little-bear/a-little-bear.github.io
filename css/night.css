@@ -8,6 +8,14 @@
 body.night {
   background: #0e1225;
 }
+.night {
+  content: '' !important;
+  z-index: -1 !important;
+  opacity: 0.01 !important;
+  transition: opacity 1s !important;
+  background: url("https://img.zcool.cn/community/0386b1c569edd1b6ac7256cb0a7781d.gif") !important;
+  opacity: 1 !important;
+}
 .night .hljs {
   display: block;
   overflow-x: auto;
