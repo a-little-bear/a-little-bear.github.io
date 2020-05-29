@@ -1,13 +1,4 @@
 body {
-/*color: #4a4a4a;
-    font-size: 1em;
-    font-weight: 400;
-    line-height: 1.5;
-    box-shadow: 0 0 black;
-    background: url("https://api.btstu.cn/sjbz/?lx=dongman&format=images&method=pc") center 0 no-repeat
-    background-size: cover
-    @media screen and (max-width: screen-tablet - 1)
-        background-image: url("https://api.btstu.cn/sjbz/?lx=dongman&format=images&method=mobile")*/
   content: '';
   z-index: -1;
   opacity: 0.01;
@@ -11576,6 +11567,9 @@ body:not(.night) .post-navigation:hover {
 }
 article.article .article-meta {
   height: 41px;
+}
+body {
+  cursor: url("https://i.loli.net/2020/05/29/HdoxnAkEG14hglP.png"), default;
 }
 .ml-0,
 .mx-0 {
