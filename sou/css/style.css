@@ -17,12 +17,22 @@
 }
 
 html,
-body {
+/* body {
 	width: 100%;
 	height: 100%;
 	position: relative;
 	overflow: hidden;
 	background: #ffffff;
+} */
+
+body {
+    content: '';
+    z-index: -1;
+    opacity: 0.01;
+    background: url("http://img.1ppt.com/uploads/allimg/1903/1_190318213648_1.jpg") center 0 no-repeat;
+    background-size: cover;
+    opacity: 1;
+    background-attachment: fixed;
 }
 
 html {
@@ -345,7 +355,7 @@ a {
 	position: absolute;
 	right: 0px;
 	z-index: 2000;
-	background: #efefef;
+	background: rgba(255,255,255,0.5); /*#efefef; */
 	transition: 0.3s all ease;
 	webkit-transform: translate3d(0, 0, 0);
 	-moz-transform: translate3d(0, 0, 0);
