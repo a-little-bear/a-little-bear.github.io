@@ -239,6 +239,17 @@ $(function () {
       //   },
 
       {
+        name: "爱奇艺",
+        icon: "icon-aiqiyi",
+        url: "https://so.iqiyi.com/so/q_",
+      },
+      {
+        name: "优酷",
+        icon: "icon-youku",
+        url: "https://so.youku.com/search_video/q_",
+      },
+
+      {
         name: "GitHub",
         icon: "icon-gitHub",
         url: "https://github.com/search?utf8=✓&q=",
@@ -258,21 +269,11 @@ $(function () {
         icon: "icon-bzhanicon",
         url: "http://search.bilibili.com/all?keyword=",
       },
-      {
-        name: "豆瓣",
-        icon: "icon-douban",
-        url: "https://www.douban.com/search?source=suggest&q=",
-      },
-      {
-        name: "优酷",
-        icon: "icon-youku",
-        url: "https://so.youku.com/search_video/q_",
-      },
-      //   {
-      //     name: "爱奇艺",
-      //     icon: "icon-aiqiyi",
-      //     url: "https://so.iqiyi.com/so/q_",
-      //   },
+      // {
+      //   name: "豆瓣",
+      //   icon: "icon-douban",
+      //   url: "https://www.douban.com/search?source=suggest&q=",
+      // },
     ],
   };
   for (var i = 0; i < search.data.length; i++) {
