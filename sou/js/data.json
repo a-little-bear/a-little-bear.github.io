@@ -6,10 +6,6 @@
 		"icon": "icon-baidu",
 		"text": "百度"
 	}, {
-		"url": "https://www.1da.top/",
-		"icon": "icon-sousuo1",
-		"text": "简洁搜索"
-	}, {
 		"url": "https://www.google.com/",
 		"icon": "icon-google",
 		"text": "谷歌"

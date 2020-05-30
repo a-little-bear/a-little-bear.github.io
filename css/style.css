@@ -9,7 +9,7 @@ body {
 }
 @media screen and (max-width: screen-tablet -1) {
   body {
-    background-image: url("https://api.btstu.cn/sjbz/api.php?lx=fengjing&format=images&method=mobile");
+    background-image: url("https://gss0.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=67c467ae96510fb3784c7f91e903e4ad/dc54564e9258d10932d780a5d958ccbf6c814df4.jpg");
   }
 }
 @-moz-keyframes spinAround {
@@ -11570,7 +11570,12 @@ article.article .article-meta {
 }
 body {
   cursor: url("https://i.loli.net/2020/05/29/HdoxnAkEG14hglP.png"), default;
+!important
+  cursor: url("https://i.loli.net/2020/05/29/HdoxnAkEG14hglP.png"), pointer;
+!important
 }
+!important
+!important
 .ml-0,
 .mx-0 {
   margin-left: 0 !important;
