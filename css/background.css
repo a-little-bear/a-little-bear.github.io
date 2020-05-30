@@ -9,6 +9,6 @@ body {
 }
 @media screen and (max-width: 640px) {
   body {
-    background-image: url("https://gss0.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=67c467ae96510fb3784c7f91e903e4ad/dc54564e9258d10932d780a5d958ccbf6c814df4.jpg");
+    background-color: #fff;
   }
 }
