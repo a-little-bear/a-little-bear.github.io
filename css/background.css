@@ -1,14 +1,17 @@
-body {
-  content: '';
-  z-index: -1;
-  opacity: 0.01;
-  background: url("https://api.btstu.cn/sjbz/api.php?lx=fengjing&format=images&method=pc") center 0 no-repeat;
-  background-size: cover;
-  opacity: 1;
-  background-attachment: fixed;
+@media screen and (min-width: 641px) {
+  body {
+    content: '';
+    z-index: -1;
+    opacity: 0.01;
+    background: url("https://api.btstu.cn/sjbz/api.php?lx=fengjing&format=images&method=pc") center 0 no-repeat;
+    background-size: cover;
+    opacity: 1;
+    background-attachment: fixed;
+  }
 }
 @media screen and (max-width: 640px) {
   body {
     background-image: url("https://api.btstu.cn/sjbz/api.php?lx=fengjing&format=images&method=mobile") center 0 no-repeat !important;
+    background-size: cover;
   }
 }
