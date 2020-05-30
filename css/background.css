@@ -9,6 +9,6 @@ body {
 }
 @media screen and (max-width: 640px) {
   body {
-    background-image: none !important;
+    background-image: url("https://api.btstu.cn/sjbz/api.php?lx=fengjing&format=images&method=mobile") !important;
   }
 }
