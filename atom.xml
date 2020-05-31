@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://a-little-bear.github.io/"/>
-  <updated>2020-05-29T20:25:12.153Z</updated>
+  <updated>2020-05-31T03:53:27.560Z</updated>
   <id>https://a-little-bear.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo懒人必备：自动创建文章+自动部署博客</title>
+    <link href="https://a-little-bear.github.io/p/4327/"/>
+    <id>https://a-little-bear.github.io/p/4327/</id>
+    <published>2020-05-31T03:36:28.000Z</published>
+    <updated>2020-05-31T03:53:27.560Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>懒人必备，很简单，花了大半天的美好时光<del>~</del></p><a id="more"></a><p><strong>记得修改代码中的路径</strong></p><p><del>C:<br>cd /d %userprofile%\Desktop\myblog</del></p><p>这个%userprofile%对应的目录是：C:\Users\xxx</p></blockquote><h4 id="相关指令"><a href="#相关指令" class="headerlink" title="相关指令"></a>相关指令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@echo off #不显示运行代码</span><br><span class="line">chcp 65001 #修改cmd窗口字符编码为UTF-8（由于中文乱码，所以添加了 chcp 65001。）</span><br><span class="line">set &#x2F;p aaaa&#x3D;bbbb #“aaaa”是变量名，“bbbb”是输入文字；指令是显示bbbb，等待输入，然后设置变量aaaa为（你输入的东西）</span><br><span class="line">%aaaa% #这个就是调用变量了，比如说上面输入了123，那么第一个生成指令就是hexo new 123</span><br><span class="line">cd xxx #我也不好形容，应该就是移动cmd到xxx目录（hiahiahia），跟你直接在博客目录shift+右键cmd一个效果</span><br><span class="line">#（下面我也不知道为啥要加。。。hh）</span><br><span class="line">hexo clean #清理博客public目录（一般不用）</span><br><span class="line">hexo g #生成博客public目录（部署之前都最好来一次）</span><br><span class="line">hexo s #本地部署博客（localhost:4000这个，调试啥可以用这个边看边弄）</span><br><span class="line">hexo d #部署博客到云端</span><br><span class="line">hexo a &amp;&amp; hexo b #就是先运行hexo a，运行完了再hexo b，懒人必学，比如说不用等hexo g半天之后再hexo d）</span><br></pre></td></tr></table></figure><h4 id="首先是自动生成文章（仅创建）"><a href="#首先是自动生成文章（仅创建）" class="headerlink" title="首先是自动生成文章（仅创建）"></a>首先是自动生成文章（仅创建）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">chcp 65001</span><br><span class="line">C:</span><br><span class="line">cd %userprofile%\Desktop\myblog</span><br><span class="line">set &#x2F;p name&#x3D;起个名：</span><br><span class="line">hexo new %name%</span><br></pre></td></tr></table></figure><h5 id="自动生成文章加强版（创建后任意键直接打开）"><a href="#自动生成文章加强版（创建后任意键直接打开）" class="headerlink" title="自动生成文章加强版（创建后任意键直接打开）"></a>自动生成文章加强版（创建后任意键直接打开）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">rem 解决中文乱码</span><br><span class="line">chcp 65001</span><br><span class="line"> </span><br><span class="line">set &#x2F;p name&#x3D;起个名：</span><br><span class="line"> </span><br><span class="line">rem 定位到hexo源码地址</span><br><span class="line">C:</span><br><span class="line">cd &#x2F;d %userprofile%\Desktop\myblog</span><br><span class="line"> </span><br><span class="line">rem 运行hexo n 文件名</span><br><span class="line">start &#x2F;min cmd &#x2F;c &quot;hexo.cmd n %name%&quot;</span><br><span class="line"> </span><br><span class="line">rem 等待hexo n完成</span><br><span class="line">choice &#x2F;t 3 &#x2F;d y &#x2F;n &gt;nul </span><br><span class="line"> </span><br><span class="line">echo 按任意键打开md（请等待hexo创建完）</span><br><span class="line">pause</span><br><span class="line"> </span><br><span class="line">rem 定位到文章目录并开启文章</span><br><span class="line">cd source\_posts</span><br><span class="line">start %name%.md</span><br></pre></td></tr></table></figure><p>因为我用了abbrlink，最好编辑之前hexo g一下</p><h6 id="自动生成文章威力加强版（创建并生成后任意键直接打开）"><a href="#自动生成文章威力加强版（创建并生成后任意键直接打开）" class="headerlink" title="自动生成文章威力加强版（创建并生成后任意键直接打开）"></a>自动生成文章威力加强版（创建并生成后任意键直接打开）</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">rem 解决中文乱码</span><br><span class="line">chcp 65001</span><br><span class="line"></span><br><span class="line">set &#x2F;p name&#x3D;起个名：</span><br><span class="line"></span><br><span class="line">rem 定位到hexo源码地址</span><br><span class="line">C:</span><br><span class="line">cd &#x2F;d %userprofile%\Desktop\myblog</span><br><span class="line"></span><br><span class="line">rem 运行hexo n 文件名</span><br><span class="line">start &#x2F;min cmd &#x2F;c &quot;hexo.cmd n %name%&quot;</span><br><span class="line"></span><br><span class="line">rem 我需要hexo g来提前生成文章绝对路径</span><br><span class="line">start &#x2F;min cmd &#x2F;c &quot;hexo.cmd g&quot;</span><br><span class="line"></span><br><span class="line">rem 等待hexo n完成</span><br><span class="line">choice &#x2F;t 3 &#x2F;d y &#x2F;n &gt;nul </span><br><span class="line"></span><br><span class="line">echo 按任意键打开md（请等待hexo创建完）</span><br><span class="line">pause</span><br><span class="line"></span><br><span class="line">rem 定位到文章目录并开启文章</span><br><span class="line">cd source\_posts</span><br><span class="line">start %name%.md</span><br></pre></td></tr></table></figure><p>然后是；</p><h4 id="自动部署博客（g-d）"><a href="#自动部署博客（g-d）" class="headerlink" title="自动部署博客（g+d）"></a>自动部署博客（g+d）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">C:</span><br><span class="line">cd C:\xxx\Desktop\myblog</span><br><span class="line">hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure><h5 id="自动部署博客加强版（c-g-d）"><a href="#自动部署博客加强版（c-g-d）" class="headerlink" title="自动部署博客加强版（c+g+d）"></a>自动部署博客加强版（c+g+d）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">C:</span><br><span class="line">cd C:\xxx\Desktop\myblog</span><br><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure><h5 id="自动部署博客魔改本地版（g-d-s）"><a href="#自动部署博客魔改本地版（g-d-s）" class="headerlink" title="自动部署博客魔改本地版（g+d+s）"></a>自动部署博客<del>魔改</del>本地版（g+d+s）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">C:</span><br><span class="line">cd C:\xxx\Desktop\myblog</span><br><span class="line">hexo g &amp;&amp; hexo d &amp;&amp; hexo s</span><br></pre></td></tr></table></figure><p>有需要的可以自己改。。</p><h4 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h4><p>第一次发原创技术。。。很简单，学习的过程中学到了不少。</p><p>比如说代码中的：hexo.cmd 我明明没有这个文件为啥还能运行，因为hexo安装成功后npm路径下默认有hexo.cmd 和hexo.ps1两个脚本文件。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;懒人必备，很简单，花了大半天的美好时光&lt;del&gt;~&lt;/del&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="https://a-little-bear.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="hexo" scheme="https://a-little-bear.github.io/categories/%E6%8A%80%E6%9C%AF/hexo/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>为什么有的人一定要午睡？</title>
@@ -538,36 +562,6 @@
     
     
       <category term="图片浏览器" scheme="https://a-little-bear.github.io/tags/%E5%9B%BE%E7%89%87%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>电子书阅读器 Calibre v4.16</title>
-    <link href="https://a-little-bear.github.io/p/2212/"/>
-    <id>https://a-little-bear.github.io/p/2212/</id>
-    <published>2020-05-18T15:49:35.000Z</published>
-    <updated>2020-05-18T16:07:12.094Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>Calibre电子书阅读器是一个“一站式”的电子书解决方案，它可以全面满足你的电子书需求。Calibre是免费的，源代码开放，拥有跨平台的设计，可在Linux， OS X和Windows操作系统中运行。<br>Calibre电子书阅读器它是一个完整的电子图书馆，包括图书馆管理，格式转换，新闻，将材料转换为电子书，以及电子书阅读器同步功能、整合进电子图书阅读器。</p><a id="more"></a><p>主页：<a href="https://calibre-ebook.com/">https://calibre-ebook.com/</a><br>更新日志：<a href="https://calibre-ebook.com/whats-new">https://calibre-ebook.com/whats-new</a></p><p>Windows 便携+64位 下载<br>OneDrive下载; <a href="https://alilin-my.sharepoint.com/:f:/g/personal/alittlebear_yam_ink/Ek5xmbahKLpAjpdURofYXf8BkQagM8dgK8U5p1hIrR-2kg">https://alilin-my.sharepoint.com … gM8dgK8U5p1hIrR-2kg</a><br>备用网盘下载：<a href="https://wp.alittlebear.tk/2212/">https://wp.alittlebear.tk/2212/</a></p><p>Windows:<br><a href="https://www.fosshub.com/Calibre.html/calibre-4.16.0.msi">https://www.fosshub.com/Calibre.html/calibre-4.16.0.msi</a><br><a href="https://github.com/kovidgoyal/calibre/releases/download/v4.16.0/calibre-4.16.0.msi">https://github.com/kovidgoyal/calibre/releases/download/v4.16.0/calibre-4.16.0.msi</a></p><p>Windows x64:<br><a href="https://www.fosshub.com/Calibre.html/calibre-64bit-4.16.0.msi">https://www.fosshub.com/Calibre.html/calibre-64bit-4.16.0.msi</a><br><a href="https://github.com/kovidgoyal/calibre/releases/download/v4.16.0/calibre-64bit-4.16.0.msi">https://github.com/kovidgoyal/calibre/releases/download/v4.16.0/calibre-64bit-4.16.0.msi</a></p><p>Mac:<br><a href="https://www.fosshub.com/Calibre.html/calibre-4.16.0.dmg">https://www.fosshub.com/Calibre.html/calibre-4.16.0.dmg</a><br><a href="https://github.com/kovidgoyal/calibre/releases/download/v4.16.0/calibre-4.16.0.dmg">https://github.com/kovidgoyal/calibre/releases/download/v4.16.0/calibre-4.16.0.dmg</a></p><p>Linux:<br><a href="https://calibre-ebook.com/download_linux">https://calibre-ebook.com/download_linux</a></p><p>便携版:<br><a href="https://www.fosshub.com/Calibre.html/calibre-portable-installer-4.16.0.exe">https://www.fosshub.com/Calibre.html/calibre-portable-installer-4.16.0.exe</a><br><a href="https://github.com/kovidgoyal/calibre/releases/download/v4.16.0/calibre-portable-installer-4.16.0.exe">https://github.com/kovidgoyal/calibre/releases/download/v4.16.0/calibre-portable-installer-4.16.0.exe</a></p><p><img src="https://i.loli.net/2020/05/18/16AzLCTGhBocSjt.png" alt=""></p><p><img src="https://i.loli.net/2020/05/18/H65eztISTKRkQl7.png" alt=""></p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;Calibre电子书阅读器是一个“一站式”的电子书解决方案，它可以全面满足你的电子书需求。Calibre是免费的，源代码开放，拥有跨平台的设计，可在Linux， OS X和Windows操作系统中运行。&lt;br&gt;Calibre电子书阅读器它是一个完整的电子图书馆，包括图书馆管理，格式转换，新闻，将材料转换为电子书，以及电子书阅读器同步功能、整合进电子图书阅读器。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="书籍" scheme="https://a-little-bear.github.io/categories/%E4%B9%A6%E7%B1%8D/"/>
-    
-      <category term="软件" scheme="https://a-little-bear.github.io/categories/%E8%BD%AF%E4%BB%B6/"/>
-    
-      <category term="工具" scheme="https://a-little-bear.github.io/categories/%E8%BD%AF%E4%BB%B6/%E5%B7%A5%E5%85%B7/"/>
-    
-      <category term="工具" scheme="https://a-little-bear.github.io/categories/%E4%B9%A6%E7%B1%8D/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="阅读软件" scheme="https://a-little-bear.github.io/tags/%E9%98%85%E8%AF%BB%E8%BD%AF%E4%BB%B6/"/>
     
   </entry>
   

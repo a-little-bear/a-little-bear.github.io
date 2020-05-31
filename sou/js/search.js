@@ -30,7 +30,7 @@ var resLength = 0;
 var listIndex = -1;
 var hotList = 0;
 //可在此修改默认搜索引擎
-var thisSearch = "https://www.baidu.com/s?wd=";
+var thisSearch = "https://www.google.com/search?q=";
 var thisSearchIcon = "./logo.jpg";
 var storage = window.localStorage;
 if (!storage.stopHot) {
