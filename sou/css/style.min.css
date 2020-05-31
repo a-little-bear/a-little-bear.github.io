@@ -33,8 +33,8 @@ body {
     /* content: '';
     z-index: -1;
     opacity: 0.01; */
-    /* background: url("http://img.1ppt.com/uploads/allimg/1903/1_190318213648_1.jpg") center 0 no-repeat;
-    background-size: cover; */
+    background: url("http://img.1ppt.com/uploads/allimg/1903/1_190318213648_1.jpg") center 0 no-repeat;
+    background-size: cover;
     /*opacity: 1;
     background-attachment: fixed; */
 }
