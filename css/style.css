@@ -1,15 +1,18 @@
-body {
-  content: '';
-  z-index: -1;
-  opacity: 0.01;
-  background: url("https://api.btstu.cn/sjbz/api.php?lx=fengjing&format=images&method=pc") center 0 no-repeat;
-  background-size: cover;
-  opacity: 1;
-  background-attachment: fixed;
-}
-@media screen and (max-width: screen-tablet -1) {
+@media screen and (min-width: 641px) {
   body {
-    background-image: url("https://gss0.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=67c467ae96510fb3784c7f91e903e4ad/dc54564e9258d10932d780a5d958ccbf6c814df4.jpg");
+    content: '';
+    z-index: -1;
+    opacity: 0.01;
+    background: url("https://api.btstu.cn/sjbz/api.php?lx=fengjing&format=images&method=pc") center 0 no-repeat;
+    background-size: cover;
+    opacity: 1;
+    background-attachment: fixed;
+  }
+}
+@media screen and (max-width: 640px) {
+  body {
+    background-image: url("https://api.btstu.cn/sjbz/api.php?lx=fengjing&format=images&method=mobile") center 0 no-repeat !important;
+    background-size: cover;
   }
 }
 @-moz-keyframes spinAround {
