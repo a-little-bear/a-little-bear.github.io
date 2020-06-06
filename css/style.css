@@ -11,7 +11,7 @@
 }
 @media screen and (max-width: 640px) {
   body {
-    background-image: url("https://api.btstu.cn/sjbz/api.php?lx=fengjing&format=images&method=mobile") center 0 no-repeat !important;
+    background: url("https://api.btstu.cn/sjbz/api.php?lx=fengjing&format=images&method=mobile") center 0 no-repeat;
     background-size: cover;
   }
 }
