@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://a-little-bear.github.io/"/>
-  <updated>2020-06-08T00:08:01.760Z</updated>
+  <updated>2020-06-14T02:06:24.544Z</updated>
   <id>https://a-little-bear.github.io/</id>
   
   <author>
@@ -15,6 +15,68 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>记一下hexo_new的打開bug</title>
+    <link href="https://a-little-bear.github.io/p/d8a4/"/>
+    <id>https://a-little-bear.github.io/p/d8a4/</id>
+    <published>2020-06-14T02:01:38.000Z</published>
+    <updated>2020-06-14T02:06:24.544Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>一个小bug</p><a id="more"></a><p>参考链接：</p><p><a href="https://blog.csdn.net/scimence/article/details/52816878">https://blog.csdn.net/scimence/article/details/52816878</a></p><p><a href="https://blog.csdn.net/deepfuture/article/details/83560384">https://blog.csdn.net/deepfuture/article/details/83560384</a></p><p><a href="https://blog.csdn.net/qq_40945965/article/details/86756380">https://blog.csdn.net/qq_40945965/article/details/86756380</a></p></blockquote><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">rem 更改文件名，不然下面start不了</span><br><span class="line">set name=%name: =-%</span><br><span class="line">set name=%name:.=-%</span><br><span class="line">set name=%name:·=-%</span><br><span class="line">set name=%name:_=-%</span><br><span class="line"></span><br><span class="line">rem 定位到文章目录并开启文章</span><br><span class="line">cd source\_posts</span><br><span class="line">start %name%.md</span><br></pre></td></tr></table></figure><p>添加了几个set，不然打开错误。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;一个小bug&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>李小龙-生活的艺术家-美约翰-里特-译刘军平-南海出版公司-2008</title>
+    <link href="https://a-little-bear.github.io/p/9711/"/>
+    <id>https://a-little-bear.github.io/p/9711/</id>
+    <published>2020-06-14T01:54:38.000Z</published>
+    <updated>2020-06-14T01:54:40.208Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>首页显示摘要内容（替换成自己的）</p></blockquote><a id="more"></a><p>正文内容（替换成自己的）</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;首页显示摘要内容（替换成自己的）&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>深蓝词库-v2-8-一款输入法词库转换软件</title>
+    <link href="https://a-little-bear.github.io/p/5dc1/"/>
+    <id>https://a-little-bear.github.io/p/5dc1/</id>
+    <published>2020-06-13T21:11:17.000Z</published>
+    <updated>2020-06-13T21:12:25.278Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p><img src="https://cdn.jsdelivr.net/gh/a-little-bear/picture/img/panda/20200613170637.png" alt=""></p><p>一款开源免费的输入法词库转换程序</p><a id="more"></a><p><a href="https://github.com/studyzy/imewlconverter">https://github.com/studyzy/imewlconverter</a></p><p>一款输入法词库转换软件，支持以下超过20种的输入法工具和词库：</p><ul><li><a href="https://github.com/studyzy/imewlconverter/wiki/Sougou_Pinyin">搜狗拼音（文本词库、Bin格式备份词库和scel格式细胞词库）</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/QQ_Pinyin_Win">QQ拼音（文本词库和qpyd格式分类词库）</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Baidu_PC">百度PC拼音（文本词库、bdict格式）</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Google_Pinyin">谷歌拼音</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Ms_Pinyin">微软拼音2010</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Win10Ms_Pinyin">Win10微软拼音</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Pinyin_Jiajia">拼音加加</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Engkoo">必应输入法</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Ziguang_Pinyin">紫光拼音（文本词库和uwl格式分类词库）</a></li><li>手心输入法</li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Sina_Pinyin">新浪拼音</a></li><li>libpinyin(Linux)</li><li>Chinese-pyim(Linux)</li><li><a href="https://github.com/studyzy/imewlconverter/wiki/QQ_Wubi">QQ五笔</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Sougou_Wubi">搜狗五笔</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Xiaoya_Wubi">小鸭五笔</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Jidian">极点五笔</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Win10Ms_Wubi">Win10微软五笔</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Jidian">极点郑码</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Xiaoxiao">小小输入法（拼音、五笔、郑码、二笔）</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/FIT">FIT输入法(Mac)</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/MacPlist">MacOS自带简体拼音</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Rime">Rime输入法(Linux中州韻、Windows小狼毫、Mac OS鼠鬚管)</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Yahoo">雅虎奇摩输入法（注音）</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Lingoes_Ld2">灵格斯词库ld2</a></li><li>仓颉平台</li><li>自定义格式</li></ul><p>手机端：</p><ul><li>QQ手机拼音</li><li>百度手机拼音（文本词库和bcd格式）</li><li>谷歌拼音输入法</li></ul><p>该软件支持6种以上的输入法编码方法：</p><ul><li>拼音（全拼、双拼）</li><li>五笔（五笔86、五笔98）</li><li>郑码</li><li>二笔（超强二笔，青松二笔等）</li><li>仓颉</li><li>注音</li><li>自定义</li></ul><p>本程序支持批量转换（一次拖拽多个词库文件，或者按住Ctrl选择多个文件），支持命令行模式（在命令行下使用-?命令查看帮助），支持Windows、Linux、MacOS。</p><p>Windows：<a href="https://github.com/studyzy/imewlconverter/releases/download/v2.8.0/imewlconverter_Windows.zip">https://github.com/studyzy/imewlconverter/releases/download/v2.8.0/imewlconverter_Windows.zip</a><br>Mac/Linux：<a href="https://github.com/studyzy/imewlconverter/releases/download/v2.8.0/imewlconverter_Linux_Mac.tar.gz">https://github.com/studyzy/imewlconverter/releases/download/v2.8.0/imewlconverter_Linux_Mac.tar.gz</a></p><p>蓝奏：<br>Windows：<a href="https://alittlebear.lanzous.com/iWvM1dn8qmh">https://alittlebear.lanzous.com/iWvM1dn8qmh</a><br>Mac/Linux：<a href="https://alittlebear.lanzous.com/iYKcUdn8qoj">https://alittlebear.lanzous.com/iYKcUdn8qoj</a></p><p>有能力的请给作者一个star~[/md]</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/a-little-bear/picture/img/panda/20200613170637.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;一款开源免费的输入法词库转换程序&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>桥梁建造师2-Poly-Bridge-2-v1.06</title>
@@ -417,72 +479,6 @@
     
     
       <category term="经验" scheme="https://a-little-bear.github.io/tags/%E7%BB%8F%E9%AA%8C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《地球帝国2：霸权的艺术》简体中文免安装版</title>
-    <link href="https://a-little-bear.github.io/p/f814/"/>
-    <id>https://a-little-bear.github.io/p/f814/</id>
-    <published>2020-05-24T23:23:33.000Z</published>
-    <updated>2020-06-03T21:13:09.029Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>《Empire Earth II: The Art of Supremacy》带玩家重返历史的舞台，上演各种文明的历史和伟大的战役，从冰雪覆盖的俄罗斯平原一直到灼热的非洲沙漠，你将在此成为伟大的领袖，穿越过去、现在和将来。Mad Doc的总裁Ian Davis博士说：“我们吸收了大量玩家建议，《Empire Earth II》将是本系列的革命。游戏中有更多的事情可以做，比如全新的拉锯模式，我认为玩家肯定会喜欢，游戏会给你彻底的全新体验。”</p><a id="more"></a><p><img src="https://i.loli.net/2020/05/25/Xrbp2omxITBiZfs.png" alt=""></p><h3 id="游戏介绍"><a href="#游戏介绍" class="headerlink" title="游戏介绍"></a>游戏介绍</h3><p>《Empire Earth II: The Art of Supremacy》带玩家重返历史的舞台，上演各种文明的历史和伟大的战役，从冰雪覆盖的俄罗斯平原一直到灼热的非洲沙漠，你将在此成为伟大的领袖，穿越过去、现在和将来。Mad Doc的总裁Ian Davis博士说：“我们吸收了大量玩家建议，《Empire Earth II》将是本系列的革命。游戏中有更多的事情可以做，比如全新的拉锯模式，我认为玩家肯定会喜欢，游戏会给你彻底的全新体验。”</p><h3 id="游戏新模式"><a href="#游戏新模式" class="headerlink" title="游戏新模式"></a>游戏新模式</h3><p>《地球帝国2：霸权的艺术》新加入了两个模式，一个是“效忠模式”(Fealty Mode)，玩家可以宣布效忠另外一个玩家，成为另外的玩家的同盟国或者附庸国，还有一个模式为“拔河模式”(Tug-of-War Mode)，这个模式需要在3张、5张甚至7张地图上进行战斗，在对方的大本营地图上战胜对方才算胜利。</p><p>《地球帝国2：霸权的艺术》加入了三个新的全球性战役，可以使玩家体验人类历史上最为伟大的战争，从法老王时期到拿破仑统治时期。游戏加入了10种新的作战单位，包括祖鲁战士、俄国榴弹炮、法国阵风战斗机等等。玩家可以与本地的部落结盟或者干脆吸收他们。</p><h3 id="游戏特色"><a href="#游戏特色" class="headerlink" title="游戏特色"></a>游戏特色</h3><p>全新的实时操作指挥系统</p><p>根据不同的季节和天气制订战术</p><p>新的固定建筑可以在多人关卡中升级</p><p>可以征服、吸收或者和本土部族联盟</p><p>可由10名玩家以9种不同的模式进行多人游戏</p><p>新的模式中可以利用新单位和文明使用新的战术</p><p>战斗胜利后你的普通单位会升级成为强力的英雄级别</p><p>3个全新的全球战役将允许玩家体验从法老王一直到拿破仑大军等传说中的时刻</p><p>10个新的战斗单位，包括祖鲁战士、俄罗斯榴弹炮、“阵风”，帮助玩家征服世界</p><p>在长达12000年的征服历程中，你将能够制造和指挥超过500种独特的作战单位和建筑</p><p>2种新模式：效忠模式，当玩家被俘虏，可以宣布“效忠”，并成为另一个玩家的永久盟友或者臣子；</p><p>拉锯模式，多人战役中，穿越3、5或者7张地图的战斗，最终在敌对方的地图上彻底击败对手的将获胜</p><h3 id="游戏下载"><a href="#游戏下载" class="headerlink" title="游戏下载"></a>游戏下载</h3><p>OneDrive：<a href="https://alilin-my.sharepoint.com/personal/alittlebear_yam_ink/_layouts/52/download.aspx?share=EX3oJ5HwbuNPpn7Idc6gG9sBnIMR1VXgglF_bafnGGXl8A">https://alilin-my.sharepoint.com/personal/alittlebear_yam_ink/_layouts/52/download.aspx?share=EX3oJ5HwbuNPpn7Idc6gG9sBnIMR1VXgglF_bafnGGXl8A</a></p><p>备用网盘：<a href="http://pan.alittlebear.tk/0:/f814/Empire.Earth.II.The.Art.of.Supremacy.CHS.Green.zip">http://pan.alittlebear.tk/0:/f814/Empire.Earth.II.The.Art.of.Supremacy.CHS.Green.zip</a></p><p>神秘代码：RUB7-WYG4-FEN5-RAB6-3594</p><h3 id="游戏作弊码"><a href="#游戏作弊码" class="headerlink" title="游戏作弊码"></a>游戏作弊码</h3><p>// messages</p><p>db_cheat_sysdisabled， 密技关闭！</p><p>// Enable cheat system</p><p>db_cheat_enable_system， dakai</p><p>db_cheat_enable_system_d， ** 密技启用 **</p><p>// Disable cheat system</p><p>db_cheat_disable_system， guanbi</p><p>db_cheat_disable_system_d， ** 密技停用 **</p><p>// Add 10，000 of each resource</p><p>db_cheat_tons_resources， 10000</p><p>db_cheat_tons_resources_d， 资源增加10，000</p><p>// Subtract 100 of each resource</p><p>db_cheat_lose_resources， 100</p><p>db_cheat_lose_resources_d， 资源减少100</p><p>// Inflict 20 points of damage on selected unit</p><p>db_cheat_hurt_selection， bianta</p><p>db_cheat_hurt_selection_d， 使被选择的部队受到伤害</p><p>// Convert selected unit</p><p>db_cheat_convert_selection， guolai</p><p>db_cheat_convert_selection_d， 使被选择的部队变节到你的阵营中</p><p>// Instant recharge power</p><p>db_cheat_instant_recharge_pow， recharge me</p><p>db_cheat_instant_recharge_pow_d， 使被选择的部队能力恢复为100%</p><p>// Instantly win scenario</p><p>db_cheat_win_game， win</p><p>db_cheat_win_game_d， 你在此剧本中获胜！</p><p>// Toggle the fog of war on\off</p><p>db_cheat_toggle_fogofwar， toggle fog</p><p>db_cheat_toggle_fogofwar_d， 切换战争迷雾。</p><p>// Toggle instant build on\off</p><p>db_cheat_toggle_instantbuild， kuaidian</p><p>db_cheat_toggle_instantbuild_d， 切换为立即完成建设</p><p>// Advance an epoch without meeting any of the requirements</p><p>db_cheat_advance_epoch， shenji</p><p>db_cheat_advance_epoch_d， 你已经进入下一个纪元！</p><p>// Add 50 technology points</p><p>db_cheat_add_techpoints， 50</p><p>db_cheat_add_techpoints_d， 科技点数增加50</p><p>// God Mode</p><p>db_cheat_god_mode， god</p><p>db_cheat_god_mode_d， 切换为天神模式</p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;《Empire Earth II: The Art of Supremacy》带玩家重返历史的舞台，上演各种文明的历史和伟大的战役，从冰雪覆盖的俄罗斯平原一直到灼热的非洲沙漠，你将在此成为伟大的领袖，穿越过去、现在和将来。Mad Doc的总裁Ian Davis博士说：“我们吸收了大量玩家建议，《Empire Earth II》将是本系列的革命。游戏中有更多的事情可以做，比如全新的拉锯模式，我认为玩家肯定会喜欢，游戏会给你彻底的全新体验。”&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="游戏" scheme="https://a-little-bear.github.io/categories/%E6%B8%B8%E6%88%8F/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>《地球帝国》繁体中文免安装版</title>
-    <link href="https://a-little-bear.github.io/p/d5ec/"/>
-    <id>https://a-little-bear.github.io/p/d5ec/</id>
-    <published>2020-05-24T23:23:06.000Z</published>
-    <updated>2020-06-03T21:13:13.751Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>《地球帝国》是一款经典即时战斗策略单机游戏《帝国时代》的第三部，玩家需要引导自己的文明从史前文明进化到未来文明，每一个过程中的所有改观都会能让你耳目一新，并且将其中各类元素和不同作战单位也进行了创新设计，感兴趣的朋友可以下载试玩！</p><a id="more"></a><p><img src="https://i.loli.net/2020/05/25/LkpGzrJf2bguZdA.png" alt=""></p><p><img src="https://i.loli.net/2020/05/25/rOwRXQfZHt4noKN.png" alt=""></p><h3 id="游戏介绍"><a href="#游戏介绍" class="headerlink" title="游戏介绍"></a>游戏介绍</h3><p>《地球帝国》是一款经典即时战斗策略单机游戏《帝国时代》的第三部，玩家需要引导自己的文明从史前文明进化到未来文明，每一个过程中的所有改观都会能让你耳目一新，并且将其中各类元素和不同作战单位也进行了创新设计，感兴趣的朋友可以下载试玩！</p><h3 id="游戏背景"><a href="#游戏背景" class="headerlink" title="游戏背景"></a>游戏背景</h3><p>《地球帝国》给我们带来的是真正意义上的立体作战，从中世纪的铁甲骑士，到20世纪的全机械化部队，再到未来的巨型钢铁机器人。海军则从木筏，帆船到航空母舰，核子潜艇。而空军拥有像阿帕奇(武装直升机)，F-15，以及B-2隐形战略轰炸机等战机。相信，这也是许多武器爱好者们所梦寐以求的。</p><p>在《地球帝国》中，特殊人物也是能左右战争胜负的关键环节。</p><p>其中一类就是神秘的宗教人物，他们可以借助“神的力量”制造地震，火山爆发，飓风，瘟疫等灾难，给敌人以致命的打击。</p><p>而另一类人物就是历史上著名的军事英雄，他们包括了拿破仑，亚历山大大帝，丘吉尔，巴顿将军等。</p><p>他们分别属于不同的民族，而他们的出现将使你军队的士气大大提高，激增部队的战斗力。</p><p>而想到那些哧诧风云的英雄在你的麾下时，是不是觉得兴奋异常呢?</p><h3 id="游戏内容"><a href="#游戏内容" class="headerlink" title="游戏内容"></a>游戏内容</h3><p>《地球帝国》的另一大卖点是它浓重的历史感，它把人类历史上几乎每一场重大战争都毫无保留地呈现在玩家们的面前。</p><p>从特里木战争，到第2次世界大战，都是那么壮观，那么真实。</p><p>当你的装甲部队威风八面地驰骋在欧洲大陆上时，有没有当年巴顿将军的雄风呢?</p><p>游戏所附带的战役编辑器更让玩家有了创建自己梦想中的战争的机会，去吧，争霸世界的道路就在脚下，世界霸主的宝座就在前方。</p><h3 id="游戏下载"><a href="#游戏下载" class="headerlink" title="游戏下载"></a>游戏下载</h3><p>OneDrive：<a href="https://alilin-my.sharepoint.com/personal/alittlebear_yam_ink/_layouts/52/download.aspx?share=Ecibqx2ec7dKuUnY3qB-e-sBPW1RiMTXxr5bIEg220JddA">https://alilin-my.sharepoint.com/personal/alittlebear_yam_ink/_layouts/52/download.aspx?share=Ecibqx2ec7dKuUnY3qB-e-sBPW1RiMTXxr5bIEg220JddA</a></p><p>备用网盘：<a href="http://pan.alittlebear.tk/0:/d5ec/Empire_Earth.CHT.Green.zip">http://pan.alittlebear.tk/0:/d5ec/Empire_Earth.CHT.Green.zip</a></p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;《地球帝国》是一款经典即时战斗策略单机游戏《帝国时代》的第三部，玩家需要引导自己的文明从史前文明进化到未来文明，每一个过程中的所有改观都会能让你耳目一新，并且将其中各类元素和不同作战单位也进行了创新设计，感兴趣的朋友可以下载试玩！&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="游戏" scheme="https://a-little-bear.github.io/categories/%E6%B8%B8%E6%88%8F/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>《龙腾三国》 繁体中文免安装版</title>
-    <link href="https://a-little-bear.github.io/p/183b/"/>
-    <id>https://a-little-bear.github.io/p/183b/</id>
-    <published>2020-05-24T23:05:51.000Z</published>
-    <updated>2020-06-03T21:13:37.507Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>《吞食天地2》取得成功后，当人们在期待《吞食天地3》时，同样采用RPG类型的《龙腾三国》率先于1996年推出。玩家将会成为君主，率领自己的军队征战天下！</p><a id="more"></a><p><img src="https://i.loli.net/2020/05/25/bETAkGowLj7zFtP.png" alt=""><br><img src="https://i.loli.net/2020/05/25/U2zLZTWpSKrHI1w.png" alt=""></p><h3 id="游戏介绍"><a href="#游戏介绍" class="headerlink" title="游戏介绍"></a>游戏介绍</h3><p>《吞食天地2》取得成功后，当人们在期待《吞食天地3》时，同样采用RPG类型的《龙腾三国》率先于1996年推出。玩家将会成为君主，率领自己的军队征战天下！</p><h3 id="游戏简介"><a href="#游戏简介" class="headerlink" title="游戏简介"></a>游戏简介</h3><p>智冠公司于1996年推出的角色扮演加战略的三国游戏。游戏可从21位君主中挑选出一位，在类似冒险的模式下，可带领自己的将领、军队到处游戏，进入城池的宫殿中可选择策略性指令，与部属交谈可得知他们的想法。君令模式的指令包括内政、外交、军事、领地、商贾、人事、谋略、系统几大项，每个大项中又有一些小项目。是一款有新意的作品。</p><h3 id="游戏亮点"><a href="#游戏亮点" class="headerlink" title="游戏亮点"></a>游戏亮点</h3><p>与《吞食天地》系列相比，《龙腾三国》的战略性更高。在本作中，玩家可以从21位君主中挑选其一。</p><p>游戏主要分为行军模式和军令模式，行军模式即RPG部分，而军令模式即为SLG部分。在RPG形态下带领部将到处探索，进入城池的宫殿中就可以选择战略指令。</p><p>游戏中的军令模式包括内政、外交、军事、领地、商贾、人事、谋略等传统SLG的策略项目，每个大项目又由一些小项目构成，复杂程度并不亚于专业的SLG游戏。</p><p>两种模式都由将、城、贤、强4项。在行军模式下，你可以与普通RPG一样在城镇收集信息购买道具，并且还可以发掘在野的武将。</p><h3 id="下载链接"><a href="#下载链接" class="headerlink" title="下载链接"></a>下载链接</h3><p>OneDrive：<a href="https://alilin-my.sharepoint.com/:u:/g/personal/alittlebear_yam_ink/EV56GyCitu1PmeHBLIG5tGsBFW0ipXoSJelTpG9HD-zeNg">https://alilin-my.sharepoint.com/:u:/g/personal/alittlebear_yam_ink/EV56GyCitu1PmeHBLIG5tGsBFW0ipXoSJelTpG9HD-zeNg</a></p><p>备用网盘：<a href="https://pan.alittlebear.tk/0:/183b/ltsg.CHT.Green.zip">https://pan.alittlebear.tk/0:/183b/ltsg.CHT.Green.zip</a></p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;《吞食天地2》取得成功后，当人们在期待《吞食天地3》时，同样采用RPG类型的《龙腾三国》率先于1996年推出。玩家将会成为君主，率领自己的军队征战天下！&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="游戏" scheme="https://a-little-bear.github.io/categories/%E6%B8%B8%E6%88%8F/"/>
-    
     
   </entry>
   
