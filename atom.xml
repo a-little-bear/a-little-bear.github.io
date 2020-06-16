@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://a-little-bear.github.io/"/>
-  <updated>2020-06-15T05:08:43.234Z</updated>
+  <updated>2020-06-16T21:28:19.677Z</updated>
   <id>https://a-little-bear.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>这个盗版游戏的防盗版技术竟然比正版游戏还厉害</title>
+    <link href="https://a-little-bear.github.io/p/5b2d/"/>
+    <id>https://a-little-bear.github.io/p/5b2d/</id>
+    <published>2020-06-16T21:26:49.000Z</published>
+    <updated>2020-06-16T21:28:19.677Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>转载：<a href="https://zhuanlan.zhihu.com/p/51119911">https://zhuanlan.zhihu.com/p/51119911</a></p><p>在以往许多文章里，我们都反复讲过那些年盗版游戏对当年中国游戏市场的危害。</p><p><strong>其实这不光是一个普通的现象，更准确的说是一段历史进程。</strong></p><p>这一方面是由于<strong>当年的玩家普遍拮据了一些，动辄七八十的正版游戏对那个时候的普通学生来说实在可望不可及，所以低价的盗版实在是不二的选择；</strong></p><a id="more"></a><p><img src="https://pic1.zhimg.com/80/v2-b05f64bcb2fc168ef12a72e129ba6fe0_720w.jpg" alt="img"></p><p>另一方面也是<strong>因为当时的防盗版技术实在是捉急，基本上没有什么强有力的防刻录技术，即便是类似后来“两败俱伤”的starforce技术，也并没有真正的防住盗版。</strong></p><p><img src="https://pic4.zhimg.com/80/v2-7932fa77ceb03c803db023ae8b9e2c03_720w.jpg" alt="img"></p><p><img src="https://i.loli.net/2020/06/17/MdWFTywmIRlhEC9.jpg" alt="img"></p><p>不过有趣的是，当年有一个盗版游戏品牌竟然解决了上面的问题——<strong>即既能够以4-5块钱的价格出售，又防止了别的盗版商盗版自己的盗版盘，可谓称霸业界，堪称一时之雄。</strong></p><p>它就是藏经阁系列。</p><p><img src="https://pic2.zhimg.com/80/v2-5ca06d94dc779e21c7e14404fd00b8b9_720w.jpg" alt="img"></p><p>如果是有一些年龄的游戏玩家，多少在那个网速堪忧，盗版横行的年代会遇到将盗版游戏盘插入光驱后，显示<strong>“对不起，你买的不是gamez88的盘，请去退盘”</strong>这样的字样，同时你的安装进度也会卡住，让你不得不放弃安装。</p><p>可以说是简单粗暴，一招见效。</p><p>只不过，这也是藏经阁不得已而为之——</p><p><strong>谁能知道，我一个做盗版游戏的，也会被其他盗版游戏盗版？</strong></p><p><img src="https://pic3.zhimg.com/80/v2-b323a52159e970ea4a21689d06011716_720w.jpg" alt="img"></p><p>这一切，都要从藏经阁的诞生说起。</p><p><strong>1</strong></p><p>在上世纪90年代，有一个杂志叫做<strong>《家用电脑与游戏机》</strong>，这是在那个网络不发达，游戏大多只能靠看和听来接触的年代，连接玩家和游戏之间的桥梁之一。</p><p><img src="https://pic4.zhimg.com/80/v2-4870a3a4d5f35ec2ebd23767ca0d335b_720w.jpg" alt="img"></p><p>也正是在这个杂志上，我第一次看到了<strong>Gamez88</strong>这个名字，但文章已经被遗忘了，貌似是某游戏的攻略，不过这已经不重要了。</p><p>重要的是在后来许多盗版光盘上，玩家又可以很容易地看到这个名字。</p><p><img src="https://pic3.zhimg.com/80/v2-5fbe80cc235c440cd205081f4bea6b7e_720w.jpg" alt="img"></p><p>所有的以“藏经阁”系列命名的盗版光盘封面上，都会有这个名字，安装时也会有这个名字的文件夹。</p><p>这到底是何方神圣呢？</p><p>说实话，目前特别具体的答案谁也不能拍板，唯一可以确定的是，<strong>这是一个技术水平不错，甚至拥有良好的品牌意识的盗版破解团队。</strong></p><p>抛开“藏经阁”系列的前身“桃花岛”系列这个不太成熟的作品不谈，藏经阁这个盗版系列从1999年开始到2004年，这个系列一共做了490期，这490期为CD版，从491期开始变为DVD版本，每一期的内容都不同。</p><p>并且藏经阁和许多当年别的盗版游戏不同，他们秉承了以前国内FC时期盗版游戏<strong>打包出售的精神，即便是容量不大的CD也通过强大的压缩技术塞进去多个游戏。</strong></p><p><img src="https://pic4.zhimg.com/80/v2-0ac07056acfbe83be0a4caa05a52dd8b_720w.jpg" alt="img"></p><p>同时由于他们属于当年<strong>CFB（China Free Byte，商业内部破解组织）</strong>的边缘组织，所以当时能够获得相当高水平的破解游戏。</p><p>于是在当时许多盗版游戏都是坏盘（无法读取）的情况下，藏经阁一直保持着非常高的质量水平，坏盘率极低。</p><p>所以在质量和数量的双重碾压下，藏经阁在21世纪的头几年一直是盗版游戏界的翘楚。</p><p><strong>在那个年代，甚至有许多人以收藏藏经阁的盗版游戏为乐，直到现在都能看到。</strong></p><p><img src="https://pic3.zhimg.com/80/v2-84fe7f32346591f3317bf6189c186486_720w.jpg" alt="img"></p><p>而在网上也有人整理出藏经阁出版的所有游戏的合集，内容高达<strong>1.7TB</strong>，让人叹为观止。</p><p><img src="https://i.loli.net/2020/06/17/W89ofnDdMezjyYN.jpg" alt="img"></p><p><img src="https://pic4.zhimg.com/80/v2-33ca22201fc3bb038ecaa9ae53e38b0b_720w.jpg" alt="img"></p><p>也正是在这个时候，出现了<strong>盗版藏经阁的盗版厂商</strong>。</p><p><strong>是的，你没有看错，盗版盗版的盗版，简称盗中有盗。</strong></p><p>毕竟那个时候技术水平差的不多，盗版厂商连正版游戏都能破了盗版，何况是盗版游戏，于是一时之间《伪·藏经阁》系列充斥市场。</p><p><strong>诸多不明就里的小朋友看到藏经阁的名字就往家里拿，结果发现质量远不如原来的藏经阁，于是控诉藏经阁良心坏了。</strong></p><p><img src="https://pic3.zhimg.com/80/v2-4321632e746139e6e9b3ff77f53ad85a_720w.jpg" alt="img"></p><p>藏经阁的破解组织也很头疼，毕竟真的想不到会被友商背刺。</p><p><strong>于是他们在自己的盘中内置了程序，如果是被其他人刻录的话，就会直接无法安装，在1%的进度就停下来，并且弹出这句话，让买家去店家退换。</strong></p><p>不退也可以，那就没法玩了。</p><p>我到现在也不懂这是怎么做到的，但在那个野蛮生长的年代，这一招确实遏制住不少盗版他们的盗版商。</p><p><img src="https://pic3.zhimg.com/80/v2-03db4ea68d31a76b0876a8fe68527d72_720w.jpg" alt="img"></p><p><strong>只可惜口碑这个东西，一旦有了污点就没法恢复，所以藏经阁的质量也不再那么被玩家信任。</strong></p><p><strong>2</strong></p><p>但是游戏还是会继续出（盗）下去，毕竟要赚钱。</p><p>也正是在2000年前后，网络的社区版块逐渐发展了起来，早期有个论坛叫做<strong>西祠胡同</strong>，在里面有着各种各样的人，自然也有游戏玩家。</p><p><img src="https://pic3.zhimg.com/80/v2-ff98c70da29ae9aea2d1f87645f6bb6a_720w.jpg" alt="img"></p><p><strong>即便那个时候玩游戏还是不太能被说出口的娱乐项目，但并不妨碍同好者们在这个地方一起交流。</strong></p><p>那个时候的交流，当然交流的大多数都是盗版游戏了。</p><p><strong>其中藏经阁系列自然不会被放过，甚至由于藏经阁是每隔一段时间出一期的，所以就有爱好者按照每一期的内容来进行测评。</strong></p><p>当时这个测评被称为<strong>“藏经阁碟评”</strong>，一度非常受到游戏玩家的关注。</p><p><img src="https://pic2.zhimg.com/80/v2-0443c3fabe44cd29ebb998855333f14d_720w.jpg" alt="img"></p><p><img src="https://pic4.zhimg.com/80/v2-3a9eebcea8060a55aec79861709a1637_720w.jpg" alt="img"></p><p>因为当年的网络实在太差，下载游戏不现实，外网的内容也看不到，所以只能等藏经阁的游戏上架，才能看到和接触到那些海外的作品。</p><p><strong>也正是透过这一扇小小的窗户，国内玩家逐渐接触到了各类或是好的，或是坏的海外游戏。</strong></p><p>在那个信息闭塞，经济落后的年代，这样的产品可以说是顺应时代而生。</p><p><strong>甚至于藏经阁还出版过杂志，简直是做一行爱一行，堪称盗版游戏界的翘楚~</strong></p><p><img src="https://pic2.zhimg.com/80/v2-322238ba1dc6c1bdde0aa697e56b2369_720w.jpg" alt="img"></p><p><img src="https://pic1.zhimg.com/80/v2-da46da5936af0595c6fc6cdc7340a46c_720w.jpg" alt="img"></p><p>但藏经阁系列也有各种各样的问题。</p><p><strong>其中最臭名昭著的就是他们会把游戏的cg，甚至于许多音乐都给去掉，以至于许多人到现在都不知道《红警》是有真人过场电影的，《星际争霸》是有很多动画和CG的。</strong></p><p><img src="https://i.loli.net/2020/06/17/VsuDew4bHWNq37r.jpg" alt="img"></p><p>早期的CD的储存不过600M，后来的DVD才有了7G以上，或许是因为容量原因，所以许多过场动画，开场CG等等都被阉割了。</p><p>尤其是有一些游戏结局就是用动画来展现的，比如《仙剑奇侠传3》，我的一个基友就发现自己好不容易打通关了，结果打完了游戏戛然而止，看不到结局，让他气了10年，每次提及必然破口大骂：</p><p><strong>“害老子白玩了！”</strong></p><p><img src="https://pic4.zhimg.com/80/v2-89aaea4a09116e9a9367231e6a1fd5e7_720w.jpg" alt="img"></p><p>另一个则是当年<strong>和游侠以及3DM的纠葛</strong>。</p><p>许多人认为藏经阁是游侠网的下属机构，不过据我了解并非如此，但应该确实有合作关系。</p><p>在后期的藏经阁逐渐式微，网络发展迅速，网上下载盗版成为主流的时候，<strong>游侠网和3DM</strong>为了争夺流量和资源，也是明争暗斗。</p><p><img src="https://i.loli.net/2020/06/17/UcxQR9zlMHYPXwL.jpg" alt="img"></p><p><img src="https://i.loli.net/2020/06/17/4KIYgcEa2zhq3by.jpg" alt="img"></p><p>有一天3DM发出一个通告，表示藏经阁依靠自己在盗版市场巨大的影响力，<strong>偷偷在许多游戏的安装包里附带了修改玩家电脑的hosts文件的程序，使得安装了这些游戏的玩家无法登陆3DM网站。</strong></p><p><img src="https://pic3.zhimg.com/80/v2-1d22e8b48d7bbe923876bbe22e68af6a_720w.jpg" alt="img"></p><p><img src="https://pic2.zhimg.com/80/v2-40db91d77ac9ae3876886daa4d5fdc39_720w.jpg" alt="img"></p><p>当然，这只是当年3DM大战游侠网的逸事之一。</p><p>然后就是你来我往打了好多年。</p><p><strong>3</strong></p><p>不过，也正是在这个时候，藏经阁逐渐消失了。</p><p><strong>和其他诸多盗版碟商贩一样，他们不是输给了正版，而是败给了网络，败给了不需要付钱就能下载的各类资源。</strong></p><p><img src="https://pic3.zhimg.com/80/v2-0007318caed2a99bb3152241531b29de_720w.jpg" alt="img"></p><p>甚至随着网速的进一步提升，藏经阁这些盗版盘也只剩下了被收藏的用途。</p><p><strong>而多年之后，随着版权意识的和大家生活水平的提高，当年鼎盛一时的3DM等网站也不得不逐渐走向了转型。</strong></p><p>在一共710期的藏经阁系列中，包含着超过4000款全球各地的游戏，这些盗版游戏见证了中国游戏圈的发展和衰落，也见证了中国网络的萌芽和发展。</p><p><img src="https://pic2.zhimg.com/80/v2-149da01cd658ca17a7c24c09081dbbed_720w.jpg" alt="img"></p><p>而它作为盗版光盘中的代表之一，其衰落也让作为旁观者的我产生了许多思考。</p><p><strong>或许，纯粹依靠外力去杜绝是无法消灭盗版这种阳光背面的产物的，毕竟在经济基础没有夯实的情况下，要求大家牺牲生活资料去购买正版，明显不现实，毕竟仓廪实而知礼节，衣食足而知荣辱；</strong></p><p><strong>而纯粹依靠玩家的自觉，也同样无法消灭盗版，这就像黄赌毒一样，是对人性考验，在没有监督和强制手段的压力影响的情况下，人是经受不住考验的。</strong></p><p><strong>只有科技逐渐发展，防盗技术增强，相关的法律条例逐渐完善，同时大家的思想观念也逐渐随着经济发展而改变，才能内外结合，慢慢让这些阴暗面减少或是消失。</strong></p><p><strong>也只有这样，中国的游戏业界才有未来可言。</strong></p><p><strong>-END-</strong></p><p><img src="https://pic4.zhimg.com/80/v2-3191b475e1d8372bdcb12ef5f7684eaf_720w.jpg" alt="img"></p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;转载：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/51119911&quot;&gt;https://zhuanlan.zhihu.com/p/51119911&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;在以往许多文章里，我们都反复讲过那些年盗版游戏对当年中国游戏市场的危害。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;其实这不光是一个普通的现象，更准确的说是一段历史进程。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这一方面是由于&lt;strong&gt;当年的玩家普遍拮据了一些，动辄七八十的正版游戏对那个时候的普通学生来说实在可望不可及，所以低价的盗版实在是不二的选择；&lt;/strong&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="其他" scheme="https://a-little-bear.github.io/tags/%E5%85%B6%E4%BB%96/"/>
+    
+  </entry>
   
   <entry>
     <title>神秘风格动作冒险游戏-天空之山-黑雾-SKYHILL:-Black-Mist</title>
@@ -449,30 +474,6 @@
     
     
       <category term="其他" scheme="https://a-little-bear.github.io/categories/%E5%85%B6%E4%BB%96/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>阅读app书源</title>
-    <link href="https://a-little-bear.github.io/p/2a8d/"/>
-    <id>https://a-little-bear.github.io/p/2a8d/</id>
-    <published>2020-05-28T00:04:37.000Z</published>
-    <updated>2020-05-28T19:35:39.492Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p><a href="https://gitee.com/vpq/yd">https://gitee.com/vpq/yd</a></p><a id="more"></a><p>上面这个链接还是挺不错的。</p><p>另外说一下改背景：界面下方长按自定义。</p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://gitee.com/vpq/yd&quot;&gt;https://gitee.com/vpq/yd&lt;/a&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="其他" scheme="https://a-little-bear.github.io/categories/%E5%85%B6%E4%BB%96/"/>
-    
-      <category term="书源" scheme="https://a-little-bear.github.io/categories/%E5%85%B6%E4%BB%96/%E4%B9%A6%E6%BA%90/"/>
     
     
   </entry>
