@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://a-little-bear.github.io/"/>
-  <updated>2020-06-17T20:48:10.205Z</updated>
+  <updated>2020-06-21T05:13:04.376Z</updated>
   <id>https://a-little-bear.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>my-desktop-一个基于-React-Hooks-和-TypeScript-的仿-macOS-网页</title>
+    <link href="https://a-little-bear.github.io/p/3daf/"/>
+    <id>https://a-little-bear.github.io/p/3daf/</id>
+    <published>2020-06-21T05:05:49.000Z</published>
+    <updated>2020-06-21T05:13:04.376Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>转载，感谢原作者。</p><p>Github（开源地址）：<a href="https://github.com/Adashuai5/my-desktop/">https://github.com/Adashuai5/my-desktop/</a><br>Demo（示例）：<a href="https://adashuai5.github.io/my-desktop/">https://adashuai5.github.io/my-desktop/</a><br>Wiki（知乎专栏）：<a href="https://zhuanlan.zhihu.com/p/144620075">https://zhuanlan.zhihu.com/p/144620075</a></p><a id="more"></a><p><img src="https://i.loli.net/2020/06/21/bZfakSdCqrX9WeP.png" alt=""></p><p>Features：</p><p>- 仿 macOS 界面，支持 Dock 鼠标悬停放大等动画<br>- 支持通过设置修改 Dock 图标、距离大小和 Dock 位置<br>- 提供计算器、浏览器（调用本地）和绘画应用<br>- 可通过 GitHub Actions 部署</p><p>偏向于娱乐和观赏性的一个项目，对于 macOS 桌面 UI 的还原度不错。但同时也存在一些问题：一些动画不够流畅、计算器左上角按钮图标错位等。目前 Dock 中部分图标和顶部菜单栏还处于不可用状态</p><p>个人的想法是可以做文件夹功能，放置一些链接或者文章。可以基于此，开发一个 macOS Desktop 风格的博客主题。期待后续的开发工作</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;转载，感谢原作者。&lt;/p&gt;
+&lt;p&gt;Github（开源地址）：&lt;a href=&quot;https://github.com/Adashuai5/my-desktop/&quot;&gt;https://github.com/Adashuai5/my-desktop/&lt;/a&gt;&lt;br&gt;Demo（示例）：&lt;a href=&quot;https://adashuai5.github.io/my-desktop/&quot;&gt;https://adashuai5.github.io/my-desktop/&lt;/a&gt;&lt;br&gt;Wiki（知乎专栏）：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/144620075&quot;&gt;https://zhuanlan.zhihu.com/p/144620075&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="其他" scheme="https://a-little-bear.github.io/categories/%E5%85%B6%E4%BB%96/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>气球塔防6-Bloons-TD-6-v18-1-2747</title>
@@ -445,30 +468,6 @@
     
       &lt;blockquote&gt;
 &lt;h3 id=&quot;游戏介绍&quot;&gt;&lt;a href=&quot;#游戏介绍&quot; class=&quot;headerlink&quot; title=&quot;游戏介绍&quot;&gt;&lt;/a&gt;游戏介绍&lt;/h3&gt;&lt;p&gt;《甘蔗俄罗斯方块》是由甘蔗网络制作的一款休闲益智类游戏，俄罗斯方块对我们每个人都有着深刻的记忆，她是非常经典耐玩的小游戏，简单的几种方块却有着变化多端的游戏乐趣。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="游戏" scheme="https://a-little-bear.github.io/categories/%E6%B8%B8%E6%88%8F/"/>
-    
-    
-      <category term="俄罗斯方块" scheme="https://a-little-bear.github.io/tags/%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《俄罗斯方块(Triptych)》v1.10-英文免安装版</title>
-    <link href="https://a-little-bear.github.io/p/b64d/"/>
-    <id>https://a-little-bear.github.io/p/b64d/</id>
-    <published>2020-06-03T21:01:48.000Z</published>
-    <updated>2020-06-03T21:26:51.251Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><h3 id="游戏介绍"><a href="#游戏介绍" class="headerlink" title="游戏介绍"></a>游戏介绍</h3><p>《俄罗斯方块(Triptych)》是一款消除类游戏，不过比经典俄罗斯方块游戏还好玩！游戏的玩法和原版的差不多，只是画面和音乐上有很大的变化，喜欢的玩家不要错过。</p><a id="more"></a><h3 id="游戏规则"><a href="#游戏规则" class="headerlink" title="游戏规则"></a>游戏规则</h3><p>1、一个用于摆放小型正方形的平面虚拟场地，其标准大小：行宽为10，列高为20，以每个小正方形为单位。2、一组由4个小型正方形组成的规则图形，英文称为Tetromino，中文通称为方块共有7种，分别以S、Z、L、J、I、O、T这7个字母的形状来命名。</p><p>I：一次最多消除四层</p><p>J(左右)：最多消除三层，或消除二层</p><p>L：最多消除三层，或消除二层</p><p>O：消除一至二层</p><p>S(左右)：最多二层，容易造成孔洞</p><p>Z (左右)：最多二层，容易造成孔洞</p><p>T：最多二层</p><p>(1)部分游戏有单格方块，</p><p>可以穿透固定的方块到达最下层空位。其他的改版中出现更多特别的造型。</p><p>方块会从区域上方开始缓慢继续落下。</p><p>(2)玩家可以做的操作有：以90度为单位旋转方块，以格子为单位左右移动方块，让方块加速落下。</p><p>(3)方块移到区域最下方或是着地到其他方块上无法移动时，就会固定在该处，而新的方块出现在区域上方开始落下。</p><p>(4)当区域中某一列横向格子全部由方块填满，则该列会消失并成为玩家的得分。同时删除的列数越多，得分指数上升。</p><p>(5)当固定的方块堆到区域最上方而无法消除层数时，则游戏结束。</p><p>(6)一般来说，游戏还会提示下一个要落下的方块，熟练的玩家会计算到下一个方块，评估要如何进行。由于游戏能不断进行下去对商业用游戏不太理想，所以一般还会随着游戏的进行而加速提高难度。</p><p>3、通过设计者预先设置的随机发生器不断地输出单个方块到场地顶部，以一定的规则进行移动、旋转、下落和摆放，锁定并填充到场地中。每次摆放如果将场地的一行或多行完全填满，则组成这些行的所有小正方形将被消除，并且以此来换取一定的积分或者其他形式的奖励。而未被消除的方块会一直累积，并对后来的方块摆放造成各种影响。</p><p>4、如果未被消除的方块堆放的高度超过场地所规定的最大高度(并不一定是20或者玩家所能见到的高度)，则游戏结束。</p><p>具体到每一款不同的游戏，其中的细节规则都可能有千差万别，但是以上的基本规则是相同的。</p><h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p><img src="https://i.loli.net/2020/06/04/b5wjadRzqey9VUu.png" alt=""></p><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>蓝奏：<a href="https://alittlebear.lanzous.com/ihqXddb9ryj">https://alittlebear.lanzous.com/ihqXddb9ryj</a></p><p>备用网盘：<a href="https://wp.alittlebear.tk/b64d/Triptych.EN.Green.zip">https://wp.alittlebear.tk/b64d/Triptych.EN.Green.zip</a></p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;h3 id=&quot;游戏介绍&quot;&gt;&lt;a href=&quot;#游戏介绍&quot; class=&quot;headerlink&quot; title=&quot;游戏介绍&quot;&gt;&lt;/a&gt;游戏介绍&lt;/h3&gt;&lt;p&gt;《俄罗斯方块(Triptych)》是一款消除类游戏，不过比经典俄罗斯方块游戏还好玩！游戏的玩法和原版的差不多，只是画面和音乐上有很大的变化，喜欢的玩家不要错过。&lt;/p&gt;
     
     </summary>
     
