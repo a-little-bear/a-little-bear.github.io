@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://a-little-bear.github.io/"/>
-  <updated>2020-06-21T23:41:06.929Z</updated>
+  <updated>2020-06-23T15:55:13.754Z</updated>
   <id>https://a-little-bear.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>盘ta-谷歌云盘目录程序-goindex魔改版</title>
+    <link href="https://a-little-bear.github.io/p/4f83/"/>
+    <id>https://a-little-bear.github.io/p/4f83/</id>
+    <published>2020-06-23T15:54:06.000Z</published>
+    <updated>2020-06-23T15:55:13.754Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p><a href="https://github.com/Hidove/goindex">https://github.com/Hidove/goindex</a></p><a id="more"></a><p>盘ta</p><ul><li>一个goindex 修改版</li><li>更改播放器为dplayer、支持切片资源播放.</li><li>其他功能与原版相同.</li><li>切片需要安装<code>FFmpeg</code></li></ul></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/Hidove/goindex&quot;&gt;https://github.com/Hidove/goindex&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="其他" scheme="https://a-little-bear.github.io/categories/%E5%85%B6%E4%BB%96/"/>
+    
+      <category term="网盘" scheme="https://a-little-bear.github.io/categories/%E5%85%B6%E4%BB%96/%E7%BD%91%E7%9B%98/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>水反复烧开会产生有毒物质吗？「千滚水」能不能喝？</title>
@@ -438,30 +462,6 @@
     
       &lt;blockquote&gt;
 &lt;p&gt;有了辉煌的战袍和魔力， 是时候建造一些Tricky塔了！ 在这片寓言的土地之上堆叠砖块， 您能否建造出最稳固的奇迹之塔？ 施展魔法支撑您建造的塔， 防御黑暗法术，以免遭破坏。 在这个疯狂的多人物理游戏中， 与您的朋友对战， 声名鹊起。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="游戏" scheme="https://a-little-bear.github.io/categories/%E6%B8%B8%E6%88%8F/"/>
-    
-    
-      <category term="俄罗斯方块" scheme="https://a-little-bear.github.io/tags/%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《俄罗斯方块效应（Tetris-Effect）》简体中文免安装版</title>
-    <link href="https://a-little-bear.github.io/p/3633/"/>
-    <id>https://a-little-bear.github.io/p/3633/</id>
-    <published>2020-06-03T22:01:31.000Z</published>
-    <updated>2020-06-03T22:20:50.982Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><h3 id="游戏介绍"><a href="#游戏介绍" class="headerlink" title="游戏介绍"></a>游戏介绍</h3><p><strong>《俄罗斯方块：效应（Tetris Effect）》</strong>是一款让人耳目一新的俄罗斯方块游戏，让人欲罢不能。在标准屏幕上游玩时，可自由调节分辨率，帧数不设上限。该作是玩家不断游玩俄罗斯方块的绝佳理由，音乐、背景、音效、特效，一切都尽善尽美。这是一场思维的挑战，感官的盛宴！</p><a id="more"></a><p><img src="https://img.3dmgame.com/uploads/images/news/20190723/1563874329_607477.jpg" alt=""></p><h3 id="游戏特色"><a href="#游戏特色" class="headerlink" title="游戏特色"></a>游戏特色</h3><p><strong>支持VR：</strong>在PC端或VR环境下均可游玩，使用Oculus Rift或HTC VIVE以及配套控制器(完全支持标准游戏手柄、Vive控制器、Oculus Remote和Oculus Touch控制器)体验沉浸式VR效果。</p><p><strong>全新“安全区(Zone)”机制：</strong>进入“安全区”后，玩家可以暂停时间流逝(以及方块下落)，从而打破僵局，避免“游戏结束”，或是额外清空几栏方块以获取积分奖励。”</p><p><strong>超过30个不同关卡：</strong>每个关卡都有独特的音乐、音效、画面风格和背景，并会根据您的游玩进度不断进化演变。</p><p><strong>PC视觉效果增强以及更多：</strong>不锁定分辨率，帧数不设上限(启用垂直同步时最高200fps)，增加材质和颗粒效果选项，支持超高分辨率和超宽显示器，以及更多内容。</p><h3 id="IGN评分"><a href="#IGN评分" class="headerlink" title="IGN评分"></a>IGN评分</h3><p><strong>评分：8.5 卓越</strong></p><p>《俄罗斯方块：效应》为你熟悉的游戏赋予了前所未有的体验。</p><p><strong>总评：</strong>虽然它的基本规则没有变，但它却将声音、颜色、震动等方面很好地融合在了一起，视觉效果绚丽无比堪称艺术品。它还拥有一系列的任务，越往后难度越高；每一关都拥有风格不同的画面、配乐、甚至规则，有的关卡里玩家仿佛是在水下，还能看到炫光效果构成的鲸鱼在附近游动，还有的关卡是沙漠风格，甚至是月面场景。特效感十足。</p><h3 id="游戏说明"><a href="#游戏说明" class="headerlink" title="游戏说明"></a>游戏说明</h3><p>《俄罗斯方块》其如梦似幻的场景相信看过的玩家难以忘怀，毕竟如何演绎《俄罗斯方块》这一传奇级别的经典IP是很有压力的。</p><p>而水口哲也表示本作创新性的引入现实虚幻化场景，游戏的3D世界将根据你的玩法作出不同的反应，游戏的音乐，背景，声效，特效都将同步改变，将带给玩家完全没有体验过的新奇俄罗斯方块玩法。</p><p>用一个字概括本作的独特个性，就是“旅”，如何将简单枯燥的方块堆积演化到更吸引玩家的效果，本作将拥有30个美轮美奂的“旅”场景，值得期待，水口哲也本人更推荐PSVR版本，更加适合本作的意境。</p><h3 id="配置要求"><a href="#配置要求" class="headerlink" title="配置要求"></a>配置要求</h3><p>​                  最低配置                            推荐配置</p><table><thead><tr><th>操作系统</th><th>Windows 7/8/10（64位）</th><th>Windows 7/8/10（64位）</th></tr></thead><tbody><tr><td>CPU</td><td>Intel i3-4340</td><td>Intel i5-4590（VR环境需要）</td></tr><tr><td>内存</td><td>4 GB内存</td><td>8 GB RAM</td></tr><tr><td>显卡</td><td>NVIDIA GTX 750 Ti同等或更高性能产品</td><td>NVIDIA GTX 970同等性能产品（VR环境需要）</td></tr><tr><td>存储空间</td><td>5 GB可用存储空间</td><td>5 GB可用存储空间</td></tr></tbody></table><h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p><img src="https://img.3dmgame.com/uploads/images/thumbgame/20190723/1563873763_676009.jpg" alt=""></p><p><img src="https://img.3dmgame.com/uploads/images/thumbgame/20190723/1563873763_558428.jpg" alt=""></p><p><img src="https://img.3dmgame.com/uploads/images/thumbgame/20190723/1563873763_915266.jpg" alt=""></p><p><img src="https://img.3dmgame.com/uploads/images/thumbgame/20190723/1563873763_830117.jpg" alt=""></p><p><img src="https://img.3dmgame.com/uploads/images/thumbgame/20190723/1563873763_902966.jpg" alt=""></p><p><img src="https://i.loli.net/2020/06/04/9pFuoIbk4fZsjwh.png" alt=""></p><p><img src="https://i.loli.net/2020/06/04/jPpSt8TqcEnXBOw.png" alt=""></p><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>iso镜像安装版（zip压缩了一下）：<a href="https://wp.alittlebear.tk/3633/Tetris.Effect.zip">https://wp.alittlebear.tk/3633/Tetris.Effect.zip</a><br>免安装版：<a href="https://wp.alittlebear.tk/3633/Tetris-Effect.zip">https://wp.alittlebear.tk/3633/Tetris-Effect.zip</a></p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;h3 id=&quot;游戏介绍&quot;&gt;&lt;a href=&quot;#游戏介绍&quot; class=&quot;headerlink&quot; title=&quot;游戏介绍&quot;&gt;&lt;/a&gt;游戏介绍&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;《俄罗斯方块：效应（Tetris Effect）》&lt;/strong&gt;是一款让人耳目一新的俄罗斯方块游戏，让人欲罢不能。在标准屏幕上游玩时，可自由调节分辨率，帧数不设上限。该作是玩家不断游玩俄罗斯方块的绝佳理由，音乐、背景、音效、特效，一切都尽善尽美。这是一场思维的挑战，感官的盛宴！&lt;/p&gt;
     
     </summary>
     
