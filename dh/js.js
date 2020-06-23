@@ -186,23 +186,23 @@ $(function(){
   var search = {
     data: [{
       name: '百度',
-      img: '/images/logo.jpg',
+      img: 'https://i.loli.net/2020/06/24/MubpsFBK64fr5Sq.jpg',
       url: 'https://www.baidu.com/s?wd='
     }, {
       name: '谷歌',
-      img: '/images/logo_2.jpg',
+      img: 'https://i.loli.net/2020/06/24/MNE6nUOyvcKlo8A.jpg',
       url: 'https://www.google.com/search?q='
     }, {
       name: '必应',
-      img: '/images/logo_3.jpg',
+      img: 'https://i.loli.net/2020/06/24/mFXhgsrO1acbDGl.jpg',
       url: 'https://cn.bing.com/search?q='
     }, {
       name: '好搜',
-      img: '/images/logo_4.jpg',
+      img: 'https://i.loli.net/2020/06/24/dgszFvuKPNyWnhr.jpg',
       url: 'https://www.so.com/s?q='
     }, {
       name: '搜狗',
-      img: '/images/logo_5.jpg',
+      img: 'https://i.loli.net/2020/06/24/W36N9kuHzRfe5pb.jpg',
       url: 'https://www.sogou.com/web?query='
     }]
   }
