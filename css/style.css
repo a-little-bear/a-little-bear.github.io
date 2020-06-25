@@ -11572,16 +11572,14 @@ article.article .article-meta {
   height: 41px;
 }
 body {
-  cursor: url("https://i.loli.net/2020/05/29/HdoxnAkEG14hglP.png"), default;
-!important
-  cursor: url("https://i.loli.net/2020/05/29/HdoxnAkEG14hglP.png"), pointer;
-!important
-  cursor: url("https://i.loli.net/2020/05/29/HdoxnAkEG14hglP.png"), auto;
-!important
+/* cursor: url('https://i.loli.net/2020/05/29/HdoxnAkEG14hglP.png'),default; !important
+    cursor: url('https://i.loli.net/2020/05/29/HdoxnAkEG14hglP.png'),pointer; !important */
+  cursor: url("https://i.loli.net/2020/05/29/HdoxnAkEG14hglP.png"), auto; /* !important */
 }
-!important
-!important
-!important
+a {
+  cursor: url("https://i.loli.net/2020/05/29/HdoxnAkEG14hglP.png"), auto; /*  !important */
+/* cursor: url('https://i.loli.net/2020/05/29/HdoxnAkEG14hglP.png') !important; */
+}
 .ml-0,
 .mx-0 {
   margin-left: 0 !important;
