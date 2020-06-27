@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://a-little-bear.github.io/"/>
-  <updated>2020-06-23T23:57:12.682Z</updated>
+  <updated>2020-06-27T11:23:47.048Z</updated>
   <id>https://a-little-bear.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>gclone转存bat</title>
+    <link href="https://a-little-bear.github.io/p/f18d/"/>
+    <id>https://a-little-bear.github.io/p/f18d/</id>
+    <published>2020-06-27T10:52:59.000Z</published>
+    <updated>2020-06-27T11:23:47.048Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>需要gclone，rclone等”基础“，还需要安装git。</p><a id="more"></a><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>自己弄的一个gclone转存bot（搞了1周呢ww），需要能上GoogleDrive，需要配置好rclone，gclone，还有安装git。</p><p>比不上群里某些大佬写的python程序，但是我认为我的优势还是在：</p><ol><li>单文件（目前是俩文件，相信能解决的hh）</li><li>批处理，不是python，不需要安装python，不需要安装node，不需要啥，除了一个git（玩Github的都有安装吧），还有配置完gclone就能运行。</li><li>代码看着简单，找着改着也简单，没有一堆程序文件</li></ol><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>首先是主bat：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line">chcp 65001</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">::输入分享链接，并自动转化为id</span><br><span class="line"><span class="built_in">set</span> /p url=文件夹/文件链接：</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> url=%url:https://drive.google.com/drive/folders/=%</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> RESULT=</span><br><span class="line"></span><br><span class="line">:next</span><br><span class="line"><span class="keyword">if</span> <span class="string">"%url%"</span> equ <span class="string">""</span> goto end</span><br><span class="line"><span class="built_in">set</span> a=%url:~0,1%</span><br><span class="line"><span class="keyword">if</span> <span class="string">"%a%"</span> equ <span class="string">"="</span> (<span class="built_in">set</span> RESULT=%RESULT%<span class="comment">#) else (set RESULT=%RESULT%%a%)</span></span><br><span class="line"><span class="built_in">set</span> url=%url:~1%</span><br><span class="line">goto next</span><br><span class="line"></span><br><span class="line">:end</span><br><span class="line"><span class="built_in">set</span> RESULT=%RESULT:?usp<span class="comment">#sharing=%</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">::这里是已经废弃的手动输入名字</span><br><span class="line">::<span class="built_in">set</span> /p pathname=文件夹名称：</span><br><span class="line">::<span class="built_in">set</span> pathname=%pathname: =%</span><br><span class="line">::<span class="built_in">echo</span> 文件夹/文件链接id是：%RESULT%</span><br><span class="line">::<span class="built_in">echo</span> 转存的文件夹名称为：%pathname%</span><br><span class="line">::<span class="built_in">echo</span> 任意键开始转存（转存三次）</span><br><span class="line">::pause &gt; nul</span><br><span class="line">::gclone lsf &#123;&#125;:&#123;&#123;&#123;&#125;&#125;&#125; --dump bodies -vv 2&gt;&amp;1 | grep <span class="string">'"&#123;&#125;","name"'</span> | cut -d <span class="string">'"'</span> -f 8</span><br><span class="line">::gclone lsf alittlebear:&#123;%RESULT%&#125; --dump bodies -vv 2&gt;&amp;1 | grep \<span class="string">'"%RESULT%","name"\'</span> | cut -d <span class="string">''</span>\<span class="string">'"\'</span> -f 8</span><br><span class="line">::<span class="built_in">echo</span>:</span><br><span class="line">::<span class="built_in">echo</span> 任意键退出</span><br><span class="line">::pause &gt; nul</span><br><span class="line"></span><br><span class="line">start 1.bat %RESULT%</span><br><span class="line"></span><br><span class="line">::这里是1.bat的内容</span><br><span class="line">::@<span class="built_in">echo</span> on</span><br><span class="line">::gclone lsf alittlebear:&#123;%RESULT%&#125; --dump bodies -vv 2&gt;&amp;1 | grep <span class="string">'"%RESULT%","name"'</span> | cut -d <span class="string">''</span><span class="string">'"'</span> -f 8</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span>:</span><br><span class="line"><span class="built_in">echo</span> 复制lsf指令再按任意键</span><br><span class="line">pause &gt; nul</span><br><span class="line"></span><br><span class="line">::打开git窗口,准备输入lsf获取分享名指令</span><br><span class="line">start <span class="string">"Open Git Bash"</span> <span class="string">"%SYSTEMDRIVE%\Program Files\Git\git-bash.exe"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> /p pathname=输入git窗口获取到的分享名：</span><br><span class="line"></span><br><span class="line">::开始转存,转存3次</span><br><span class="line">gclone copy alittlebear:&#123;%RESULT%&#125; alittlebear:/bat转存/%pathname%/ --transfers=40 --drive-server-side-across-configs -P</span><br><span class="line">gclone copy alittlebear:&#123;%RESULT%&#125; alittlebear:/bat转存/%pathname%/ --transfers=40 --drive-server-side-across-configs -P</span><br><span class="line">gclone copy alittlebear:&#123;%RESULT%&#125; alittlebear:/bat转存/%pathname%/ --transfers=40 --drive-server-side-across-configs -P</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span>:</span><br><span class="line"><span class="built_in">echo</span> 转存完毕，按任意键退出</span><br><span class="line">pause &gt; nul</span><br></pre></td></tr></table></figure><p>然后是1.bat（最好不要改文件名字，要改连代码中的一起改）</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gclone lsf alittlebear:&#123;%RESULT%&#125; --dump bodies -vv 2&gt;&amp;1 | grep <span class="string">'"%RESULT%","name"'</span> | cut -d <span class="string">''</span><span class="string">'"'</span> -f 8</span><br></pre></td></tr></table></figure><h2 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h2><p><a href="https://alittlebear.lanzous.com/ioysZe34wle">https://alittlebear.lanzous.com/ioysZe34wle</a></p><p><a href="https://alilin-my.sharepoint.com/personal/alittlebear_yam_ink/_layouts/52/download.aspx?share=EWu6T_L-m9RPvPYCQlIdiogBvaiN6J_p19UgJgRuoo7qOg">https://alilin-my.sharepoint.com/personal/alittlebear_yam_ink/_layouts/52/download.aspx?share=EWu6T_L-m9RPvPYCQlIdiogBvaiN6J_p19UgJgRuoo7qOg</a></p><p>ps：不想下载可以直接复制代码框的指令到记事本，然后命名为.bat文件就好</p><h2 id="要改动的地方"><a href="#要改动的地方" class="headerlink" title="要改动的地方"></a>要改动的地方</h2><ol><li>把结尾<code>&quot;%SYSTEMDRIVE%\Program Files\Git\git-bash.exe&quot;</code>改成你自己的git路径，默认应该就是我这个了。</li><li>结尾<code>gclone copy alittlebear</code> 中的<code>alittlebear</code>要改成你自己的remote名称</li><li>结尾<code>alittlebear:/bat转存/</code>也要改成你自己的remote名称和转存路径</li><li>1.bat中的<code>alittlebear</code>也要改成自己的remote名称</li></ol><h2 id="已知bug"><a href="#已知bug" class="headerlink" title="已知bug"></a>已知bug</h2><ol><li>暂时还需要1.bat，不能合并成1个单文件</li><li>运行1.bat时会弹出另外一个窗口，不会解决这bug。。。</li></ol></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;需要gclone，rclone等”基础“，还需要安装git。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="https://a-little-bear.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>主流 Markdown 编辑器推荐</title>
@@ -444,30 +466,6 @@
       <category term="影视推荐" scheme="https://a-little-bear.github.io/categories/%E5%BD%B1%E8%A7%86%E6%8E%A8%E8%8D%90/"/>
     
       <category term="视频" scheme="https://a-little-bear.github.io/categories/%E5%BD%B1%E8%A7%86%E6%8E%A8%E8%8D%90/%E8%A7%86%E9%A2%91/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Github开源便签管理程序 NotesMan v1.0.1 汉化</title>
-    <link href="https://a-little-bear.github.io/p/699e/"/>
-    <id>https://a-little-bear.github.io/p/699e/</id>
-    <published>2020-06-04T16:52:53.000Z</published>
-    <updated>2020-06-04T17:01:01.732Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>Notes Man是用于Windows的简单且便携式的便笺管理应用程序。</p><a id="more"></a><p>特色</p><ul><li>添加，查看注释，删除单个或多个注释。</li><li>为笔记创建单独的组。 在组之间轻松切换。</li><li>快速搜索以使用其标题搜索笔记。</li><li>查找选项以在笔记中搜索文本。</li><li>便携程序，无需安装。</li></ul><p><img src="https://i.loli.net/2020/06/05/CaEAZQmsi27tFTk.png" alt=""></p><p>Github地址：<a href="https://github.com/OnlyDeLtA/NotesMan">https://github.com/OnlyDeLtA/NotesMan</a></p><p>官方下载：<a href="https://github.com/OnlyDeLtA/NotesMan/releases/">https://github.com/OnlyDeLtA/NotesMan/releases/</a></p><p>蓝奏：<a href="https://alittlebear.lanzous.com/ib7xpdcenmj">https://alittlebear.lanzous.com/ib7xpdcenmj</a></p><p>备用网盘：<a href="https://wp.alittlebear.tk/699e/NotesMan64.exe">https://wp.alittlebear.tk/699e/NotesMan64.exe</a></p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;Notes Man是用于Windows的简单且便携式的便笺管理应用程序。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="软件" scheme="https://a-little-bear.github.io/categories/%E8%BD%AF%E4%BB%B6/"/>
-    
-      <category term="工具" scheme="https://a-little-bear.github.io/categories/%E8%BD%AF%E4%BB%B6/%E5%B7%A5%E5%85%B7/"/>
     
     
   </entry>
