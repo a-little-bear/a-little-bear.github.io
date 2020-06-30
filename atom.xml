@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://a-little-bear.github.io/"/>
-  <updated>2020-06-27T11:57:42.900Z</updated>
+  <updated>2020-06-30T05:04:00.883Z</updated>
   <id>https://a-little-bear.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>微软官方发布已删除数据恢复工具-Windows-File-Recovery</title>
+    <link href="https://a-little-bear.github.io/p/5c8/"/>
+    <id>https://a-little-bear.github.io/p/5c8/</id>
+    <published>2020-06-30T04:58:58.000Z</published>
+    <updated>2020-06-30T05:04:00.883Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>Windows File Recovery是微软发布的用于数据恢复的命令行工具，可以用来恢复 NTFS, FAT, exFAT 和 ReFS 文件系统的文件，支持 HDD, SSD, USB, 和记忆卡。</p><a id="more"></a><p><img src="https://img3.appinn.net/images/202006/windows-file-recovery.jpg!o" alt="微软官方发布已删除数据恢复工具 Windows File Recovery 1"></p><p>这次 Windows File Recovery 并没有提供图形界面，只需要在 <a href="https://www.microsoft.com/zh-cn/p/windows-file-recovery/9n26s50ln705?activetab=pivot:overviewtab">Windows 商店</a>安装即可。</p><p>然后，从开始菜单打开 Windows File Recovery：</p><p><img src="https://img3.appinn.net/images/202006/screenshot-2020-06-30-at-11-16-39.jpg!o" alt="微软官方发布已删除数据恢复工具 Windows File Recovery 2"></p><p>你也可以通过以管理员权限启动的 cmd 或者 powershell 来直接运行 winfr，效果相同。</p><p>直接来看例子吧，winfr 给了三个例子：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">winfr C: D:\RecoveryDestination &#x2F;n Users\appinn.com\Downloads\</span><br><span class="line">winfr C: D:\RecoveryDestination &#x2F;x &#x2F;y:PDF,JPEG</span><br><span class="line">winfr C: D:\RecoveryDestination &#x2F;r &#x2F;n *.pdf &#x2F;n *.jpg</span><br></pre></td></tr></table></figure><p>这里的 /n /x /r 是 winfr 根据磁盘结构提供的三种恢复模式：</p><ul><li>默认模式：使用主文件表 (MFT) 和 FRS 来定位丢失的文件。</li><li>/r – 分段模式(仅支持 NTFS，不需要 MFT 但需要 Segment 来恢复数据)</li><li>/x – 签名模式（使用文件头恢复）。</li></ul><p>青小蛙在<a href="https://support.microsoft.com/zh-cn/help/4538642/windows-10-restore-lost-files">文档</a>里研究里半天默认模式和分段模式里都提到的 Segment，不确定这两个模式里的 Segment 是不是同一个东西，总之默认模式和分段模式让青小蛙比较困惑。</p><p>而签名模式，对小文件不起作用，但如果你要恢复外出存储设备，比如 U 盘，那只能使用签名模式。</p><p>比如，你要恢复 U 盘（E: 盘）里的 pdf 文件，那么就需要使用签名模式，命令如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">winfr E: C: &#x2F;x &#x2F;n *.pdf</span><br></pre></td></tr></table></figure><p>然后就开始扫描（需要按下 Y 同意继续）、恢复文件了：</p><p><img src="https://img3.appinn.net/images/202006/cmd_b0wrrixksd.jpg!o" alt="微软官方发布已删除数据恢复工具 Windows File Recovery 3"></p><p>最终，winfr 将图片也一起恢复了，并且保存在了 C 盘下的 Recovery_20200630_120328 文件夹。</p><p>Windows File Recovery 唯一的问题就是命令行操作对于普通用户过于复杂，而且参数众多也不容易搞清楚…不过，在数据丢失又没有备份的事实面前，向命令行低头是很容易的事情。</p><p>转自：<a href="https://www.appinn.com/windows-file-recovery/">https://www.appinn.com/windows-file-recovery/</a></p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Windows File Recovery是微软发布的用于数据恢复的命令行工具，可以用来恢复 NTFS, FAT, exFAT 和 ReFS 文件系统的文件，支持 HDD, SSD, USB, 和记忆卡。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="https://a-little-bear.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>gclone转存bat</title>
@@ -449,31 +471,6 @@
     
     
       <category term="游戏" scheme="https://a-little-bear.github.io/categories/%E6%B8%B8%E6%88%8F/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>男生尿尿时如何防止液体溅到脚上？</title>
-    <link href="https://a-little-bear.github.io/p/678e/"/>
-    <id>https://a-little-bear.github.io/p/678e/</id>
-    <published>2020-06-05T21:35:20.000Z</published>
-    <updated>2020-06-05T21:36:57.238Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>男生尿尿时如何防止液体溅到脚上？</p></blockquote><a id="more"></a><div style="position: relative; padding: 30% 45%;"><iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="https://player.bilibili.com/player.html?aid=71530671&bvid=BV1ZE411C74F&cid=123948463&page=1&as_wide=1&high_quality=1&danmaku=0" frameborder="no" scrolling="no" allowfullscreen="true"></iframe></div>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;男生尿尿时如何防止液体溅到脚上？&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-      <category term="影视推荐" scheme="https://a-little-bear.github.io/categories/%E5%BD%B1%E8%A7%86%E6%8E%A8%E8%8D%90/"/>
-    
-      <category term="视频" scheme="https://a-little-bear.github.io/categories/%E5%BD%B1%E8%A7%86%E6%8E%A8%E8%8D%90/%E8%A7%86%E9%A2%91/"/>
     
     
   </entry>
