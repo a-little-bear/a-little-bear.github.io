@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="generator" content="Hexo 4.2.0"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><meta name="keywords" content="null"><meta name="description" content="https://github.com/allinurl/goaccess
+https://goaccess.io/download"><meta name="author" content="alittlebear"><title>实时-Web-日志分析工具-goaccess - alittlebear&#039;s blog</title><meta description="https:&amp;#x2F;&amp;#x2F;github.com&amp;#x2F;allinurl&amp;#x2F;goaccess https:&amp;#x2F;&amp;#x2F;goaccess.io&amp;#x2F;download"><meta property="og:type" content="article"><meta property="og:title" content="实时-Web-日志分析工具-goaccess"><meta property="og:url" content="https://a-little-bear.github.io/p/bf7c/"><meta property="og:site_name" content="alittlebear&#039;s blog"><meta property="og:description" content="https:&amp;#x2F;&amp;#x2F;github.com&amp;#x2F;allinurl&amp;#x2F;goaccess https:&amp;#x2F;&amp;#x2F;goaccess.io&amp;#x2F;download"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://camo.githubusercontent.com/004beafb285ceb7b9c6cef354d6d94c066be4166/68747470733a2f2f7472617669732d63692e6f72672f616c6c696e75726c2f676f6163636573732e7376673f6272616e63683d6d6173746572"><meta property="og:image" content="https://camo.githubusercontent.com/9d3d102d9e201b430afc00a1be39c79bcb5e7e56/68747470733a2f2f676f6163636573732e696f2f6261646765"><meta property="og:image" content="https://camo.githubusercontent.com/e7b2b75b28987d1daf0e4cd812ef8ce8877592cf/68747470733a2f2f676f6163636573732e696f2f696d616765732f676f6163636573732d7265616c2d74696d652d7465726d2d67682e706e673f32303230303531373031"><meta property="og:image" content="https://camo.githubusercontent.com/d8bb8f24fd472b605c37509b4520b0eacb96efb5/68747470733a2f2f676f6163636573732e696f2f696d616765732f676f6163636573732d7265616c2d74696d652d68746d6c2d67682e706e673f32303230303531373031"><meta property="article:published_time" content="2020-07-09T11:58:43.000Z"><meta property="article:modified_time" content="2020-07-09T12:02:04.736Z"><meta property="article:author" content="alittlebear"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://camo.githubusercontent.com/004beafb285ceb7b9c6cef354d6d94c066be4166/68747470733a2f2f7472617669732d63692e6f72672f616c6c696e75726c2f676f6163636573732e7376673f6272616e63683d6d6173746572"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://a-little-bear.github.io/p/bf7c/"},"headline":"实时-Web-日志分析工具-goaccess","image":[],"datePublished":"2020-07-09T11:58:43.000Z","dateModified":"2020-07-09T12:02:04.736Z","author":{"@type":"Person","name":"alittlebear"},"description":"https:&#x2F;&#x2F;github.com&#x2F;allinurl&#x2F;goaccess https:&#x2F;&#x2F;goaccess.io&#x2F;download"}</script><link rel="alternative" href="/atom.xml" title="alittlebear&#039;s blog" type="application/atom+xml"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro|Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&amp;amp;subset=latin,latin-ext|Inconsolata|Itim|Lobster.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.12/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><link rel="stylesheet" href="/css/style.css"><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="/js/globalUtils.js"></script></head><body class="is-2-column has-navbar-fixed-top"><script type="text/javascript" src="/js/alittlebear/night.js"></script><canvas id="universe"></canvas><nav class="navbar navbar-main is-fixed-top"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img class="logo-img" src="/img/logo1.png" alt="alittlebear&#039;s blog" height="28"><img class="logo-img-dark" src="/img/logo2.png" alt="alittlebear&#039;s blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/game_index">在线游戏</a><a class="navbar-item" href="/sou">聚合搜索</a><a class="navbar-item" href="/">--</a><a class="navbar-item" href="/news">每日新闻</a><a class="navbar-item" href="/music">音乐歌单</a><a class="navbar-item" href="/shoucang">私人收藏</a><a class="navbar-item" href="/">---</a><a class="navbar-item" href="/time_line">无时轴</a><a class="navbar-item" href="/self-talking">碎碎念</a><a class="navbar-item" href="/message">留言</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item night" id="night-nav" title="Night Mode" href="javascript:;"><i class="fas fa-moon" id="night-icon"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><script type="text/javascript" src="/js/theme-setting.js"></script><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-plus"> </i>2020-07-09  <a class="commentCountImg" href="/p/bf7c/#comment-container"><span class="display-none-class">5ad37e4d9a0b506032e7258353345687</span><i class="far fa-comment-dots"></i> <span class="commentCount" id="5ad37e4d9a0b506032e7258353345687">99+</span>  </a><span class="level-item"><i class="far fa-clock"> </i>27 分钟  <i class="fas fa-pencil-alt"> </i>4.0 k</span><span class="level-item" id="busuanzi_container_page_pv"><i class="far fa-eye"></i>&nbsp;&nbsp;<span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">实时-Web-日志分析工具-goaccess</h1><div class="content"><blockquote>
+<p><a href="https://github.com/allinurl/goaccess">https://github.com/allinurl/goaccess</a></p>
+<p><a href="https://goaccess.io/download">https://goaccess.io/download</a></p>
+<a id="more"></a>
+
+<p>GoAccess <a href="https://travis-ci.org/allinurl/goaccess"><img src="https://camo.githubusercontent.com/004beafb285ceb7b9c6cef354d6d94c066be4166/68747470733a2f2f7472617669732d63692e6f72672f616c6c696e75726c2f676f6163636573732e7376673f6272616e63683d6d6173746572" alt="建立状态"></a> <a href="https://goaccess.io/"><img src="https://camo.githubusercontent.com/9d3d102d9e201b430afc00a1be39c79bcb5e7e56/68747470733a2f2f676f6163636573732e696f2f6261646765" alt="GoAccess"></a></p>
+<h2 id="它是什么？"><a href="#它是什么？" class="headerlink" title="它是什么？"></a>它是什么？</h2><p>GoAccess是一个开源的<strong>实时Web日志分析器</strong>和交互式查看器，可在* nix系统上的<strong>终端</strong>中或通过 <strong>浏览器运行</strong>。它为需要动态服务器视觉报告的系统管理员提供了<strong>快速</strong>而有价值的HTTP统计信息。有关更多信息，<a href="https://goaccess.io/?src=gh">请</a>访问：<a href="https://goaccess.io/?src=gh">https</a> : <a href="https://goaccess.io/?src=gh">//goaccess.io</a>。</p>
+<p><a href="https://goaccess.io/"><img src="https://camo.githubusercontent.com/e7b2b75b28987d1daf0e4cd812ef8ce8877592cf/68747470733a2f2f676f6163636573732e696f2f696d616765732f676f6163636573732d7265616c2d74696d652d7465726d2d67682e706e673f32303230303531373031" alt="GoAccess终端仪表板"></a> <a href="https://rt.goaccess.io/?src=gh"><img src="https://camo.githubusercontent.com/d8bb8f24fd472b605c37509b4520b0eacb96efb5/68747470733a2f2f676f6163636573732e696f2f696d616765732f676f6163636573732d7265616c2d74696d652d68746d6c2d67682e706e673f32303230303531373031" alt="GoAccess HTML仪表板"></a></p>
+<h2 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h2><p>GoAccess解析指定的Web日志文件，并将数据输出到X终端。功能包括：</p>
+<ul>
+<li><strong>完全实时</strong><br>所有终端和指标的定时输出在终端输出上每200毫秒更新一次，在HTML输出上每秒钟更新一次。</li>
+<li><strong>所需的最低配置</strong><br>您可以仅对访问日志文件运行它，选择日志格式，然后让GoAccess解析访问日志并向您显示统计信息。</li>
+<li><strong>跟踪应用程序响应时间</strong><br>跟踪服务请求所花费的时间。如果您要跟踪使网站运行缓慢的页面，则非常有用。</li>
+<li><strong>几乎所有Web日志格式</strong><br>GoAccess允许使用任何自定义日志格式字符串。预定义的选项包括Apache，Nginx，Amazon S3，Elastic Load Balancing，CloudFront等。</li>
+<li><strong>增量日志处理</strong><br>需要数据持久性吗？GoAccess可以通过磁盘持久性选项逐步处理日志。</li>
+<li><strong>仅用</strong><br>C编写了<strong>一个依赖关系</strong> GoAccess。要运行它，您仅需要ncurses作为依赖关系。而已。它甚至具有自己的Web套接字服务器<a href="http://gwsocket.io/">-http://gwsocket.io/</a>。</li>
+<li><strong>访问者</strong><br>按小时或日期确定运行最慢的请求的点击数，访问者，带宽和指标。</li>
+<li><strong>每个虚拟主机的指标</strong><br>有多个虚拟主机（服务器块）？它具有一个面板，该面板显示哪个虚拟主机正在消耗大多数Web服务器资源。</li>
+<li><strong>颜色方案可定制的</strong><br>Tailor GoAccess可以适合您自己的颜色口味/方案。通过终端，或通过简单地在HTML输出上应用样式表。</li>
+<li><strong>对大型数据集的支持</strong><br>GoAccess具有优化的内存哈希表，可解析大型日志。它具有很好的内存使用率和相当不错的性能。该存储也支持磁盘上的持久性。</li>
+<li><strong>Docker支持</strong><br>能够从上游构建GoAccess的Docker映像。您仍可以使用卷映射和编辑对其进行完全配置<code>goaccess.conf</code>。请参阅 下面的<a href="https://github.com/allinurl/goaccess#docker">Docker</a>部分。</li>
+</ul>
+<h3 id="几乎所有的网络日志格式…"><a href="#几乎所有的网络日志格式…" class="headerlink" title="几乎所有的网络日志格式…"></a>几乎所有的网络日志格式…</h3><p>GoAccess允许任何自定义日志格式字符串。预定义的选项包括但不限于：</p>
+<ul>
+<li>Amazon CloudFront（下载发行版）。</li>
+<li>亚马逊简单存储服务（S3）</li>
+<li>AWS弹性负载平衡</li>
+<li>组合日志格式（XLF / ELF）Apache Nginx的</li>
+<li>通用日志格式（CLF）Apache</li>
+<li>Google云端存储。</li>
+<li>Apache虚拟主机</li>
+<li>Squid本机格式。</li>
+<li>W3C格式（IIS）。</li>
+</ul>
+<h2 id="为什么选择GoAccess？"><a href="#为什么选择GoAccess？" class="headerlink" title="为什么选择GoAccess？"></a>为什么选择GoAccess？</h2><p>GoAccess被设计为基于终端的快速日志分析器。它的核心思想是无需使用浏览器就可以快速实时地实时分析和查看Web服务器统计信息（<em>如果您想通过SSH快速分析访问日志，或者只是喜欢在终端中工作，那将是一个很好的选择</em>）。</p>
+<p>终端输出是默认输出，但它具有生成完整的，独立的实时<a href="https://rt.goaccess.io/?src=gh"><strong><code>HTML</code></strong></a> 报告以及<a href="https://goaccess.io/json?src=gh"><strong><code>JSON</code></strong></a>和 <a href="https://goaccess.io/goaccess_csv_report.csv?src=gh"><strong><code>CSV</code></strong></a>报告的功能。</p>
+<p>您可以从更多的监视器命令工具中看到它。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="从发行版本构建"><a href="#从发行版本构建" class="headerlink" title="从发行版本构建"></a>从发行版本构建</h3><p>GoAccess可以在* nix系统上编译和使用。</p>
+<p>使用以下方法下载，提取和编译GoAccess：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ wget https:&#x2F;&#x2F;tar.goaccess.io&#x2F;goaccess-1.4.tar.gz</span><br><span class="line">$ tar -xzvf goaccess-1.4.tar.gz</span><br><span class="line">$ cd goaccess-1.4&#x2F;</span><br><span class="line">$ .&#x2F;configure --enable-utf8 --enable-geoip&#x3D;legacy</span><br><span class="line">$ make</span><br><span class="line"># make install</span><br></pre></td></tr></table></figure>
+
+<h3 id="从GitHub构建（开发）"><a href="#从GitHub构建（开发）" class="headerlink" title="从GitHub构建（开发）"></a>从GitHub构建（开发）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https:&#x2F;&#x2F;github.com&#x2F;allinurl&#x2F;goaccess.git</span><br><span class="line">$ cd goaccess</span><br><span class="line">$ autoreconf -fiv</span><br><span class="line">$ .&#x2F;configure --enable-utf8 --enable-geoip&#x3D;legacy</span><br><span class="line">$ make</span><br><span class="line"># make install</span><br></pre></td></tr></table></figure>
+
+<h3 id="发行版"><a href="#发行版" class="headerlink" title="发行版"></a>发行版</h3><p>使用Linux发行版的首选软件包管理器在Linux上安装GoAccess最简单。请注意，并非所有发行版都具有最新版本的GoAccess。</p>
+<h4 id="Debian-Ubuntu"><a href="#Debian-Ubuntu" class="headerlink" title="Debian / Ubuntu"></a>Debian / Ubuntu</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># apt-get install goaccess</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong>这可能会安装GoAccess的过时版本。为确保您正在运行最新的稳定版GoAccess，请参见下面的替代选项。</p>
+<h4 id="官方GoAccess-Debian和Ubuntu存储库"><a href="#官方GoAccess-Debian和Ubuntu存储库" class="headerlink" title="官方GoAccess Debian和Ubuntu存储库"></a>官方GoAccess Debian和Ubuntu存储库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ echo &quot;deb https:&#x2F;&#x2F;deb.goaccess.io&#x2F; $(lsb_release -cs) main&quot; | sudo tee -a &#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;goaccess.list</span><br><span class="line">$ wget -O - https:&#x2F;&#x2F;deb.goaccess.io&#x2F;gnugpg.key | sudo apt-key --keyring &#x2F;etc&#x2F;apt&#x2F;trusted.gpg.d&#x2F;goaccess.gpg add -</span><br><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install goaccess</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意事项</strong>：</p>
+<ul>
+<li><code>.deb</code>官方仓库中的软件包也可以通过HTTPS获得。您可能需要安装<code>apt-transport-https</code>。</li>
+</ul>
+<h4 id="软呢帽"><a href="#软呢帽" class="headerlink" title="软呢帽"></a>软呢帽</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># yum install goaccess</span><br></pre></td></tr></table></figure>
+
+<h4 id="Arch-Linux"><a href="#Arch-Linux" class="headerlink" title="Arch Linux"></a>Arch Linux</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pacman -S goaccess</span><br></pre></td></tr></table></figure>
+
+<h4 id="Gentoo"><a href="#Gentoo" class="headerlink" title="Gentoo"></a>Gentoo</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># emerge net-analyzer&#x2F;goaccess</span><br></pre></td></tr></table></figure>
+
+<h4 id="OS-X-自制软件"><a href="#OS-X-自制软件" class="headerlink" title="OS X /自制软件"></a>OS X /自制软件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># brew install goaccess</span><br></pre></td></tr></table></figure>
+
+<h4 id="FreeBSD"><a href="#FreeBSD" class="headerlink" title="FreeBSD"></a>FreeBSD</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># cd &#x2F;usr&#x2F;ports&#x2F;sysutils&#x2F;goaccess&#x2F; &amp;&amp; make install clean</span><br><span class="line"># pkg install sysutils&#x2F;goaccess</span><br></pre></td></tr></table></figure>
+
+<h4 id="OpenBSD的"><a href="#OpenBSD的" class="headerlink" title="OpenBSD的"></a>OpenBSD的</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># cd &#x2F;usr&#x2F;ports&#x2F;www&#x2F;goaccess &amp;&amp; make install clean</span><br><span class="line"># pkg_add goaccess</span><br></pre></td></tr></table></figure>
+
+<h4 id="openSUSE"><a href="#openSUSE" class="headerlink" title="openSUSE"></a>openSUSE</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># zypper ar -f obs:&#x2F;&#x2F;server:http http</span><br><span class="line"># zypper in goaccess</span><br></pre></td></tr></table></figure>
+
+<h4 id="印第安纳州"><a href="#印第安纳州" class="headerlink" title="印第安纳州"></a>印第安纳州</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pkg install goaccess</span><br></pre></td></tr></table></figure>
+
+<h4 id="pkgsrc（NetBSD，Solaris，SmartOS等）"><a href="#pkgsrc（NetBSD，Solaris，SmartOS等）" class="headerlink" title="pkgsrc（NetBSD，Solaris，SmartOS等）"></a>pkgsrc（NetBSD，Solaris，SmartOS等）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># pkgin install goaccess</span><br></pre></td></tr></table></figure>
+
+<h4 id="视窗"><a href="#视窗" class="headerlink" title="视窗"></a>视窗</h4><p>GoAccess可以通过Cygwin在Windows中使用。请参见Cygwin的<a href="https://goaccess.io/faq#installation">软件包</a>。或通过Windows 10上的Linux子系统。</p>
+<h4 id="发行包"><a href="#发行包" class="headerlink" title="发行包"></a>发行包</h4><p>GoAccess具有最低要求，它是用C语言编写的，只需要ncurses。但是，下面是一些从源代码构建GoAccess的发行版中一些可选依赖项的表。</p>
+<table>
+<thead>
+<tr>
+<th>发行版</th>
+<th>护士</th>
+<th>GeoIP（优化）</th>
+<th>OpenSSL（可选）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Ubuntu / Debian的</strong></td>
+<td>libncursesw5-dev</td>
+<td>libgeoip-dev</td>
+<td>libssl开发</td>
+</tr>
+<tr>
+<td><strong>RHEL / CentOS</strong></td>
+<td>ncurses-devel</td>
+<td>Geoip-devel</td>
+<td>openssl-开发</td>
+</tr>
+<tr>
+<td><strong>Arch Linux</strong></td>
+<td>诅咒</td>
+<td>Geoip</td>
+<td>的openssl</td>
+</tr>
+<tr>
+<td><strong>Gentoo</strong></td>
+<td>sys-libs / ncurses</td>
+<td>开发库/ geoip</td>
+<td>dev-libs / openssl</td>
+</tr>
+<tr>
+<td><strong>松弛软件</strong></td>
+<td>诅咒</td>
+<td>GeoIP</td>
+<td>的openssl</td>
+</tr>
+</tbody></table>
+<p><strong>注意</strong>：您可能需要安装这样的构建工具<code>gcc</code>，<code>autoconf</code>， <code>gettext</code>，<code>autopoint</code>等编译/从源代码构建软件。例如 <code>base-devel</code>，<code>build-essential</code>，<code>&quot;Development Tools&quot;</code>。</p>
+<h4 id="码头工人"><a href="#码头工人" class="headerlink" title="码头工人"></a>码头工人</h4><p>Docker映像已更新，能够引导访问日志中的输出。如果只想输出报告，则可以将日志从外部环境传递到基于Docker的进程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat access.log | docker run --rm -i -e LANG&#x3D;$LANG allinurl&#x2F;goaccess -a -o html --log-format COMBINED - &gt; report.html</span><br></pre></td></tr></table></figure>
+
+<p>或实时</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat access.log | docker run -p 7890:7890 --rm -i -e LANG&#x3D;$LANG allinurl&#x2F;goaccess -a -o html --log-format COMBINED --real-time-html - &gt; report.html</span><br></pre></td></tr></table></figure>
+
+<p>您可以在<a href="https://github.com/allinurl/goaccess/blob/master/DOCKER.md">DOCKER.md中</a>阅读有关使用<a href="https://github.com/allinurl/goaccess/blob/master/DOCKER.md">docker</a>映像的<a href="https://github.com/allinurl/goaccess/blob/master/DOCKER.md">更多信息</a>。</p>
+<h2 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h2><h4 id="默认哈希表"><a href="#默认哈希表" class="headerlink" title="默认哈希表"></a>默认哈希表</h4><p>内存中存储以将数据集大小限制为可用物理内存量为代价提供了更好的性能。GoAccess使用内存中的哈希表。它具有很好的内存使用率和相当不错的性能。该存储也支持磁盘上的持久性。</p>
+<h2 id="命令行-配置选项"><a href="#命令行-配置选项" class="headerlink" title="命令行/配置选项"></a>命令行/配置选项</h2><p>看到<a href="https://goaccess.io/man#options"><strong>的选项</strong></a>可以被提供给命令或指定的配置文件中 如果在配置文件中指定，则需要使用长选项，而无需添加<code>--</code>。</p>
+<h2 id="用法-示例"><a href="#用法-示例" class="headerlink" title="用法/示例"></a>用法/示例</h2><p><strong>注意</strong>：将数据插入GoAccess不会提示日志/日期/时间配置对话框，您需要事先在配置文件或命令行中定义它。</p>
+<h3 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h3><p>要输出到终端并生成交互式报告：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># goaccess access.log</span><br></pre></td></tr></table></figure>
+
+<p>生成HTML报告：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># goaccess access.log -a &gt; report.html</span><br></pre></td></tr></table></figure>
+
+<p>生成JSON报告：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># goaccess access.log -a -d -o json &gt; report.json</span><br></pre></td></tr></table></figure>
+
+<p>生成CSV文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># goaccess access.log --no-csv-summary -o csv &gt; report.csv</span><br></pre></td></tr></table></figure>
+
+<p>GoAccess还为实时过滤和解析提供了极大的灵活性。例如，从goaccess启动以来，要通过监视日志来快速诊断问题：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># tail -f access.log | goaccess -</span><br></pre></td></tr></table></figure>
+
+<p>更妙的是，进行筛选，同时保持打开的管道保持实时分析，我们可以利用的<code>tail -f</code>和匹配模式的工具，如<code>grep</code>，<code>awk</code>，<code>sed</code>，等：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># tail -f access.log | grep -i --line-buffered &#39;firefox&#39; | goaccess --log-format&#x3D;COMBINED -</span><br></pre></td></tr></table></figure>
+
+<p>或从文件的开头进行解析，同时保持管道处于打开状态并应用过滤器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># tail -f -n +0 access.log | grep -i --line-buffered &#39;firefox&#39; | goaccess -o report.html --real-time-html -</span><br></pre></td></tr></table></figure>
+
+<h3 id="多个日志文件"><a href="#多个日志文件" class="headerlink" title="多个日志文件"></a>多个日志文件</h3><p>有几种使用GoAccess解析多个日志的方法。最简单的方法是将多个日志文件传递到命令行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># goaccess access.log access.log.1</span><br></pre></td></tr></table></figure>
+
+<p>甚至可以在读取常规文件时从管道中解析文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># cat access.log.2 | goaccess access.log access.log.1 -</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：单破折号附加到命令行，以使GoAccess知道应从管道读取。</p>
+<p>现在，如果我们想为GoAccess增加更多的灵活性，我们可以做一系列的管道。例如，如果我们要处理除当前日志文件之外的所有压缩日志文件access.log。*。gz，我们可以执行以下操作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># zcat access.log.*.gz | goaccess access.log -</span><br></pre></td></tr></table></figure>
+
+<p><em>注意</em>：在Mac OS X上，请使用<code>gunzip -c</code>代替<code>zcat</code>。</p>
+<h3 id="实时HTML输出"><a href="#实时HTML输出" class="headerlink" title="实时HTML输出"></a>实时HTML输出</h3><p>GoAccess可以在HTML报表中输出实时数据。您甚至可以通过电子邮件发送HTML文件，因为它是由一个没有外部文件依赖性的单个文件组成的，这太好了！</p>
+<p>生成实时HTML报告的过程与创建静态报告的过程非常相似。只<code>--real-time-html</code>需要使其实时即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># goaccess access.log -o &#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html&#x2F;your_site&#x2F;report.html --real-time-html</span><br></pre></td></tr></table></figure>
+
+<p>要查看报告，您可以导航到<code>http://your_site/report.html</code>。</p>
+<p>默认情况下，GoAccess将使用生成的报告的主机名。（可选）您可以指定客户端浏览器将连接到的URL。有关更多详细示例，请参见<a href="https://goaccess.io/faq">FAQ</a>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># goaccess access.log -o report.html --real-time-html --ws-url&#x3D;goaccess.io</span><br></pre></td></tr></table></figure>
+
+<p>默认情况下，GoAccess侦听端口7890，以使用7890以外的其他端口，您可以将其指定为（确保该端口已打开）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># goaccess access.log -o report.html --real-time-html --port&#x3D;9870</span><br></pre></td></tr></table></figure>
+
+<p>要将WebSocket服务器绑定到除0.0.0.0之外的其他地址，可以将其指定为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># goaccess access.log -o report.html --real-time-html --addr&#x3D;127.0.0.1</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：要通过TLS / SSL连接输出实时数据，您需要使用 <code>--ssl-cert=&lt;cert.crt&gt;</code>和<code>--ssl-key=&lt;priv.key&gt;</code>。</p>
+<h3 id="筛选"><a href="#筛选" class="headerlink" title="筛选"></a>筛选</h3><h4 id="处理日期"><a href="#处理日期" class="headerlink" title="处理日期"></a>处理日期</h4><p>另一个有用的管道是从网络日志中过滤日期</p>
+<p>下面将使所有HTTP请求从头开始<code>05/Dec/2010</code>直到文件结束。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># sed -n &#39;&#x2F;05\&#x2F;Dec\&#x2F;2010&#x2F;,$ p&#39; access.log | goaccess -a -</span><br></pre></td></tr></table></figure>
+
+<p>或使用相对日期，例如昨天或明天：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># sed -n &#39;&#x2F;&#39;$(date &#39;+%d\&#x2F;%b\&#x2F;%Y&#39; -d &#39;1 week ago&#39;)&#39;&#x2F;,$ p&#39; access.log | goaccess -a -</span><br></pre></td></tr></table></figure>
+
+<p>如果我们只想分析从DATE a到DATE b的某个时间范围，则可以执行以下操作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># sed -n &#39;&#x2F;5\&#x2F;Nov\&#x2F;2010&#x2F;,&#x2F;5\&#x2F;Dec\&#x2F;2010&#x2F; p&#39; access.log | goaccess -a -</span><br></pre></td></tr></table></figure>
+
+<p>如果我们只想保留一定数量的数据并回收存储，则只能保留一定的天数。例如保留并显示最近5天：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># goaccess access.log --keep-last&#x3D;5</span><br></pre></td></tr></table></figure>
+
+<h4 id="虚拟主机"><a href="#虚拟主机" class="headerlink" title="虚拟主机"></a>虚拟主机</h4><p>假设您的日志包含虚拟主机字段。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vhost.io:80 8.8.4.4 - - [02&#x2F;Mar&#x2F;2016:08:14:04 -0600] &quot;GET &#x2F;shop HTTP&#x2F;1.1&quot; 200 615 &quot;-&quot; &quot;Googlebot-Image&#x2F;1.0&quot;</span><br></pre></td></tr></table></figure>
+
+<p>并且您想将虚拟主机附加到请求中，以查看顶级URL属于哪个虚拟主机：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk &#39;$8&#x3D;$1$8&#39; access.log | goaccess -a -</span><br></pre></td></tr></table></figure>
+
+<p>为此，还可以使用实时过滤和解析：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail -f  access.log | unbuffer -p awk &#39;$8&#x3D;$1$8&#39; | goaccess -a -</span><br></pre></td></tr></table></figure>
+
+<p>要排除虚拟主机列表，您可以执行以下操作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># grep -v &quot;&#96;cat exclude_vhost_list_file&#96;&quot; vhost_access.log | goaccess -</span><br></pre></td></tr></table></figure>
+
+<h4 id="文件，状态代码和漫游器"><a href="#文件，状态代码和漫游器" class="headerlink" title="文件，状态代码和漫游器"></a>文件，状态代码和漫游器</h4><p>解析特定页面，例如，页面浏览，<code>html</code>，<code>htm</code>，<code>php</code>，等的请求中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># awk &#39;$7~&#x2F;\.html|\.htm|\.php&#x2F;&#39; access.log | goaccess -</span><br></pre></td></tr></table></figure>
+
+<p>注意，<code>$7</code>是通用和组合日志格式的请求字段（无虚拟主机），如果您的日志包括虚拟主机，则您可能想使用它<code>$8</code>。最好检查您要拍摄的领域，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># tail -10 access.log | awk &#39;&#123;print $8&#125;&#39;</span><br></pre></td></tr></table></figure>
+
+<p>或解析特定的状态代码，例如500（内部服务器错误）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># awk &#39;$9~&#x2F;500&#x2F;&#39; access.log | goaccess -</span><br></pre></td></tr></table></figure>
+
+<p>或多个状态代码，例如所有3xx和5xx：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># tail -f -n +0 access.log | awk &#39;$9~&#x2F;3[0-9]&#123;2&#125;|5[0-9]&#123;2&#125;&#x2F;&#39; | goaccess -o out.html -</span><br></pre></td></tr></table></figure>
+
+<p>并获得有关攻击您服务器的机器人（爬虫）数量的概述：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># tail -F -n +0 access.log | grep -i --line-buffered &#39;bot&#39; | goaccess -</span><br></pre></td></tr></table></figure>
+
+<h3 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h3><p>另外，值得指出的是，如果我们想以较低的优先级运行GoAccess，可以将其运行为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># nice -n 19 goaccess -f access.log -a</span><br></pre></td></tr></table></figure>
+
+<p>如果您不想将其安装在服务器上，仍然可以从本地计算机上运行它！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># ssh root@server &#39;cat &#x2F;var&#x2F;log&#x2F;apache2&#x2F;access.log&#39; | goaccess -a -</span><br></pre></td></tr></table></figure>
+
+<h4 id="故障排除"><a href="#故障排除" class="headerlink" title="故障排除"></a>故障排除</h4><p>我们收到许多以前已经回答过的问题。</p>
+<ul>
+<li>日期/时间匹配问题？检查您的日志格式和运行GoAccess的系统区域设置是否匹配。参见<a href="https://github.com/allinurl/goaccess/issues/1571#issuecomment-543186858">＃1571</a></li>
+<li>模式匹配有问题吗？空间通常是个问题，例如，参见<a href="https://github.com/allinurl/goaccess/issues/136">＃136</a>，<a href="https://github.com/allinurl/goaccess/issues/1579">＃1579</a></li>
+<li>与日志条目匹配的其他问题：<a href="https://github.com/allinurl/goaccess/issues?q=is%3Aissue+is%3Aclosed+label%3A"log%2Fdate%2Ftime+format"">关于日志/日期/时间格式，</a>请参阅<a href="https://github.com/allinurl/goaccess/issues?q=is%3Aissue+is%3Aclosed+label%3A"log%2Fdate%2Ftime+format"">&gt; 200个已解决的问题</a></li>
+<li>日志处理有问题吗？请参阅<a href="https://github.com/allinurl/goaccess/issues?q=is%3Aissue+is%3Aclosed+label%3Alog-processing">&gt; 111关于日志处理的问题</a></li>
+</ul>
+<h4 id="增量日志处理"><a href="#增量日志处理" class="headerlink" title="增量日志处理"></a>增量日志处理</h4><p>GoAccess能够通过其内部存储逐步处理日志并将其数据转储到磁盘。它以以下方式工作：</p>
+<ol>
+<li>数据集必须先使用<code>--persist</code>保留，然后才能加载相同的数据集。</li>
+<li><code>--restore</code>。如果传递了新数据（通过管道或通过日志文件），它将把它附加到原始数据集中。</li>
+</ol>
+<h5 id="笔记"><a href="#笔记" class="headerlink" title="笔记"></a>笔记</h5><p>GoAccess跟踪所有已处理文件的inode（假设文件将保留在同一分区上）以及每个文件的最后一行和最后一行的时间戳。例如， <code>inode:29627417|line:20012|ts:20171231235059</code></p>
+<p>如果该索引节点与当前文件不匹配，它将解析所有行。如果当前文件与索引节点匹配，则它将读取剩余的行并更新已解析的行数和时间戳。作为额外的预防措施，它不会解析时间戳小于等于存储的时间戳的日志行。</p>
+<p>管道传输数据基于最后读取的行的时间戳工作。例如，它将解析并丢弃所有传入的条目，直到找到时间戳&gt; =而不是存储的时间戳。</p>
+<h5 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; last month access log</span><br><span class="line"># goaccess access.log.1 --persist</span><br></pre></td></tr></table></figure>
+
+<p>然后，用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; append this month access log, and preserve new data</span><br><span class="line"># goaccess access.log --restore --persist</span><br></pre></td></tr></table></figure>
+
+<p>仅读取持久数据（不分析新数据）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># goaccess --restore</span><br></pre></td></tr></table></figure>
+
+<h2 id="贡献"><a href="#贡献" class="headerlink" title="贡献"></a>贡献</h2><p>欢迎使用GoAccess。最有用的方法是尝试一下并提供反馈。随时使用Github问题跟踪器并提出请求，以讨论和提交代码更改。</p>
+<p>请享用！</p>
+</blockquote>
+</div><div><div class="recommend-post"><span class="is-size-6 has-text-grey has-mr-7"># 相关文章</span><br><span>  1.<a class="is-size-6" href="/p/699e/" target="_blank">Github开源便签管理程序 NotesMan v1.0.1 汉化</a><br></span><span>  2.<a class="is-size-6" href="/p/ce22/" target="_blank">全局鼠标手势软件 MouseInc v2.10.18</a><br></span><span>  3.<a class="is-size-6" href="/p/6536/" target="_blank">图片浏览器 XnView MP v0.96.2</a><br></span><span>  4.<a class="is-size-6" href="/p/4cde/" target="_blank">图片浏览器 XnView v2.49.3 Extended 官方中文</a><br></span><span>  5.<a class="is-size-6" href="/p/198a/" target="_blank">Markdown编辑器 Typora v0.9.86</a><br></span><span>  6.<a class="is-size-6" href="/p/1f78/" target="_blank">gif录制软件 ScreenToGif v2.20.1</a><br></span></div><div class="recommend-post"><span class="is-size-6 has-text-grey has-mr-7"># 推荐文章</span><br><span>  1.<a class="is-size-6" href="/p/a5w7/" target="_blank">全球疫情非实时数据</a><br></span><span>  2.<a class="is-size-6" href="/p/1140/" target="_blank">awesome-python-cn-Python-资源大全中文版</a><br></span><span>  3.<a class="is-size-6" href="/p/bf7c/" target="_blank">实时-Web-日志分析工具-goaccess</a><br></span><span>  4.<a class="is-size-6" href="/p/3d73/" target="_blank">将bat批处理命令文件固定到任务栏</a><br></span><span>  5.<a class="is-size-6" href="/p/5c8/" target="_blank">微软官方发布已删除数据恢复工具-Windows-File-Recovery</a><br></span><span>  6.<a class="is-size-6" href="/p/f18d/" target="_blank">gclone转存bat</a><br></span></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/p/1140/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">awesome-python-cn-Python-资源大全中文版</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/p/3d73/"><span class="level-item">将bat批处理命令文件固定到任务栏</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><div class="title is-5">评论</div><div id="comment-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.0/dist/gitalk.css"><script> $.getScript('/js/gitalk.min.js', function () { 
+            var gitalk = new Gitalk({
+            language:'zh-CN',
+            id: '5ad37e4d9a0b506032e7258353345687',
+            repo: 'a-little-bear.github.io',
+            owner: 'a-little-bear',
+            clientID: '7a12c782031110c85c04',
+            clientSecret: '615df4c852a3cf8bad068bfa5151449c6c1b3f34',
+            admin: ["a-little-bear"],
+            createIssueManually: true,
+            distractionFreeMode: true,
+            perPage: 10,
+            pagerDirection: 'last',
+            
+            
+            enableHotKey: true,
+            isLocked: false
+        })
+        gitalk.render('comment-container')});</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget toc-scroll" id="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-它是什么？" href="#它是什么？"><span>它是什么？</span></a></li><li><a class="is-flex toc-item" id="toc-item-特征" href="#特征"><span>特征</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-几乎所有的网络日志格式…" href="#几乎所有的网络日志格式…"><span>几乎所有的网络日志格式…</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-为什么选择GoAccess？" href="#为什么选择GoAccess？"><span>为什么选择GoAccess？</span></a></li><li><a class="is-flex toc-item" id="toc-item-安装" href="#安装"><span>安装</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-从发行版本构建" href="#从发行版本构建"><span>从发行版本构建</span></a></li><li><a class="is-flex toc-item" id="toc-item-从GitHub构建（开发）" href="#从GitHub构建（开发）"><span>从GitHub构建（开发）</span></a></li><li><a class="is-flex toc-item" id="toc-item-发行版" href="#发行版"><span>发行版</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-Debian-Ubuntu" href="#Debian-Ubuntu"><span>Debian &amp;#x2F; Ubuntu</span></a></li><li><a class="is-flex toc-item" id="toc-item-官方GoAccess-Debian和Ubuntu存储库" href="#官方GoAccess-Debian和Ubuntu存储库"><span>官方GoAccess Debian和Ubuntu存储库</span></a></li><li><a class="is-flex toc-item" id="toc-item-软呢帽" href="#软呢帽"><span>软呢帽</span></a></li><li><a class="is-flex toc-item" id="toc-item-Arch-Linux" href="#Arch-Linux"><span>Arch Linux</span></a></li><li><a class="is-flex toc-item" id="toc-item-Gentoo" href="#Gentoo"><span>Gentoo</span></a></li><li><a class="is-flex toc-item" id="toc-item-OS-X-自制软件" href="#OS-X-自制软件"><span>OS X &amp;#x2F;自制软件</span></a></li><li><a class="is-flex toc-item" id="toc-item-FreeBSD" href="#FreeBSD"><span>FreeBSD</span></a></li><li><a class="is-flex toc-item" id="toc-item-OpenBSD的" href="#OpenBSD的"><span>OpenBSD的</span></a></li><li><a class="is-flex toc-item" id="toc-item-openSUSE" href="#openSUSE"><span>openSUSE</span></a></li><li><a class="is-flex toc-item" id="toc-item-印第安纳州" href="#印第安纳州"><span>印第安纳州</span></a></li><li><a class="is-flex toc-item" id="toc-item-pkgsrc（NetBSD，Solaris，SmartOS等）" href="#pkgsrc（NetBSD，Solaris，SmartOS等）"><span>pkgsrc（NetBSD，Solaris，SmartOS等）</span></a></li><li><a class="is-flex toc-item" id="toc-item-视窗" href="#视窗"><span>视窗</span></a></li><li><a class="is-flex toc-item" id="toc-item-发行包" href="#发行包"><span>发行包</span></a></li><li><a class="is-flex toc-item" id="toc-item-码头工人" href="#码头工人"><span>码头工人</span></a></li></ul></li></ul></li><li><a class="is-flex toc-item" id="toc-item-存储" href="#存储"><span>存储</span></a><ul class="menu-list toc"><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-默认哈希表" href="#默认哈希表"><span>默认哈希表</span></a></li></ul></ul></li><li><a class="is-flex toc-item" id="toc-item-命令行-配置选项" href="#命令行-配置选项"><span>命令行&amp;#x2F;配置选项</span></a></li><li><a class="is-flex toc-item" id="toc-item-用法-示例" href="#用法-示例"><span>用法&amp;#x2F;示例</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-入门" href="#入门"><span>入门</span></a></li><li><a class="is-flex toc-item" id="toc-item-多个日志文件" href="#多个日志文件"><span>多个日志文件</span></a></li><li><a class="is-flex toc-item" id="toc-item-实时HTML输出" href="#实时HTML输出"><span>实时HTML输出</span></a></li><li><a class="is-flex toc-item" id="toc-item-筛选" href="#筛选"><span>筛选</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-处理日期" href="#处理日期"><span>处理日期</span></a></li><li><a class="is-flex toc-item" id="toc-item-虚拟主机" href="#虚拟主机"><span>虚拟主机</span></a></li><li><a class="is-flex toc-item" id="toc-item-文件，状态代码和漫游器" href="#文件，状态代码和漫游器"><span>文件，状态代码和漫游器</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-提示" href="#提示"><span>提示</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-故障排除" href="#故障排除"><span>故障排除</span></a></li><li><a class="is-flex toc-item" id="toc-item-例子" href="#例子"><span>例子</span></a></li></ul></li></ul></li><li><a class="is-flex toc-item" id="toc-item-贡献" href="#贡献"><span>贡献</span></a></li></ul></div></div><script type="text/javascript" async>
+        $(document).ready(function () { //参考自 https://github.com/ppoffice/hexo-theme-icarus/pull/616/files
+            var observerTopMargin;
+            var scrollObserver;
+            var headerElems = $(".headerlink");
+            var activeTocItem;
+        
+            function initIntersectionObserver(docHeight) {
+                observerTopMargin = docHeight;
+                scrollObserver = new IntersectionObserver(scrollCallBack,
+                    {
+                        root: null,  // viewpoint
+                        rootMargin: docHeight + "px 0px -80% 0px"  // cover top 30% of viewport to the top of document
+                    })
+            }
+        
+            function scrollCallBack(entries, observer) {
+                if ($(window).scrollTop() > observerTopMargin * 0.7) { 
+                    // User somehow scroll to 70% of observerTopMargin (which is inited as 200% document height)
+                    // Observer top margin need to extend to cover all the space to the top of the document
+                    initIntersectionObserver(observerTopMargin * 2)
+                    observer.disconnect();
+                    return;
+                }
+                let toActive;
+                if (entries[0].intersectionRatio == 1) {  // enter viewed area
+                    let entry = entries.reduce((u, v) => (u.target.toc_id > v.target.toc_id ? u : v));  // get the lowest item
+                    toActive = $("#toc-item-" + $(entry.target).attr("href").substr(1));
+                } else {
+                    let entry = entries.reduce((u, v) => (u.target.toc_id < v.target.toc_id ? u : v));  // get the highest item
+                    let idx = Math.max(entry.target.toc_id - 1, 0);
+                    toActive = $("#toc-item-" + $(headerElems[idx]).attr("href").substr(1));
+                }
+                if (activeTocItem) activeTocItem.removeClass("is-current");
+                activeTocItem = toActive
+                activeTocItem.addClass("is-current");
+            }
+        
+            initIntersectionObserver($(document).height() * 2);
+            headerElems.each(function (index, obj) {
+                obj.toc_id = index;
+                scrollObserver.observe(obj);
+            })
+        });</script></div><div class="card widget"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="" src="https://cdn.jsdelivr.net/gh/a-little-bear/picture/img/1280-646950218-panda-in-thailand.jpg" alt="alittlebear"></figure><p class="title is-size-4 is-block line-height-inherit">alittlebear</p><p class="is-size-6 is-block">一坨小萌新~（音乐在左下角）</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>太阳系 地球</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">72</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">14</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">11</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/a-little-bear" target="_blank" rel="noopener">Github</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="吾爱破解" href="https://www.52pojie.cn/home.php?mod=follow&amp;uid=1265340&amp;do=view&amp;from=space">吾爱破解</a><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="哔哩哔哩" href="https://space.bilibili.com/470220192">哔哩哔哩</a></div><div><hr><p id="hitokoto">:D 一言句子获取中...</p><script type="text/javascript" defer>function getYiyan(){
+                                $.getJSON("https://v1.hitokoto.cn/", function (data) {
+                                if(data){
+                                    $('#hitokoto').html("");
+                                    $('#hitokoto').append("<strong style='color: #3273dc;'>"+data.hitokoto+"</strong>"+
+                                    "<p>"+"来源《"+data.from+"》</p><p>提供者-"+data.creator+"</p>");
+                                }});}
+                                $(function (){getYiyan();$('#hitokoto').click(function(){getYiyan();})});</script></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/categories/%E4%B9%A6%E7%B1%8D/"><span class="level-start"><span class="level-item">书籍</span></span><span class="level-end"><span class="level-item tag">7</span></span></a><ul class="mr-0"><li><a class="level is-mobile is-marginless" href="/categories/%E4%B9%A6%E7%B1%8D/%E5%B7%A5%E5%85%B7/"><span class="level-start"><span class="level-item">工具</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E4%B9%A6%E7%B1%8D/%E7%94%B5%E5%AD%90%E4%B9%A6/"><span class="level-start"><span class="level-item">电子书</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E4%B9%A6%E7%B1%8D/%E9%98%85%E8%AF%BB%E7%BB%8F%E9%AA%8C/"><span class="level-start"><span class="level-item">阅读经验</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile is-marginless" href="/categories/%E5%85%B6%E4%BB%96/"><span class="level-start"><span class="level-item">其他</span></span><span class="level-end"><span class="level-item tag">19</span></span></a><ul class="mr-0"><li><a class="level is-mobile is-marginless" href="/categories/%E5%85%B6%E4%BB%96/%E7%BD%91%E7%9B%98/"><span class="level-start"><span class="level-item">网盘</span></span><span class="level-end"><span class="level-item tag">8</span></span></a></li></ul></li><li><a class="level is-mobile is-marginless" href="/categories/%E5%BD%B1%E8%A7%86%E6%8E%A8%E8%8D%90/"><span class="level-start"><span class="level-item">影视推荐</span></span><span class="level-end"><span class="level-item tag">3</span></span></a><ul class="mr-0"><li><a class="level is-mobile is-marginless" href="/categories/%E5%BD%B1%E8%A7%86%E6%8E%A8%E8%8D%90/%E8%A7%86%E9%A2%91/"><span class="level-start"><span class="level-item">视频</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></li><li><a class="level is-mobile is-marginless" href="/categories/%E6%8A%80%E6%9C%AF/"><span class="level-start"><span class="level-item">技术</span></span><span class="level-end"><span class="level-item tag">7</span></span></a><ul class="mr-0"><li><a class="level is-mobile is-marginless" href="/categories/%E6%8A%80%E6%9C%AF/bat/"><span class="level-start"><span class="level-item">bat</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E6%8A%80%E6%9C%AF/hexo/"><span class="level-start"><span class="level-item">hexo</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></li><li><a class="level is-mobile is-marginless" href="/categories/%E6%B8%B8%E6%88%8F/"><span class="level-start"><span class="level-item">游戏</span></span><span class="level-end"><span class="level-item tag">23</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E8%BD%AF%E4%BB%B6/"><span class="level-start"><span class="level-item">软件</span></span><span class="level-end"><span class="level-item tag">9</span></span></a><ul class="mr-0"><li><a class="level is-mobile is-marginless" href="/categories/%E8%BD%AF%E4%BB%B6/%E5%B7%A5%E5%85%B7/"><span class="level-start"><span class="level-item">工具</span></span><span class="level-end"><span class="level-item tag">8</span></span></a></li></ul></li></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/%E7%BB%8F%E9%AA%8C/"><span class="tag">经验</span><span class="tag is-grey-lightest">12</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E4%B9%A6%E7%B1%8D/"><span class="tag">书籍</span><span class="tag is-grey-lightest">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97/"><span class="tag">俄罗斯方块</span><span class="tag is-grey-lightest">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%9B%BE%E7%89%87%E6%B5%8F%E8%A7%88%E5%99%A8/"><span class="tag">图片浏览器</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MD%E7%BC%96%E8%BE%91%E5%99%A8/"><span class="tag">MD编辑器</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%85%B6%E4%BB%96/"><span class="tag">其他</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"><span class="tag">开发工具</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%BD%95%E5%83%8F%E8%BD%AF%E4%BB%B6/"><span class="tag">录像软件</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"><span class="tag">浏览器</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BD%91%E7%AB%99/"><span class="tag">网站</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%98%85%E8%AF%BB%E8%BD%AF%E4%BB%B6/"><span class="tag">阅读软件</span><span class="tag is-grey-lightest">1</span></a></div></div></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/archives/2020/07/"><span class="level-start"><span class="level-item">七月 2020</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/06/"><span class="level-start"><span class="level-item">六月 2020</span></span><span class="level-end"><span class="level-item tag">29</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/05/"><span class="level-start"><span class="level-item">五月 2020</span></span><span class="level-end"><span class="level-item tag">40</span></span></a></li></ul></div></div></div><div class="card widget"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content size-small"><p><time dateTime="2020-07-09T12:05:54.000Z">2020-07-09</time></p><p class="title is-6"><a class="link-muted" href="/p/1140/">awesome-python-cn-Python-资源大全中文版</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2020-07-09T11:58:43.000Z">2020-07-09</time></p><p class="title is-6"><a class="link-muted" href="/p/bf7c/">实时-Web-日志分析工具-goaccess</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a> / <a class="link-muted" href="/categories/%E8%BD%AF%E4%BB%B6/%E5%B7%A5%E5%85%B7/">工具</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2020-07-06T06:27:04.000Z">2020-07-06</time></p><p class="title is-6"><a class="link-muted" href="/p/3d73/">将bat批处理命令文件固定到任务栏</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a> / <a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/bat/">bat</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2020-06-30T04:58:58.000Z">2020-06-30</time></p><p class="title is-6"><a class="link-muted" href="/p/5c8/">微软官方发布已删除数据恢复工具-Windows-File-Recovery</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2020-06-27T10:52:59.000Z">2020-06-27</time></p><p class="title is-6"><a class="link-muted" href="/p/f18d/">gclone转存bat</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a> / <a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/bat/">bat</a></p></div></article></div></div><div class="card widget"><div class="card-content"><h3 class="menu-label">最新评论</h3><span class="body_hot_comment">加载中，最新评论有1分钟缓存...</span></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img class="logo-img" src="/img/logo1.png" alt="alittlebear&#039;s blog" height="28"><img class="logo-img-dark" src="/img/logo2.png" alt="alittlebear&#039;s blog" height="28"></a><p class="size-small"><span>&copy; 2020 alittlebear</span>  Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>,Modify by <a href="https://github.com/removeif/hexo-theme-amazing" target="_blank">removeif</a> <br><span>© 版权说明：[本网站所有内容均收集于互联网或自己创作,<br />&nbsp;&nbsp;&nbsp;&nbsp;方便于网友与自己学习交流，如有侵权，请<a href="/message" target="_blank">留言</a>，立即处理]<br /></span><span><span id="statistic-times">loading...</span><script>function createTime(time) {
+            var n = new Date(time);
+            now.setTime(now.getTime() + 250),
+                days = (now - n) / 1e3 / 60 / 60 / 24,
+                dnum = Math.floor(days),
+                hours = (now - n) / 1e3 / 60 / 60 - 24 * dnum,
+                hnum = Math.floor(hours),
+            1 == String(hnum).length && (hnum = "0" + hnum),
+                minutes = (now - n) / 1e3 / 60 - 1440 * dnum - 60 * hnum,
+                mnum = Math.floor(minutes),
+            1 == String(mnum).length && (mnum = "0" + mnum),
+                seconds = (now - n) / 1e3 - 86400 * dnum - 3600 * hnum - 60 * mnum,
+                snum = Math.round(seconds),
+            1 == String(snum).length && (snum = "0" + snum),
+                document.getElementById("statistic-times").innerHTML = "❤️本站自 <strong>"+time.split(" ")[0].replace(/\//g,".")+"</strong> 已运行 <strong>" + dnum + "</strong> 天 <strong>" + hnum + "</strong> 小时 <strong>" + mnum + "</strong> 分 <strong>" + snum + "</strong> 秒！❤️";
+        }var now = new Date();setInterval("createTime('2020/04/23 00:00:00')", 250,"");</script><br></span><div class="size-small"><span>❤️感谢 <strong><span id="busuanzi_value_site_uv">99+</span></strong> 小伙伴的 <strong><span id="busuanzi_value_site_pv">99+</span></strong> 次光临！❤️</span></div></p></div><div class="level-end"><div class="sideMusic"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="/js/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script><meting-js style="width: auto;height: 2000px;" server="netease" type="playlist" id="2985973204" theme="#2980b9" loop="all" autoplay="false" order="random" storageName="aplayer-setting" lrctype="0" list-max-height="400px" fixed="true"></meting-js></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            site: {
+                url: 'https://a-little-bear.github.io',
+                external_link: {"enable":true,"exclude":[]}
+            },
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back-to-top.js" defer></script><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.12/dist/js/lightgallery-all.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><!--!--><!--!--><!--!--><script src="/js/toc.js" defer></script><script src="/js/main.js" defer></script><script>$.getScript('/js/comment-issue-data.js',function(){loadIssueData('7a12c782031110c85c04','615df4c852a3cf8bad068bfa5151449c6c1b3f34','a-little-bear','a-little-bear.github.io',false);})</script><script src="/js/alittlebear/universe.js"></script><link rel="stylesheet" href="/css/insight.css"><div class="searchbox ins-search"><div class="searchbox-container ins-search-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="想要查找什么..."><span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"></div></div></div></div><script>(function (window) {
+            var INSIGHT_CONFIG = {
+                TRANSLATION: {
+                    POSTS: '文章',
+                    PAGES: '页面',
+                    CATEGORIES: '分类',
+                    TAGS: '标签',
+                    UNTITLED: '(无标题)',
+                },
+                CONTENT_URL: '/content.json',
+            };
+            window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+        })(window);</script><script src="/js/insight.js" defer></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.js"></script><script type="text/javascript">var pjax = new Pjax({
+            elements: "a",//代表点击链接就更新
+            selectors: [  //代表要更新的节点
+                ".section",
+                "title"
+            ],
+            cache: true,
+            cacheBust:false
+        })
+
+        function loadBusuanzi(){
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js", function () {});
+        }
+
+        // 开始 PJAX 执行的函数
+        document.addEventListener('pjax:send', function () {
+        });
+        
+        // PJAX 完成之后执行的函数，可以和上面的重载放在一起
+        document.addEventListener('pjax:complete', function () {
+            $(".section").css({opacity:1});
+            if(true){
+                $.getScript('/js/comment-issue-data.js',function(){loadIssueData('7a12c782031110c85c04','615df4c852a3cf8bad068bfa5151449c6c1b3f34','a-little-bear','a-little-bear.github.io',false);});
+            }
+            if(false){
+                loadMathJax();
+            }
+            loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);
+            loadBackTop();
+            loadBusuanzi();
+            if(typeof loadBanner == 'function'){
+                loadBanner();
+            }
+        });</script></body><script type="text/javascript" src="/js/typing.js"></script></html>
