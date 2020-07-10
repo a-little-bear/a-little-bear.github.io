@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://a-little-bear.github.io/"/>
-  <updated>2020-07-09T12:07:28.909Z</updated>
+  <updated>2020-07-09T14:36:50.551Z</updated>
   <id>https://a-little-bear.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>微软买下魔鬼域名-自己挖的坑，跪着也要填完</title>
+    <link href="https://a-little-bear.github.io/p/4674/"/>
+    <id>https://a-little-bear.github.io/p/4674/</id>
+    <published>2020-07-09T14:34:32.000Z</published>
+    <updated>2020-07-09T14:36:50.551Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>前段时间，巨硬的微软豪掷 160 万美金，从一位 70 岁的域名投资者迈克·奥康纳 (Mike O’connor) 手里，买下了一个魔鬼域名，并且发布了一则声明，将此事昭告天下。</p><blockquote><p>为了保护系统，我们鼓励客户在规划内部域名和网络名称时养成安全的安全习惯。我们在 2009年 6 月发布了一份安全建议，并发布了一项有助于保护客户安全的安全更新。在我们对客户安全的持续承诺中，我们还获得了<a href="https://link.zhihu.com/?target=http%3A//corp.com">http://corp.com</a> 域名。</p></blockquote><a id="more"></a><p><img src="https://pic1.zhimg.com/80/v2-cc8ff70424bd0348436f52aa8c6688f4_720w.jpg" alt="图片来源于网络"></p><p>一个貌不惊人的域名，到底有什么魔力，能吸引互联网巨头和知名域名投资者围着它转圈圈？而且一转就是 26 年，其中必有蹊跷。</p><p>迈克·奥康纳是最早期的一批域名投资者之一，1994 年，他注册了<a href="http://Corp.com">http://Corp.com</a> 这个域名，当年，域名还没什么热度，奥康纳趁着市场低迷，用很低的价格，买到了几个堪称大熊猫级别的域名，比如 <a href="https://link.zhihu.com/?target=http%3A//pub.com">http://pub.com</a>、<a href="https://link.zhihu.com/?target=http%3A//television.com">http://television.com</a>、<a href="https://link.zhihu.com/?target=http%3A//cafes.com">http://cafes.com</a> 等。</p><p>后来，互联网深入了世界的每一个角落，越来越多的公司发现了域名的价值，争相开始注册和抢购，此时，域名已经成为互联网领域的虚拟房地产，一个好的域名，不仅升值快，还足够保值，一些小企业家，甚至愿意用美国旧金山一居室的价格，购买一个域名。</p><p>对企业来说，一个简单而且容易拼写的域名，是吸引流量的关键。</p><p>比如，1996 年，网站 CNET 找到奥康纳，提出想要以 5 万美元的价格，购买一个叫做“ television.com”的域名，但奥康纳拒绝了，在他看来，这个域名的价值远不止这个数。</p><p>正是在市场的热捧之下，奥康纳靠买卖域名，挣了不少钱，称得上是互联网领域的包租公，躺着就能赚钱。</p><p>但是，在躺赚的几十年里，奥康纳从来没想过要卖掉<a href="http://Corp.com">http://Corp.com</a> 这个域名，因为它实在是太特殊了。</p><p>不管是谁，只要拥有<a href="http://Corp.com，就能访问到全球各大公司数以万计">http://Corp.com，就能访问到全球各大公司数以万计</a> Windows PC 中的敏感数据，包括密码、电子邮件等，换句话说，<a href="https://link.zhihu.com/?target=http%3A//corp.com">http://corp.com</a> 的拥有者，就算躺在家里，也会有无数企业拼命想要藏起来的秘密送上门来，等着你批阅。</p><p>为什么会出现这种情况呢？这就需要先搞明白域名和 IP 之间的关系，在这儿，我拿百度来举例。</p><p>如果想上百度搜索一个问题，一共需要几步？三步。</p><p>第一，打开百度的网站；</p><p>第二，输入想要搜索的问题；</p><p>第三，回车。</p><p>有意思的是，要想打开百度的网页，有两种办法。第一种，输入百度域名：<a href="https://link.zhihu.com/?target=http%3A//baidu.com">http://baidu.com</a>；第二种，输入百度 IP：14.215.177.39。两种方法实现的效果是一样的。</p><p>很显然，域名比 IP 好记的多，但是，IP 才是你所要访问网站的唯一地址，所以，当你输入域名时，电脑其实会自动把域名转化为 IP 地址，这就出现了一个问题，你的电脑怎么知道 <a href="https://link.zhihu.com/?target=http%3A//baidu.com">http://baidu.com</a> 就是 14.215.177.39 呢？很简单，在你的电脑系统里，存有一份文件，这份文件非常像一个通讯录，里面存储着姓名（域名）及相对应的电话号码（IP 地址），如果你输入 IP，电脑最省事儿，如果你输入的是域名，电脑就会帮你做转换，相当于你给家人打电话，可以手动输入电话号码，也可以输入姓名，让手机帮你找号码。</p><p>就算如此，其实还有一个问题，你手机里只会有你认识人的电话，不会有全世界人的电话，同理，你电脑里存储的域名及其对应 IP 的数量也是有限的，如果你要访问的网站，电脑里没有相关信息，怎么办？这就需要一个中间人，让他去搜集全世界网站的域名及对应 IP，这样一来，有问题找中间人就好了，而这个中间人的名字，叫做 DNS 服务器。</p><p>在企业内网上，所有的 Windows 计算机都需要用到微软的一种服务，叫做活动目录（Active Directory）。在 Windows 环境下，内网上的计算机想要轻松找到其他计算机，就需要 DNS 的存在，而<a href="http://Corp.com">http://Corp.com</a> 的特殊性就在于，支持活动目录的 Windows 早期版本（如 Windows 2000 Server）中，微软设置的默认路径刚好就叫做“ corp ”，许多公司在使用时，也会默认使用这个设置，就像去买猫咪，如果老板说它已经有名字了，叫豆包儿，绝大多数人都会默认这个名字。</p><p>这个问题就叫做“名称空间冲突” (namespace collision) ，意思是，本来只是在公司内网上使用的域名，却和开放互联网上的域名重合了，所以，内网上的敏感数据，就能够在公开网络上的重合域名下被看到。</p><p>曾有安全专家做过一个实验，他们模拟了本地 Windows 的网络登录和文件共享环境，接管了对<a href="http://Corp.com">http://Corp.com</a> 的连接请求，仅一个小时，他们就收到了超过 1200 万封电子邮件，其中不乏敏感信息，为避免意外发生，他们立刻停止了实验，并销毁了数据库。</p><p>所以说，如果域名<a href="http://Corp.com">http://Corp.com</a> 真的到了坏人手里，不知有多少企业会丢掉底裤。</p><p>面对这个问题，微软一直在想办法解决，比如通过软件更新，但收效甚微。</p><p>早些年，考虑到用户安全问题，微软也想过要把<a href="http://Corp.com">http://Corp.com</a> 这个域名买下来，但是，微软的出价仅仅是 2 万美金，被奥康纳果断拒绝了。</p><p>今时不同往日，已经 70 岁高龄的奥康纳，不想把如此高风险的东西留给自己的亲人，这才决定卖掉这个域名，但卖给其他人又不放心，最好的接盘侠就是微软，因为所有的难题，都与微软脱不了干系。</p><p>这就有了微软豪掷 160 万美金，买下魔鬼域名的新闻。</p><p>很难说由微软掌握这个域名，就是绝对安全，但就目前看来，这已经是最好的选择了。</p><p><img src="https://pic3.zhimg.com/80/v2-5a853a084546dfe848c3e7a37a644856_720w.jpg" alt="图片来源于：StockStudio / Shutterstock"></p><p>转载：<a href="https://zhuanlan.zhihu.com/p/143627625">https://zhuanlan.zhihu.com/p/143627625</a></p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;前段时间，巨硬的微软豪掷 160 万美金，从一位 70 岁的域名投资者迈克·奥康纳 (Mike O’connor) 手里，买下了一个魔鬼域名，并且发布了一则声明，将此事昭告天下。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;为了保护系统，我们鼓励客户在规划内部域名和网络名称时养成安全的安全习惯。我们在 2009年 6 月发布了一份安全建议，并发布了一项有助于保护客户安全的安全更新。在我们对客户安全的持续承诺中，我们还获得了&lt;a href=&quot;https://link.zhihu.com/?target=http%3A//corp.com&quot;&gt;http://corp.com&lt;/a&gt; 域名。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="其他" scheme="https://a-little-bear.github.io/categories/%E5%85%B6%E4%BB%96/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>awesome-python-cn-Python-资源大全中文版</title>
@@ -451,27 +476,6 @@
       &lt;blockquote&gt;
 &lt;p&gt;首页显示摘要内容（替换成自己的）&lt;/p&gt;
 &lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>深蓝词库-v2-8-一款输入法词库转换软件</title>
-    <link href="https://a-little-bear.github.io/p/5dc1/"/>
-    <id>https://a-little-bear.github.io/p/5dc1/</id>
-    <published>2020-06-13T21:11:17.000Z</published>
-    <updated>2020-06-13T21:12:25.278Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p><img src="https://cdn.jsdelivr.net/gh/a-little-bear/picture/img/panda/20200613170637.png" alt=""></p><p>一款开源免费的输入法词库转换程序</p><a id="more"></a><p><a href="https://github.com/studyzy/imewlconverter">https://github.com/studyzy/imewlconverter</a></p><p>一款输入法词库转换软件，支持以下超过20种的输入法工具和词库：</p><ul><li><a href="https://github.com/studyzy/imewlconverter/wiki/Sougou_Pinyin">搜狗拼音（文本词库、Bin格式备份词库和scel格式细胞词库）</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/QQ_Pinyin_Win">QQ拼音（文本词库和qpyd格式分类词库）</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Baidu_PC">百度PC拼音（文本词库、bdict格式）</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Google_Pinyin">谷歌拼音</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Ms_Pinyin">微软拼音2010</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Win10Ms_Pinyin">Win10微软拼音</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Pinyin_Jiajia">拼音加加</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Engkoo">必应输入法</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Ziguang_Pinyin">紫光拼音（文本词库和uwl格式分类词库）</a></li><li>手心输入法</li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Sina_Pinyin">新浪拼音</a></li><li>libpinyin(Linux)</li><li>Chinese-pyim(Linux)</li><li><a href="https://github.com/studyzy/imewlconverter/wiki/QQ_Wubi">QQ五笔</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Sougou_Wubi">搜狗五笔</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Xiaoya_Wubi">小鸭五笔</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Jidian">极点五笔</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Win10Ms_Wubi">Win10微软五笔</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Jidian">极点郑码</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Xiaoxiao">小小输入法（拼音、五笔、郑码、二笔）</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/FIT">FIT输入法(Mac)</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/MacPlist">MacOS自带简体拼音</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Rime">Rime输入法(Linux中州韻、Windows小狼毫、Mac OS鼠鬚管)</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Yahoo">雅虎奇摩输入法（注音）</a></li><li><a href="https://github.com/studyzy/imewlconverter/wiki/Lingoes_Ld2">灵格斯词库ld2</a></li><li>仓颉平台</li><li>自定义格式</li></ul><p>手机端：</p><ul><li>QQ手机拼音</li><li>百度手机拼音（文本词库和bcd格式）</li><li>谷歌拼音输入法</li></ul><p>该软件支持6种以上的输入法编码方法：</p><ul><li>拼音（全拼、双拼）</li><li>五笔（五笔86、五笔98）</li><li>郑码</li><li>二笔（超强二笔，青松二笔等）</li><li>仓颉</li><li>注音</li><li>自定义</li></ul><p>本程序支持批量转换（一次拖拽多个词库文件，或者按住Ctrl选择多个文件），支持命令行模式（在命令行下使用-?命令查看帮助），支持Windows、Linux、MacOS。</p><p>Windows：<a href="https://github.com/studyzy/imewlconverter/releases/download/v2.8.0/imewlconverter_Windows.zip">https://github.com/studyzy/imewlconverter/releases/download/v2.8.0/imewlconverter_Windows.zip</a><br>Mac/Linux：<a href="https://github.com/studyzy/imewlconverter/releases/download/v2.8.0/imewlconverter_Linux_Mac.tar.gz">https://github.com/studyzy/imewlconverter/releases/download/v2.8.0/imewlconverter_Linux_Mac.tar.gz</a></p><p>蓝奏：<br>Windows：<a href="https://alittlebear.lanzous.com/iWvM1dn8qmh">https://alittlebear.lanzous.com/iWvM1dn8qmh</a><br>Mac/Linux：<a href="https://alittlebear.lanzous.com/iYKcUdn8qoj">https://alittlebear.lanzous.com/iYKcUdn8qoj</a></p><p>有能力的请给作者一个star~[/md]</p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/a-little-bear/picture/img/panda/20200613170637.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;一款开源免费的输入法词库转换程序&lt;/p&gt;
     
     </summary>
     
