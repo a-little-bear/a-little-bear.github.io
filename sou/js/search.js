@@ -188,17 +188,17 @@ $(function () {
   var search = {
     data: [
       {
-        name: "谷歌",
+        name: "Google",
         icon: "icon-google",
         url: "https://www.google.com/search?q=",
       },
       {
-        name: "百度",
+        name: "Baidu",
         icon: "icon-baidu",
         url: "https://www.baidu.com/s?wd=",
       },
       {
-        name: "必应",
+        name: "Bing",
         icon: "icon-biying1",
         url: "https://cn.bing.com/search?q=",
       },
@@ -307,7 +307,7 @@ $(function () {
   $(".search-engine-list li").click(function () {
     var _index = $(this).index();
     var thisIcon = $(this).children().children().attr("xlink:href");
-    var thisText = $(this).text() + "搜索";
+    var thisText = $(this).text() + " Search";
     console.log(thisText);
     $("#txt").attr("placeholder", thisText);
     $("#search-icon use").attr("xlink:href", thisIcon);

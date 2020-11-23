@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="generator" content="Hexo 4.2.0"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><meta name="keywords" content="null"><meta name="description" content="学python第十二课-字符串和正则表达式"><meta name="author" content="alittlebear"><title>学python第十二课-字符串和正则表达式 - alittlebear&#039;s blog</title><meta description="学python第十二课-字符串和正则表达式"><meta property="og:type" content="article"><meta property="og:title" content="学python第十二课-字符串和正则表达式"><meta property="og:url" content="https://a-little-bear.github.io/p/b1d9/"><meta property="og:site_name" content="alittlebear&#039;s blog"><meta property="og:description" content="学python第十二课-字符串和正则表达式"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://github.com/jackfrued/Python-100-Days/raw/master/Day01-15/res/tel-start-number.png"><meta property="article:published_time" content="2020-09-10T22:58:33.000Z"><meta property="article:modified_time" content="2020-09-12T10:14:12.715Z"><meta property="article:author" content="alittlebear"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://github.com/jackfrued/Python-100-Days/raw/master/Day01-15/res/tel-start-number.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://a-little-bear.github.io/p/b1d9/"},"headline":"学python第十二课-字符串和正则表达式","image":["https://github.com/jackfrued/Python-100-Days/raw/master/Day01-15/res/tel-start-number.png"],"datePublished":"2020-09-10T22:58:33.000Z","dateModified":"2020-09-12T10:14:12.715Z","author":{"@type":"Person","name":"alittlebear"},"description":"学python第十二课-字符串和正则表达式"}</script><link rel="alternative" href="/atom.xml" title="alittlebear&#039;s blog" type="application/atom+xml"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro|Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&amp;amp;subset=latin,latin-ext|Inconsolata|Itim|Lobster.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.12/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><link rel="stylesheet" href="/css/style.css"><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="/js/globalUtils.js"></script></head><body class="is-2-column has-navbar-fixed-top"><script type="text/javascript" src="/js/alittlebear/night.js"></script><canvas id="universe"></canvas><nav class="navbar navbar-main is-fixed-top"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img class="logo-img" src="/img/logo1.png" alt="alittlebear&#039;s blog" height="28"><img class="logo-img-dark" src="/img/logo2.png" alt="alittlebear&#039;s blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/game_index">在线游戏</a><a class="navbar-item" href="/sou">聚合搜索</a><a class="navbar-item" href="/">--</a><a class="navbar-item" href="/news">每日新闻</a><a class="navbar-item" href="/music">音乐歌单</a><a class="navbar-item" href="/shoucang">私人收藏</a><a class="navbar-item" href="/">---</a><a class="navbar-item" href="/time_line">无时轴</a><a class="navbar-item" href="/self-talking">碎碎念</a><a class="navbar-item" href="/message">留言</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item night" id="night-nav" title="Night Mode" href="javascript:;"><i class="fas fa-moon" id="night-icon"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><script type="text/javascript" src="/js/theme-setting.js"></script><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-plus"> </i>2020-09-10  <a class="commentCountImg" href="/p/b1d9/#comment-container"><span class="display-none-class">ce34f82f211ca7b8d5cce87613d6d5ba</span><i class="far fa-comment-dots"></i> <span class="commentCount" id="ce34f82f211ca7b8d5cce87613d6d5ba">99+</span>  </a><span class="level-item"><i class="far fa-clock"> </i>25 分钟  <i class="fas fa-pencil-alt"> </i>3.8 k</span><span class="level-item" id="busuanzi_container_page_pv"><i class="far fa-eye"></i>&nbsp;&nbsp;<span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">学python第十二课-字符串和正则表达式</h1><div class="content"><blockquote>
+<p>学python第十二课-字符串和正则表达式</p>
+</blockquote>
+<a id="more"></a>
+
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><hr>
+<p>我只是个学python拖了好久的小萌新，一直要学一直要学，刚来注册说到现在，终于开始了。。（再不学就退步了）</p>
+<p>这几个月一直在找适合自己的教程，看过几百本电子书，看过无数新老视频教程，最后还是决定用 骆昊大大 的：<a href="https://github.com/jackfrued/Python-100-Days">Python - 100天从新手到大师</a>（zzzain46大大友情推荐）</p>
+<p>练习以外的代码应该没有我写的….</p>
+<p>软件方面，没有用<code>PyCharm</code>，在用<code>VS Code</code></p>
+<p>python 版本：<code>3.8.1</code> 操作系统：<code>Windows 10</code></p>
+<h1 id="要牢记的话"><a href="#要牢记的话" class="headerlink" title="要牢记的话"></a>要牢记的话</h1><hr>
+<p>感谢：<a href="https://github.com/jackfrued/Python-100-Days">https://github.com/jackfrued/Python-100-Days</a></p>
+<ul>
+<li>Make English as your working language. （<strong>让英语成为你的工作语言</strong>）</li>
+<li>Practice makes perfect. （<strong>熟能生巧</strong>）</li>
+<li>All experience comes from mistakes. （<strong>所有的经验都源于你犯过的错误</strong>）</li>
+<li>Don’t be one of the leeches. （<strong>不要当伸手党</strong>）</li>
+<li>Either outstanding or out. （<strong>要么出众</strong>，<strong>要么出局</strong>）</li>
+</ul>
+<h1 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h1><h2 id="Day12-字符串和正则表达式"><a href="#Day12-字符串和正则表达式" class="headerlink" title="Day12 - 字符串和正则表达式"></a>Day12 - <a href="https://github.com/jackfrued/Python-100-Days/blob/master/Day01-15/12.字符串和正则表达式.md">字符串和正则表达式</a></h2><ul>
+<li>字符串高级操作 - 转义字符 / 原始字符串 / 多行字符串 / in和 not in运算符 / is开头的方法 / join和split方法 / strip相关方法 / pyperclip模块 / 不变字符串和可变字符串 / StringIO的使用</li>
+<li>正则表达式入门 - 正则表达式的作用 / 元字符 / 转义 / 量词 / 分组 / 零宽断言 /贪婪匹配与惰性匹配懒惰 / 使用re模块实现正则表达式操作（匹配、搜索、替换、捕获）</li>
+<li>使用正则表达式 - re模块 / compile函数 / group和groups方法 / match方法 / search方法 / findall和finditer方法 / sub和subn方法 / split方法</li>
+<li>应用案例 - 使用正则表达式验证输入的字符串</li>
+</ul>
+<h1 id="字符串和正则表达式"><a href="#字符串和正则表达式" class="headerlink" title="字符串和正则表达式"></a>字符串和正则表达式</h1><h2 id="使用正则表达式"><a href="#使用正则表达式" class="headerlink" title="使用正则表达式"></a>使用正则表达式</h2><h3 id="正则表达式相关知识"><a href="#正则表达式相关知识" class="headerlink" title="正则表达式相关知识"></a>正则表达式相关知识</h3><p>在编写处理字符串的程序或网页时，经常会有查找符合某些复杂规则的字符串的需要，正则表达式就是用于描述这些规则的工具，换句话说正则表达式是一种工具，它定义了字符串的匹配模式（如何检查一个字符串是否有跟某种模式匹配的部分或者从一个字符串中将与模式匹配的部分提取出来或者替换掉）。如果你在Windows操作系统中使用过文件查找并且在指定文件名时使用过通配符（*和?），那么正则表达式也是与之类似的用来进行文本匹配的工具，只不过比起通配符正则表达式更强大，它能更精确地描述你的需求（当然你付出的代价是书写一个正则表达式比打出一个通配符要复杂得多，要知道任何给你带来好处的东西都是有代价的，就如同学习一门编程语言一样），比如你可以编写一个正则表达式，用来查找所有以0开头，后面跟着2-3个数字，然后是一个连字号“-”，最后是7或8位数字的字符串（像028-12345678或0813-7654321），这不就是国内的座机号码吗。最初计算机是为了做数学运算而诞生的，处理的信息基本上都是数值，而今天我们在日常工作中处理的信息基本上都是文本数据，我们希望计算机能够识别和处理符合某些模式的文本，正则表达式就显得非常重要了。今天几乎所有的编程语言都提供了对正则表达式操作的支持，Python通过标准库中的re模块来支持正则表达式操作。</p>
+<p>我们可以考虑下面一个问题：我们从某个地方（可能是一个文本文件，也可能是网络上的一则新闻）获得了一个字符串，希望在字符串中找出手机号和座机号。当然我们可以设定手机号是11位的数字（注意并不是随机的11位数字，因为你没有见过“25012345678”这样的手机号吧）而座机号跟上一段中描述的模式相同，如果不使用正则表达式要完成这个任务就会很麻烦。</p>
+<p>关于正则表达式的相关知识，大家可以阅读一篇非常有名的博客叫<a href="https://deerchao.net/tutorials/regex/regex.htm">《正则表达式30分钟入门教程》</a>，读完这篇文章后你就可以看懂下面的表格，这是我们对正则表达式中的一些基本符号进行的扼要总结。</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>解释</th>
+<th>示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.</td>
+<td>匹配任意字符</td>
+<td>b.t</td>
+<td>可以匹配bat / but / b#t / b1t等</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>匹配字母/数字/下划线</td>
+<td>b\wt</td>
+<td>可以匹配bat / b1t / b_t等 但不能匹配b#t</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>匹配空白字符（包括\r、\n、\t等）</td>
+<td>love\syou</td>
+<td>可以匹配love you</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>匹配数字</td>
+<td>\d\d</td>
+<td>可以匹配01 / 23 / 99等</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>匹配单词的边界</td>
+<td>\bThe\b</td>
+<td></td>
+</tr>
+<tr>
+<td>^</td>
+<td>匹配字符串的开始</td>
+<td>^The</td>
+<td>可以匹配The开头的字符串</td>
+</tr>
+<tr>
+<td>$</td>
+<td>匹配字符串的结束</td>
+<td>.exe$</td>
+<td>可以匹配.exe结尾的字符串</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>匹配非字母/数字/下划线</td>
+<td>b\Wt</td>
+<td>可以匹配b#t / b@t等 但不能匹配but / b1t / b_t等</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>匹配非空白字符</td>
+<td>love\Syou</td>
+<td>可以匹配love#you等 但不能匹配love you</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>匹配非数字</td>
+<td>\d\D</td>
+<td>可以匹配9a / 3# / 0F等</td>
+</tr>
+<tr>
+<td>\B</td>
+<td>匹配非单词边界</td>
+<td>\Bio\B</td>
+<td></td>
+</tr>
+<tr>
+<td>[]</td>
+<td>匹配来自字符集的任意单一字符</td>
+<td>[aeiou]</td>
+<td>可以匹配任一元音字母字符</td>
+</tr>
+<tr>
+<td>[^]</td>
+<td>匹配不在字符集中的任意单一字符</td>
+<td>[^aeiou]</td>
+<td>可以匹配任一非元音字母字符</td>
+</tr>
+<tr>
+<td>*</td>
+<td>匹配0次或多次</td>
+<td>\w*</td>
+<td></td>
+</tr>
+<tr>
+<td>+</td>
+<td>匹配1次或多次</td>
+<td>\w+</td>
+<td></td>
+</tr>
+<tr>
+<td>?</td>
+<td>匹配0次或1次</td>
+<td>\w?</td>
+<td></td>
+</tr>
+<tr>
+<td>{N}</td>
+<td>匹配N次</td>
+<td>\w{3}</td>
+<td></td>
+</tr>
+<tr>
+<td>{M,}</td>
+<td>匹配至少M次</td>
+<td>\w{3,}</td>
+<td></td>
+</tr>
+<tr>
+<td>{M,N}</td>
+<td>匹配至少M次至多N次</td>
+<td>\w{3,6}</td>
+<td></td>
+</tr>
+<tr>
+<td>|</td>
+<td>分支</td>
+<td>foo|bar</td>
+<td>可以匹配foo或者bar</td>
+</tr>
+<tr>
+<td>(?#)</td>
+<td>注释</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>(exp)</td>
+<td>匹配exp并捕获到自动命名的组中</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>(?<name>exp)</td>
+<td>匹配exp并捕获到名为name的组中</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>(?:exp)</td>
+<td>匹配exp但是不捕获匹配的文本</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>(?=exp)</td>
+<td>匹配exp前面的位置</td>
+<td>\b\w+(?=ing)</td>
+<td>可以匹配I’m dancing中的danc</td>
+</tr>
+<tr>
+<td>(?&lt;=exp)</td>
+<td>匹配exp后面的位置</td>
+<td>(?&lt;=\bdanc)\w+\b</td>
+<td>可以匹配I love dancing and reading中的第一个ing</td>
+</tr>
+<tr>
+<td>(?!exp)</td>
+<td>匹配后面不是exp的位置</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>(?&lt;!exp)</td>
+<td>匹配前面不是exp的位置</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>*?</td>
+<td>重复任意次，但尽可能少重复</td>
+<td>a.<em>b a.</em>?b</td>
+<td>将正则表达式应用于aabab，前者会匹配整个字符串aabab，后者会匹配aab和ab两个字符串</td>
+</tr>
+<tr>
+<td>+?</td>
+<td>重复1次或多次，但尽可能少重复</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>??</td>
+<td>重复0次或1次，但尽可能少重复</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>{M,N}?</td>
+<td>重复M到N次，但尽可能少重复</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>{M,}?</td>
+<td>重复M次以上，但尽可能少重复</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>说明：</strong> 如果需要匹配的字符是正则表达式中的特殊字符，那么可以使用\进行转义处理，例如想匹配小数点可以写成.就可以了，因为直接写.会匹配任意字符；同理，想匹配圆括号必须写成(和)，否则圆括号被视为正则表达式中的分组。</p>
+</blockquote>
+<h3 id="Python对正则表达式的支持"><a href="#Python对正则表达式的支持" class="headerlink" title="Python对正则表达式的支持"></a>Python对正则表达式的支持</h3><p>Python提供了re模块来支持正则表达式相关操作，下面是re模块中的核心函数。</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>compile(pattern, flags=0)</td>
+<td>编译正则表达式返回正则表达式对象</td>
+</tr>
+<tr>
+<td>match(pattern, string, flags=0)</td>
+<td>用正则表达式匹配字符串 成功返回匹配对象 否则返回None</td>
+</tr>
+<tr>
+<td>search(pattern, string, flags=0)</td>
+<td>搜索字符串中第一次出现正则表达式的模式 成功返回匹配对象 否则返回None</td>
+</tr>
+<tr>
+<td>split(pattern, string, maxsplit=0, flags=0)</td>
+<td>用正则表达式指定的模式分隔符拆分字符串 返回列表</td>
+</tr>
+<tr>
+<td>sub(pattern, repl, string, count=0, flags=0)</td>
+<td>用指定的字符串替换原字符串中与正则表达式匹配的模式 可以用count指定替换的次数</td>
+</tr>
+<tr>
+<td>fullmatch(pattern, string, flags=0)</td>
+<td>match函数的完全匹配（从字符串开头到结尾）版本</td>
+</tr>
+<tr>
+<td>findall(pattern, string, flags=0)</td>
+<td>查找字符串所有与正则表达式匹配的模式 返回字符串的列表</td>
+</tr>
+<tr>
+<td>finditer(pattern, string, flags=0)</td>
+<td>查找字符串所有与正则表达式匹配的模式 返回一个迭代器</td>
+</tr>
+<tr>
+<td>purge()</td>
+<td>清除隐式编译的正则表达式的缓存</td>
+</tr>
+<tr>
+<td>re.I / re.IGNORECASE</td>
+<td>忽略大小写匹配标记</td>
+</tr>
+<tr>
+<td>re.M / re.MULTILINE</td>
+<td>多行匹配标记</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>说明：</strong> 上面提到的re模块中的这些函数，实际开发中也可以用正则表达式对象的方法替代对这些函数的使用，如果一个正则表达式需要重复的使用，那么先通过compile函数编译正则表达式并创建出正则表达式对象无疑是更为明智的选择。</p>
+</blockquote>
+<p>下面我们通过一系列的例子来告诉大家在Python中如何使用正则表达式。</p>
+<h4 id="例子1：验证输入用户名和QQ号是否有效并给出对应的提示信息。"><a href="#例子1：验证输入用户名和QQ号是否有效并给出对应的提示信息。" class="headerlink" title="例子1：验证输入用户名和QQ号是否有效并给出对应的提示信息。"></a>例子1：验证输入用户名和QQ号是否有效并给出对应的提示信息。</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">验证输入用户名和QQ号是否有效并给出对应的提示信息</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">要求：用户名必须由字母、数字或下划线构成且长度在6~20个字符之间，QQ号是5~12的数字且首位不能为0</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    username = input(<span class="string">'请输入用户名: '</span>)</span><br><span class="line">    qq = input(<span class="string">'请输入QQ号: '</span>)</span><br><span class="line">    <span class="comment"># match函数的第一个参数是正则表达式字符串或正则表达式对象</span></span><br><span class="line">    <span class="comment"># 第二个参数是要跟正则表达式做匹配的字符串对象</span></span><br><span class="line">    m1 = re.match(<span class="string">r'^[0-9a-zA-Z_]&#123;6,20&#125;$'</span>, username)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> m1:</span><br><span class="line">        print(<span class="string">'请输入有效的用户名.'</span>)</span><br><span class="line">    m2 = re.match(<span class="string">r'^[1-9]\d&#123;4,11&#125;$'</span>, qq)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> m2:</span><br><span class="line">        print(<span class="string">'请输入有效的QQ号.'</span>)</span><br><span class="line">    <span class="keyword">if</span> m1 <span class="keyword">and</span> m2:</span><br><span class="line">        print(<span class="string">'你输入的信息是有效的!'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>提示：</strong> 上面在书写正则表达式时使用了“原始字符串”的写法（在字符串前面加上了r），所谓“原始字符串”就是字符串中的每个字符都是它原始的意义，说得更直接一点就是字符串中没有所谓的转义字符啦。因为正则表达式中有很多元字符和需要进行转义的地方，如果不使用原始字符串就需要将反斜杠写作\，例如表示数字的\d得书写成\d，这样不仅写起来不方便，阅读的时候也会很吃力。</p>
+</blockquote>
+<h4 id="例子2：从一段文字中提取出国内手机号码。"><a href="#例子2：从一段文字中提取出国内手机号码。" class="headerlink" title="例子2：从一段文字中提取出国内手机号码。"></a>例子2：从一段文字中提取出国内手机号码。</h4><p>下面这张图是截止到2017年底，国内三家运营商推出的手机号段。</p>
+<p><a href="https://github.com/jackfrued/Python-100-Days/blob/master/Day01-15/res/tel-start-number.png"><img src="https://github.com/jackfrued/Python-100-Days/raw/master/Day01-15/res/tel-start-number.png" alt="img"></a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># 创建正则表达式对象 使用了前瞻和回顾来保证手机号前后不应该出现数字</span></span><br><span class="line">    pattern = re.compile(<span class="string">r'(?&lt;=\D)1[34578]\d&#123;9&#125;(?=\D)'</span>)</span><br><span class="line">    sentence = <span class="string">'''</span></span><br><span class="line"><span class="string">    重要的事情说8130123456789遍，我的手机号是13512346789这个靓号，</span></span><br><span class="line"><span class="string">    不是15600998765，也是110或119，王大锤的手机号才是15600998765。</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="comment"># 查找所有匹配并保存到一个列表中</span></span><br><span class="line">    mylist = re.findall(pattern, sentence)</span><br><span class="line">    print(mylist)</span><br><span class="line">    print(<span class="string">'--------华丽的分隔线--------'</span>)</span><br><span class="line">    <span class="comment"># 通过迭代器取出匹配对象并获得匹配的内容</span></span><br><span class="line">    <span class="keyword">for</span> temp <span class="keyword">in</span> pattern.finditer(sentence):</span><br><span class="line">        print(temp.group())</span><br><span class="line">    print(<span class="string">'--------华丽的分隔线--------'</span>)</span><br><span class="line">    <span class="comment"># 通过search函数指定搜索位置找出所有匹配</span></span><br><span class="line">    m = pattern.search(sentence)</span><br><span class="line">    <span class="keyword">while</span> m:</span><br><span class="line">        print(m.group())</span><br><span class="line">        m = pattern.search(sentence, m.end())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>说明：</strong> 上面匹配国内手机号的正则表达式并不够好，因为像14开头的号码只有145或147，而上面的正则表达式并没有考虑这种情况，要匹配国内手机号，更好的正则表达式的写法是：<code>(?&lt;=\D)(1[38]\d{9}|14[57]\d{8}|15[0-35-9]\d{8}|17[678]\d{8})(?=\D)</code>，国内最近好像有19和16开头的手机号了，但是这个暂时不在我们考虑之列。</p>
+</blockquote>
+<h4 id="例子3：替换字符串中的不良内容"><a href="#例子3：替换字符串中的不良内容" class="headerlink" title="例子3：替换字符串中的不良内容"></a>例子3：替换字符串中的不良内容</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    sentence = <span class="string">'你丫是傻叉吗? 我操你大爷的. Fuck you.'</span></span><br><span class="line">    purified = re.sub(<span class="string">'[操肏艹]|fuck|shit|傻[比屄逼叉缺吊屌]|煞笔'</span>,</span><br><span class="line">                      <span class="string">'*'</span>, sentence, flags=re.IGNORECASE)</span><br><span class="line">    print(purified)  <span class="comment"># 你丫是*吗? 我*你大爷的. * you.</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>说明：</strong> re模块的正则表达式相关函数中都有一个flags参数，它代表了正则表达式的匹配标记，可以通过该标记来指定匹配时是否忽略大小写、是否进行多行匹配、是否显示调试信息等。如果需要为flags参数指定多个值，可以使用<a href="http://www.runoob.com/python/python-operators.html#ysf5">按位或运算符</a>进行叠加，如<code>flags=re.I | re.M</code>。</p>
+</blockquote>
+<h4 id="例子4：拆分长字符串"><a href="#例子4：拆分长字符串" class="headerlink" title="例子4：拆分长字符串"></a>例子4：拆分长字符串</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    poem = <span class="string">'窗前明月光，疑是地上霜。举头望明月，低头思故乡。'</span></span><br><span class="line">    sentence_list = re.split(<span class="string">r'[，。, .]'</span>, poem)</span><br><span class="line">    <span class="keyword">while</span> <span class="string">''</span> <span class="keyword">in</span> sentence_list:</span><br><span class="line">        sentence_list.remove(<span class="string">''</span>)</span><br><span class="line">    print(sentence_list)  <span class="comment"># ['窗前明月光', '疑是地上霜', '举头望明月', '低头思故乡']</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<h3 id="后话"><a href="#后话" class="headerlink" title="后话"></a>后话</h3><p>如果要从事爬虫类应用的开发，那么正则表达式一定是一个非常好的助手，因为它可以帮助我们迅速的从网页代码中发现某种我们指定的模式并提取出我们需要的信息，当然对于初学者来收，要编写一个正确的适当的正则表达式可能并不是一件容易的事情（当然有些常用的正则表达式可以直接在网上找找），所以实际开发爬虫应用的时候，有很多人会选择<a href="https://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a>或<a href="http://lxml.de/">Lxml</a>来进行匹配和信息的提取，前者简单方便但是性能较差，后者既好用性能也好，但是安装稍嫌麻烦，这些内容我们会在后期的爬虫专题中为大家介绍。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ol>
+<li>了解了如何写一个正则表达式</li>
+<li>了解了python的re模块和用法</li>
+</ol>
+<h1 id="用到的链接"><a href="#用到的链接" class="headerlink" title="用到的链接"></a>用到的链接</h1><ol>
+<li><a href="https://github.com/jackfrued/Python-100-Days">https://github.com/jackfrued/Python-100-Days</a></li>
+<li><a href="https://github.com/jackfrued/Python-100-Days/blob/master/Day01-15/12.%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.md">https://github.com/jackfrued/Python-100-Days/blob/master/Day01-15/12.%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.md</a></li>
+<li><a href="https://deerchao.cn/tutorials/regex/regex.htm">https://deerchao.cn/tutorials/regex/regex.htm</a></li>
+<li><a href="https://deerchao.cn/tools/wegester/">https://deerchao.cn/tools/wegester/</a></li>
+<li><a href="https://deerchao.cn/tutorials/regex/common.htm">https://deerchao.cn/tutorials/regex/common.htm</a></li>
+</ol>
+</div><div><div class="recommend-post"><span class="is-size-6 has-text-grey has-mr-7"># 相关文章</span><br><span>  1.<a class="is-size-6" href="/p/bda0/" target="_blank">学python第十三课-进程和线程</a><br></span><span>  2.<a class="is-size-6" href="/p/47ce/" target="_blank">学python第十二课准备-正则表达式</a><br></span><span>  3.<a class="is-size-6" href="/p/21a3/" target="_blank">学python第十一课-文件和异常</a><br></span><span>  4.<a class="is-size-6" href="/p/8c77/" target="_blank">关于vs-code导入pygame库报错的解决办法</a><br></span><span>  5.<a class="is-size-6" href="/p/9a2/" target="_blank">学python第十课-图形用户界面和游戏开发</a><br></span><span>  6.<a class="is-size-6" href="/p/8c15/" target="_blank">学python第九课-面向对象进阶</a><br></span><span>  7.<a class="is-size-6" href="/p/642e/" target="_blank">学python第七课-字符串和常用数据结构</a><br></span><span>  8.<a class="is-size-6" href="/p/584b/" target="_blank">学python第六课-函数和模块的使用</a><br></span></div><div class="recommend-post"><span class="is-size-6 has-text-grey has-mr-7"># 推荐文章</span><br><span>  1.<a class="is-size-6" href="/p/f108/" target="_blank">开始学Java之 Hello World （别问我为啥不学python了。。）</a><br></span><span>  2.<a class="is-size-6" href="/p/5430/" target="_blank">Win10任务管理器查看线程数、PID值等方法</a><br></span><span>  3.<a class="is-size-6" href="/p/bda0/" target="_blank">学python第十三课-进程和线程</a><br></span><span>  4.<a class="is-size-6" href="/p/47ce/" target="_blank">学python第十二课准备-正则表达式</a><br></span><span>  5.<a class="is-size-6" href="/p/b1d9/" target="_blank">学python第十二课-字符串和正则表达式</a><br></span><span>  6.<a class="is-size-6" href="/p/acdd/" target="_blank">桌面布局保存工具-DesktopOK-v7-81</a><br></span></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/p/47ce/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">学python第十二课准备-正则表达式</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/p/acdd/"><span class="level-item">桌面布局保存工具-DesktopOK-v7-81</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><div class="title is-5">评论</div><div id="comment-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.0/dist/gitalk.css"><script> $.getScript('/js/gitalk.min.js', function () { 
+            var gitalk = new Gitalk({
+            language:'zh-CN',
+            id: 'ce34f82f211ca7b8d5cce87613d6d5ba',
+            repo: 'a-little-bear.github.io',
+            owner: 'a-little-bear',
+            clientID: '7a12c782031110c85c04',
+            clientSecret: '615df4c852a3cf8bad068bfa5151449c6c1b3f34',
+            admin: ["a-little-bear"],
+            createIssueManually: true,
+            distractionFreeMode: true,
+            perPage: 10,
+            pagerDirection: 'last',
+            
+            
+            enableHotKey: true,
+            isLocked: false
+        })
+        gitalk.render('comment-container')});</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget toc-scroll" id="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-前言" href="#前言"><span>前言</span></a></li><li><a class="is-flex toc-item" id="toc-item-要牢记的话" href="#要牢记的话"><span>要牢记的话</span></a></li><li><a class="is-flex toc-item" id="toc-item-大纲" href="#大纲"><span>大纲</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-Day12-字符串和正则表达式" href="#Day12-字符串和正则表达式"><span>Day12 - 字符串和正则表达式</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-字符串和正则表达式" href="#字符串和正则表达式"><span>字符串和正则表达式</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-使用正则表达式" href="#使用正则表达式"><span>使用正则表达式</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-正则表达式相关知识" href="#正则表达式相关知识"><span>正则表达式相关知识</span></a></li><li><a class="is-flex toc-item" id="toc-item-例子4：拆分长字符串" href="#例子4：拆分长字符串"><span>例子4：拆分长字符串</span></a></li><li><a class="is-flex toc-item" id="toc-item-后话" href="#后话"><span>后话</span></a></li></ul></li></ul></li><li><a class="is-flex toc-item" id="toc-item-总结" href="#总结"><span>总结</span></a></li><li><a class="is-flex toc-item" id="toc-item-用到的链接" href="#用到的链接"><span>用到的链接</span></a></li></ul></div></div><script type="text/javascript" async>
+        $(document).ready(function () { //参考自 https://github.com/ppoffice/hexo-theme-icarus/pull/616/files
+            var observerTopMargin;
+            var scrollObserver;
+            var headerElems = $(".headerlink");
+            var activeTocItem;
+        
+            function initIntersectionObserver(docHeight) {
+                observerTopMargin = docHeight;
+                scrollObserver = new IntersectionObserver(scrollCallBack,
+                    {
+                        root: null,  // viewpoint
+                        rootMargin: docHeight + "px 0px -80% 0px"  // cover top 30% of viewport to the top of document
+                    })
+            }
+        
+            function scrollCallBack(entries, observer) {
+                if ($(window).scrollTop() > observerTopMargin * 0.7) { 
+                    // User somehow scroll to 70% of observerTopMargin (which is inited as 200% document height)
+                    // Observer top margin need to extend to cover all the space to the top of the document
+                    initIntersectionObserver(observerTopMargin * 2)
+                    observer.disconnect();
+                    return;
+                }
+                let toActive;
+                if (entries[0].intersectionRatio == 1) {  // enter viewed area
+                    let entry = entries.reduce((u, v) => (u.target.toc_id > v.target.toc_id ? u : v));  // get the lowest item
+                    toActive = $("#toc-item-" + $(entry.target).attr("href").substr(1));
+                } else {
+                    let entry = entries.reduce((u, v) => (u.target.toc_id < v.target.toc_id ? u : v));  // get the highest item
+                    let idx = Math.max(entry.target.toc_id - 1, 0);
+                    toActive = $("#toc-item-" + $(headerElems[idx]).attr("href").substr(1));
+                }
+                if (activeTocItem) activeTocItem.removeClass("is-current");
+                activeTocItem = toActive
+                activeTocItem.addClass("is-current");
+            }
+        
+            initIntersectionObserver($(document).height() * 2);
+            headerElems.each(function (index, obj) {
+                obj.toc_id = index;
+                scrollObserver.observe(obj);
+            })
+        });</script></div><div class="card widget"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="" src="https://cdn.jsdelivr.net/gh/a-little-bear/picture/img/1280-646950218-panda-in-thailand.jpg" alt="alittlebear"></figure><p class="title is-size-4 is-block line-height-inherit">alittlebear</p><p class="is-size-6 is-block">一坨小萌新~（音乐在左下角）</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>太阳系 地球</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">98</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">17</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">11</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/a-little-bear" target="_blank" rel="noopener">Github</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="吾爱破解" href="https://www.52pojie.cn/home.php?mod=follow&amp;uid=1265340&amp;do=view&amp;from=space">吾爱破解</a><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="哔哩哔哩" href="https://space.bilibili.com/470220192">哔哩哔哩</a></div><div><hr><p id="hitokoto">:D 一言句子获取中...</p><script type="text/javascript" defer>function getYiyan(){
+                                $.getJSON("https://v1.hitokoto.cn/", function (data) {
+                                if(data){
+                                    $('#hitokoto').html("");
+                                    $('#hitokoto').append("<strong style='color: #3273dc;'>"+data.hitokoto+"</strong>"+
+                                    "<p>"+"来源《"+data.from+"》</p><p>提供者-"+data.creator+"</p>");
+                                }});}
+                                $(function (){getYiyan();$('#hitokoto').click(function(){getYiyan();})});</script></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/categories/Github/"><span class="level-start"><span class="level-item">Github</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E4%B9%A6%E7%B1%8D/"><span class="level-start"><span class="level-item">书籍</span></span><span class="level-end"><span class="level-item tag">7</span></span></a><ul class="mr-0"><li><a class="level is-mobile is-marginless" href="/categories/%E4%B9%A6%E7%B1%8D/%E5%B7%A5%E5%85%B7/"><span class="level-start"><span class="level-item">工具</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E4%B9%A6%E7%B1%8D/%E7%94%B5%E5%AD%90%E4%B9%A6/"><span class="level-start"><span class="level-item">电子书</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E4%B9%A6%E7%B1%8D/%E9%98%85%E8%AF%BB%E7%BB%8F%E9%AA%8C/"><span class="level-start"><span class="level-item">阅读经验</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile is-marginless" href="/categories/%E5%85%B6%E4%BB%96/"><span class="level-start"><span class="level-item">其他</span></span><span class="level-end"><span class="level-item tag">22</span></span></a><ul class="mr-0"><li><a class="level is-mobile is-marginless" href="/categories/%E5%85%B6%E4%BB%96/%E7%BD%91%E7%9B%98/"><span class="level-start"><span class="level-item">网盘</span></span><span class="level-end"><span class="level-item tag">8</span></span></a></li></ul></li><li><a class="level is-mobile is-marginless" href="/categories/%E5%BD%B1%E8%A7%86%E6%8E%A8%E8%8D%90/"><span class="level-start"><span class="level-item">影视推荐</span></span><span class="level-end"><span class="level-item tag">3</span></span></a><ul class="mr-0"><li><a class="level is-mobile is-marginless" href="/categories/%E5%BD%B1%E8%A7%86%E6%8E%A8%E8%8D%90/%E8%A7%86%E9%A2%91/"><span class="level-start"><span class="level-item">视频</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></li><li><a class="level is-mobile is-marginless" href="/categories/%E6%8A%80%E6%9C%AF/"><span class="level-start"><span class="level-item">技术</span></span><span class="level-end"><span class="level-item tag">23</span></span></a><ul class="mr-0"><li><a class="level is-mobile is-marginless" href="/categories/%E6%8A%80%E6%9C%AF/Java/"><span class="level-start"><span class="level-item">Java</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E6%8A%80%E6%9C%AF/bat/"><span class="level-start"><span class="level-item">bat</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E6%8A%80%E6%9C%AF/hexo/"><span class="level-start"><span class="level-item">hexo</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E6%8A%80%E6%9C%AF/python/"><span class="level-start"><span class="level-item">python</span></span><span class="level-end"><span class="level-item tag">14</span></span></a></li></ul></li><li><a class="level is-mobile is-marginless" href="/categories/%E6%B8%B8%E6%88%8F/"><span class="level-start"><span class="level-item">游戏</span></span><span class="level-end"><span class="level-item tag">25</span></span></a></li><a class="level is-mobile is-marginless" href="/categories/"><span class="level-start"><span class="level-item">查看全部&gt;&gt;</span></span></a></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/%E7%BB%8F%E9%AA%8C/"><span class="tag">经验</span><span class="tag is-grey-lightest">12</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E4%B9%A6%E7%B1%8D/"><span class="tag">书籍</span><span class="tag is-grey-lightest">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97/"><span class="tag">俄罗斯方块</span><span class="tag is-grey-lightest">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%9B%BE%E7%89%87%E6%B5%8F%E8%A7%88%E5%99%A8/"><span class="tag">图片浏览器</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MD%E7%BC%96%E8%BE%91%E5%99%A8/"><span class="tag">MD编辑器</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%85%B6%E4%BB%96/"><span class="tag">其他</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"><span class="tag">开发工具</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%BD%95%E5%83%8F%E8%BD%AF%E4%BB%B6/"><span class="tag">录像软件</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"><span class="tag">浏览器</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BD%91%E7%AB%99/"><span class="tag">网站</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%98%85%E8%AF%BB%E8%BD%AF%E4%BB%B6/"><span class="tag">阅读软件</span><span class="tag is-grey-lightest">1</span></a></div></div></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/archives/2020/11/"><span class="level-start"><span class="level-item">十一月 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/09/"><span class="level-start"><span class="level-item">九月 2020</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/08/"><span class="level-start"><span class="level-item">八月 2020</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/07/"><span class="level-start"><span class="level-item">七月 2020</span></span><span class="level-end"><span class="level-item tag">15</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/06/"><span class="level-start"><span class="level-item">六月 2020</span></span><span class="level-end"><span class="level-item tag">29</span></span></a></li><a class="level is-mobile is-marginless" href="/archives/"><span class="level-start"><span class="level-item">查看全部&gt;&gt;</span></span></a></ul></div></div></div><div class="card widget"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content size-small"><p><time dateTime="2020-11-23T20:23:41.000Z">2020-11-23</time></p><p class="title is-6"><a class="link-muted" href="/p/f108/">开始学Java之 Hello World （别问我为啥不学python了。。）</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a> / <a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/Java/">Java</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2020-09-30T00:08:43.000Z">2020-09-29</time></p><p class="title is-6"><a class="link-muted" href="/p/5430/">Win10任务管理器查看线程数、PID值等方法</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2020-09-29T23:54:38.000Z">2020-09-29</time></p><p class="title is-6"><a class="link-muted" href="/p/bda0/">学python第十三课-进程和线程</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a> / <a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/python/">python</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2020-09-11T00:06:06.000Z">2020-09-10</time></p><p class="title is-6"><a class="link-muted" href="/p/47ce/">学python第十二课准备-正则表达式</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a> / <a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/python/">python</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2020-09-10T22:58:33.000Z">2020-09-10</time></p><p class="title is-6"><a class="link-muted" href="/p/b1d9/">学python第十二课-字符串和正则表达式</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a> / <a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/python/">python</a></p></div></article></div></div><div class="card widget"><div class="card-content"><h3 class="menu-label">最新评论</h3><span class="body_hot_comment">加载中，最新评论有1分钟缓存...</span></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img class="logo-img" src="/img/logo1.png" alt="alittlebear&#039;s blog" height="28"><img class="logo-img-dark" src="/img/logo2.png" alt="alittlebear&#039;s blog" height="28"></a><p class="size-small"><span>&copy; 2020 alittlebear</span>  Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>,Modify by <a href="https://github.com/removeif/hexo-theme-amazing" target="_blank">removeif</a> <br><span>© 版权说明：[本网站所有内容均收集于互联网或自己创作,<br />&nbsp;&nbsp;&nbsp;&nbsp;方便于网友与自己学习交流，如有侵权，请<a href="/message" target="_blank">留言</a>，立即处理]<br /></span><span><span id="statistic-times">loading...</span><script>function createTime(time) {
+            var n = new Date(time);
+            now.setTime(now.getTime() + 250),
+                days = (now - n) / 1e3 / 60 / 60 / 24,
+                dnum = Math.floor(days),
+                hours = (now - n) / 1e3 / 60 / 60 - 24 * dnum,
+                hnum = Math.floor(hours),
+            1 == String(hnum).length && (hnum = "0" + hnum),
+                minutes = (now - n) / 1e3 / 60 - 1440 * dnum - 60 * hnum,
+                mnum = Math.floor(minutes),
+            1 == String(mnum).length && (mnum = "0" + mnum),
+                seconds = (now - n) / 1e3 - 86400 * dnum - 3600 * hnum - 60 * mnum,
+                snum = Math.round(seconds),
+            1 == String(snum).length && (snum = "0" + snum),
+                document.getElementById("statistic-times").innerHTML = "❤️本站自 <strong>"+time.split(" ")[0].replace(/\//g,".")+"</strong> 已运行 <strong>" + dnum + "</strong> 天 <strong>" + hnum + "</strong> 小时 <strong>" + mnum + "</strong> 分 <strong>" + snum + "</strong> 秒！❤️";
+        }var now = new Date();setInterval("createTime('2020/04/23 00:00:00')", 250,"");</script><br></span><div class="size-small"><span>❤️感谢 <strong><span id="busuanzi_value_site_uv">99+</span></strong> 小伙伴的 <strong><span id="busuanzi_value_site_pv">99+</span></strong> 次光临！❤️</span></div></p></div><div class="level-end"><div class="sideMusic"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="/js/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script><meting-js style="width: auto;height: 2000px;" server="netease" type="playlist" id="2985973204" theme="#2980b9" loop="all" autoplay="false" order="random" storageName="aplayer-setting" lrctype="0" list-max-height="400px" fixed="true"></meting-js></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            site: {
+                url: 'https://a-little-bear.github.io',
+                external_link: {"enable":true,"exclude":[]}
+            },
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back-to-top.js" defer></script><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.12/dist/js/lightgallery-all.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><!--!--><!--!--><!--!--><script src="/js/toc.js" defer></script><script src="/js/main.js" defer></script><script>$.getScript('/js/comment-issue-data.js',function(){loadIssueData('7a12c782031110c85c04','615df4c852a3cf8bad068bfa5151449c6c1b3f34','a-little-bear','a-little-bear.github.io',false);})</script><script src="/js/alittlebear/universe.js"></script><link rel="stylesheet" href="/css/insight.css"><div class="searchbox ins-search"><div class="searchbox-container ins-search-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="想要查找什么..."><span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"></div></div></div></div><script>(function (window) {
+            var INSIGHT_CONFIG = {
+                TRANSLATION: {
+                    POSTS: '文章',
+                    PAGES: '页面',
+                    CATEGORIES: '分类',
+                    TAGS: '标签',
+                    UNTITLED: '(无标题)',
+                },
+                CONTENT_URL: '/content.json',
+            };
+            window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+        })(window);</script><script src="/js/insight.js" defer></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.js"></script><script type="text/javascript">var pjax = new Pjax({
+            elements: "a",//代表点击链接就更新
+            selectors: [  //代表要更新的节点
+                ".section",
+                "title"
+            ],
+            cache: true,
+            cacheBust:false
+        })
+
+        function loadBusuanzi(){
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js", function () {});
+        }
+
+        // 开始 PJAX 执行的函数
+        document.addEventListener('pjax:send', function () {
+        });
+        
+        // PJAX 完成之后执行的函数，可以和上面的重载放在一起
+        document.addEventListener('pjax:complete', function () {
+            $(".section").css({opacity:1});
+            if(true){
+                $.getScript('/js/comment-issue-data.js',function(){loadIssueData('7a12c782031110c85c04','615df4c852a3cf8bad068bfa5151449c6c1b3f34','a-little-bear','a-little-bear.github.io',false);});
+            }
+            if(false){
+                loadMathJax();
+            }
+            loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);
+            loadBackTop();
+            loadBusuanzi();
+            if(typeof loadBanner == 'function'){
+                loadBanner();
+            }
+        });</script></body><script type="text/javascript" src="/js/typing.js"></script></html>
