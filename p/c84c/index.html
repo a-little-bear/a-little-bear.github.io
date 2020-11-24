@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="generator" content="Hexo 4.2.0"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><meta name="keywords" content="null"><meta name="description" content="具体内容看文章。。j"><meta name="author" content="alittlebear"><title>开始学Java之 源代码和字节码 与 解析代码 - alittlebear&#039;s blog</title><meta description="具体内容看文章。。j"><meta property="og:type" content="article"><meta property="og:title" content="开始学Java之 源代码和字节码 与 解析代码"><meta property="og:url" content="https://a-little-bear.github.io/p/c84c/"><meta property="og:site_name" content="alittlebear&#039;s blog"><meta property="og:description" content="具体内容看文章。。j"><meta property="og:locale" content="zh_CN"><meta property="article:published_time" content="2020-11-24T01:41:50.000Z"><meta property="article:modified_time" content="2020-11-24T03:16:26.972Z"><meta property="article:author" content="alittlebear"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://a-little-bear.github.io/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://a-little-bear.github.io/p/c84c/"},"headline":"开始学Java之 源代码和字节码 与 解析代码","image":["https://a-little-bear.github.io/img/og_image.png"],"datePublished":"2020-11-24T01:41:50.000Z","dateModified":"2020-11-24T03:16:26.972Z","author":{"@type":"Person","name":"alittlebear"},"description":"具体内容看文章。。j"}</script><link rel="alternative" href="/atom.xml" title="alittlebear&#039;s blog" type="application/atom+xml"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro|Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&amp;amp;subset=latin,latin-ext|Inconsolata|Itim|Lobster.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.12/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><link rel="stylesheet" href="/css/style.css"><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="/js/globalUtils.js"></script></head><body class="is-2-column has-navbar-fixed-top"><script type="text/javascript" src="/js/alittlebear/night.js"></script><canvas id="universe"></canvas><nav class="navbar navbar-main is-fixed-top"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img class="logo-img" src="/img/logo1.png" alt="alittlebear&#039;s blog" height="28"><img class="logo-img-dark" src="/img/logo2.png" alt="alittlebear&#039;s blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/game_index">在线游戏</a><a class="navbar-item" href="/sou">聚合搜索</a><a class="navbar-item" href="/">--</a><a class="navbar-item" href="/news">每日新闻</a><a class="navbar-item" href="/music">音乐歌单</a><a class="navbar-item" href="/shoucang">私人收藏</a><a class="navbar-item" href="/">---</a><a class="navbar-item" href="/time_line">无时轴</a><a class="navbar-item" href="/self-talking">碎碎念</a><a class="navbar-item" href="/message">留言</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item night" id="night-nav" title="Night Mode" href="javascript:;"><i class="fas fa-moon" id="night-icon"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><script type="text/javascript" src="/js/theme-setting.js"></script><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-plus"> </i>2020-11-23  <a class="commentCountImg" href="/p/c84c/#comment-container"><span class="display-none-class">35422b82d8eb5ca5389eac88bde482e1</span><i class="far fa-comment-dots"></i> <span class="commentCount" id="35422b82d8eb5ca5389eac88bde482e1">99+</span>  </a><span class="level-item"><i class="far fa-clock"> </i>19 分钟  <i class="fas fa-pencil-alt"> </i>2.8 k</span><span class="level-item" id="busuanzi_container_page_pv"><i class="far fa-eye"></i>&nbsp;&nbsp;<span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">开始学Java之 源代码和字节码 与 解析代码</h1><div class="content"><blockquote>
+<p>具体内容看文章。。j</p>
+</blockquote>
+<a id="more"></a>
+
+<h1 id="源代码与字节码"><a href="#源代码与字节码" class="headerlink" title="源代码与字节码"></a>源代码与字节码</h1><p>源代码（Source code）</p>
+<p>字节码（Bytecode）</p>
+<p>总的来说源代码是给人看的，字节码是给机器看的</p>
+<p>在上一篇文章中，Hello.java 是源代码， Hello.class 是字节码</p>
+<p>字节码是由源代码编译出来的</p>
+<h1 id="简单解析Hello-World"><a href="#简单解析Hello-World" class="headerlink" title="简单解析Hello World"></a>简单解析Hello World</h1><h2 id="第一行-类"><a href="#第一行-类" class="headerlink" title="第一行-类"></a>第一行-类</h2><p>上代码（<code>Hello.java</code>）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hello</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">( String[] args )</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello World!"</span>); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>文件名字必须与类名相同，比如说上面的 class <strong>Hello *<em>必须等于 *</em>Hello</strong>.java（在Java，文件和文件名的大小写都很重要）</p>
+</li>
+<li><p><code>class Hello</code> 第一行，定义了类名为Hello （类是程序的一部分，小的程序一般都只有一个类，后面会详细学到。。）</p>
+</li>
+<li><p>编译源代码文件 <code>Hello.java</code> 后会出现一个字节码文件 <code>Hello.class</code> 。</p>
+</li>
+<li><p>所有代码在类里面都是在{}之中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hello</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">//代码放这里（好吧我暂时不清楚注释是哪个，好像是这个）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>类，和文件名必须有英文字母和数字组成，第一个字符必须是字母，不能出现空格，类名一般都用大写字母开头（比如说这里的class <strong>H</strong>ello ，但是不强制要求。 源代码文件只能以.java结尾，并且都是小写字母</p>
+</li>
+</ol>
+<h3 id="小问题"><a href="#小问题" class="headerlink" title="小问题"></a>小问题</h3><p>Q：Java程序第一行是 <code>class AddUpNumbers</code> ，源代码和字节码的文件名应该是什么？</p>
+<p>A： AddUpNumbers.java 和 AddUpNumbers.class</p>
+<h2 id="第二行-大括号"><a href="#第二行-大括号" class="headerlink" title="第二行-大括号"></a>第二行-大括号</h2><ul>
+<li>所有东西都是在类的俩大括号{}之间（不知道咋描述。。。）</li>
+<li>开始学Java，最好每个源代码文件仅放一个类，后面一个源代码文件可能包含多个类</li>
+</ul>
+<h2 id="第三行-文件开始处"><a href="#第三行-文件开始处" class="headerlink" title="第三行-文件开始处"></a>第三行-文件开始处</h2><ul>
+<li><code>public static void main ( String[] args )</code> 显示了文件从哪里开始</li>
+<li>上面的<code>main</code>代表了这是“main method”（不知道咋翻译），也就是程序入口的意思</li>
+<li><a href="https://www.cnblogs.com/cac2020/p/5049315.html">https://www.cnblogs.com/cac2020/p/5049315.html</a> （好奇熊）</li>
+</ul>
+<p>问题：Java main方法为什么是  public static void main(String[] args)???</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>场景</th>
+<th>编译</th>
+<th>运行</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>public修改为private protected或者去掉</td>
+<td>正常</td>
+<td>Main Method not public</td>
+<td>只有当main方法在公有级别上时才对JVM可见，所以需要使用public修饰</td>
+</tr>
+<tr>
+<td>2</td>
+<td>去掉static</td>
+<td>正常</td>
+<td>Exception in thread “main” java.lang.NoSuchMethodError:main</td>
+<td>如果要使main方法作为程序入口，不必要先去创建该类实例而是直接调用，所以该方法需要用static修饰</td>
+</tr>
+<tr>
+<td>3</td>
+<td>修改返回值类型</td>
+<td>正常</td>
+<td>Exception in thread “main” java.lang.NoSuchMethodError:main</td>
+<td>JVM对Java程序已经是最底层，由它调用的方法返回值没有任何地方可去，因此main方法不需要返回值，所以使用void修饰</td>
+</tr>
+<tr>
+<td>4</td>
+<td>修改参数类型或添加多个参数</td>
+<td>正常</td>
+<td>Exception in thread “main” java.lang.NoSuchMethodError:main</td>
+<td>main方法需要接收命令行传入的参数（参数之间使用空格分隔），java规范使用字符串数组作为main方法的唯一入参，参数名可以不是args,如果不穿参数，该数组是empty而不是null</td>
+</tr>
+<tr>
+<td>5</td>
+<td>修改方法名</td>
+<td>正常</td>
+<td>Exception in thread “main” java.lang.NoSuchMethodError:main</td>
+<td>含有main方法的类是Java应用程序，JVM只识别main作为程序入口，所以只能使用main作为方法名</td>
+</tr>
+<tr>
+<td>6</td>
+<td>添加throw Exception</td>
+<td>正常</td>
+<td>正常</td>
+<td>main方法可以抛出异常</td>
+</tr>
+<tr>
+<td>7</td>
+<td>public与static互换位置</td>
+<td>正常</td>
+<td>正常</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="小问题-1"><a href="#小问题-1" class="headerlink" title="小问题"></a>小问题</h3><p>Q：<code>public             static void main(String[] args)</code>  能不能作为开始（也就是那些空格有没有关系）</p>
+<p>A：没关系，编辑器显示正常，但是人看起来有点不舒服就是了。。</p>
+<h2 id="第五行-输出"><a href="#第五行-输出" class="headerlink" title="第五行-输出"></a>第五行-输出</h2><p>重新给一下代码<code>Hello.java</code>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hello</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">( String[] args )</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello World!"</span>); <span class="comment">//看这行</span></span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个程序的main method 由一行代码组成</p>
+<p><code>System.out.println(&quot;Hello World!&quot;);</code> （←就是我）</p>
+<p>这个语句将引号内的字符写入计算机系统的监视器（也就是输出到屏幕吧），不包括引号。</p>
+<p>“Hello World!” 这部分叫String字符串（俺晓得），也就是字符”们“的序列</p>
+<h3 id="小问题-2"><a href="#小问题-2" class="headerlink" title="小问题"></a>小问题</h3><p>Q：Hello.java包含了程序例子，文件在硬盘 C:\Temp 文件夹里，想要运行这个程序，需要完成哪两件事？</p>
+<p>A：1. 编译成Hello.class；2.用Java 解释器运行Hello.class</p>
+<h2 id="语法错误"><a href="#语法错误" class="headerlink" title="语法错误"></a>语法错误</h2><p>这里是一个故意写错的程序</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Class Hello</span><br><span class="line">&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">( String[] args )</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Hello World!"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>class “不小心”变成了 Class，这是一个 ”Syntax Error” ，也就是语法错误</p>
+<p>语法错误（Syntax Error）是编程语言解释 “语法错误” （呃。。）时用的词语</p>
+<h3 id="小问题-3"><a href="#小问题-3" class="headerlink" title="小问题"></a>小问题</h3><ol>
+<li><p>怎么修改这个错误，并且运行文件</p>
+<p>先把Class改成class，再编译，运行Hello.class</p>
+</li>
+<li><p>如果你修改了语法错误后忘记保存了，并且直接运行了程序，会发生什么？</p>
+<p>你会编译旧的错误版本，并且得到相同错误信息，当你在用“记事本”软件，或者其他文本编辑器，你在修改main memory里的代码。Javac编译器会编译已经保存在硬盘上的文件</p>
+</li>
+</ol>
+<h2 id="Bugs"><a href="#Bugs" class="headerlink" title="Bugs"></a>Bugs</h2><p>上代码（我看不出来bug。。）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hello</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">( String[] args )</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Hello Neptune!"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一个程序成功编译与运行不等于这是正确的。举个栗子，上面的代码，这个代码</p>
+<p>当一个代码编译时没有任何语法错误，但是并没有按照预期执行，这就叫有bug（快修快修）</p>
+<h3 id="小问题-4"><a href="#小问题-4" class="headerlink" title="小问题"></a>小问题</h3><ol>
+<li><p>这个程序编译时有没有错误</p>
+<p>无</p>
+</li>
+<li><p>这个程序可以不可以运行</p>
+<p>可以</p>
+</li>
+<li><p>这个程序跟Hello World要求相同不相同？（噢我知道为啥了，这是跟上面Hello World找不同，World 改成了 Neptune 。</p>
+<p>不，这有bug（理直气壮）</p>
+</li>
+</ol>
+<h2 id="长一点的程序例子"><a href="#长一点的程序例子" class="headerlink" title="长一点的程序例子"></a>长一点的程序例子</h2><p>可以先写短一点的程序，这样更好找出语法错误和bugs；然后拼接成，或者再写长一点的程序</p>
+<p>上代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Emily</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">( String[] args )</span> </span></span><br><span class="line"><span class="function">    </span>&#123; </span><br><span class="line">        System.out.println(<span class="string">"A bird came down the walk:"</span>); </span><br><span class="line">        System.out.println(<span class="string">"He did not know I saw;"</span>); </span><br><span class="line">        System.out.println(<span class="string">"He bit an angle-worm in halves"</span>); 	</span><br><span class="line">        System.out.println(<span class="string">"And ate the fellow, raw."</span>); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个程序应该被命名为Emily.java，然后编译器会创建一个字符码为Emily.class</p>
+<h3 id="小问题-5"><a href="#小问题-5" class="headerlink" title="小问题"></a>小问题</h3><p>Q：这个程序会在显示器上写入啥？当他运行</p>
+<p>A：每一个<code>System.out.println</code> 语句会输出引号内的字符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A bird came down the walk:</span><br><span class="line">He did not know I saw;</span><br><span class="line">He bit an angle-worm in halves</span><br><span class="line">And ate the fellow, raw.</span><br></pre></td></tr></table></figure>
+
+<h2 id="另一个例子"><a href="#另一个例子" class="headerlink" title="另一个例子"></a>另一个例子</h2><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>一个很像Hello World的例子，但是 main method 有更多语句。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Haiku</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">( String[] args )</span> </span></span><br><span class="line"><span class="function">    </span>&#123; </span><br><span class="line">        System.out.println(_______________________________); </span><br><span class="line">        System.out.println(_______________________________); </span><br><span class="line">        System.out.println(_______________________________); </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>要输出：</p>
+<p>On a withered branch<br>A crow has just alighted:<br>Nightfall in autumn.</p>
+<h3 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Haiku</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">( String[] args )</span> </span></span><br><span class="line"><span class="function">    </span>&#123; </span><br><span class="line">        System.out.println(<span class="string">"On a withered branch"</span>); </span><br><span class="line">        System.out.println(<span class="string">"A crow has just alighted:"</span>); </span><br><span class="line">        System.out.println(<span class="string">"Nightfall in autumn."</span>); </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果您一直在创建示例程序并编译和运行它们，您可能已经注意到程序中的空格和新行并不重要。（但是，不能将空格放在单词中间，引号内的空格很重要。）例如，以下版本的程序将正确编译，并在运行时执行完全相同的操作：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span>                <span class="title">Haiku</span></span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span>             <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args )</span></span></span><br><span class="line"><span class="function">		</span>&#123;</span><br><span class="line">System.out.     println(                   <span class="string">"On a withered branch"</span>);</span><br><span class="line">System      .     out.println(<span class="string">"A crow has just alighted:"</span>           );</span><br><span class="line">System.out.println(<span class="string">"Nightfall in autumn."</span>);</span><br><span class="line">&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>编译器“看不到”程序的二维外观，编译器将程序视为字符流，一个接一个。</p>
+<p>无论如何，人对文字的布局很敏感，写代码保持整齐是很重要的，虽然最后一个乱七八糟的代码也能运行，但是看起来就秃头</p>
+<h3 id="小问题-6"><a href="#小问题-6" class="headerlink" title="小问题"></a>小问题</h3><p>Q：如果在这个布局不好的程序中有一个小错误，很容易找到吗？</p>
+<p>A：不好找到，看起来一团糟，很容易错过一个错误的地方</p>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>注释（Comment）是人类读者写的一个笔记，或者就是注释（呃。。）</p>
+<p>在Java，注释由 //开始 ，跟在后面的文字会被编辑器忽略</p>
+<p>上代码（呃。。）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Write three lines of a poem to the computer monitor</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Haiku</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">( String[] args )</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"On a withered branch"</span> );</span><br><span class="line">		System.out.println(<span class="string">"A crow has just alighted:"</span>);</span><br><span class="line">		System.out.println(<span class="string">"Nightfall in autumn."</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>加没加注释，运行起来都一个样儿，上方橙色（不知道你那里显示啥颜色）就是注释的颜色，大多数程序编辑器可以把不同代码变为不同的颜色，但是啥颜色都没关系，源代码文件不会有这些代码。。</p>
+<h3 id="小问题-7"><a href="#小问题-7" class="headerlink" title="小问题"></a>小问题</h3><p>Q：注释会不会包含在字节码文件内</p>
+<p>A：不会，编译器会忽略注释</p>
+<h2 id="一堆注释"><a href="#一堆注释" class="headerlink" title="一堆注释"></a>一堆注释</h2><p>下代码（哈哈）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Haiku</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">( String[] args )</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"On a withered branch"</span> );  <span class="comment">// Write first line of the poem</span></span><br><span class="line">        System.out.println(<span class="string">"A crow has just alighted:"</span>);   <span class="comment">// Write 2nd line of the poem </span></span><br><span class="line">        System.out.println(<span class="string">"Nightfall in autumn."</span>);    <span class="comment">// Write 3rd line of the poem </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注释可以放在语句的后面，来解释这是干啥的，所有注释都是在//后面的，注释前面的语句不会被注释影响到</p>
+<h3 id="小问题-8"><a href="#小问题-8" class="headerlink" title="小问题"></a>小问题</h3><p>Q：有没有可能写一大段注释</p>
+<p>A：有可能</p>
+<h2 id="多行注释"><a href="#多行注释" class="headerlink" title="多行注释"></a>多行注释</h2><p>来，代码！（shua~）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Program 1 </span></span><br><span class="line"><span class="comment">Write out three lines of a poem. </span></span><br><span class="line"><span class="comment">The poem describes a single moment in time, </span></span><br><span class="line"><span class="comment">using 17 syllables. </span></span><br><span class="line"><span class="comment">*/</span> </span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Haiku</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">( String[] args )</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"On a withered branch"</span> ); </span><br><span class="line">        System.out.println(<span class="string">"A crow has just alighted:"</span>); </span><br><span class="line">        System.out.println(<span class="string">"Nightfall in autumn."</span>); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>/* 和 */ 之间的所有字符，都会被编辑器忽略（也就是全都是注释的意思）</p>
+<p>/ 和 * 中间不能有任何字符</p>
+<p>/* 和 */ 中间可能隔着好几行</p>
+<h3 id="小问题-9"><a href="#小问题-9" class="headerlink" title="小问题"></a>小问题</h3><p>Q：你为啥要用注释帮助别人了解你的程序</p>
+<p>A：这人可能是你，注释经常告诉你这是啥，或者为啥你用这个方法做了一些事情（呃。。就是那个意思）</p>
+<h2 id="大括号"><a href="#大括号" class="headerlink" title="大括号"></a>大括号</h2><p>还有一个要注意的地方，就是每一个左大括号{都会跟着一个右大括号}</p>
+<p>一般大括号都会像套娃一样，一套包着一套，举例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Haiku</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">( String[] args )</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println( <span class="string">"On a withered branch"</span> ); </span><br><span class="line">    	System.out.println( <span class="string">"A crow has just alighted:"</span> ); </span><br><span class="line">		System.out.println( <span class="string">"Nightfall in autumn."</span> );</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样排版可以让人读起来舒服，和有逻辑一些</p>
+<h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><p>不止有{}，还有()和[]</p>
+<p>大程序有一对上面的括号，用来组成程序的不同部分</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Haiku</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">( String[] args )</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println( <span class="string">"On a withered branch"</span> );</span><br><span class="line">		System.out.println( <span class="string">"A crow has just alighted:"</span> );</span><br><span class="line">		System.out.println( <span class="string">"Nightfall in autumn."</span> );</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div><div><div class="recommend-post"><span class="is-size-6 has-text-grey has-mr-7"># 相关文章</span><br><span>  1.<a class="is-size-6" href="/p/f108/" target="_blank">开始学Java之 Hello World （别问我为啥不学python了。。）</a><br></span></div><div class="recommend-post"><span class="is-size-6 has-text-grey has-mr-7"># 推荐文章</span><br><span>  1.<a class="is-size-6" href="/p/c84c/" target="_blank">开始学Java之 源代码和字节码 与 解析代码</a><br></span><span>  2.<a class="is-size-6" href="/p/f108/" target="_blank">开始学Java之 Hello World （别问我为啥不学python了。。）</a><br></span><span>  3.<a class="is-size-6" href="/p/5430/" target="_blank">Win10任务管理器查看线程数、PID值等方法</a><br></span><span>  4.<a class="is-size-6" href="/p/bda0/" target="_blank">学python第十三课-进程和线程</a><br></span><span>  5.<a class="is-size-6" href="/p/47ce/" target="_blank">学python第十二课准备-正则表达式</a><br></span><span>  6.<a class="is-size-6" href="/p/b1d9/" target="_blank">学python第十二课-字符串和正则表达式</a><br></span></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/p/f108/"><span class="level-item">开始学Java之 Hello World （别问我为啥不学python了。。）</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><div class="title is-5">评论</div><div id="comment-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.0/dist/gitalk.css"><script> $.getScript('/js/gitalk.min.js', function () { 
+            var gitalk = new Gitalk({
+            language:'zh-CN',
+            id: '35422b82d8eb5ca5389eac88bde482e1',
+            repo: 'a-little-bear.github.io',
+            owner: 'a-little-bear',
+            clientID: '7a12c782031110c85c04',
+            clientSecret: '615df4c852a3cf8bad068bfa5151449c6c1b3f34',
+            admin: ["a-little-bear"],
+            createIssueManually: true,
+            distractionFreeMode: true,
+            perPage: 10,
+            pagerDirection: 'last',
+            
+            
+            enableHotKey: true,
+            isLocked: false
+        })
+        gitalk.render('comment-container')});</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget toc-scroll" id="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-源代码与字节码" href="#源代码与字节码"><span>源代码与字节码</span></a></li><li><a class="is-flex toc-item" id="toc-item-简单解析Hello-World" href="#简单解析Hello-World"><span>简单解析Hello World</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-第一行-类" href="#第一行-类"><span>第一行-类</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-小问题" href="#小问题"><span>小问题</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-第二行-大括号" href="#第二行-大括号"><span>第二行-大括号</span></a></li><li><a class="is-flex toc-item" id="toc-item-第三行-文件开始处" href="#第三行-文件开始处"><span>第三行-文件开始处</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-小问题-1" href="#小问题-1"><span>小问题</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-第五行-输出" href="#第五行-输出"><span>第五行-输出</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-小问题-2" href="#小问题-2"><span>小问题</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-语法错误" href="#语法错误"><span>语法错误</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-小问题-3" href="#小问题-3"><span>小问题</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-Bugs" href="#Bugs"><span>Bugs</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-小问题-4" href="#小问题-4"><span>小问题</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-长一点的程序例子" href="#长一点的程序例子"><span>长一点的程序例子</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-小问题-5" href="#小问题-5"><span>小问题</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-另一个例子" href="#另一个例子"><span>另一个例子</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-问题" href="#问题"><span>问题</span></a></li><li><a class="is-flex toc-item" id="toc-item-答案" href="#答案"><span>答案</span></a></li><li><a class="is-flex toc-item" id="toc-item-小问题-6" href="#小问题-6"><span>小问题</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-注释" href="#注释"><span>注释</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-小问题-7" href="#小问题-7"><span>小问题</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-一堆注释" href="#一堆注释"><span>一堆注释</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-小问题-8" href="#小问题-8"><span>小问题</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-多行注释" href="#多行注释"><span>多行注释</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-小问题-9" href="#小问题-9"><span>小问题</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-大括号" href="#大括号"><span>大括号</span></a></li><li><a class="is-flex toc-item" id="toc-item-结束" href="#结束"><span>结束</span></a></li></ul></li></ul></div></div><script type="text/javascript" async>
+        $(document).ready(function () { //参考自 https://github.com/ppoffice/hexo-theme-icarus/pull/616/files
+            var observerTopMargin;
+            var scrollObserver;
+            var headerElems = $(".headerlink");
+            var activeTocItem;
+        
+            function initIntersectionObserver(docHeight) {
+                observerTopMargin = docHeight;
+                scrollObserver = new IntersectionObserver(scrollCallBack,
+                    {
+                        root: null,  // viewpoint
+                        rootMargin: docHeight + "px 0px -80% 0px"  // cover top 30% of viewport to the top of document
+                    })
+            }
+        
+            function scrollCallBack(entries, observer) {
+                if ($(window).scrollTop() > observerTopMargin * 0.7) { 
+                    // User somehow scroll to 70% of observerTopMargin (which is inited as 200% document height)
+                    // Observer top margin need to extend to cover all the space to the top of the document
+                    initIntersectionObserver(observerTopMargin * 2)
+                    observer.disconnect();
+                    return;
+                }
+                let toActive;
+                if (entries[0].intersectionRatio == 1) {  // enter viewed area
+                    let entry = entries.reduce((u, v) => (u.target.toc_id > v.target.toc_id ? u : v));  // get the lowest item
+                    toActive = $("#toc-item-" + $(entry.target).attr("href").substr(1));
+                } else {
+                    let entry = entries.reduce((u, v) => (u.target.toc_id < v.target.toc_id ? u : v));  // get the highest item
+                    let idx = Math.max(entry.target.toc_id - 1, 0);
+                    toActive = $("#toc-item-" + $(headerElems[idx]).attr("href").substr(1));
+                }
+                if (activeTocItem) activeTocItem.removeClass("is-current");
+                activeTocItem = toActive
+                activeTocItem.addClass("is-current");
+            }
+        
+            initIntersectionObserver($(document).height() * 2);
+            headerElems.each(function (index, obj) {
+                obj.toc_id = index;
+                scrollObserver.observe(obj);
+            })
+        });</script></div><div class="card widget"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="" src="https://cdn.jsdelivr.net/gh/a-little-bear/picture/img/1280-646950218-panda-in-thailand.jpg" alt="alittlebear"></figure><p class="title is-size-4 is-block line-height-inherit">alittlebear</p><p class="is-size-6 is-block">一坨小萌新~（音乐在左下角）</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>太阳系 地球</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">99</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">17</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">11</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/a-little-bear" target="_blank" rel="noopener">Github</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="吾爱破解" href="https://www.52pojie.cn/home.php?mod=follow&amp;uid=1265340&amp;do=view&amp;from=space">吾爱破解</a><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="哔哩哔哩" href="https://space.bilibili.com/470220192">哔哩哔哩</a></div><div><hr><p id="hitokoto">:D 一言句子获取中...</p><script type="text/javascript" defer>function getYiyan(){
+                                $.getJSON("https://v1.hitokoto.cn/", function (data) {
+                                if(data){
+                                    $('#hitokoto').html("");
+                                    $('#hitokoto').append("<strong style='color: #3273dc;'>"+data.hitokoto+"</strong>"+
+                                    "<p>"+"来源《"+data.from+"》</p><p>提供者-"+data.creator+"</p>");
+                                }});}
+                                $(function (){getYiyan();$('#hitokoto').click(function(){getYiyan();})});</script></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/categories/Github/"><span class="level-start"><span class="level-item">Github</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E4%B9%A6%E7%B1%8D/"><span class="level-start"><span class="level-item">书籍</span></span><span class="level-end"><span class="level-item tag">7</span></span></a><ul class="mr-0"><li><a class="level is-mobile is-marginless" href="/categories/%E4%B9%A6%E7%B1%8D/%E5%B7%A5%E5%85%B7/"><span class="level-start"><span class="level-item">工具</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E4%B9%A6%E7%B1%8D/%E7%94%B5%E5%AD%90%E4%B9%A6/"><span class="level-start"><span class="level-item">电子书</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E4%B9%A6%E7%B1%8D/%E9%98%85%E8%AF%BB%E7%BB%8F%E9%AA%8C/"><span class="level-start"><span class="level-item">阅读经验</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile is-marginless" href="/categories/%E5%85%B6%E4%BB%96/"><span class="level-start"><span class="level-item">其他</span></span><span class="level-end"><span class="level-item tag">22</span></span></a><ul class="mr-0"><li><a class="level is-mobile is-marginless" href="/categories/%E5%85%B6%E4%BB%96/%E7%BD%91%E7%9B%98/"><span class="level-start"><span class="level-item">网盘</span></span><span class="level-end"><span class="level-item tag">8</span></span></a></li></ul></li><li><a class="level is-mobile is-marginless" href="/categories/%E5%BD%B1%E8%A7%86%E6%8E%A8%E8%8D%90/"><span class="level-start"><span class="level-item">影视推荐</span></span><span class="level-end"><span class="level-item tag">3</span></span></a><ul class="mr-0"><li><a class="level is-mobile is-marginless" href="/categories/%E5%BD%B1%E8%A7%86%E6%8E%A8%E8%8D%90/%E8%A7%86%E9%A2%91/"><span class="level-start"><span class="level-item">视频</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></li><li><a class="level is-mobile is-marginless" href="/categories/%E6%8A%80%E6%9C%AF/"><span class="level-start"><span class="level-item">技术</span></span><span class="level-end"><span class="level-item tag">24</span></span></a><ul class="mr-0"><li><a class="level is-mobile is-marginless" href="/categories/%E6%8A%80%E6%9C%AF/Java/"><span class="level-start"><span class="level-item">Java</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E6%8A%80%E6%9C%AF/bat/"><span class="level-start"><span class="level-item">bat</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E6%8A%80%E6%9C%AF/hexo/"><span class="level-start"><span class="level-item">hexo</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E6%8A%80%E6%9C%AF/python/"><span class="level-start"><span class="level-item">python</span></span><span class="level-end"><span class="level-item tag">14</span></span></a></li></ul></li><li><a class="level is-mobile is-marginless" href="/categories/%E6%B8%B8%E6%88%8F/"><span class="level-start"><span class="level-item">游戏</span></span><span class="level-end"><span class="level-item tag">25</span></span></a></li><a class="level is-mobile is-marginless" href="/categories/"><span class="level-start"><span class="level-item">查看全部&gt;&gt;</span></span></a></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/%E7%BB%8F%E9%AA%8C/"><span class="tag">经验</span><span class="tag is-grey-lightest">12</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E4%B9%A6%E7%B1%8D/"><span class="tag">书籍</span><span class="tag is-grey-lightest">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97/"><span class="tag">俄罗斯方块</span><span class="tag is-grey-lightest">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%9B%BE%E7%89%87%E6%B5%8F%E8%A7%88%E5%99%A8/"><span class="tag">图片浏览器</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MD%E7%BC%96%E8%BE%91%E5%99%A8/"><span class="tag">MD编辑器</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%85%B6%E4%BB%96/"><span class="tag">其他</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"><span class="tag">开发工具</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%BD%95%E5%83%8F%E8%BD%AF%E4%BB%B6/"><span class="tag">录像软件</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"><span class="tag">浏览器</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BD%91%E7%AB%99/"><span class="tag">网站</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%98%85%E8%AF%BB%E8%BD%AF%E4%BB%B6/"><span class="tag">阅读软件</span><span class="tag is-grey-lightest">1</span></a></div></div></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/archives/2020/11/"><span class="level-start"><span class="level-item">十一月 2020</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/09/"><span class="level-start"><span class="level-item">九月 2020</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/08/"><span class="level-start"><span class="level-item">八月 2020</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/07/"><span class="level-start"><span class="level-item">七月 2020</span></span><span class="level-end"><span class="level-item tag">15</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/06/"><span class="level-start"><span class="level-item">六月 2020</span></span><span class="level-end"><span class="level-item tag">29</span></span></a></li><a class="level is-mobile is-marginless" href="/archives/"><span class="level-start"><span class="level-item">查看全部&gt;&gt;</span></span></a></ul></div></div></div><div class="card widget"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content size-small"><p><time dateTime="2020-11-24T01:41:50.000Z">2020-11-23</time></p><p class="title is-6"><a class="link-muted" href="/p/c84c/">开始学Java之 源代码和字节码 与 解析代码</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a> / <a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/Java/">Java</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2020-11-23T20:23:41.000Z">2020-11-23</time></p><p class="title is-6"><a class="link-muted" href="/p/f108/">开始学Java之 Hello World （别问我为啥不学python了。。）</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a> / <a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/Java/">Java</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2020-09-30T00:08:43.000Z">2020-09-29</time></p><p class="title is-6"><a class="link-muted" href="/p/5430/">Win10任务管理器查看线程数、PID值等方法</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2020-09-29T23:54:38.000Z">2020-09-29</time></p><p class="title is-6"><a class="link-muted" href="/p/bda0/">学python第十三课-进程和线程</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a> / <a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/python/">python</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2020-09-11T00:06:06.000Z">2020-09-10</time></p><p class="title is-6"><a class="link-muted" href="/p/47ce/">学python第十二课准备-正则表达式</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a> / <a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/python/">python</a></p></div></article></div></div><div class="card widget"><div class="card-content"><h3 class="menu-label">最新评论</h3><span class="body_hot_comment">加载中，最新评论有1分钟缓存...</span></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img class="logo-img" src="/img/logo1.png" alt="alittlebear&#039;s blog" height="28"><img class="logo-img-dark" src="/img/logo2.png" alt="alittlebear&#039;s blog" height="28"></a><p class="size-small"><span>&copy; 2020 alittlebear</span>  Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>,Modify by <a href="https://github.com/removeif/hexo-theme-amazing" target="_blank">removeif</a> <br><span>© 版权说明：[本网站所有内容均收集于互联网或自己创作,<br />&nbsp;&nbsp;&nbsp;&nbsp;方便于网友与自己学习交流，如有侵权，请<a href="/message" target="_blank">留言</a>，立即处理]<br /></span><span><span id="statistic-times">loading...</span><script>function createTime(time) {
+            var n = new Date(time);
+            now.setTime(now.getTime() + 250),
+                days = (now - n) / 1e3 / 60 / 60 / 24,
+                dnum = Math.floor(days),
+                hours = (now - n) / 1e3 / 60 / 60 - 24 * dnum,
+                hnum = Math.floor(hours),
+            1 == String(hnum).length && (hnum = "0" + hnum),
+                minutes = (now - n) / 1e3 / 60 - 1440 * dnum - 60 * hnum,
+                mnum = Math.floor(minutes),
+            1 == String(mnum).length && (mnum = "0" + mnum),
+                seconds = (now - n) / 1e3 - 86400 * dnum - 3600 * hnum - 60 * mnum,
+                snum = Math.round(seconds),
+            1 == String(snum).length && (snum = "0" + snum),
+                document.getElementById("statistic-times").innerHTML = "❤️本站自 <strong>"+time.split(" ")[0].replace(/\//g,".")+"</strong> 已运行 <strong>" + dnum + "</strong> 天 <strong>" + hnum + "</strong> 小时 <strong>" + mnum + "</strong> 分 <strong>" + snum + "</strong> 秒！❤️";
+        }var now = new Date();setInterval("createTime('2020/04/23 00:00:00')", 250,"");</script><br></span><div class="size-small"><span>❤️感谢 <strong><span id="busuanzi_value_site_uv">99+</span></strong> 小伙伴的 <strong><span id="busuanzi_value_site_pv">99+</span></strong> 次光临！❤️</span></div></p></div><div class="level-end"><div class="sideMusic"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="/js/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script><meting-js style="width: auto;height: 2000px;" server="netease" type="playlist" id="2985973204" theme="#2980b9" loop="all" autoplay="false" order="random" storageName="aplayer-setting" lrctype="0" list-max-height="400px" fixed="true"></meting-js></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            site: {
+                url: 'https://a-little-bear.github.io',
+                external_link: {"enable":true,"exclude":[]}
+            },
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back-to-top.js" defer></script><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.12/dist/js/lightgallery-all.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><!--!--><!--!--><!--!--><script src="/js/toc.js" defer></script><script src="/js/main.js" defer></script><script>$.getScript('/js/comment-issue-data.js',function(){loadIssueData('7a12c782031110c85c04','615df4c852a3cf8bad068bfa5151449c6c1b3f34','a-little-bear','a-little-bear.github.io',false);})</script><script src="/js/alittlebear/universe.js"></script><link rel="stylesheet" href="/css/insight.css"><div class="searchbox ins-search"><div class="searchbox-container ins-search-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="想要查找什么..."><span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"></div></div></div></div><script>(function (window) {
+            var INSIGHT_CONFIG = {
+                TRANSLATION: {
+                    POSTS: '文章',
+                    PAGES: '页面',
+                    CATEGORIES: '分类',
+                    TAGS: '标签',
+                    UNTITLED: '(无标题)',
+                },
+                CONTENT_URL: '/content.json',
+            };
+            window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+        })(window);</script><script src="/js/insight.js" defer></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.js"></script><script type="text/javascript">var pjax = new Pjax({
+            elements: "a",//代表点击链接就更新
+            selectors: [  //代表要更新的节点
+                ".section",
+                "title"
+            ],
+            cache: true,
+            cacheBust:false
+        })
+
+        function loadBusuanzi(){
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js", function () {});
+        }
+
+        // 开始 PJAX 执行的函数
+        document.addEventListener('pjax:send', function () {
+        });
+        
+        // PJAX 完成之后执行的函数，可以和上面的重载放在一起
+        document.addEventListener('pjax:complete', function () {
+            $(".section").css({opacity:1});
+            if(true){
+                $.getScript('/js/comment-issue-data.js',function(){loadIssueData('7a12c782031110c85c04','615df4c852a3cf8bad068bfa5151449c6c1b3f34','a-little-bear','a-little-bear.github.io',false);});
+            }
+            if(false){
+                loadMathJax();
+            }
+            loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);
+            loadBackTop();
+            loadBusuanzi();
+            if(typeof loadBanner == 'function'){
+                loadBanner();
+            }
+        });</script></body><script type="text/javascript" src="/js/typing.js"></script></html>
