@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="generator" content="Hexo 4.2.0"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><meta name="keywords" content="null"><meta name="description" content="今天也拆成两份吧"><meta name="author" content="alittlebear"><title>开始学Java之5 基本数据 - alittlebear&#039;s blog</title><meta description="今天也拆成两份吧"><meta property="og:type" content="article"><meta property="og:title" content="开始学Java之5 基本数据"><meta property="og:url" content="https://a-little-bear.github.io/p/9d66/"><meta property="og:site_name" content="alittlebear&#039;s blog"><meta property="og:description" content="今天也拆成两份吧"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://i.loli.net/2020/11/26/qj1RCK5oUsrySpG.png"><meta property="og:image" content="https://i.loli.net/2020/11/26/MahwfAZSQbcvdzG.png"><meta property="og:image" content="https://i.loli.net/2020/11/26/xqrOIhVlEefPHG6.png"><meta property="og:image" content="https://i.loli.net/2020/11/26/C26FT4gXZMocSlb.png"><meta property="og:image" content="https://i.loli.net/2020/11/26/C26FT4gXZMocSlb.png"><meta property="article:published_time" content="2020-11-25T18:51:14.000Z"><meta property="article:modified_time" content="2020-11-29T01:38:32.588Z"><meta property="article:author" content="alittlebear"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://i.loli.net/2020/11/26/qj1RCK5oUsrySpG.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://a-little-bear.github.io/p/9d66/"},"headline":"开始学Java之5 基本数据","image":["https://i.loli.net/2020/11/26/qj1RCK5oUsrySpG.png","https://i.loli.net/2020/11/26/MahwfAZSQbcvdzG.png","https://i.loli.net/2020/11/26/xqrOIhVlEefPHG6.png","https://i.loli.net/2020/11/26/C26FT4gXZMocSlb.png","https://i.loli.net/2020/11/26/C26FT4gXZMocSlb.png"],"datePublished":"2020-11-25T18:51:14.000Z","dateModified":"2020-11-29T01:38:32.588Z","author":{"@type":"Person","name":"alittlebear"},"description":"今天也拆成两份吧"}</script><link rel="alternative" href="/atom.xml" title="alittlebear&#039;s blog" type="application/atom+xml"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro|Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&amp;amp;subset=latin,latin-ext|Inconsolata|Itim|Lobster.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.12/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><link rel="stylesheet" href="/css/style.css"><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="/js/globalUtils.js"></script></head><body class="is-2-column has-navbar-fixed-top"><script type="text/javascript" src="/js/alittlebear/night.js"></script><canvas id="universe"></canvas><nav class="navbar navbar-main is-fixed-top"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img class="logo-img" src="/img/logo1.png" alt="alittlebear&#039;s blog" height="28"><img class="logo-img-dark" src="/img/logo2.png" alt="alittlebear&#039;s blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/game_index">在线游戏</a><a class="navbar-item" href="/sou">聚合搜索</a><a class="navbar-item" href="/">--</a><a class="navbar-item" href="/news">每日新闻</a><a class="navbar-item" href="/music">音乐歌单</a><a class="navbar-item" href="/shoucang">私人收藏</a><a class="navbar-item" href="/">---</a><a class="navbar-item" href="/time_line">无时轴</a><a class="navbar-item" href="/self-talking">碎碎念</a><a class="navbar-item" href="/message">留言</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item night" id="night-nav" title="Night Mode" href="javascript:;"><i class="fas fa-moon" id="night-icon"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><script type="text/javascript" src="/js/theme-setting.js"></script><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-plus"> </i>2020-11-25  <a class="commentCountImg" href="/p/9d66/#comment-container"><span class="display-none-class">a973be77f31b798ab72265e212a4f298</span><i class="far fa-comment-dots"></i> <span class="commentCount" id="a973be77f31b798ab72265e212a4f298">99+</span>  </a><span class="level-item"><i class="far fa-clock"> </i>37 分钟  <i class="fas fa-pencil-alt"> </i>5.5 k</span><span class="level-item" id="busuanzi_container_page_pv"><i class="far fa-eye"></i>&nbsp;&nbsp;<span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">开始学Java之5 基本数据</h1><div class="content"><blockquote>
+<p>今天也拆成两份吧</p>
+</blockquote>
+<a id="more"></a>
+
+<p>（可能有重复内容。。）</p>
+<p>之前用的是DrJava，现在准备开始用BlueJ。。。。</p>
+<h2 id="类（Class）"><a href="#类（Class）" class="headerlink" title="类（Class）"></a>类（Class）</h2><p>先说说类</p>
+<ul>
+<li>类（Class），是一个对象（Object）的蓝图</li>
+<li>为啥你需要一个对象（是Object，不是那个对象。。当然也需要hh）<ul>
+<li>Java是一个面向对象编程语言</li>
+<li>用Java编程，都是围绕对象（Object）</li>
+</ul>
+</li>
+<li>一个类（Clasee），包含了变量，methods，构造函数（constructors），等等。。</li>
+</ul>
+<p><img src="https://i.loli.net/2020/11/26/qj1RCK5oUsrySpG.png" alt=""></p>
+<h2 id="Java的8-1种基本数据类型"><a href="#Java的8-1种基本数据类型" class="headerlink" title="Java的8+1种基本数据类型"></a>Java的8+1种基本数据类型</h2><p>字符串（String）不是基本数据。</p>
+<blockquote>
+<p>感谢作者大佬：<a href="https://blog.csdn.net/qq_36784953/article/details/67634421">https://blog.csdn.net/qq_36784953/article/details/67634421</a></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>中文</th>
+<th>大小</th>
+<th>最小值</th>
+<th>最大值</th>
+<th>包装类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>boolean</td>
+<td>布尔类型</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>Boolean</td>
+</tr>
+<tr>
+<td>char</td>
+<td>字符型</td>
+<td>16bits</td>
+<td>Unicode 0</td>
+<td>Unicode 216-1</td>
+<td>Character</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>字节型</td>
+<td>8bits</td>
+<td>-128</td>
+<td>+127</td>
+<td>Byte</td>
+</tr>
+<tr>
+<td>short</td>
+<td>短整型</td>
+<td>16bits</td>
+<td>-215</td>
+<td>+215-1</td>
+<td>Short</td>
+</tr>
+<tr>
+<td>int</td>
+<td>整型</td>
+<td>32bits</td>
+<td>-231</td>
+<td>+231-1</td>
+<td>Integer</td>
+</tr>
+<tr>
+<td>long</td>
+<td>长整型</td>
+<td>64bits</td>
+<td>-263</td>
+<td>+263-1</td>
+<td>Long</td>
+</tr>
+<tr>
+<td>float</td>
+<td>浮点型</td>
+<td>32bits</td>
+<td>1.4E-45</td>
+<td>3.4028235E38</td>
+<td>Float</td>
+</tr>
+<tr>
+<td>double</td>
+<td>双精度浮点型</td>
+<td>64bits</td>
+<td>4.9E-324</td>
+<td>1.7976931348623157E308</td>
+<td>Double</td>
+</tr>
+<tr>
+<td>void</td>
+<td>无</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>Void</td>
+</tr>
+</tbody></table>
+<p>○ boolean 类型所占空间大小没有明确指定(2),其值只能为true或false，用于表示条件的真或假<br>○ char 类型为字符型，用于表示一个字符，可以是字母、数字、下划线、中文、以及特殊符号，char的表示方法为单引号中间加一个字符，比如‘天’、‘ ’(空格)<br>○ byte、short、int、long 都表示整数，但是由于类型的不同，其所占的空间和表示数字的范围都不同，为了表示一个数字是long类型，需要在数字后面加L或l，推荐使用大写L，避免与1混淆，如果不加l，默认是int类型，可能会造成未知错误<br>○ float、double 表示小数，但是不同类型之间，所占空间和表示范围不同，其精度也不同，推荐使用double类型，为了表示一个小数是float类型，需要在后面加F或f，避免出现未知错误<br>○ void 表示空类型，它通常作为函数无返回值时的标识符</p>
+<h3 id="String-类型简介"><a href="#String-类型简介" class="headerlink" title="String 类型简介"></a>String 类型简介</h3><p>String类型是一种常用的<strong>引用类型</strong>，它表示一个字符串，可以看做是几个char拼接在一起，在字符串中，一个中文字符占2个字节，一个英文字符占1个字节，字符串用双引号表示，如“Hello World！”，表面上看这个字符串有10个字母，1个空格和1个叹号，应该占12个字节，实际上它却占用了13个字节，因为在字符串的结尾为了表示字符串已经停止了，会自动加一个‘\0’，它导致字符串多占了一个字节</p>
+<p>注释：</p>
+<ol>
+<li>包装类是数据类型对应的引用类型，可以通过引用类型做类型之间的转换，进制转换等一些操作</li>
+<li>boolean本身只占1bit，但是计算机分配内存时会四个bits为一组分配，所以就算本身只占1bit，也会占4bit，如果声明为boolean数组，也会默认增长至4的倍数个bits</li>
+</ol>
+<h2 id="Java中定义了8种基本数据类型"><a href="#Java中定义了8种基本数据类型" class="headerlink" title="Java中定义了8种基本数据类型"></a>Java中定义了8种基本数据类型</h2><blockquote>
+<p>感谢作者大佬：<a href="https://blog.csdn.net/weixin_43662429/article/details/104532582">https://blog.csdn.net/weixin_43662429/article/details/104532582</a></p>
+</blockquote>
+<blockquote>
+<p>数值型－ byte、 short、int、 long、float、 double<br>字符型－ char<br>布尔型－boolean</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 基本数据类型（primitive data type）</span></span><br><span class="line"><span class="comment"> * 引用类型占用四个字节，表示的是地址</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> creep_creep_creep</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A_primitive</span> </span>&#123;</span><br><span class="line">	<span class="comment">//数值型</span></span><br><span class="line">	<span class="keyword">byte</span> a;<span class="comment">//1字节</span></span><br><span class="line">	<span class="keyword">short</span> b;<span class="comment">//2字节</span></span><br><span class="line">	<span class="keyword">int</span> c;<span class="comment">//4字节</span></span><br><span class="line">	<span class="keyword">long</span> d;<span class="comment">//8字节</span></span><br><span class="line">	<span class="keyword">float</span> e;<span class="comment">//4字节</span></span><br><span class="line">	<span class="keyword">double</span> f;<span class="comment">//8字节</span></span><br><span class="line">	<span class="comment">//字符型</span></span><br><span class="line">	<span class="keyword">char</span> name;<span class="comment">//2字节</span></span><br><span class="line">	<span class="comment">//布尔型</span></span><br><span class="line">	<span class="keyword">boolean</span> g;<span class="comment">//1位</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="整型变量-常量"><a href="#整型变量-常量" class="headerlink" title="整型变量/常量"></a>整型变量/常量</h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>存储空间</th>
+<th>范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>byte</td>
+<td>1字节</td>
+<td>− 2 7 -2^{7}−27 ~ 2 7 − 1 / 2^{7}-1/27−1/(-128~127)</td>
+</tr>
+<tr>
+<td>short</td>
+<td>2字节</td>
+<td>− 2 15 -2^{15}−215<del>2 15 − 1 / 2^{15}-1/215−1/ (-32768</del>-32767)</td>
+</tr>
+<tr>
+<td>int</td>
+<td>4字节</td>
+<td>− 2 31 -2^{31}−231~2 31 − 1 / 2^{31}-1/231−1/约21亿</td>
+</tr>
+<tr>
+<td>long</td>
+<td>8字节</td>
+<td>− 2 63 -2^{63}−263~2 63 − 1 2^{63}-1263−1</td>
+</tr>
+</tbody></table>
+<h3 id="Java-语言整型常量的四种表示形式"><a href="#Java-语言整型常量的四种表示形式" class="headerlink" title="Java 语言整型常量的四种表示形式"></a>Java 语言整型常量的四种表示形式</h3><blockquote>
+<p>十进制整数，如：99, -500, 0<br>八进制整数，要求以 0 开头，如：015<br>十六进制数，要求 0x 或 0X 开头，如：0x15<br>二进制数，要求0b或0B开头，如：0b01110011</p>
+</blockquote>
+<h3 id="Java语言的整型常数默认为int型，声明long型常量可以后加‘-l-’或‘-L-’-。"><a href="#Java语言的整型常数默认为int型，声明long型常量可以后加‘-l-’或‘-L-’-。" class="headerlink" title="Java语言的整型常数默认为int型，声明long型常量可以后加‘ l ’或‘ L ’ 。"></a>Java语言的整型常数默认为int型，声明long型常量可以后加‘ l ’或‘ L ’ 。</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *  测试基本数据类型</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> creep_creep_creep</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A_integer</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> a=<span class="number">15</span>;</span><br><span class="line">		<span class="keyword">int</span> b=<span class="number">015</span>;<span class="comment">//八进制</span></span><br><span class="line">		<span class="keyword">int</span> c=<span class="number">0x15</span>;<span class="comment">//十六进制</span></span><br><span class="line">		<span class="keyword">int</span> d=<span class="number">0b1111</span>;<span class="comment">//二进制</span></span><br><span class="line">		</span><br><span class="line">		System.out.println(a);<span class="comment">//15</span></span><br><span class="line">		System.out.println(b);<span class="comment">//13</span></span><br><span class="line">		System.out.println(c);<span class="comment">//21</span></span><br><span class="line">		System.out.println(d);<span class="comment">//15</span></span><br><span class="line">		</span><br><span class="line">		<span class="keyword">long</span> a = <span class="number">6666666</span>;  <span class="comment">//编译成功，在int表示的范围内(21亿内)。</span></span><br><span class="line">		<span class="keyword">long</span> b = <span class="number">66666666666</span>;<span class="comment">//不加L编译错误，已经超过int表示的范围。</span></span><br><span class="line">		<span class="keyword">long</span> b = <span class="number">66666666666L</span>;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">1234567891011121314151617181920212223242526</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="浮点型变量-常量"><a href="#浮点型变量-常量" class="headerlink" title="浮点型变量/常量"></a>浮点型变量/常量</h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>存储空间</th>
+<th>范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>float</td>
+<td>4字节</td>
+<td>-3.403E38~3.403E38</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8字节</td>
+<td>-1.798E308~1.798E308</td>
+</tr>
+</tbody></table>
+<blockquote>
+<ul>
+<li>float类型又被称作单精度类型，尾数可以精确到7位有效数字。</li>
+<li>double表示这种类型的数值精度约是float类型的两倍，又被称作双精度类型。</li>
+<li>浮点型常量默认类型也是double。</li>
+</ul>
+</blockquote>
+<h3 id="Java浮点类型常量有两种表示形式"><a href="#Java浮点类型常量有两种表示形式" class="headerlink" title="Java浮点类型常量有两种表示形式"></a>Java浮点类型常量有两种表示形式</h3><blockquote>
+<ol>
+<li>十进制数形式，例如:3.14 314.0 0.314</li>
+<li>科学记数法形式，如314e2 314E2 314E-2</li>
+</ol>
+</blockquote>
+<ul>
+<li>float类型的数值有一个后缀F或者f ，没有后缀F/f的浮点数值默认为double类型。</li>
+<li>可以在浮点数值后添加后缀D或者d， 以明确其为double类型。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.math.*;<span class="comment">//导包</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 测试浮点型</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> creep_creep_creep</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A_floating</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">float</span> a=<span class="number">3.14f</span>;</span><br><span class="line">		<span class="keyword">double</span> b=<span class="number">6.28</span>;</span><br><span class="line">		<span class="keyword">double</span> c=<span class="number">628E-2</span>;</span><br><span class="line">		</span><br><span class="line">		System.out.println(c);<span class="comment">//6.28</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//浮点数不精确，不能用作比较</span></span><br><span class="line">		<span class="keyword">float</span> d1=<span class="number">0.1f</span>;</span><br><span class="line">		<span class="keyword">double</span> d2=<span class="number">1.0</span>/<span class="number">10</span>;</span><br><span class="line">		System.out.println(d1==d2);<span class="comment">//false</span></span><br><span class="line">		</span><br><span class="line">		<span class="keyword">float</span> f1=<span class="number">4343433434f</span>;</span><br><span class="line">		<span class="keyword">float</span> f2=f1+<span class="number">1</span>;</span><br><span class="line">		System.out.println(f1==f2);<span class="comment">//true</span></span><br><span class="line">		</span><br><span class="line">		BigDecimal bd=BigDecimal.valueOf(<span class="number">1.0</span>);</span><br><span class="line">		bd=bd.subtract(BigDecimal.valueOf(<span class="number">0.1</span>));</span><br><span class="line">		bd=bd.subtract(BigDecimal.valueOf(<span class="number">0.1</span>));</span><br><span class="line">		bd=bd.subtract(BigDecimal.valueOf(<span class="number">0.1</span>));</span><br><span class="line">		bd=bd.subtract(BigDecimal.valueOf(<span class="number">0.1</span>));</span><br><span class="line">		bd=bd.subtract(BigDecimal.valueOf(<span class="number">0.1</span>));</span><br><span class="line">		System.out.println(bd);<span class="comment">//0.5</span></span><br><span class="line">		System.out.println(<span class="number">1.0</span>-<span class="number">0.1</span>-<span class="number">0.1</span>-<span class="number">0.1</span>-<span class="number">0.1</span>-<span class="number">0.1</span>);<span class="comment">//0.5000000000000001</span></span><br><span class="line">		</span><br><span class="line">		BigDecimal bd2=BigDecimal.valueOf(<span class="number">0.1</span>);</span><br><span class="line">		BigDecimal bd3=BigDecimal.valueOf(<span class="number">1.0</span>/<span class="number">10</span>);</span><br><span class="line">		System.out.println(bd2.equals(bd3));<span class="comment">//true</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="number">12345678910111213141516171819202122232425262728293031323334353637</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="字符型变量-常量"><a href="#字符型变量-常量" class="headerlink" title="字符型变量/常量"></a>字符型变量/常量</h3><blockquote>
+<ul>
+<li>字符型在内存中占2个字节，在Java中使用单引号来表示字符常量。’A’是一个字符，”A”表示含有一个字符的字符串。</li>
+<li>char 类型用来表示在Unicode编码表中的字符。Unicode编码被设计用来处理各种语言的文字，它占2个字节，可允许有65536个字符。</li>
+<li>Unicode具有从0到65535之间的编码，他们通常用从’\u0000’到’\uFFFF’之间的十六进制值来表示（前缀为u表示Unicode）</li>
+<li>Java 语言中还允许使用转义字符 ‘\’ 来将其后的字符转变为其它的含义。常用的转义字符及其含义和Unicode值如表2-6所示。</li>
+</ul>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>转义符</th>
+<th>含义</th>
+<th>Unicode值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\b</td>
+<td>退格（backspace）</td>
+<td>\u0008</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行</td>
+<td>\u000a</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车</td>
+<td>\u000d</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>制表符（tab）</td>
+<td>\u0009</td>
+</tr>
+<tr>
+<td>\“</td>
+<td>双引号</td>
+<td>\u0022</td>
+</tr>
+<tr>
+<td>\‘</td>
+<td>单引号</td>
+<td>\u0027</td>
+</tr>
+<tr>
+<td>\</td>
+<td>反斜杠</td>
+<td>\u005c</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 测试字符类型</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> creep_creep_creep</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A_char</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">char</span> a=<span class="string">'z'</span>;</span><br><span class="line">	<span class="keyword">char</span> b=<span class="string">'中'</span>;</span><br><span class="line">	<span class="keyword">char</span> c=<span class="string">'\u0061'</span>;</span><br><span class="line">	</span><br><span class="line">	System.out.println(c);	<span class="comment">//a</span></span><br><span class="line">	</span><br><span class="line">	System.out.println(<span class="string">"a"</span>+<span class="string">"\b"</span>+<span class="string">"b"</span>);<span class="comment">//退格 ab</span></span><br><span class="line">	System.out.println(<span class="string">"a"</span>+<span class="string">"\n"</span>+<span class="string">"b"</span>);<span class="comment">//换行	a</span></span><br><span class="line">									 <span class="comment">//		b</span></span><br><span class="line">	System.out.println(<span class="string">"a"</span>+<span class="string">"\r"</span>+<span class="string">"b"</span>);<span class="comment">//回车 a</span></span><br><span class="line">									 <span class="comment">//		b</span></span><br><span class="line">	System.out.println(<span class="string">"a"</span>+<span class="string">"\t"</span>+<span class="string">"b"</span>);<span class="comment">//制表符（tab） a	b</span></span><br><span class="line">	System.out.println(<span class="string">"a"</span>+<span class="string">"\""</span>+<span class="string">"b"</span>);<span class="comment">//双引号  a"b</span></span><br><span class="line">	System.out.println(<span class="string">"a"</span>+<span class="string">"\'"</span>+<span class="string">"b"</span>);<span class="comment">//单引号  a'b</span></span><br><span class="line">	System.out.println(<span class="string">"a"</span>+<span class="string">"\\"</span>+<span class="string">"b"</span>);<span class="comment">//反斜杠  a\b</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="number">123456789101112131415161718192021222324</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="boolean类型变量-常量"><a href="#boolean类型变量-常量" class="headerlink" title="boolean类型变量/常量"></a>boolean类型变量/常量</h3><blockquote>
+<ul>
+<li>boolean类型有两个常量值，true和false，在内存中占一位（不是一个字节），不可以使用 0 或非 0 的整数替代 true 和 false ，这点和C语言不同。 boolean 类型用来判断逻辑条件，一般用于程序流程控制 。</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 测试布尔类型</span></span><br><span class="line"><span class="comment"> *Less is More</span></span><br><span class="line"><span class="comment"> *<span class="doctag">@author</span> creep_creep_creep</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A033BuErXing</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">boolean</span> flag;</span><br><span class="line">		flag=<span class="keyword">true</span>;</span><br><span class="line">		<span class="keyword">if</span>(flag)&#123;</span><br><span class="line">			System.out.println(<span class="string">"正确"</span>);<span class="comment">//正确</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="基本数据"><a href="#基本数据" class="headerlink" title="基本数据"></a>基本数据</h2><p>Computer memory stores arbitrary bit patterns. Making sense of these patterns involves the use of data types.</p>
+<p>大纲：</p>
+<ul>
+<li>Data Types（数据类型）</li>
+<li>Primitive Data vs. Objects （基本数据 vs 对象）</li>
+<li>The Eight Primitive Data Types of Java （八个java的基本数据类型，上面提到了）</li>
+<li>Numeric Data Types （数值数据类型）</li>
+<li>Character and Boolean Data Types （字符Character和布尔Boolean数据类型）</li>
+</ul>
+<h4 id="小问题"><a href="#小问题" class="headerlink" title="小问题"></a>小问题</h4><p>Q：假设您遇到了右边撕碎的纸片，是什么意思：MIX</p>
+<p>A：不好说，没有更多信息。</p>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>您想查看本文的其余部分，或者知道它的来源。 在不了解上下文的情况下，很难说出MIX的含义。 它可以是罗马数字1009，也可以是英文单词“ mix”（其本身具有多种含义），也可以是旧电台英雄Tom Mix的姓氏。 它可以是音乐CD上的标签“ MTV Dance MIX”的一部分，也可以是瓶上的“ BLOODY MARY MIX”的标签的一部分。 也许您正在颠倒看它，它应该是“ XIW”。 当然，它可能根本不是英语。 在不知道上下文的情况下，一串字母没有什么意义。<br>计算机内存存储任意位模式（Computer memory stores arbitrary bit patterns）。，与一串字母一样，一串比特（Bits）的含义取决于如何使用。 数据类型（Data Type）是特定位（Bits）字符串的特定格式。</p>
+<p>数据类型（Data Type）：</p>
+<ul>
+<li>是一种使用位（Bits）表示值的格式。</li>
+<li>值不仅可能是数字，还可以是计算机可以处理的任何类型的数据。</li>
+<li>计算机中的所有值都被一种或另一种数据类型包含在内。</li>
+</ul>
+<p>举个栗子</p>
+<blockquote>
+<p>0000000001100111</p>
+</blockquote>
+<p>是16位（Bits）模式的一个例子，他可能在计算机内存的一个地方被发现到，这代表了啥？</p>
+<p>如果不了解上面例子的使用方式，就无法说出它代表什么。 short类型是Java的数据类型之一。 如果模式的数据类型为short，则它表示值103（一百零三）</p>
+<h4 id="小问题-1"><a href="#小问题-1" class="headerlink" title="小问题"></a>小问题</h4><p>Q：下面的16位（Bit）模式代表了啥</p>
+<blockquote>
+<p>0000000000000000</p>
+</blockquote>
+<p>A：这东西我不晓得（呃。。。。）</p>
+<p>额外：<a href="https://zhuanlan.zhihu.com/p/46317118">https://zhuanlan.zhihu.com/p/46317118</a></p>
+<h3 id="Java有很多种数据类型"><a href="#Java有很多种数据类型" class="headerlink" title="Java有很多种数据类型"></a>Java有很多种数据类型</h3><p>您可能会说模式0000000000000000表示“零”。 但这并不一定。 即使是这种明显的模式也没有自动含义。<br>如果告诉您上述模式的类型是<code>short</code>，那么您会知道它表示整数零。</p>
+<p> 这是另一种模式：</p>
+<blockquote>
+<p>1111111110011001 </p>
+</blockquote>
+<p>当这个模式是<code>short</code> ，此模式表示 -103（负一百三十三）。（话说翻译成“模式”合不合适。。）<br>在计算机的内存中可以表示无数种类型的数据。 如果特定模式始终具有特定含义，则只能表示几种类型的数据。 这太过严格了。 程序员在编写程序时发明了许多数据类型。 没有这种灵活性，计算机的用处将大大减少</p>
+<p>并非所有机器都以这种方式使用内存。 例如，一个简单的电子计算器仅将存储器用于一个目的：存储浮点数。 它仅使用一种数据类型，并且只能使用已连接完成的那种数据类型来做几件事。 设计计算器的工程师决定了如何用位字符串表示数字，然后设计电子设备使其仅与这些字符串一起使用。 这对于通用计算机而言过于严格</p>
+<h4 id="小问题-2"><a href="#小问题-2" class="headerlink" title="小问题"></a>小问题</h4><p>Q：你能想象1960年的电脑是为了处理音频数据而构建的不</p>
+<p>A：无法想象。。。这不是现在电脑常用的一个功能</p>
+<h3 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h3><p>但是1960年代的某些计算机确实用于处理音频数据。 这只是发明一种用位模式表示音频，然后为其编写程序的情况。<br>如果每次使用数据都必须发明自己的方案来用位表示它，那将很尴尬。 某些类型的数据是如此基础，因此Java中内置了表示数据的方式。 这些是原始数据类型。 八种原始数据类型是：</p>
+<ul>
+<li>byte</li>
+<li>short</li>
+<li>int</li>
+<li>long</li>
+<li>float</li>
+<li>double</li>
+<li>char</li>
+<li>boolean</li>
+</ul>
+<p>大写和小写字符很重要。 因此，“byte”是原始数据类型的名称，而“BYTE”则不是。 区分大小写的计算机语言称为区分大小写。 某些语言不区分大小写，尤其是当数据输入设备没有小写字母时设计的旧语言。<br>在短语“基本数据类型”（“Primitive Data Type”）中，“基本”（“Primitive”）一词的意思是“用于创建其他较大部分的基本组件”。 这个词在计算机科学中经常使用。 要解决一个大问题，您需要查找所需的原始操作，然后使用它们来构建解决方案</p>
+<h4 id="小问题-3"><a href="#小问题-3" class="headerlink" title="小问题"></a>小问题</h4><p>Q：Int 是一个基本数据类型吗？</p>
+<p>A：不是，int才是，Int不是，不能有大写。</p>
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>Java中的所有数据都属于两类之一：基本数据（Primitive Data）和对象（Objects）。基本数据类型（Primitive Data Type）只有八种， 但是Java有许多类型的对象（Objects），您可以根据需要”发明“许多其他对象。 您发明的任何数据类型都是对象（Objects）类型。</p>
+<p><img src="https://i.loli.net/2020/11/26/MahwfAZSQbcvdzG.png" alt=""></p>
+<p>在以后的章节中将更多地讨论对象（因为Java是一种面向对象的编程语言）。 现在，您需要了解以下所有信息：</p>
+<ul>
+<li><p>基本数据值使用固定的少量字节。</p>
+</li>
+<li><p>只有八种原始数据类型。</p>
+</li>
+<li><p>程序员无法创建新的原始数据类型。</p>
+</li>
+</ul>
+<ul>
+<li><p>对象在数据中占很大一部分。 一个对象可能使用许多字节的内存。</p>
+</li>
+<li><p>一个对象通常由许多内部部分组成。</p>
+</li>
+<li><p>对象的数据类型称为其类（Class）。</p>
+</li>
+<li><p>Java中已经定义了许多类（Class）。</p>
+</li>
+<li><p>程序员可以发明新的类（Class）以满足程序的特定需求。</p>
+</li>
+</ul>
+<p>一个粗略的例子是，原始数据值就像一个螺母或螺栓，而一个对象就像一台整个机器。</p>
+<h4 id="小问题-4"><a href="#小问题-4" class="headerlink" title="小问题"></a>小问题</h4><p>Q：基本数字对计算机程序重要吗？（Are numbers of fundamental importance to computer programs）</p>
+<p>A：是滴。</p>
+<h3 id="基本数据类型（数字类）"><a href="#基本数据类型（数字类）" class="headerlink" title="基本数据类型（数字类）"></a>基本数据类型（数字类）</h3><p>数字对Java特别重要，八种基本数据有六种都是数字类（Numeric）。。。或者说纯数字？</p>
+<p><img src="https://i.loli.net/2020/11/26/xqrOIhVlEefPHG6.png" alt=""></p>
+<p><img src="https://i.loli.net/2020/11/26/C26FT4gXZMocSlb.png" alt=""></p>
+<p>这六种基本数据可以分为整数类，和浮点（小数）类</p>
+<p>整数类型没有分数（小数）部分；浮点类型有分数（小数）部分。在纸上，整数没有小数点，浮点数有。但是在电脑主记忆哪里没有小数点，即使是小数也是由Bit Patterns（位模式）表示。用于表示整数的方法与用于表示浮点数的方法之间存在根本的区别。</p>
+<p>每个基本类型使用固定数量的位。 这意味着，如果您使用的是特定的数据类型，则无论表示什么值，都将使用相同数量的位</p>
+<p>举个例子，所有数据类型为<code>short</code>的值都会占用16位（bits），数据类型为<code>short</code>的“0”和“30000”都会占用16位（bits）</p>
+<p>所有数据类型为<code>long</code>的值都会占用64位（bits），“0”占用64位（bits），“99999999999999”占用64位（bits）</p>
+<p>大小较大的值（负或正）需要表示更多的位。 这类似于在纸上写数字：大数字需要更多数字。 如果某个值需要比特定数据类型使用的位数更多的位，则无法使用该数据类型来表示它</p>
+<h4 id="小问题-5"><a href="#小问题-5" class="headerlink" title="小问题"></a>小问题</h4><p>Q：假设您要处理计算机程序中的数字1,023,004，可以用<code>short</code>当作数据类型吗？</p>
+<p>A：不能，超过范围（-32,768 ~ +32,767）</p>
+<h3 id="更多的位（Bits），更大的范围（Range）"><a href="#更多的位（Bits），更大的范围（Range）" class="headerlink" title="更多的位（Bits），更大的范围（Range）"></a>更多的位（Bits），更大的范围（Range）</h3><p>较大范围的数值需要更多位。 整数数据的不同大小使您可以为正在使用的数据选择适当的大小。 通常，您应该选择一个数据类型，该数据类型的范围要比您希望处理的数字范围大得多。 如果程序仅使用几十个变量，则无论其变量使用什么大小，它的运行速度都一样快，并且占用的主内存也一样多</p>
+<p>那么为什么存在小型数据类型呢？ 好吧，许多现实世界中的程序都处理大量数据（数十亿个数据项），然后使用较小的大小可以节省大量的空间和时间。 但是我们不会在这些注释中使用太多数据。 通常，您应该将<code>int</code>或<code>double</code>用作数字数据。</p>
+<p>编写程序时，您不必知道如何用位表示数字。 您可以像在打字机上一样键入数字。 这称为文字。 “文字”一词的含义是，值明确地是程序的一部分。 例如，125实际代表值一百二十五。 程序中的整数文字与书中的文字一样，除非没有逗号</p>
+<p>125                   -32                  16                  0                 -123987</p>
+<p>上面的所有例子都是32位（bits）的<code>int</code>文字。一个64位（bits）的<code>long</code>文字有一个大写L或者小写l在结尾，无论如何，<strong>永远</strong>不要用小写l因为这很容易和数字1搞混。</p>
+<p>25L                           -32L                   16L             0l              -123987l</p>
+<p>最后一个例子虽然没错，但是看起来头疼，不知道是l还是1</p>
+<h4 id="小问题-6"><a href="#小问题-6" class="headerlink" title="小问题"></a>小问题</h4><p>Q：右边是一个整数（<code>int</code>）的文字？ 197.0</p>
+<p>A：不是，因为这个有小数点，不能归类为整数数据类型的<code>int</code>。</p>
+<h3 id="浮点（小数）类型"><a href="#浮点（小数）类型" class="headerlink" title="浮点（小数）类型"></a>浮点（小数）类型</h3><p>如果你用文字“197.0”在一个程序中，小数点告诉了编译器这个值需要用一个浮点型数据类型来代表。“197.0”的位模式（bit pattern）跟整数“197”有很大不同。</p>
+<p>有两种浮点基本数据类型。</p>
+<p><img src="https://i.loli.net/2020/11/26/C26FT4gXZMocSlb.png" alt=""></p>
+<p>数据类型<code>float</code>有时候也被称为”single-precision floating point”（“单精度浮点”）。</p>
+<p>数据类型<code>double</code>有两倍的位（bits），或者说大小。并且他有时被称为”double-precision floating point”（“双精度浮点”）</p>
+<p>这些短语来自编程语言语言<code>FORTRAN</code>，它曾经是主要的编程语言。</p>
+<p><a href="https://baike.baidu.com/item/FORTRAN%E8%AF%AD%E8%A8%80/295590?fr=aladdin">https://baike.baidu.com/item/FORTRAN%E8%AF%AD%E8%A8%80/295590?fr=aladdin</a></p>
+<blockquote>
+<p>FORTRAN语言是Formula Translation的缩写，意为“公式翻译”。它是为科学、工程问题或企事业管理中的那些能够用数学公式表达的问题而设计的，其数值计算的功能较强。</p>
+<p>FORTRAN语言是世界上第一个被正式推广使用的<a href="https://baike.baidu.com/item/高级语言/299113">高级语言</a>。它是1954年被提出来的，1956年开始正式使用，直到2014年已有六十年的历史，但仍历久不衰，它始终是数值计算领域所使用的主要语言。</p>
+</blockquote>
+<p>在程序中，浮点写起来都会有一个小数点在里面，并且<strong>没有逗号</strong>（没有千位分隔符）</p>
+<p>123.0                      -123.5                           -198234.234                       0.00000381</p>
+<p>注意：上面写的文字将自动为double类型。 几乎总是，如果要处理浮点数，则应使用double类型的变量。 然后，像上面这样的文字数据类型将与您的变量的数据类型匹配。 数据类型float必须仅在特殊情况下使用（例如，当您需要处理包含32位float的数据文件时）</p>
+<h4 id="小问题-7"><a href="#小问题-7" class="headerlink" title="小问题"></a>小问题</h4><p>Q：（思考问题）你觉得用<code>float</code>代替<code>double</code>能节约大量的计算机内存？</p>
+<p>A：不会的，对于大多数使用double类型变量的程序，在一个数千字节长的程序中只需花费几个额外的字节。</p>
+<h3 id="明确的浮点文字"><a href="#明确的浮点文字" class="headerlink" title="明确的浮点文字"></a>明确的浮点文字</h3><p>有时您需要明确要求一个单精度浮点（<code>float</code>）文字。 为此，请在结尾处放置小写字母“f”或大写字母“F”：</p>
+<p>123.0f        -123.5F         -198234.234f            0.00000381F</p>
+<p>有时您需要明确要求一个双精度浮点（<code>double</code>）文字。 为此，请在结尾处放置小写字母“d”或大写字母“D”：</p>
+<p>123.0d -123.5D -198234.234d 0.00000381D</p>
+<p>记住，后面没有任何字母的话，这个浮点数文字会自动归类为<code>double</code>数据类型。</p>
+<h4 id="小问题-8"><a href="#小问题-8" class="headerlink" title="小问题"></a>小问题</h4><p>Q：你觉得这个代码有没有问题</p>
+<p><code>double rats = 8912D ;</code></p>
+<p>A：没问题。’D’将使文字为双精度型（即使它没有小数点）。 但是，为避免混淆，即使在不需要的地方，也始终在浮点文字中包含小数点。</p>
+</div><div><div class="recommend-post"><span class="is-size-6 has-text-grey has-mr-7"># 相关文章</span><br><span>  1.<a class="is-size-6" href="/p/23e4/" target="_blank">开始学Java之14 Arrays</a><br></span><span>  2.<a class="is-size-6" href="/p/56ac/" target="_blank">13-14-小代码-骰子概率</a><br></span><span>  3.<a class="is-size-6" href="/p/2378/" target="_blank">5-6-超大数计算</a><br></span><span>  4.<a class="is-size-6" href="/p/6a46/" target="_blank">开始学Java之13 练习4-2</a><br></span><span>  5.<a class="is-size-6" href="/p/dd5d/" target="_blank">开始学Java之12 细讲计数循环</a><br></span><span>  6.<a class="is-size-6" href="/p/e7ed/" target="_blank">开始学Java之11 练习4-1</a><br></span><span>  7.<a class="is-size-6" href="/p/fcef/" target="_blank">开始学Java之10 布尔值表达式</a><br></span><span>  8.<a class="is-size-6" href="/p/e2f2/" target="_blank">8-9 小代码 检测是不是回文</a><br></span></div><div class="recommend-post"><span class="is-size-6 has-text-grey has-mr-7"># 推荐文章</span><br><span>  1.<a class="is-size-6" href="/p/23e4/" target="_blank">开始学Java之14 Arrays</a><br></span><span>  2.<a class="is-size-6" href="/p/56ac/" target="_blank">13-14-小代码-骰子概率</a><br></span><span>  3.<a class="is-size-6" href="/p/2378/" target="_blank">5-6-超大数计算</a><br></span><span>  4.<a class="is-size-6" href="/p/6a46/" target="_blank">开始学Java之13 练习4-2</a><br></span><span>  5.<a class="is-size-6" href="/p/6e40/" target="_blank">11-12 勉强解读Natsumi大佬的神代码</a><br></span><span>  6.<a class="is-size-6" href="/p/dd5d/" target="_blank">开始学Java之12 细讲计数循环</a><br></span></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/p/e9bc/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">开始学Java之6 变量 与 Random</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/p/3941/"><span class="level-item">开始学Java之4 Scanner 与 Random</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><div class="title is-5">评论</div><div id="comment-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.0/dist/gitalk.css"><script> $.getScript('/js/gitalk.min.js', function () { 
+            var gitalk = new Gitalk({
+            language:'zh-CN',
+            id: 'a973be77f31b798ab72265e212a4f298',
+            repo: 'a-little-bear.github.io',
+            owner: 'a-little-bear',
+            clientID: '7a12c782031110c85c04',
+            clientSecret: '615df4c852a3cf8bad068bfa5151449c6c1b3f34',
+            admin: ["a-little-bear"],
+            createIssueManually: true,
+            distractionFreeMode: true,
+            perPage: 10,
+            pagerDirection: 'last',
+            
+            
+            enableHotKey: true,
+            isLocked: false
+        })
+        gitalk.render('comment-container')});</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget toc-scroll" id="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-类（Class）" href="#类（Class）"><span>类（Class）</span></a></li><li><a class="is-flex toc-item" id="toc-item-Java的8-1种基本数据类型" href="#Java的8-1种基本数据类型"><span>Java的8+1种基本数据类型</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-String-类型简介" href="#String-类型简介"><span>String 类型简介</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-Java中定义了8种基本数据类型" href="#Java中定义了8种基本数据类型"><span>Java中定义了8种基本数据类型</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-整型变量-常量" href="#整型变量-常量"><span>整型变量&amp;#x2F;常量</span></a></li><li><a class="is-flex toc-item" id="toc-item-Java-语言整型常量的四种表示形式" href="#Java-语言整型常量的四种表示形式"><span>Java 语言整型常量的四种表示形式</span></a></li><li><a class="is-flex toc-item" id="toc-item-Java语言的整型常数默认为int型，声明long型常量可以后加‘-l-’或‘-L-’-。" href="#Java语言的整型常数默认为int型，声明long型常量可以后加‘-l-’或‘-L-’-。"><span>Java语言的整型常数默认为int型，声明long型常量可以后加‘ l ’或‘ L ’ 。</span></a></li><li><a class="is-flex toc-item" id="toc-item-浮点型变量-常量" href="#浮点型变量-常量"><span>浮点型变量&amp;#x2F;常量</span></a></li><li><a class="is-flex toc-item" id="toc-item-Java浮点类型常量有两种表示形式" href="#Java浮点类型常量有两种表示形式"><span>Java浮点类型常量有两种表示形式</span></a></li><li><a class="is-flex toc-item" id="toc-item-字符型变量-常量" href="#字符型变量-常量"><span>字符型变量&amp;#x2F;常量</span></a></li><li><a class="is-flex toc-item" id="toc-item-boolean类型变量-常量" href="#boolean类型变量-常量"><span>boolean类型变量&amp;#x2F;常量</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-基本数据" href="#基本数据"><span>基本数据</span></a><ul class="menu-list toc"><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-小问题" href="#小问题"><span>小问题</span></a></li></ul><li><a class="is-flex toc-item" id="toc-item-数据类型" href="#数据类型"><span>数据类型</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-小问题-1" href="#小问题-1"><span>小问题</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-Java有很多种数据类型" href="#Java有很多种数据类型"><span>Java有很多种数据类型</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-小问题-2" href="#小问题-2"><span>小问题</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-基本数据类型" href="#基本数据类型"><span>基本数据类型</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-小问题-3" href="#小问题-3"><span>小问题</span></a></li></ul></li></ul></li><li><a class="is-flex toc-item" id="toc-item-对象" href="#对象"><span>对象</span></a><ul class="menu-list toc"><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-小问题-4" href="#小问题-4"><span>小问题</span></a></li></ul><li><a class="is-flex toc-item" id="toc-item-基本数据类型（数字类）" href="#基本数据类型（数字类）"><span>基本数据类型（数字类）</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-小问题-5" href="#小问题-5"><span>小问题</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-更多的位（Bits），更大的范围（Range）" href="#更多的位（Bits），更大的范围（Range）"><span>更多的位（Bits），更大的范围（Range）</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-小问题-6" href="#小问题-6"><span>小问题</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-浮点（小数）类型" href="#浮点（小数）类型"><span>浮点（小数）类型</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-小问题-7" href="#小问题-7"><span>小问题</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-明确的浮点文字" href="#明确的浮点文字"><span>明确的浮点文字</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-小问题-8" href="#小问题-8"><span>小问题</span></a></li></ul></li></ul></li></ul></div></div><script type="text/javascript" async>
+        $(document).ready(function () { //参考自 https://github.com/ppoffice/hexo-theme-icarus/pull/616/files
+            var observerTopMargin;
+            var scrollObserver;
+            var headerElems = $(".headerlink");
+            var activeTocItem;
+        
+            function initIntersectionObserver(docHeight) {
+                observerTopMargin = docHeight;
+                scrollObserver = new IntersectionObserver(scrollCallBack,
+                    {
+                        root: null,  // viewpoint
+                        rootMargin: docHeight + "px 0px -80% 0px"  // cover top 30% of viewport to the top of document
+                    })
+            }
+        
+            function scrollCallBack(entries, observer) {
+                if ($(window).scrollTop() > observerTopMargin * 0.7) { 
+                    // User somehow scroll to 70% of observerTopMargin (which is inited as 200% document height)
+                    // Observer top margin need to extend to cover all the space to the top of the document
+                    initIntersectionObserver(observerTopMargin * 2)
+                    observer.disconnect();
+                    return;
+                }
+                let toActive;
+                if (entries[0].intersectionRatio == 1) {  // enter viewed area
+                    let entry = entries.reduce((u, v) => (u.target.toc_id > v.target.toc_id ? u : v));  // get the lowest item
+                    toActive = $("#toc-item-" + $(entry.target).attr("href").substr(1));
+                } else {
+                    let entry = entries.reduce((u, v) => (u.target.toc_id < v.target.toc_id ? u : v));  // get the highest item
+                    let idx = Math.max(entry.target.toc_id - 1, 0);
+                    toActive = $("#toc-item-" + $(headerElems[idx]).attr("href").substr(1));
+                }
+                if (activeTocItem) activeTocItem.removeClass("is-current");
+                activeTocItem = toActive
+                activeTocItem.addClass("is-current");
+            }
+        
+            initIntersectionObserver($(document).height() * 2);
+            headerElems.each(function (index, obj) {
+                obj.toc_id = index;
+                scrollObserver.observe(obj);
+            })
+        });</script></div><div class="card widget"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="" src="https://cdn.jsdelivr.net/gh/a-little-bear/picture/img/1280-646950218-panda-in-thailand.jpg" alt="alittlebear"></figure><p class="title is-size-4 is-block line-height-inherit">alittlebear</p><p class="is-size-6 is-block">一坨小萌新~（音乐在左下角）</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>太阳系 地球</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">115</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">17</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">11</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/a-little-bear" target="_blank" rel="noopener">Github</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="吾爱破解" href="https://www.52pojie.cn/home.php?mod=follow&amp;uid=1265340&amp;do=view&amp;from=space">吾爱破解</a><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="哔哩哔哩" href="https://space.bilibili.com/470220192">哔哩哔哩</a></div><div><hr><p id="hitokoto">:D 一言句子获取中...</p><script type="text/javascript" defer>function getYiyan(){
+                                $.getJSON("https://v1.hitokoto.cn/", function (data) {
+                                if(data){
+                                    $('#hitokoto').html("");
+                                    $('#hitokoto').append("<strong style='color: #3273dc;'>"+data.hitokoto+"</strong>"+
+                                    "<p>"+"来源《"+data.from+"》</p><p>提供者-"+data.creator+"</p>");
+                                }});}
+                                $(function (){getYiyan();$('#hitokoto').click(function(){getYiyan();})});</script></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/categories/Github/"><span class="level-start"><span class="level-item">Github</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E4%B9%A6%E7%B1%8D/"><span class="level-start"><span class="level-item">书籍</span></span><span class="level-end"><span class="level-item tag">7</span></span></a><ul class="mr-0"><li><a class="level is-mobile is-marginless" href="/categories/%E4%B9%A6%E7%B1%8D/%E5%B7%A5%E5%85%B7/"><span class="level-start"><span class="level-item">工具</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E4%B9%A6%E7%B1%8D/%E7%94%B5%E5%AD%90%E4%B9%A6/"><span class="level-start"><span class="level-item">电子书</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E4%B9%A6%E7%B1%8D/%E9%98%85%E8%AF%BB%E7%BB%8F%E9%AA%8C/"><span class="level-start"><span class="level-item">阅读经验</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile is-marginless" href="/categories/%E5%85%B6%E4%BB%96/"><span class="level-start"><span class="level-item">其他</span></span><span class="level-end"><span class="level-item tag">22</span></span></a><ul class="mr-0"><li><a class="level is-mobile is-marginless" href="/categories/%E5%85%B6%E4%BB%96/%E7%BD%91%E7%9B%98/"><span class="level-start"><span class="level-item">网盘</span></span><span class="level-end"><span class="level-item tag">8</span></span></a></li></ul></li><li><a class="level is-mobile is-marginless" href="/categories/%E5%BD%B1%E8%A7%86%E6%8E%A8%E8%8D%90/"><span class="level-start"><span class="level-item">影视推荐</span></span><span class="level-end"><span class="level-item tag">3</span></span></a><ul class="mr-0"><li><a class="level is-mobile is-marginless" href="/categories/%E5%BD%B1%E8%A7%86%E6%8E%A8%E8%8D%90/%E8%A7%86%E9%A2%91/"><span class="level-start"><span class="level-item">视频</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></li><li><a class="level is-mobile is-marginless" href="/categories/%E6%8A%80%E6%9C%AF/"><span class="level-start"><span class="level-item">技术</span></span><span class="level-end"><span class="level-item tag">39</span></span></a><ul class="mr-0"><li><a class="level is-mobile is-marginless" href="/categories/%E6%8A%80%E6%9C%AF/Java/"><span class="level-start"><span class="level-item">Java</span></span><span class="level-end"><span class="level-item tag">17</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E6%8A%80%E6%9C%AF/bat/"><span class="level-start"><span class="level-item">bat</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E6%8A%80%E6%9C%AF/hexo/"><span class="level-start"><span class="level-item">hexo</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E6%8A%80%E6%9C%AF/python/"><span class="level-start"><span class="level-item">python</span></span><span class="level-end"><span class="level-item tag">14</span></span></a></li></ul></li><li><a class="level is-mobile is-marginless" href="/categories/%E6%B8%B8%E6%88%8F/"><span class="level-start"><span class="level-item">游戏</span></span><span class="level-end"><span class="level-item tag">25</span></span></a></li><a class="level is-mobile is-marginless" href="/categories/"><span class="level-start"><span class="level-item">查看全部&gt;&gt;</span></span></a></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/%E7%BB%8F%E9%AA%8C/"><span class="tag">经验</span><span class="tag is-grey-lightest">12</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E4%B9%A6%E7%B1%8D/"><span class="tag">书籍</span><span class="tag is-grey-lightest">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97/"><span class="tag">俄罗斯方块</span><span class="tag is-grey-lightest">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%9B%BE%E7%89%87%E6%B5%8F%E8%A7%88%E5%99%A8/"><span class="tag">图片浏览器</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MD%E7%BC%96%E8%BE%91%E5%99%A8/"><span class="tag">MD编辑器</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%85%B6%E4%BB%96/"><span class="tag">其他</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"><span class="tag">开发工具</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%BD%95%E5%83%8F%E8%BD%AF%E4%BB%B6/"><span class="tag">录像软件</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"><span class="tag">浏览器</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BD%91%E7%AB%99/"><span class="tag">网站</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%98%85%E8%AF%BB%E8%BD%AF%E4%BB%B6/"><span class="tag">阅读软件</span><span class="tag is-grey-lightest">1</span></a></div></div></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/archives/2020/11/"><span class="level-start"><span class="level-item">十一月 2020</span></span><span class="level-end"><span class="level-item tag">18</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/09/"><span class="level-start"><span class="level-item">九月 2020</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/08/"><span class="level-start"><span class="level-item">八月 2020</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/07/"><span class="level-start"><span class="level-item">七月 2020</span></span><span class="level-end"><span class="level-item tag">15</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/06/"><span class="level-start"><span class="level-item">六月 2020</span></span><span class="level-end"><span class="level-item tag">29</span></span></a></li><a class="level is-mobile is-marginless" href="/archives/"><span class="level-start"><span class="level-item">查看全部&gt;&gt;</span></span></a></ul></div></div></div><div class="card widget"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content size-small"><p><time dateTime="2020-12-01T02:03:20.000Z">2020-11-30</time></p><p class="title is-6"><a class="link-muted" href="/p/23e4/">开始学Java之14 Arrays</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a> / <a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/Java/">Java</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2020-11-30T23:33:24.000Z">2020-11-30</time></p><p class="title is-6"><a class="link-muted" href="/p/56ac/">13-14-小代码-骰子概率</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a> / <a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/Java/">Java</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2020-11-29T23:24:39.000Z">2020-11-29</time></p><p class="title is-6"><a class="link-muted" href="/p/2378/">5-6-超大数计算</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a> / <a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/Java/">Java</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2020-11-29T22:19:35.000Z">2020-11-29</time></p><p class="title is-6"><a class="link-muted" href="/p/6a46/">开始学Java之13 练习4-2</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a> / <a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/Java/">Java</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2020-11-29T02:30:31.000Z">2020-11-28</time></p><p class="title is-6"><a class="link-muted" href="/p/6e40/">11-12 勉强解读Natsumi大佬的神代码</a></p><p class="is-uppercase"></p></div></article></div></div><div class="card widget"><div class="card-content"><h3 class="menu-label">最新评论</h3><span class="body_hot_comment">加载中，最新评论有1分钟缓存...</span></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img class="logo-img" src="/img/logo1.png" alt="alittlebear&#039;s blog" height="28"><img class="logo-img-dark" src="/img/logo2.png" alt="alittlebear&#039;s blog" height="28"></a><p class="size-small"><span>&copy; 2020 alittlebear</span>  Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>,Modify by <a href="https://github.com/removeif/hexo-theme-amazing" target="_blank">removeif</a> <br><span>© 版权说明：[本网站所有内容均收集于互联网或自己创作,<br />&nbsp;&nbsp;&nbsp;&nbsp;方便于网友与自己学习交流，如有侵权，请<a href="/message" target="_blank">留言</a>，立即处理]<br /></span><span><span id="statistic-times">loading...</span><script>function createTime(time) {
+            var n = new Date(time);
+            now.setTime(now.getTime() + 250),
+                days = (now - n) / 1e3 / 60 / 60 / 24,
+                dnum = Math.floor(days),
+                hours = (now - n) / 1e3 / 60 / 60 - 24 * dnum,
+                hnum = Math.floor(hours),
+            1 == String(hnum).length && (hnum = "0" + hnum),
+                minutes = (now - n) / 1e3 / 60 - 1440 * dnum - 60 * hnum,
+                mnum = Math.floor(minutes),
+            1 == String(mnum).length && (mnum = "0" + mnum),
+                seconds = (now - n) / 1e3 - 86400 * dnum - 3600 * hnum - 60 * mnum,
+                snum = Math.round(seconds),
+            1 == String(snum).length && (snum = "0" + snum),
+                document.getElementById("statistic-times").innerHTML = "❤️本站自 <strong>"+time.split(" ")[0].replace(/\//g,".")+"</strong> 已运行 <strong>" + dnum + "</strong> 天 <strong>" + hnum + "</strong> 小时 <strong>" + mnum + "</strong> 分 <strong>" + snum + "</strong> 秒！❤️";
+        }var now = new Date();setInterval("createTime('2020/04/23 00:00:00')", 250,"");</script><br></span><div class="size-small"><span>❤️感谢 <strong><span id="busuanzi_value_site_uv">99+</span></strong> 小伙伴的 <strong><span id="busuanzi_value_site_pv">99+</span></strong> 次光临！❤️</span></div></p></div><div class="level-end"><div class="sideMusic"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="/js/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script><meting-js style="width: auto;height: 2000px;" server="netease" type="playlist" id="2985973204" theme="#2980b9" loop="all" autoplay="false" order="random" storageName="aplayer-setting" lrctype="0" list-max-height="400px" fixed="true"></meting-js></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            site: {
+                url: 'https://a-little-bear.github.io',
+                external_link: {"enable":true,"exclude":[]}
+            },
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back-to-top.js" defer></script><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.12/dist/js/lightgallery-all.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><!--!--><!--!--><!--!--><script src="/js/toc.js" defer></script><script src="/js/main.js" defer></script><script>$.getScript('/js/comment-issue-data.js',function(){loadIssueData('7a12c782031110c85c04','615df4c852a3cf8bad068bfa5151449c6c1b3f34','a-little-bear','a-little-bear.github.io',false);})</script><script src="/js/alittlebear/universe.js"></script><link rel="stylesheet" href="/css/insight.css"><div class="searchbox ins-search"><div class="searchbox-container ins-search-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="想要查找什么..."><span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"></div></div></div></div><script>(function (window) {
+            var INSIGHT_CONFIG = {
+                TRANSLATION: {
+                    POSTS: '文章',
+                    PAGES: '页面',
+                    CATEGORIES: '分类',
+                    TAGS: '标签',
+                    UNTITLED: '(无标题)',
+                },
+                CONTENT_URL: '/content.json',
+            };
+            window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+        })(window);</script><script src="/js/insight.js" defer></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.js"></script><script type="text/javascript">var pjax = new Pjax({
+            elements: "a",//代表点击链接就更新
+            selectors: [  //代表要更新的节点
+                ".section",
+                "title"
+            ],
+            cache: true,
+            cacheBust:false
+        })
+
+        function loadBusuanzi(){
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js", function () {});
+        }
+
+        // 开始 PJAX 执行的函数
+        document.addEventListener('pjax:send', function () {
+        });
+        
+        // PJAX 完成之后执行的函数，可以和上面的重载放在一起
+        document.addEventListener('pjax:complete', function () {
+            $(".section").css({opacity:1});
+            if(true){
+                $.getScript('/js/comment-issue-data.js',function(){loadIssueData('7a12c782031110c85c04','615df4c852a3cf8bad068bfa5151449c6c1b3f34','a-little-bear','a-little-bear.github.io',false);});
+            }
+            if(false){
+                loadMathJax();
+            }
+            loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);
+            loadBackTop();
+            loadBusuanzi();
+            if(typeof loadBanner == 'function'){
+                loadBanner();
+            }
+        });</script></body><script type="text/javascript" src="/js/typing.js"></script></html>

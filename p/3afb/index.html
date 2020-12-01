@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="generator" content="Hexo 4.2.0"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><meta name="keywords" content="null"><meta name="description" content="细讲一下，结束单元2"><meta name="author" content="alittlebear"><title>开始学Java之7 细讲变量, 赋值语句, 表达式, 算术运算符 - alittlebear&#039;s blog</title><meta description="细讲一下，结束单元2"><meta property="og:type" content="article"><meta property="og:title" content="开始学Java之7 细讲变量, 赋值语句, 表达式, 算术运算符"><meta property="og:url" content="https://a-little-bear.github.io/p/3afb/"><meta property="og:site_name" content="alittlebear&#039;s blog"><meta property="og:description" content="细讲一下，结束单元2"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://i.loli.net/2020/11/27/6GpMnrVaiENBAsD.png"><meta property="og:image" content="https://i.loli.net/2020/11/27/eCwaN6ZULPSJOmg.png"><meta property="og:image" content="https://i.loli.net/2020/11/27/O3wrIoy5LDgBPRv.png"><meta property="og:image" content="https://i.loli.net/2020/11/27/atwpTzveKCYfFrP.png"><meta property="og:image" content="https://i.loli.net/2020/11/27/lFzWHBnCwcupO8i.png"><meta property="og:image" content="https://i.loli.net/2020/11/27/3R4enJQ7uLIxoTk.png"><meta property="og:image" content="https://i.loli.net/2020/11/27/sEygUcuPlQ6TC14.png"><meta property="og:image" content="https://i.loli.net/2020/11/27/AMxlvG25WFVfg9p.png"><meta property="article:published_time" content="2020-11-26T16:35:59.000Z"><meta property="article:modified_time" content="2020-11-29T01:42:44.214Z"><meta property="article:author" content="alittlebear"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://i.loli.net/2020/11/27/6GpMnrVaiENBAsD.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://a-little-bear.github.io/p/3afb/"},"headline":"开始学Java之7 细讲变量, 赋值语句, 表达式, 算术运算符","image":["https://i.loli.net/2020/11/27/6GpMnrVaiENBAsD.png","https://i.loli.net/2020/11/27/eCwaN6ZULPSJOmg.png","https://i.loli.net/2020/11/27/O3wrIoy5LDgBPRv.png","https://i.loli.net/2020/11/27/atwpTzveKCYfFrP.png","https://i.loli.net/2020/11/27/lFzWHBnCwcupO8i.png","https://i.loli.net/2020/11/27/3R4enJQ7uLIxoTk.png","https://i.loli.net/2020/11/27/sEygUcuPlQ6TC14.png","https://i.loli.net/2020/11/27/AMxlvG25WFVfg9p.png"],"datePublished":"2020-11-26T16:35:59.000Z","dateModified":"2020-11-29T01:42:44.214Z","author":{"@type":"Person","name":"alittlebear"},"description":"细讲一下，结束单元2"}</script><link rel="alternative" href="/atom.xml" title="alittlebear&#039;s blog" type="application/atom+xml"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro|Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&amp;amp;subset=latin,latin-ext|Inconsolata|Itim|Lobster.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.12/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><link rel="stylesheet" href="/css/style.css"><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="/js/globalUtils.js"></script></head><body class="is-2-column has-navbar-fixed-top"><script type="text/javascript" src="/js/alittlebear/night.js"></script><canvas id="universe"></canvas><nav class="navbar navbar-main is-fixed-top"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img class="logo-img" src="/img/logo1.png" alt="alittlebear&#039;s blog" height="28"><img class="logo-img-dark" src="/img/logo2.png" alt="alittlebear&#039;s blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/game_index">在线游戏</a><a class="navbar-item" href="/sou">聚合搜索</a><a class="navbar-item" href="/">--</a><a class="navbar-item" href="/news">每日新闻</a><a class="navbar-item" href="/music">音乐歌单</a><a class="navbar-item" href="/shoucang">私人收藏</a><a class="navbar-item" href="/">---</a><a class="navbar-item" href="/time_line">无时轴</a><a class="navbar-item" href="/self-talking">碎碎念</a><a class="navbar-item" href="/message">留言</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item night" id="night-nav" title="Night Mode" href="javascript:;"><i class="fas fa-moon" id="night-icon"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><script type="text/javascript" src="/js/theme-setting.js"></script><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-plus"> </i>2020-11-26  <a class="commentCountImg" href="/p/3afb/#comment-container"><span class="display-none-class">71580a12249b5e22f706486942a664be</span><i class="far fa-comment-dots"></i> <span class="commentCount" id="71580a12249b5e22f706486942a664be">99+</span>  </a><span class="level-item"><i class="far fa-clock"> </i>28 分钟  <i class="fas fa-pencil-alt"> </i>4.2 k</span><span class="level-item" id="busuanzi_container_page_pv"><i class="far fa-eye"></i>&nbsp;&nbsp;<span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">开始学Java之7 细讲变量, 赋值语句, 表达式, 算术运算符</h1><div class="content"><blockquote>
+<p>细讲一下，结束单元2</p>
+</blockquote>
+<a id="more"></a>
+
+<p><strong>细讲一下。。应该有不少重复的</strong></p>
+<p>这大概就是关于<code>开始学Java之 变量 与 Random</code>这篇的详细说明吧。。</p>
+<h1 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h1><ul>
+<li>变量</li>
+<li>赋值语句</li>
+<li>表达式</li>
+<li>算数运算符</li>
+</ul>
+<h1 id="变量（Variables）"><a href="#变量（Variables）" class="headerlink" title="变量（Variables）"></a>变量（Variables）</h1><p>除了最小的程序外，所有正在执行的程序都在不断使用值。 这些值保存在主存储器的称为变量的小部分中</p>
+<p>家用计算机中数十亿字节的主存储器用于存储机器指令和数据。 主存储器（以及所有其他类型的存储器）的电子电路在两者之间没有区别。 当程序运行时，某些存储位置用于机器指令，而另一些用于数据。 稍后，当另一个程序正在运行时，以前保存的机器指令的某些字节现在可以保存数据，而以前保存的数据的某些字节现在可以保存机器指令。计算机先驱 John von Neumann 的想法是对指令和数据使用相同的内存。 要将值放入内存中，然后再取回它，程序必须为其使用的内存的每个部分都有一个名称。</p>
+<p><strong>变量</strong>—主存储器中某个位置的名称，该位置使用特定的数据类型来保存值。</p>
+<p>回想一下，数据类型是一种使用位模式表示值的方案。 可以将变量视为一个由一个或多个字节组成的小盒子，这些盒子可以使用特定的数据类型保存值：</p>
+<p><img src="https://i.loli.net/2020/11/27/6GpMnrVaiENBAsD.png" alt=""></p>
+<p>变量具有诸如 payAmount 之类的名称。 （详细信息将在几页中给出）</p>
+<p>小问题：变量总是有数据类型吗？</p>
+<p>答案：是的。</p>
+<h2 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h2><p>下面是用到<code>payAmount</code>变量的程序：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example</span> </span></span><br><span class="line"><span class="class"></span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">( String[] args )</span> </span></span><br><span class="line"><span class="function">    </span>&#123; </span><br><span class="line">        <span class="keyword">long</span> payAmount = <span class="number">123</span>; <span class="comment">//a declaration of a variable</span></span><br><span class="line">        System.out.println(<span class="string">"The variable contains: "</span> + payAmount ); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<blockquote>
+<p>The variable contains: 123</p>
+</blockquote>
+<p><code>long payAmount = 123;</code>这一行是一个变量声明。</p>
+<p>变量声明是程序表示需要变量的地方。 对于我们的小程序，声明语句将放置在main方法的两个大括号之间。</p>
+<p>该声明给出了变量的名称和数据类型。 它还可能要求在变量中放置一个特定的值。 使用高级语言（例如Java），程序员无需担心计算机硬件实际上是如何完成所要求的。 如果您请求一个<code>long</code>类型的变量，您将得到它。 如果要求将值123放入变量中，则会发生这种情况。 字节，位模式和内存地址等详细信息取决于Java编译器。</p>
+<p>在上方例子，声明需要一个八字节的储存部分名为<code>payAmount</code>用了基本数据<code>long</code>来代表数值。</p>
+<p>程序开始运行时，该变量将存储值”123”。</p>
+<p>除非已声明变量，否则不能在程序中使用该变量。 变量只能声明一次</p>
+<h2 id="变量声明的语法"><a href="#变量声明的语法" class="headerlink" title="变量声明的语法"></a>变量声明的语法</h2><p>“Syntax” 这个词的意思是程序语言的语法。我们可以只谈一小部分程序的语法，例如变量声明的语法。</p>
+<p>这里有几种办法声明变量：</p>
+<p>数据类型 变量名 ;</p>
+<ul>
+<li>这将声明一个变量，声明其数据类型，并为其保留内存。 它没有说内存中储存的值是多少。 （稍后在这些说明中，您将了解到在某些情况下该变量会自动初始化，而在其他情况下该变量会保持未初始化状态。）</li>
+</ul>
+<p>数据类型 变量名 = 初始值 ;</p>
+<ul>
+<li>这将声明一个变量，声明其数据类型，为其保留内存，并将初始值放入该内存中。 初始值必须是正确的数据类型。</li>
+</ul>
+<p>数据类型 变量名1 , 变量名2 ;</p>
+<ul>
+<li>这将声明两个相同数据类型的变量，保留内存，但是变量内没有值，你可以像这样声明多余两个变量。。</li>
+</ul>
+<h2 id="变量名"><a href="#变量名" class="headerlink" title="变量名"></a>变量名</h2><p>程序员为程序中的每个变量选择一个名称。</p>
+<p>程序中的各种事物被赋予名字。</p>
+<p>程序员选择的名称称为标识符（identifier）。</p>
+<p>这里有选择标识符的规则：<br>仅使用字符“ a”至“ z”，“ A”至“ Z”，“ 0”至“ 9”，<br>字符“ _”和字符“ $”。</p>
+<ul>
+<li>标识符（identifier）不能包含空格字符。</li>
+<li>不能以数字开头。</li>
+<li>标识符（identifier）可以是任何长度。</li>
+<li>大写和小写被视为不同的字符。</li>
+<li>SUM和Sum是不同的标识符。</li>
+<li>标识符不能是保留字（reserved word ）。</li>
+<li>标识符不能已被程序的一部分使用。</li>
+</ul>
+<p>保留字（reserved word ）是在Java中具有预定义含义的字。</p>
+<p>例如，int，double，true和import是保留字。</p>
+<p>变量名通常用小写字母开头，变量名如果由几个词组成，大写词首字母除了第一个，举个栗子，<code>payAmount</code>和<code>grandTotal</code>。这些要求在语法上不强制要求，但是读起来更好看一下。。</p>
+<p>再举个栗子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> hoursWorked = <span class="number">40</span>;</span><br><span class="line">        <span class="keyword">double</span> payRate = <span class="number">10.0</span>, taxRate = <span class="number">0.10</span>;</span><br><span class="line">        System.out.println(<span class="string">"Hours Worked: "</span> + hoursWorked);</span><br><span class="line">        System.out.println(<span class="string">"pay Amount : "</span> + (hoursWorked * payRate));</span><br><span class="line">        System.out.println(<span class="string">"tax Amount : "</span> + (hoursWorked * payRate * taxRate));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<blockquote>
+<p>Hours Worked: 40<br>pay Amount : 400.0<br>tax Amount : 40.0</p>
+</blockquote>
+<p>星号<code>*</code>代表了乘号。。</p>
+<p>格式重要提示：在表达式中，变量的名称表示其持有的值。 （表达式是要求计算值的语句的一部分。）</p>
+<p>当这个数值变量在string字符串的后面显示，+代表了把这个数值字符加到字符串后面。。</p>
+<p><code>&quot;Hours Worked: &quot; + hoursWorked</code></p>
+<p>如果hoursWorked是40，就是把40加到字符串后面，输出：</p>
+<p><code>Hours Worked: 40</code></p>
+<p>问题：为啥第一个输出是40（没有小数点），后两个就有小数点了？</p>
+<p>答：第一个变量的数据类型是<code>long</code>整数数据类型，整数没有小数点；第二个double * int 的结果是double（这里说的都是数据类型），浮点数据类型。</p>
+<h2 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h2><p>上代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> hoursWorked = <span class="number">40</span>;</span><br><span class="line">        <span class="keyword">double</span> payRate = <span class="number">10.0</span>, taxRate = <span class="number">0.10</span>;</span><br><span class="line">        System.out.println(<span class="string">"Hours Worked: "</span> + hoursWorked);</span><br><span class="line">        <span class="comment">//仔细看这行 System.out.println("pay Amount : " + (hoursWorked * payRate));</span></span><br><span class="line">        System.out.println(<span class="string">"tax Amount : "</span> + (hoursWorked * payRate * taxRate));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>（好像跟上面一样）</p>
+<p>仔细看这行 System.out.println(“pay Amount : “ + (hoursWorked * payRate));</p>
+<p>这两边的圆括号：(hoursWorked * payRate) 强制要求了先算乘法，然后再转换成字符，并且加到<code>pay Amount :</code>后面</p>
+<p>如果你有跟上面类似的计算，用圆括号来表示计算步骤是个好想法。有时候没必要，但是看起来舒服一些。</p>
+<h2 id="一个语句，多行占用"><a href="#一个语句，多行占用" class="headerlink" title="一个语句，多行占用"></a>一个语句，多行占用</h2><p>您可以使用占用多行来表达一个语句。空格可以拆分一条语句。 但不能在名称的中间，在字符串文字的引号之间，在数字文字的中间分割语句。 这里是一个可以运行的例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> hoursWorked = <span class="number">40</span>;</span><br><span class="line">        <span class="keyword">double</span> payRate = <span class="number">10.0</span>, taxRate = <span class="number">0.10</span>;</span><br><span class="line">        System.out.println(<span class="string">"Hours Worked: "</span> + </span><br><span class="line">                   hoursWorked);</span><br><span class="line">        System.out.println(<span class="string">"pay Amount : "</span> </span><br><span class="line">            + (hoursWorked * payRate));</span><br><span class="line">        System.out.println(<span class="string">"tax Amount : "</span> + (hoursWorked </span><br><span class="line">                                    * payRate * taxRate));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>尽管正确，但陈述的划分却使人感到困惑。 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> hoursWorked = <span class="number">40</span>;</span><br><span class="line">        <span class="keyword">double</span> payRate = <span class="number">10.0</span>, taxRate = <span class="number">0.10</span>;</span><br><span class="line">        System.out.println(<span class="string">"Hours Worked: "</span> + </span><br><span class="line">                           hoursWorked);</span><br><span class="line">        System.out.println(<span class="string">"pay Amount : "</span> + </span><br><span class="line">                           (hoursWorked * payRate));</span><br><span class="line">        System.out.println(<span class="string">"tax Amount : "</span> + </span><br><span class="line">                           (hoursWorked * payRate * taxRate));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样更好看一些。。</p>
+<p>问题：下面程序正不正确？</p>
+<p><img src="https://i.loli.net/2020/11/27/eCwaN6ZULPSJOmg.png" alt=""></p>
+<p>答：不正确，Class中不能有空格，字符串中不能加空格，变量名中不能加空格。</p>
+<h1 id="赋值语句（Assignment-Statements）"><a href="#赋值语句（Assignment-Statements）" class="headerlink" title="赋值语句（Assignment Statements）"></a>赋值语句（Assignment Statements）</h1><p>目前为止，示例程序一直在使用最初放入变量中的值。 程序可以更改变量中的值。 赋值语句更改变量中保存的值。 这是一个使用赋值语句的程序：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example3</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> payAmount; <span class="comment">// payAmount is declared without an initial value </span></span><br><span class="line">        payAmount = <span class="number">123</span>; <span class="comment">// an assignment statement</span></span><br><span class="line">        System.out.println(<span class="string">"The variable contains: "</span> + payAmount);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>赋值语句将数值123写入<code>payAmount</code>变量中。</p>
+<p>输出：</p>
+<blockquote>
+<p>The variable contains: 123</p>
+</blockquote>
+<h2 id="赋值语句语法"><a href="#赋值语句语法" class="headerlink" title="赋值语句语法"></a>赋值语句语法</h2><p>变量名 = 表达式 ;</p>
+<ul>
+<li>等号<code>=</code>是一个赋值运算符</li>
+<li>变量名是在之前已经声明了的</li>
+<li>表达式是要求赋值的字符的集合</li>
+</ul>
+<p>例子：</p>
+<ul>
+<li>total = 3 + 5;</li>
+<li>price = 34.56;</li>
+<li>tax = total*0.05;</li>
+</ul>
+<p>在源代码文件，变量必须在任何赋值语句前面提前声明。</p>
+<p>问题：这个对不对</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> sum;</span><br><span class="line">sum = <span class="number">42</span> - <span class="number">12</span>;</span><br></pre></td></tr></table></figure>
+
+<p>答：对，这语法没问题。</p>
+<h2 id="赋值语句的语义"><a href="#赋值语句的语义" class="headerlink" title="赋值语句的语义"></a>赋值语句的语义</h2><p>编程语言的句法（syntax）说明了程序的外观。 它是如何排列符号的语法。 </p>
+<p>编程语言的语义（symantics）说明了程序在执行时的功能。 它说明了符号的含义。</p>
+<p>本页说明了赋值语句的含义。 赋值语句要求计算机按以下顺序执行两个步骤：</p>
+<ol>
+<li>首先，计算等号右边<ul>
+<li>这代表了表达式的值在右边</li>
+<li>如果没有要计算的，直接用那个值</li>
+</ul>
+</li>
+<li>然后，将右边的值替换成左边变量内的值</li>
+</ol>
+<p>举个例子：<code>total = 3 + 5;</code></p>
+<p>首先计算3+5=8，然后将8写入名为<code>total</code>的变量，total里面有没有数值之前不重要。</p>
+<h2 id="两步"><a href="#两步" class="headerlink" title="两步"></a>两步</h2><ol>
+<li><img src="https://i.loli.net/2020/11/27/O3wrIoy5LDgBPRv.png" alt=""></li>
+<li><img src="https://i.loli.net/2020/11/27/atwpTzveKCYfFrP.png" alt=""></li>
+</ol>
+<h2 id="更多练习"><a href="#更多练习" class="headerlink" title="更多练习"></a>更多练习</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> extra;</span><br><span class="line">extra = <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+
+<p>赋值语句正确，符合语法（变量名 = 表达式;）</p>
+<p>表达式是5，没有计算需要完成，但是赋值语句<strong>仍然</strong>需要两个步骤</p>
+<ol>
+<li><img src="https://i.loli.net/2020/11/27/lFzWHBnCwcupO8i.png" alt=""></li>
+<li><img src="https://i.loli.net/2020/11/27/3R4enJQ7uLIxoTk.png" alt=""></li>
+</ol>
+<p>问：变量会保持数值5多久？</p>
+<p>答：直到其他语句将不同的值写入这个变量，或者知道程序结束</p>
+<h2 id="给变量增加一个数值"><a href="#给变量增加一个数值" class="headerlink" title="给变量增加一个数值"></a>给变量增加一个数值</h2><p>首先extra变量已经有数值5了。</p>
+<p><img src="https://i.loli.net/2020/11/27/sEygUcuPlQ6TC14.png" alt=""></p>
+<p>新的语句<code>value = extra + 2;</code></p>
+<p>还是两步，第一步extra + 2；第二步value写入7（extra+ 2）</p>
+<p>问，下面程序输出啥？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Example assignment statements</span></span><br><span class="line"><span class="keyword">int</span> extra, value;</span><br><span class="line">extra = <span class="number">5</span>;</span><br><span class="line">value = extra + <span class="number">2</span>;</span><br><span class="line">System.out.println( <span class="string">"value now holds: "</span> + value );</span><br></pre></td></tr></table></figure>
+
+<p>答：value now holds: 7</p>
+<h2 id="相同变量在一个赋值语句出现两次"><a href="#相同变量在一个赋值语句出现两次" class="headerlink" title="相同变量在一个赋值语句出现两次"></a>相同变量在一个赋值语句出现两次</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">value = <span class="number">5</span>;</span><br><span class="line">value = <span class="number">12</span> + value;</span><br></pre></td></tr></table></figure>
+
+<p>第一个语句：</p>
+<ol>
+<li>得到右边=5</li>
+<li>将5写入变量value</li>
+</ol>
+<p>第二个语句：</p>
+<ol>
+<li>右边计算12 + value<ul>
+<li>先将value代入得到5</li>
+<li>然后12+5=17，得到右边=17</li>
+</ul>
+</li>
+<li>将右边数值17覆盖写入到value</li>
+</ol>
+<h3 id="第二个语句的动作"><a href="#第二个语句的动作" class="headerlink" title="第二个语句的动作"></a>第二个语句的动作</h3><p>重要说明：在同一赋值语句中，变量可以同时在等号=的LEFT和RIGHT。 在右侧使用时，它将提供用于计算结果的数字。 当在左侧使用它时，它会指出要在内存中保存该结果的位置。</p>
+<p>这两个规则位于不同的步骤中，因此它们不会互相干扰。 步骤1使用变量开头的值执行计算。 然后，步骤2将新值（来自计算）放入变量中</p>
+<p>问：下面程序输出啥</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">value = <span class="number">5</span>; </span><br><span class="line">System.out.println(<span class="string">"value is: "</span> + value ); </span><br><span class="line">value = value + <span class="number">10</span>; </span><br><span class="line">System.out.println(<span class="string">"value is: "</span> + value );</span><br></pre></td></tr></table></figure>
+
+<p>答：</p>
+<blockquote>
+<p>value is: 5 </p>
+<p>value is: 15</p>
+</blockquote>
+<h2 id="一个计数数列"><a href="#一个计数数列" class="headerlink" title="一个计数数列"></a>一个计数数列</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> count = <span class="number">0</span>; <span class="comment">// statement 1 </span></span><br><span class="line"></span><br><span class="line">System.out.println( count ) ; <span class="comment">// statement 2 </span></span><br><span class="line">count = count + <span class="number">1</span>; <span class="comment">// statement 3 </span></span><br><span class="line"></span><br><span class="line">System.out.println( count ) ; <span class="comment">// statement 4</span></span><br></pre></td></tr></table></figure>
+
+<p>这里是步骤：</p>
+<ol>
+<li>语句1将0写入<code>count</code></li>
+<li>语句2将0输出</li>
+<li>语句3首先从<code>count</code>得到0，然后加上1，将结果放回<code>count</code></li>
+<li>语句4输出1（也就是<code>count</code>现在的值）</li>
+</ol>
+<h3 id="计算多一点"><a href="#计算多一点" class="headerlink" title="计算多一点"></a>计算多一点</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> count = <span class="number">0</span>; <span class="comment">// statement 1 </span></span><br><span class="line"></span><br><span class="line">System.out.println( count ) ; <span class="comment">// statement 2 </span></span><br><span class="line">count = count + <span class="number">1</span>; <span class="comment">// statement 3 </span></span><br><span class="line"></span><br><span class="line">System.out.println( count ) ; <span class="comment">// statement 4 </span></span><br><span class="line"></span><br><span class="line">count = count + <span class="number">1</span>; </span><br><span class="line">System.out.println( count ) ;</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<blockquote>
+<p>0</p>
+<p>1</p>
+<p>2</p>
+</blockquote>
+<p>语句count = count + 1递增count中的数字。 有时程序员称此为“递增变量”，尽管（当然）实际上是变量中的数字实际上是递增的</p>
+<p>问：<code>sum = 2*sum ;</code>的步骤</p>
+<p>答：</p>
+<ol>
+<li>算出sum的两倍是多少，也就是sum乘二</li>
+<li>将结果写入sum</li>
+</ol>
+<h1 id="表达式（Expressions）"><a href="#表达式（Expressions）" class="headerlink" title="表达式（Expressions）"></a>表达式（Expressions）</h1><p>有时您需要仔细考虑赋值语句的两个步骤。 </p>
+<p>第一步是找到赋值运算符右侧的表达式值。</p>
+<p>表达式（expression）是文字，运算符，变量名和用于计算值的括号的组合。</p>
+<p>这个（略微不完整）的定义需要一些解释</p>
+<ul>
+<li>文字（literal） - 直接给你值的字符，如3.456</li>
+<li>运算符（operator） - 像“+”，“*” 这样的算数运算符</li>
+<li>变量（variable） - 计算机记忆的一部分包含的一个值（也就是多个char的意思吧。。）</li>
+<li>括号（parentheses） - （ 和 ）</li>
+</ul>
+<p>听起来很糟糕，但是跟代数一样。。。</p>
+<p>(32 - y) / ( x + 5 )</p>
+<p>在上面，字符 / 表示除法。 不仅任何符号混乱都会起作用。 以下</p>
+<p>32 - y) / ( x 5 + )</p>
+<p>不是语法正确的表达。表达式有规则，但是最好的规则是表达式必须看起来像代数一样好。 但是，必须始终使用*运算符显示乘法。 您不能通过将两个变量彼此相邻来相乘。 因此，尽管xy在代数中可能是正确的，但您必须在Java中使用x * y</p>
+<p>（这里的练习问题跳过，教程太。。内啥了）</p>
+<h2 id="空格不是很重要"><a href="#空格不是很重要" class="headerlink" title="空格不是很重要"></a>空格不是很重要</h2><p>可以在不使用任何空格的情况下编写表达式。 运算符和括号足以分隔表达式的各个部分。 您可以在表达式中使用一个或多个空格来在视觉上分隔各部分，而无需更改其含义。 例如，以下是正确的表达式：<br><code>(hoursWorked*payRate)-deduction</code><br>以下含义完全相同：<br><code>(hoursWorked * payRate) - deduction</code><br>明智地使用空格以使表达式清楚。 通过使事情变得清楚，您可以节省调试时间。 空格不能放在标识符的中间。 以下是不正确的：<br><code>( hours Worked * pay Rate) -deduction</code><br>可能（但不太好）以空格欺骗。 例如，在以下内容中：<br><code>12-4    /    2+2</code><br>看起来好像从12中减去了4，然后将结果8除以4。但是，空格不计算在内，表达式与以下内容相同：<br><code>12 - 4/2 + 2</code><br>空间的这种排列使表达式很清楚</p>
+<h1 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h1><p>算术运算符是要求进行某些算术运算的符号。 如前一个问题所示，如果在表达式中使用了多个运算符，则这些操作将以特定顺序进行。 优先级较高的运算符首先完成。 该表仅显示了Java中许多运算符中的几个。</p>
+<p><img src="https://i.loli.net/2020/11/27/AMxlvG25WFVfg9p.png" alt=""></p>
+<p>一些运算符具有相同的优先级。 例如，加号+和减号-具有相同的优先级。<br>一元减号和一元加号运算符用作负数或正数的一部分。 例如，-23表示负二十三，而+23表示正二十三。 稍后对此进行更多讨论。<br>当操作数（数字）都是整数时，这些运算符将执行整数算术运算。 如果一个或两个操作数都是浮点数，则这些运算符会做浮点数<br>算术。 使用除法记住这一点尤其重要，因为整数除法的结果是整数。 例如，5/2是2（不是2.5），而5/10是0（不是0.5）。 </p>
+<p>（练习跳过）</p>
+<p>（剩下太简单了，跳过）</p>
+<h2 id="一元减"><a href="#一元减" class="headerlink" title="一元减"></a>一元减</h2><p>（说白了这就是正负数，正负数算术中最优先）</p>
+<p>如果您在运算符表中查找，则会看到字符-被列出两次。 这是因为-用于两个目的。 在某些情况下，-是一元减号运算符。 在其他情况下，-是减法运算符。<br>一元减号用于显示负数。 例如：<br>-97.34<br>表示“负九十七点三十四”。 减法运算符用于显示一个数与另一个数的减法。 例如：<br>95-12<br>是一个表达式，要求从95中减去12。一元减运算符具有较高的优先级。 加减法的优先级较低。 例如<br>-12 + 3<br>表示将3加到负12（得出-9）。 一元加号可应用于数字以表明它是正数。 它也具有很高的优先级。 很少使用</p>
+</div><div><div class="recommend-post"><span class="is-size-6 has-text-grey has-mr-7"># 相关文章</span><br><span>  1.<a class="is-size-6" href="/p/23e4/" target="_blank">开始学Java之14 Arrays</a><br></span><span>  2.<a class="is-size-6" href="/p/56ac/" target="_blank">13-14-小代码-骰子概率</a><br></span><span>  3.<a class="is-size-6" href="/p/2378/" target="_blank">5-6-超大数计算</a><br></span><span>  4.<a class="is-size-6" href="/p/6a46/" target="_blank">开始学Java之13 练习4-2</a><br></span><span>  5.<a class="is-size-6" href="/p/dd5d/" target="_blank">开始学Java之12 细讲计数循环</a><br></span><span>  6.<a class="is-size-6" href="/p/e7ed/" target="_blank">开始学Java之11 练习4-1</a><br></span><span>  7.<a class="is-size-6" href="/p/fcef/" target="_blank">开始学Java之10 布尔值表达式</a><br></span><span>  8.<a class="is-size-6" href="/p/e2f2/" target="_blank">8-9 小代码 检测是不是回文</a><br></span></div><div class="recommend-post"><span class="is-size-6 has-text-grey has-mr-7"># 推荐文章</span><br><span>  1.<a class="is-size-6" href="/p/23e4/" target="_blank">开始学Java之14 Arrays</a><br></span><span>  2.<a class="is-size-6" href="/p/56ac/" target="_blank">13-14-小代码-骰子概率</a><br></span><span>  3.<a class="is-size-6" href="/p/2378/" target="_blank">5-6-超大数计算</a><br></span><span>  4.<a class="is-size-6" href="/p/6a46/" target="_blank">开始学Java之13 练习4-2</a><br></span><span>  5.<a class="is-size-6" href="/p/6e40/" target="_blank">11-12 勉强解读Natsumi大佬的神代码</a><br></span><span>  6.<a class="is-size-6" href="/p/dd5d/" target="_blank">开始学Java之12 细讲计数循环</a><br></span></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/p/7f57/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">开始学Java之8 练习2.1-2.4</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/p/e9bc/"><span class="level-item">开始学Java之6 变量 与 Random</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><div class="title is-5">评论</div><div id="comment-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.0/dist/gitalk.css"><script> $.getScript('/js/gitalk.min.js', function () { 
+            var gitalk = new Gitalk({
+            language:'zh-CN',
+            id: '71580a12249b5e22f706486942a664be',
+            repo: 'a-little-bear.github.io',
+            owner: 'a-little-bear',
+            clientID: '7a12c782031110c85c04',
+            clientSecret: '615df4c852a3cf8bad068bfa5151449c6c1b3f34',
+            admin: ["a-little-bear"],
+            createIssueManually: true,
+            distractionFreeMode: true,
+            perPage: 10,
+            pagerDirection: 'last',
+            
+            
+            enableHotKey: true,
+            isLocked: false
+        })
+        gitalk.render('comment-container')});</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget toc-scroll" id="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-大纲" href="#大纲"><span>大纲</span></a></li><li><a class="is-flex toc-item" id="toc-item-变量（Variables）" href="#变量（Variables）"><span>变量（Variables）</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-变量声明" href="#变量声明"><span>变量声明</span></a></li><li><a class="is-flex toc-item" id="toc-item-变量声明的语法" href="#变量声明的语法"><span>变量声明的语法</span></a></li><li><a class="is-flex toc-item" id="toc-item-变量名" href="#变量名"><span>变量名</span></a></li><li><a class="is-flex toc-item" id="toc-item-计算" href="#计算"><span>计算</span></a></li><li><a class="is-flex toc-item" id="toc-item-一个语句，多行占用" href="#一个语句，多行占用"><span>一个语句，多行占用</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-赋值语句（Assignment-Statements）" href="#赋值语句（Assignment-Statements）"><span>赋值语句（Assignment Statements）</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-赋值语句语法" href="#赋值语句语法"><span>赋值语句语法</span></a></li><li><a class="is-flex toc-item" id="toc-item-赋值语句的语义" href="#赋值语句的语义"><span>赋值语句的语义</span></a></li><li><a class="is-flex toc-item" id="toc-item-两步" href="#两步"><span>两步</span></a></li><li><a class="is-flex toc-item" id="toc-item-更多练习" href="#更多练习"><span>更多练习</span></a></li><li><a class="is-flex toc-item" id="toc-item-给变量增加一个数值" href="#给变量增加一个数值"><span>给变量增加一个数值</span></a></li><li><a class="is-flex toc-item" id="toc-item-相同变量在一个赋值语句出现两次" href="#相同变量在一个赋值语句出现两次"><span>相同变量在一个赋值语句出现两次</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-第二个语句的动作" href="#第二个语句的动作"><span>第二个语句的动作</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-一个计数数列" href="#一个计数数列"><span>一个计数数列</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-计算多一点" href="#计算多一点"><span>计算多一点</span></a></li></ul></li></ul></li><li><a class="is-flex toc-item" id="toc-item-表达式（Expressions）" href="#表达式（Expressions）"><span>表达式（Expressions）</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-空格不是很重要" href="#空格不是很重要"><span>空格不是很重要</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-算术运算符" href="#算术运算符"><span>算术运算符</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-一元减" href="#一元减"><span>一元减</span></a></li></ul></li></ul></div></div><script type="text/javascript" async>
+        $(document).ready(function () { //参考自 https://github.com/ppoffice/hexo-theme-icarus/pull/616/files
+            var observerTopMargin;
+            var scrollObserver;
+            var headerElems = $(".headerlink");
+            var activeTocItem;
+        
+            function initIntersectionObserver(docHeight) {
+                observerTopMargin = docHeight;
+                scrollObserver = new IntersectionObserver(scrollCallBack,
+                    {
+                        root: null,  // viewpoint
+                        rootMargin: docHeight + "px 0px -80% 0px"  // cover top 30% of viewport to the top of document
+                    })
+            }
+        
+            function scrollCallBack(entries, observer) {
+                if ($(window).scrollTop() > observerTopMargin * 0.7) { 
+                    // User somehow scroll to 70% of observerTopMargin (which is inited as 200% document height)
+                    // Observer top margin need to extend to cover all the space to the top of the document
+                    initIntersectionObserver(observerTopMargin * 2)
+                    observer.disconnect();
+                    return;
+                }
+                let toActive;
+                if (entries[0].intersectionRatio == 1) {  // enter viewed area
+                    let entry = entries.reduce((u, v) => (u.target.toc_id > v.target.toc_id ? u : v));  // get the lowest item
+                    toActive = $("#toc-item-" + $(entry.target).attr("href").substr(1));
+                } else {
+                    let entry = entries.reduce((u, v) => (u.target.toc_id < v.target.toc_id ? u : v));  // get the highest item
+                    let idx = Math.max(entry.target.toc_id - 1, 0);
+                    toActive = $("#toc-item-" + $(headerElems[idx]).attr("href").substr(1));
+                }
+                if (activeTocItem) activeTocItem.removeClass("is-current");
+                activeTocItem = toActive
+                activeTocItem.addClass("is-current");
+            }
+        
+            initIntersectionObserver($(document).height() * 2);
+            headerElems.each(function (index, obj) {
+                obj.toc_id = index;
+                scrollObserver.observe(obj);
+            })
+        });</script></div><div class="card widget"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="" src="https://cdn.jsdelivr.net/gh/a-little-bear/picture/img/1280-646950218-panda-in-thailand.jpg" alt="alittlebear"></figure><p class="title is-size-4 is-block line-height-inherit">alittlebear</p><p class="is-size-6 is-block">一坨小萌新~（音乐在左下角）</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>太阳系 地球</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">115</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">17</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">11</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/a-little-bear" target="_blank" rel="noopener">Github</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="吾爱破解" href="https://www.52pojie.cn/home.php?mod=follow&amp;uid=1265340&amp;do=view&amp;from=space">吾爱破解</a><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="哔哩哔哩" href="https://space.bilibili.com/470220192">哔哩哔哩</a></div><div><hr><p id="hitokoto">:D 一言句子获取中...</p><script type="text/javascript" defer>function getYiyan(){
+                                $.getJSON("https://v1.hitokoto.cn/", function (data) {
+                                if(data){
+                                    $('#hitokoto').html("");
+                                    $('#hitokoto').append("<strong style='color: #3273dc;'>"+data.hitokoto+"</strong>"+
+                                    "<p>"+"来源《"+data.from+"》</p><p>提供者-"+data.creator+"</p>");
+                                }});}
+                                $(function (){getYiyan();$('#hitokoto').click(function(){getYiyan();})});</script></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/categories/Github/"><span class="level-start"><span class="level-item">Github</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E4%B9%A6%E7%B1%8D/"><span class="level-start"><span class="level-item">书籍</span></span><span class="level-end"><span class="level-item tag">7</span></span></a><ul class="mr-0"><li><a class="level is-mobile is-marginless" href="/categories/%E4%B9%A6%E7%B1%8D/%E5%B7%A5%E5%85%B7/"><span class="level-start"><span class="level-item">工具</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E4%B9%A6%E7%B1%8D/%E7%94%B5%E5%AD%90%E4%B9%A6/"><span class="level-start"><span class="level-item">电子书</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E4%B9%A6%E7%B1%8D/%E9%98%85%E8%AF%BB%E7%BB%8F%E9%AA%8C/"><span class="level-start"><span class="level-item">阅读经验</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile is-marginless" href="/categories/%E5%85%B6%E4%BB%96/"><span class="level-start"><span class="level-item">其他</span></span><span class="level-end"><span class="level-item tag">22</span></span></a><ul class="mr-0"><li><a class="level is-mobile is-marginless" href="/categories/%E5%85%B6%E4%BB%96/%E7%BD%91%E7%9B%98/"><span class="level-start"><span class="level-item">网盘</span></span><span class="level-end"><span class="level-item tag">8</span></span></a></li></ul></li><li><a class="level is-mobile is-marginless" href="/categories/%E5%BD%B1%E8%A7%86%E6%8E%A8%E8%8D%90/"><span class="level-start"><span class="level-item">影视推荐</span></span><span class="level-end"><span class="level-item tag">3</span></span></a><ul class="mr-0"><li><a class="level is-mobile is-marginless" href="/categories/%E5%BD%B1%E8%A7%86%E6%8E%A8%E8%8D%90/%E8%A7%86%E9%A2%91/"><span class="level-start"><span class="level-item">视频</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></li><li><a class="level is-mobile is-marginless" href="/categories/%E6%8A%80%E6%9C%AF/"><span class="level-start"><span class="level-item">技术</span></span><span class="level-end"><span class="level-item tag">39</span></span></a><ul class="mr-0"><li><a class="level is-mobile is-marginless" href="/categories/%E6%8A%80%E6%9C%AF/Java/"><span class="level-start"><span class="level-item">Java</span></span><span class="level-end"><span class="level-item tag">17</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E6%8A%80%E6%9C%AF/bat/"><span class="level-start"><span class="level-item">bat</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E6%8A%80%E6%9C%AF/hexo/"><span class="level-start"><span class="level-item">hexo</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E6%8A%80%E6%9C%AF/python/"><span class="level-start"><span class="level-item">python</span></span><span class="level-end"><span class="level-item tag">14</span></span></a></li></ul></li><li><a class="level is-mobile is-marginless" href="/categories/%E6%B8%B8%E6%88%8F/"><span class="level-start"><span class="level-item">游戏</span></span><span class="level-end"><span class="level-item tag">25</span></span></a></li><a class="level is-mobile is-marginless" href="/categories/"><span class="level-start"><span class="level-item">查看全部&gt;&gt;</span></span></a></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/%E7%BB%8F%E9%AA%8C/"><span class="tag">经验</span><span class="tag is-grey-lightest">12</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E4%B9%A6%E7%B1%8D/"><span class="tag">书籍</span><span class="tag is-grey-lightest">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97/"><span class="tag">俄罗斯方块</span><span class="tag is-grey-lightest">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%9B%BE%E7%89%87%E6%B5%8F%E8%A7%88%E5%99%A8/"><span class="tag">图片浏览器</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MD%E7%BC%96%E8%BE%91%E5%99%A8/"><span class="tag">MD编辑器</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%85%B6%E4%BB%96/"><span class="tag">其他</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"><span class="tag">开发工具</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%BD%95%E5%83%8F%E8%BD%AF%E4%BB%B6/"><span class="tag">录像软件</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"><span class="tag">浏览器</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BD%91%E7%AB%99/"><span class="tag">网站</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%98%85%E8%AF%BB%E8%BD%AF%E4%BB%B6/"><span class="tag">阅读软件</span><span class="tag is-grey-lightest">1</span></a></div></div></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/archives/2020/11/"><span class="level-start"><span class="level-item">十一月 2020</span></span><span class="level-end"><span class="level-item tag">18</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/09/"><span class="level-start"><span class="level-item">九月 2020</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/08/"><span class="level-start"><span class="level-item">八月 2020</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/07/"><span class="level-start"><span class="level-item">七月 2020</span></span><span class="level-end"><span class="level-item tag">15</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/06/"><span class="level-start"><span class="level-item">六月 2020</span></span><span class="level-end"><span class="level-item tag">29</span></span></a></li><a class="level is-mobile is-marginless" href="/archives/"><span class="level-start"><span class="level-item">查看全部&gt;&gt;</span></span></a></ul></div></div></div><div class="card widget"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content size-small"><p><time dateTime="2020-12-01T02:03:20.000Z">2020-11-30</time></p><p class="title is-6"><a class="link-muted" href="/p/23e4/">开始学Java之14 Arrays</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a> / <a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/Java/">Java</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2020-11-30T23:33:24.000Z">2020-11-30</time></p><p class="title is-6"><a class="link-muted" href="/p/56ac/">13-14-小代码-骰子概率</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a> / <a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/Java/">Java</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2020-11-29T23:24:39.000Z">2020-11-29</time></p><p class="title is-6"><a class="link-muted" href="/p/2378/">5-6-超大数计算</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a> / <a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/Java/">Java</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2020-11-29T22:19:35.000Z">2020-11-29</time></p><p class="title is-6"><a class="link-muted" href="/p/6a46/">开始学Java之13 练习4-2</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a> / <a class="link-muted" href="/categories/%E6%8A%80%E6%9C%AF/Java/">Java</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2020-11-29T02:30:31.000Z">2020-11-28</time></p><p class="title is-6"><a class="link-muted" href="/p/6e40/">11-12 勉强解读Natsumi大佬的神代码</a></p><p class="is-uppercase"></p></div></article></div></div><div class="card widget"><div class="card-content"><h3 class="menu-label">最新评论</h3><span class="body_hot_comment">加载中，最新评论有1分钟缓存...</span></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img class="logo-img" src="/img/logo1.png" alt="alittlebear&#039;s blog" height="28"><img class="logo-img-dark" src="/img/logo2.png" alt="alittlebear&#039;s blog" height="28"></a><p class="size-small"><span>&copy; 2020 alittlebear</span>  Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>,Modify by <a href="https://github.com/removeif/hexo-theme-amazing" target="_blank">removeif</a> <br><span>© 版权说明：[本网站所有内容均收集于互联网或自己创作,<br />&nbsp;&nbsp;&nbsp;&nbsp;方便于网友与自己学习交流，如有侵权，请<a href="/message" target="_blank">留言</a>，立即处理]<br /></span><span><span id="statistic-times">loading...</span><script>function createTime(time) {
+            var n = new Date(time);
+            now.setTime(now.getTime() + 250),
+                days = (now - n) / 1e3 / 60 / 60 / 24,
+                dnum = Math.floor(days),
+                hours = (now - n) / 1e3 / 60 / 60 - 24 * dnum,
+                hnum = Math.floor(hours),
+            1 == String(hnum).length && (hnum = "0" + hnum),
+                minutes = (now - n) / 1e3 / 60 - 1440 * dnum - 60 * hnum,
+                mnum = Math.floor(minutes),
+            1 == String(mnum).length && (mnum = "0" + mnum),
+                seconds = (now - n) / 1e3 - 86400 * dnum - 3600 * hnum - 60 * mnum,
+                snum = Math.round(seconds),
+            1 == String(snum).length && (snum = "0" + snum),
+                document.getElementById("statistic-times").innerHTML = "❤️本站自 <strong>"+time.split(" ")[0].replace(/\//g,".")+"</strong> 已运行 <strong>" + dnum + "</strong> 天 <strong>" + hnum + "</strong> 小时 <strong>" + mnum + "</strong> 分 <strong>" + snum + "</strong> 秒！❤️";
+        }var now = new Date();setInterval("createTime('2020/04/23 00:00:00')", 250,"");</script><br></span><div class="size-small"><span>❤️感谢 <strong><span id="busuanzi_value_site_uv">99+</span></strong> 小伙伴的 <strong><span id="busuanzi_value_site_pv">99+</span></strong> 次光临！❤️</span></div></p></div><div class="level-end"><div class="sideMusic"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="/js/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script><meting-js style="width: auto;height: 2000px;" server="netease" type="playlist" id="2985973204" theme="#2980b9" loop="all" autoplay="false" order="random" storageName="aplayer-setting" lrctype="0" list-max-height="400px" fixed="true"></meting-js></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            site: {
+                url: 'https://a-little-bear.github.io',
+                external_link: {"enable":true,"exclude":[]}
+            },
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back-to-top.js" defer></script><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.12/dist/js/lightgallery-all.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><!--!--><!--!--><!--!--><script src="/js/toc.js" defer></script><script src="/js/main.js" defer></script><script>$.getScript('/js/comment-issue-data.js',function(){loadIssueData('7a12c782031110c85c04','615df4c852a3cf8bad068bfa5151449c6c1b3f34','a-little-bear','a-little-bear.github.io',false);})</script><script src="/js/alittlebear/universe.js"></script><link rel="stylesheet" href="/css/insight.css"><div class="searchbox ins-search"><div class="searchbox-container ins-search-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="想要查找什么..."><span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"></div></div></div></div><script>(function (window) {
+            var INSIGHT_CONFIG = {
+                TRANSLATION: {
+                    POSTS: '文章',
+                    PAGES: '页面',
+                    CATEGORIES: '分类',
+                    TAGS: '标签',
+                    UNTITLED: '(无标题)',
+                },
+                CONTENT_URL: '/content.json',
+            };
+            window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+        })(window);</script><script src="/js/insight.js" defer></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.js"></script><script type="text/javascript">var pjax = new Pjax({
+            elements: "a",//代表点击链接就更新
+            selectors: [  //代表要更新的节点
+                ".section",
+                "title"
+            ],
+            cache: true,
+            cacheBust:false
+        })
+
+        function loadBusuanzi(){
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js", function () {});
+        }
+
+        // 开始 PJAX 执行的函数
+        document.addEventListener('pjax:send', function () {
+        });
+        
+        // PJAX 完成之后执行的函数，可以和上面的重载放在一起
+        document.addEventListener('pjax:complete', function () {
+            $(".section").css({opacity:1});
+            if(true){
+                $.getScript('/js/comment-issue-data.js',function(){loadIssueData('7a12c782031110c85c04','615df4c852a3cf8bad068bfa5151449c6c1b3f34','a-little-bear','a-little-bear.github.io',false);});
+            }
+            if(false){
+                loadMathJax();
+            }
+            loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);
+            loadBackTop();
+            loadBusuanzi();
+            if(typeof loadBanner == 'function'){
+                loadBanner();
+            }
+        });</script></body><script type="text/javascript" src="/js/typing.js"></script></html>
