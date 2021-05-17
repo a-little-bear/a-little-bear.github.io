@@ -11583,12 +11583,12 @@ article.article .article-meta {
 body {
 /* cursor: url('https://i.loli.net/2020/05/29/HdoxnAkEG14hglP.png'),default; !important
     cursor: url('https://i.loli.net/2020/05/29/HdoxnAkEG14hglP.png'),pointer; !important */
-  cursor: url("https://i.loli.net/2020/05/29/HdoxnAkEG14hglP.png"), default; /* !important */
+  cursor: url("https://raw.githubusercontent.com/a-little-bear/picture/master/img/normal.gif"), default; /* !important */
 }
 a {
-  cursor: url("https://i.loli.net/2020/08/12/oizawQyfph72nYg.gif"), auto; /*  !important */
+  cursor: url("https://raw.githubusercontent.com/a-little-bear/picture/master/img/ezgif-2-a8574f127feb.gif"), auto; /*  !important */
 /* cursor: url('https://i.loli.net/2020/05/29/HdoxnAkEG14hglP.png') !important; */
 }
 a:hover {
-  cursor: url("https://i.loli.net/2020/08/12/oizawQyfph72nYg.gif"), pointer;
+  cursor: url("https://raw.githubusercontent.com/a-little-bear/picture/master/img/ezgif-2-b642642bbc97.gif"), pointer;
 }
