@@ -11904,7 +11904,7 @@ hr {
   transition: all 0.5s ease-out;
 }
 .aplayer .aplayer-miniswitcher {
-  background: #fff !important;
+  background: rgba(255,255,255,0.527);
 }
 body,
 button,
@@ -12215,9 +12215,6 @@ body {
 .toc-scroll {
   max-height: 500px;
   overflow: auto;
-}
-.navbar-highlight {
-  background-color: rgba(248,248,248,0.644) !important;
 }
 .gt-container .gt-comment-owner {
   padding: 0.2em 0.2em !important;

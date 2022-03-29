@@ -11904,7 +11904,7 @@ hr {
   transition: all 0.5s ease-out;
 }
 .aplayer .aplayer-miniswitcher {
-  background: #fff !important;
+  background: rgba(255,255,255,0.527);
 }
 body,
 button,
@@ -12216,9 +12216,6 @@ body {
   max-height: 500px;
   overflow: auto;
 }
-.navbar-highlight {
-  background-color: rgba(248,248,248,0.644) !important;
-}
 .gt-container .gt-comment-owner {
   padding: 0.2em 0.2em !important;
   margin: 0 0.5em 0 0.5em !important;
@@ -12384,12 +12381,12 @@ body.night {
   color: #c0c0c0 !important;
 }
 .night .gt-container .gt-comment-content:hover {
-  -webkit-box-shadow: 0 0.625em 3.75em 0 #f4f4f4;
+  -webkit-box-shadow: 0 0.625em 3.75em 0 rgba(182,182,182,0.686);
   box-shadow: 0 0.625em 3.75em 0 #000;
 }
 .night textarea {
   background-color: #151313;
-  color: #fff;
+  color: rgba(160,160,160,0.589);
 }
 .night .gt-container .gt-header-textarea:hover {
   background-color: #000;
@@ -12502,7 +12499,7 @@ body.night {
   display: inline-block;
 }
 .night .navbar-main .navbar-menu .navbar-item:hover {
-  color: #fff;
+  color: rgba(153,153,153,0.65);
   background-color: rgba(0,0,0,0);
 }
 .night .navbar,
@@ -12583,7 +12580,7 @@ body.night {
 }
 .night .v a:hover,
 .night .v .vlist .vcard .vh .vmeta .vat {
-  color: #fff;
+  color: rgba(199,199,199,0.698);
 }
 .night .v .vlist .vcard .vcontent.expand:before {
   background: -webkit-gradient(linear, left top, left bottom, , to(#252936));
@@ -12628,7 +12625,7 @@ body.night {
   color: #5299e0;
 }
 .night a:hover {
-  color: #fff;
+  color: rgba(209,209,209,0.678);
 }
 .night .content blockquote {
   background-color: #373d48;
@@ -12685,7 +12682,7 @@ body.night {
   background-color: #434a56;
 }
 .night .searchbox .searchbox-container .searchbox-input-wrapper .searchbox-close:hover {
-  color: #fff;
+  color: rgba(209,207,207,0.588);
 }
 .night ::selection {
   color: #fff;
