@@ -12067,7 +12067,7 @@ body {
   height: 13px;
   border: 1px solid #ccc;
   border-radius: 100%;
-  background-color: #fff;
+  background-color: rgba(139,139,139,0.603);
 }
 .time-axis-main .time-axis-date span:after {
   content: '';
@@ -12217,6 +12217,9 @@ body {
   max-height: 500px;
   overflow: auto;
 }
+.navbar-highlight {
+  background-color: rgba(153,153,153,0.527) !important;
+}
 .gt-container .gt-comment-owner {
   padding: 0.2em 0.2em !important;
   margin: 0 0.5em 0 0.5em !important;
@@ -12242,6 +12245,17 @@ hr {
 .hljs-comment,
 .hljs-quote {
   color: #42bb35 !important;
+}
+a.navbar-item:focus,
+.navbar-link:focus,
+a.navbar-item:focus-within,
+.navbar-link:focus-within,
+a.navbar-item:hover,
+.navbar-link:hover,
+a.navbar-item.is-active,
+.navbar-link.is-active {
+  background-color: rgba(255,255,255,0);
+  color: #3273dc;
 }
 body {
   counter-reset: card;
