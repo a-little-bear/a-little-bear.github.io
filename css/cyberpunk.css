@@ -12218,7 +12218,7 @@ body {
   overflow: auto;
 }
 .navbar-highlight {
-  background-color: rgba(153,153,153,0.527) !important;
+  background-color: unset;
 }
 .gt-container .gt-comment-owner {
   padding: 0.2em 0.2em !important;

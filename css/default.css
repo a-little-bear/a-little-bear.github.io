@@ -12217,7 +12217,7 @@ body {
   overflow: auto;
 }
 .navbar-highlight {
-  background-color: rgba(153,153,153,0.527) !important;
+  background-color: unset;
 }
 .gt-container .gt-comment-owner {
   padding: 0.2em 0.2em !important;
@@ -12380,8 +12380,8 @@ body.night {
   color: #c0c0c0;
 }
 .night .menu-list a.is-active {
-  background-color: #7a7a7a;
-  color: #3273dc;
+  background-color: rgba(255,255,255,0.267);
+  color: #fbfbfb;
 }
 .night .recommend-area,
 .night .article-licensing {
