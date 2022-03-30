@@ -19,7 +19,7 @@ function isNightFun() {
     return isNightTemp;
 }
 
-var isNight='true';//=isNightFun();
+var isNight=isNightFun();
 // 参考自 https://www.imaegoo.com/
 var nightNav;
 var nightIcon;
