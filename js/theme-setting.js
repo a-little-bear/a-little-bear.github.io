@@ -11,6 +11,7 @@ function isNightFun() {
             isNightTemp = 'true';
             //edited alittlebear 不然开始点第一次夜间模式没反应
             nightIcon = true
+            applyNight('true');
         } else {
             isNightTemp = 'false';
         }
