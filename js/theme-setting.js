@@ -2,12 +2,15 @@
 // https://removeif.github.io/
 
 function isNightFun() {
-    var isNightTemp = localStorage.getExpire('night');
+    var isNightTemp = localStorage.getExpire('night'); //'true';
+    //var isNightTemp = 'true';
 
     // 第一次进来判断是白天还是晚上
     if (isNightTemp == null || isNightTemp == undefined) {
         if (isNightRange("19:00", "23:59") || isNightRange("00:00", "07:00")) {
             isNightTemp = 'true';
+            //edited alittlebear 不然开始点第一次夜间模式没反应
+            nightIcon = true
         } else {
             isNightTemp = 'false';
         }
@@ -16,7 +19,7 @@ function isNightFun() {
     return isNightTemp;
 }
 
-var isNight=isNightFun();
+var isNight='true';//=isNightFun();
 // 参考自 https://www.imaegoo.com/
 var nightNav;
 var nightIcon;
