@@ -10,8 +10,8 @@ function isNightFun() {
         if (isNightRange("19:00", "23:59") || isNightRange("00:00", "07:00")) {
             isNightTemp = 'true';
             //edited alittlebear 不然开始点第一次夜间模式没反应
-            nightIcon = true
-            applyNight('true');
+            //nightIcon = true
+            //applyNight('true');
         } else {
             isNightTemp = 'false';
         }
