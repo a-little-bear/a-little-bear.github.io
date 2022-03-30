@@ -30,16 +30,16 @@ function applyNight(value) {
         //document.body.classList.remove('light');
         //document.body.classList.add('night');
         document.body.className += ' night'
-        if (nightIcon) {
-            nightIcon.className = nightIcon.className.replace(/ fa-moon/g, '') + ' fa-lightbulb'
-        }
+        //if (nightIcon) {
+        nightIcon.className = nightIcon.className.replace(/ fa-moon/g, '').replace(/ fa-lightbulb/g, '') + ' fa-lightbulb'
+        //}
     } else {
         //document.body.classList.remove('night');
         //document.body.classList.add('light');
         document.body.className = document.body.className.replace(/ night/g, '')
-        if (nightIcon) {
-            nightIcon.className = nightIcon.className.replace(/ fa-lightbulb/g, '') + ' fa-moon'
-        }
+        //if (nightIcon) {
+        nightIcon.className = nightIcon.className.replace(/ fa-lightbulb/g, '').replace(/ fa-moon/g, '') + ' fa-moon'
+        //}
     }
 }
 
@@ -51,9 +51,9 @@ function findNightIcon() {
     } else {
         nightNav.addEventListener('click', switchNight);
         if (isNight) {
-            nightIcon.className = nightIcon.className.replace(/ fa-moon/g, '') + ' fa-lightbulb'
+            nightIcon.className = nightIcon.className.replace(/ fa-moon/g, '').replace(/ fa-lightbulb/g, '') + ' fa-lightbulb'
         } else {
-            nightIcon.className = nightIcon.className.replace(/ fa-lightbulb/g, '') + ' fa-moon'
+            nightIcon.className = nightIcon.className.replace(/ fa-lightbulb/g, '').replace(/ fa-moon/g, '') + ' fa-moon'
         }
     }
 }
