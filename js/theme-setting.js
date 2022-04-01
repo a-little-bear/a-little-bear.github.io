@@ -50,7 +50,8 @@ function findNightIcon() {
         setTimeout(findNightIcon, 100);
     } else {
         nightNav.addEventListener('click', switchNight);
-        if (isNight) {
+        //edited alittlebear 加了一个感叹号
+        if (!isNight) {
             nightIcon.className = nightIcon.className.replace(/ fa-moon/g, '').replace(/ fa-lightbulb/g, '') + ' fa-lightbulb'
         } else {
             nightIcon.className = nightIcon.className.replace(/ fa-lightbulb/g, '').replace(/ fa-moon/g, '') + ' fa-moon'
