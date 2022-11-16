@@ -166,5 +166,5 @@ $(document).ready(function () {
             navbar.removeClass("navbar-highlight");
             navbar1.removeClass("navbar-highlight");
         }
-    });
+    })
 });

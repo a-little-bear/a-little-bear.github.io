@@ -10972,6 +10972,7 @@ a.article-nav-next span {
   .navbar-main .navbar-menu {
     justify-content: center;
     box-shadow: none;
+    background-color: transparent;
   }
   .navbar-main .navbar-start {
     margin-right: 0;
