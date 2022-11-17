@@ -12487,6 +12487,12 @@ body.night {
 .night .aplayer .aplayer-list ol::-webkit-scrollbar-thumb:hover {
   background-color: #5f697c;
 }
+.night .aplayer .aplayer-lrc:before {
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0, rgba(255,255,255,0));
+}
+.night .aplayer .aplayer-lrc:after {
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0, rgba(255,255,255,0));
+}
 .night .aplayer.aplayer-fixed .aplayer-list {
   border: 0px solid #eee;
 }
