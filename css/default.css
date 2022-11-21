@@ -12347,39 +12347,32 @@ body.night {
 }
 .night {
   background-color: #000;
-/* 左下角音乐打开和关闭的时候不同步，黑夜模式有白色，不会修。。
-    .aplayer.aplayer-fixed .aplayer-body
-        transition all 0.3s ease
-    .aplayer.aplayer-fixed .aplayer-info
-        transition all 0.3s ease
-    .aplayer .aplayer-icon path
-        transition all 0.3s ease
-    .aplayer .aplayer-pic
-        transition all 0.3s ease
+/*.aplayer .aplayer-pic
+        transition all 0s ease
     .aplayer .aplayer-pic .aplayer-button
-        transition all 0.3s ease
-    .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-loaded
-        transition all 0.3s ease
+        transition all 0s ease*/
+/*.aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-loaded
+        transition all 0s ease
     .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played .aplayer-thumb
-        transition all 0.3s ease
+        transition all 0s ease
     .aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon
-        transition all 0.3s ease
+        transition all 0s ease
     .aplayer .aplayer-info .aplayer-controller .aplayer-volume-wrap .aplayer-volume-bar-wrap
-        transition all 0.3s ease
+        transition all 0s ease
     .aplayer .aplayer-info .aplayer-controller .aplayer-volume-wrap .aplayer-volume-bar-wrap .aplayer-volume-bar .aplayer-volume
-        transition all 0.3s ease
+        transition all 0s ease
     .aplayer .aplayer-lrc p
-        transition all 0.3s ease
+        transition all 0s ease
     .aplayer .aplayer-lrc .aplayer-lrc-contents
-        transition all 0.3s ease
+        transition all 0s ease
     .aplayer .aplayer-list
-        transition all 0.3s ease
+        transition all 0s ease
     .aplayer .aplayer-list ol li
-        transition all 0.3s ease
+        transition all 0s ease
     .aplayer .aplayer-notice
-        transition all 0.3s ease
+        transition all 0s ease
     .aplayer .aplayer-miniswitcher .aplayer-icon
-        transition all 0.3s ease*/
+        transition all 0s ease*/
 }
 .night .navbar-highlight {
   background-color: rgba(0,0,0,0) !important;
@@ -12498,6 +12491,15 @@ body.night {
 }
 .night .aplayer.aplayer-fixed .aplayer-info {
   border-top: 0px solid #e9e9e9;
+}
+.night .aplayer.aplayer-fixed .aplayer-body {
+  transition: all 0s ease;
+}
+.night .aplayer.aplayer-fixed .aplayer-info {
+  transition: all 0s ease;
+}
+.night .aplayer .aplayer-icon path {
+  transition: all 0s ease;
 }
 .night .hljs {
   display: block;
