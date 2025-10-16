@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>受AdaBoost启发的Margin Theory间隔理论 - alittlebear&#039;s blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="alittlebear&#039;s blog"><meta name="msapplication-TileImage" content="/img/favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="alittlebear&#039;s blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="到底什么是AdaBoost？用动画和代码的方式，最清晰讲解！_哔哩哔哩_bilibili 这个视频直观的解释了AdaBoost是什么，和它为什么效果这么好 【报告】Boosting 25年（2014周志华）（up主推荐）_哔哩哔哩_bilibili 这个视频周教授深入的探讨了AdaBoost到底为什么效果这么好，模型迭代过程中到底是在优化什么。从这方面引申出了间隔理论的提出，争论，以及"><meta property="og:type" content="article"><meta property="og:title" content="受AdaBoost启发的Margin Theory间隔理论"><meta property="og:url" content="https://a-little-bear.github.io/posts/ea89/"><meta property="og:site_name" content="alittlebear&#039;s blog"><meta property="og:description" content="到底什么是AdaBoost？用动画和代码的方式，最清晰讲解！_哔哩哔哩_bilibili 这个视频直观的解释了AdaBoost是什么，和它为什么效果这么好 【报告】Boosting 25年（2014周志华）（up主推荐）_哔哩哔哩_bilibili 这个视频周教授深入的探讨了AdaBoost到底为什么效果这么好，模型迭代过程中到底是在优化什么。从这方面引申出了间隔理论的提出，争论，以及"><meta property="og:locale" content="en_US"><meta property="article:published_time" content="2025-10-16T16:19:48.000Z"><meta property="article:modified_time" content="2025-10-16T09:49:50.487Z"><meta property="article:author" content="alittlebear"><meta property="twitter:card" content="summary"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://a-little-bear.github.io/posts/ea89/"},"headline":"alittlebear's blog","image":[],"datePublished":"2025-10-16T16:19:48.000Z","dateModified":"2025-10-16T09:49:50.487Z","author":{"@type":"Person","name":"alittlebear"},"description":"到底什么是AdaBoost？用动画和代码的方式，最清晰讲解！_哔哩哔哩_bilibili\r 这个视频直观的解释了AdaBoost是什么，和它为什么效果这么好\r 【报告】Boosting\r 25年（2014周志华）（up主推荐）_哔哩哔哩_bilibili\r 这个视频周教授深入的探讨了AdaBoost到底为什么效果这么好，模型迭代过程中到底是在优化什么。从这方面引申出了间隔理论的提出，争论，以及"}</script><link rel="canonical" href="https://a-little-bear.github.io/posts/ea89/"><link rel="icon" href="/img/favicon.ico"><meta name="referrer" content="no-referrer-when-downgrade"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro|Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&amp;amp;subset=latin,latin-ext|Inconsolata|Itim|Lobster.css"><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="/js/globalUtils.js"></script><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><meta name="generator" content="Hexo 5.4.1"></head><body class="is-2-column has-navbar-fixed-top"><script type="text/javascript" src="/js/alittlebear/night.js"></script><canvas id="universe"></canvas><script type="text/javascript" src="/js/alittlebear/universe.js"></script><nav class="navbar navbar-main is-fixed-top"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.png" alt="alittlebear&#039;s blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="音乐" href="/music"><i class="fa fa-music"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="游戏" href="/game_index"><i class="fa fa-gamepad"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="相册" href="/album"><i class="fa fa-image"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="关于" href="/about"><i class="fa fa-user"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="网盘" href="https://wp.a-little-bear.github.io"><i class="fas fa-hdd"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a><a class="navbar-item" id="night-nav" title="Night" href="javascript:;"><i class="fas fa-moon" id="night-icon"></i></a></div></div></div></nav><script type="text/javascript" src="/js/theme-setting.js"></script><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><!--!--><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-plus"> </i>2025-10-16  <a class="commentCountImg" href="/posts/ea89/#comment-container"><span class="display-none-class">1a7c823577d261d85b54693530472b87</span><i class="far fa-comment-dots"></i> <span class="commentCount" id="1a7c823577d261d85b54693530472b87">0</span>  </a><span class="level-item"><i class="far fa-clock"> </i>19 m  <i class="fas fa-pencil-alt"> </i>2.9 k</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>&nbsp;visits</span></div></div><h1 class="title is-3 is-size-4-mobile">受AdaBoost启发的Margin Theory间隔理论</h1><div class="content"><blockquote>
+<p><a
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1qQkgYTEN4/">到底什么是AdaBoost？用动画和代码的方式，最清晰讲解！_哔哩哔哩_bilibili</a></p>
+<p>这个视频直观的解释了AdaBoost是什么，和它为什么效果这么好</p>
+<p><a
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Cs411c7Zt/">【报告】Boosting
+25年（2014周志华）（up主推荐）_哔哩哔哩_bilibili</a></p>
+<p>这个视频周教授深入的探讨了AdaBoost到底为什么效果这么好，模型迭代过程中到底是在优化什么。从这方面引申出了间隔理论的提出，争论，以及最后是如何完善的。</p>
+<span id="more"></span>
+</blockquote>
+<p>决策树可以简单直观高效的分类样本，不过单个决策树往往会因为样本的复杂性而增加模型复杂度，在树变的很深的时候很容易过拟合。</p>
+<p>最简单的（集成学习）优化方法就是bagging -
+随机森林将样本空间进行拆分/随机采样成不同的训练子集，<strong>并行</strong>训练几个不同的决策树（<strong>强学习器</strong>，i.e. 直接去尝试对整个样本空间去进行拟合），最后通过投票/平均值来给出最终答案。</p>
+<p>这么做最明显的好处就是模型的泛化能力更强了，更robust稳定了，方差Variance也降低了，但是相对的是对于样本空间被错分的样本缺乏关注，也就是偏差Bias提高了。</p>
+<p>基于Bias-Variance Decomposition，我们知道均方误差MSE可以分解为
+Expected Error = Bias^2 + Variance + Irreducible Error 其中
+不可约误差是数据的噪声，也叫贝叶斯误差。</p>
+<p>我们可以看到，想要降低均方误差（期望误差），我们就要降低Bias^2 +
+Variance，又因为Bias和Variance在模型训练过程中是相对的：降低Variance不可避免地要提升Bias，反之一样。所以处于平衡点的模型基本属于最优模型。</p>
+<p>另外一个优化boosting -
+AdaBoost<strong>串行</strong>的训练决策树（单层最简决策树），和随机森林相比，与其训练几个复杂的模型，每一个都有不少误差，然后通过平均值/投票来尽量的抹平误差，AdaBoost直接在训练的过程中减少误差，当然不可避免的方差就比随机森林要略高了。</p>
+<blockquote>
+<p>下面内容来自周教授的讲座视频</p>
+</blockquote>
+<p>Kearns和Valliant先是在STOC’89提出
+可弱学习（存在准确率大于50%的模型）是否等价于可强学习（存在一个精度接近100%的模型）。</p>
+<p>然后1990年Schapire从数学上证明了他们是等价的。</p>
+<p>1997年，Schapire和Freund给出了可应用的算法 - AdaBoost。</p>
+<p>基本来说，AdaBoost通过给前面分类错误的样本添加一个指数级大的权重，来影响下一次模型迭代”分界线“，这样模型就会尽可能地尝试将这些之前被分类错误的样本正确的给分类出来。这样我们就可以看到：最影响模型边界的样本往往是那些很容易/一直被错误分类的样本，类似于SVM的Support
+Vectors。</p>
+<p>AdaBoost最著名的一个应用就是人脸检测的Viola-Jones检测器（基于Haar特征），它前几个阶段先只用AdaBoost的前几个弱分类器去检测人脸是否存在，通过了才会运行后面的弱分类器，这样大大的减少了计算量。</p>
+<p>AdaBoost也是现在基本所有boosting算法的基础，AdaBoost奠定了此类算法的核心机制，优化AdaBoost相当于优化所有基于AdaBoost的boosting算法。</p>
+<p>现在考虑从数学上观察AdaBoost的准确率。</p>
+<p>Schapire和Freund在1997年给AdaBoost了一个上界，只要每个弱学习器的准确率严格大于50%，并且弱学习器的准确率不会随着迭代趋于50%，那么训练错误<strong>指数级</strong>减少，且有上界
+<span
+class="math inline"><em>e</em><sup>−2<em>T</em><em>γ</em><sup>2</sup></sup></span>,
+T是迭代数量，<span class="math inline"><em>γ</em></span>是<span
+class="math inline">0.5 − <em>ϵ</em><sub><em>t</em></sub> ≥ <em>γ</em>, <em>γ</em> &gt; 0, ∀<em>t</em> ∈ [<em>T</em>]</span>。</p>
+<p>当然训练误差只能表明模型对于现有数据的拟合度，不能作为模型泛化能力的估计。他们也给出了泛化误差：在<span
+class="math inline">1 − <em>δ</em></span>概率下<span
+class="math display">$$\epsilon_{\mathcal{D}}\le\epsilon_D+\tilde{O}\left(\sqrt{\frac{dT}{m}}\right)$$</span>
+其中<span class="math inline">𝒟</span>是测试数据集，<span
+class="math inline"><em>D</em></span>是训练数据集，<span
+class="math inline"><em>d</em></span>是弱学习器的VC-dimension（模型越简单<span
+class="math inline"><em>d</em></span>越小），<span
+class="math inline"><em>T</em></span>是迭代数量，<span
+class="math inline"><em>m</em></span>是样本数量，<span
+class="math inline"><em>Õ</em></span>省略了其他变量。</p>
+<p>我们可以看到这里的上界，AdaBoost迭代次数越多，上界越大，这里是否表示了AdaBoost随着迭代次数增加会逐渐过拟合模型？</p>
+<p>从测试误差的数据上来看，AdaBoost并<strong>不会</strong>过拟合。这算不算是违背了奥卡姆剃刀原理（最简单即最好）？</p>
+<p>这里有两种流派尝试解释这一现象：</p>
+<ul>
+<li>Margin Theory（Schapire, Freund, Bartlett &amp; Lee, 1998）</li>
+<li>Statistical View（Friedman, Hastie &amp; Tibshirani, 2000）</li>
+</ul>
+<p><strong>Statistical View</strong></p>
+<p>Ann.在2000年指出AdaBoost可以近似成对additive model <span
+class="math inline">$H(x)=\sum_{t=1}^T a_t h_t(x_t)$</span>的logistic
+function来预测概率，用牛顿法对指数/对数损失函数进行优化 <span
+class="math inline"><em>ℓ</em><sub><em>l</em><em>o</em><em>g</em></sub>(<em>h</em>|𝒟) = 𝔼<sub><em>x</em> ∼ 𝒟</sub>[ln (1 + <em>e</em><sup>−2<em>f</em>(<em>x</em>)<em>h</em>(<em>x</em>)</sup>)]</span>。</p>
+<p>从这个角度出发，衍生出了很多其他boosting算法，通过其他方法来优化对数损失函数，如LogitBoost
+LPBoost L2Boost RegBoost。</p>
+<p>问题是，Statistical
+View就是解释不了为什么AdaBoost不会过拟合，很多理论也和现实数据冲突。</p>
+<p>比如说，这个观点解释不了为什么VC-dimension增加（从单层决策树变为8节点树）会拟合的更好；LogitBoost理论上有噪音的时候比AdaBoost要好，但是结果上是反过来的；还有最重要的，模型早点停止可以防止过拟合，但事实上不停也不会过拟合。</p>
+<p><strong>Margin Theory</strong> 间隔理论</p>
+<p>在机器学习方法，模式识别与机器学习，和周教授的西瓜书里，关于AdaBoost也都只是介绍了上面的观点。间隔理论虽然在统计学中没有明确的定义，但是在实际应用中发现理论都是没问题的。</p>
+<p>这里AdaBoost的间隔理论和SVM的区别是，SVM是完全基于间隔理论进行的算法优化设计，而AdaBoost仅仅是套一个间隔理论模型的壳来（启发性的）解释为什么AdaBoost优化的没问题，这里AdaBoost实际优化的并不是间隔。</p>
+<p>二元分类本质上都可以看作是把数据找一个超平面拆分开来，我们可以认为间隔margin（超平面两边距离决策边界的和）越大，我们分类的把握性就越大。</p>
+<p>Schapire et al.在1998年基于间隔理论给出了一个新的上界 <span
+class="math inline">$\epsilon_{\mathcal{D}}\le
+\mathbb{P}_{x\sim\mathcal{D}}(f(x)H(x)\le\theta)+\tilde{O}(\sqrt{\frac{d}{m\theta^2}+\ln\frac1\delta})$</span><span
+class="math inline">$\le
+2^T\prod_{t=1}^T\sqrt{\epsilon_t^{1-\theta}(1-\epsilon_t)^{1+\theta}}+\tilde{O}(\sqrt{\frac{d}{m\theta^2}+\ln\frac1\delta})$</span>
+其中<span
+class="math inline"><em>θ</em></span>是间隔。可以看到样本数量<span
+class="math inline"><em>m</em></span>越大误差越小，模型复杂度越小误差越小，还有间隔越大误差越小。</p>
+<p>上面的<span class="math inline"><em>Õ</em></span>展开来是<span
+class="math inline">$O\left(\frac{1}{\sqrt{m}}\left(\frac{\ln m\ln
+|\mathcal{H}|}{\theta^2}+\ln\frac1\delta\right)^{1/2}\right)$</span>，可以看到是<span
+class="math inline">$O(\sqrt{\log m/m})$</span>。</p>
+<p>所以。基于最小间隔的想法，Breiman在1999年提出了一个更紧的上界：<span
+class="math inline">$\mathbb{P}_{\mathcal{D}}(yf(x)&lt;0)\le
+R(\ln(2m)+\ln\frac1R+1)+\frac1m\ln\frac{|\mathcal{H}|}{\delta}$</span>
+其中<span
+class="math inline">$\theta&gt;4\sqrt{\frac{2}{|\mathcal{H}|}}$</span>和<span
+class="math inline">$R=\frac{32\ln 2|\mathcal{H}|}{m\theta ^2}\le
+2m$</span>。可以看到是<span
+class="math inline"><em>O</em>(log <em>m</em>/<em>m</em>)</span>。</p>
+<p>由于<span
+class="math inline">log <em>m</em>/<em>m</em> &lt; 1</span>,
+Breiman确实给出了一个更紧的上界。换句话来说，如果用同样的训练样本（数量<span
+class="math inline"><em>m</em></span>），那么Breiman的上界比Schapire的更准确一些。</p>
+<p>于是，基于这个理论，Breiman同时设计了一个基于AdaBoost的变种arc-gv，通过直接最大化最小间隔来优化算法（类似于SVM了）。问题是实验结果看下来虽然minimum
+margin确实是比AdaBoost更大了，但测试误差也变大了许多。</p>
+<p>这就说明了，<strong>minimum margin</strong>
+无法解释为什么AdaBoost效果这么好。</p>
+<p>Reyzin和Schapire深入的研究了Breiman的arc-gv，发现这个模型的VC-dimension虽然是固定的，但是实际上还是和AdaBoost的stumps单层决策树有区别。这个区别就影响了实验结果。</p>
+<p>当他们把arc-gv的弱学习器也变为decision
+stumps单层决策树（树墩），就看到arc-gv虽然minimum
+margin最大，但是更关键的<strong>margin
+distribution</strong>更差了。这里他们就发现了，比最小间隔更重要的是平均/中位间隔，分布比极端数值更重要。</p>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/202510161647688.png" /></p>
+<p>Wang et al.在2011给出了一个具体的基于margin
+distribution的更紧的上界（这里的margin称之为Emargin），也是<span
+class="math inline"><em>O</em>(log <em>m</em>/<em>m</em>)</span>，不过问题是这里的界过于复杂，而且考虑了比前面Breiman和Schapire更多的信息，比如说KL散度，所以光从这个界上判断，无法知道这个更紧的界更紧是因为<em>获取的信息更多了</em>还是因为<em>margin
+distribution比minimum margin更本质</em>。</p>
+<p>Gao&amp;周教授在2013提出了一个新的margin bound，叫kth margin
+bound，并指出前面的minimum margin和2011提出的Emargin都是属于kth margin
+bound的一个特例，都不能真正的代表margin
+distribution。并且，给出了一个真正的margin distribution的界：</p>
+<p><span
+class="math display">$$\mathbb{P}_{\mathcal{D}}(yf(x)&lt;0)\le\frac2m+\inf_{\theta\in(0,1]}\left[\mathbb{P}_S(yf(x)&lt;\theta)+\frac{7\mu+3\sqrt{3\mu}}{3m}+\sqrt{\frac{3\mu}{m}\mathbb{P}_S(yf(x)&lt;\theta)}\right]$$</span>
+这里 <span class="math inline">$\mu=\frac{8}{\theta^2}\ln
+m\ln(2|\mathcal{H}|)+\ln\frac{2|\mathcal{H}|}{\delta}$</span>。可以看到是<span
+class="math inline"><em>O</em>(log <em>m</em>/<em>m</em>)</span>。可以证明这个界比Breiman和Schapire的界都一致更紧，并且用到的信息完全一样。</p>
+<p>这就十分肯定的证明了考虑margin distribution的确是比minimum
+margin要好，更本质，更精确。</p>
+<p>准确来说，通过一些变换，上面的界可以变换为考虑<strong>average
+margin</strong>和<strong>margin
+variance</strong>，那就是，同时考虑这两个属性比考虑minimum
+margin更本质。</p>
+<p>Shivaswamy和Jebara在2011也已经给出了同时最大化average
+margin和最小化margin variance的算法，结果也是十分完美。</p>
+<p><strong>SVM</strong></p>
+<p>传统的SVM模型是通过最大化minimum
+margin来进行优化收敛的。基于上面的研究，我们可以看到用average
+margin和margin variance来优化SVM理论上模型测试误差会比传统的要好。</p>
+<p><a target="_blank" rel="noopener" href="https://dl.acm.org/doi/abs/10.1145/2623330.2623710">Large
+margin distribution machine | Proceedings of the 20th ACM SIGKDD
+international conference on Knowledge discovery and data mining</a></p>
+<p>Zhang&amp;周教授在2024年也发表了这篇论文肯定了相关的优化。</p>
+</div><div class="recommend-area"><div class="recommend-post"><span class="is-size-6 has-text-grey has-mr-7"># Related Post</span><br><span>  1.<a class="is-size-6" href="/posts/5a04/" target="_blank">非线性卷积滤波</a><br></span><span>  2.<a class="is-size-6" href="/posts/39c0/" target="_blank">强化学习几个不等式推导</a><br></span></div><div class="recommend-post"><span class="is-size-6 has-text-grey has-mr-7"># Recommend Post</span><br><span>  1.<a class="is-size-6" href="/posts/ea89/" target="_blank">受AdaBoost启发的Margin Theory间隔理论</a><br></span><span>  2.<a class="is-size-6" href="/posts/5a04/" target="_blank">非线性卷积滤波</a><br></span><span>  3.<a class="is-size-6" href="/posts/39c0/" target="_blank">强化学习几个不等式推导</a><br></span><span>  4.<a class="is-size-6" href="/posts/43f1/" target="_blank">CLRS-videos</a><br></span><span>  5.<a class="is-size-6" href="/posts/593d/" target="_blank">ParabolaSimulator</a><br></span><span>  6.<a class="is-size-6" href="/posts/9077/" target="_blank">Text Advanture Game</a><br></span></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/posts/5a04/"><span class="level-item">非线性卷积滤波</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--><div class="card"><div class="card-content"><div class="title is-5">Comments</div><div id="comment-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.0/dist/gitalk.css"><script> $.getScript('/js/gitalk.min.js', function () { 
+            var gitalk = new Gitalk({
+            language:'zh-CN',
+            id: '1a7c823577d261d85b54693530472b87',
+            repo: 'a-little-bear.github.io',
+            owner: 'a-little-bear',
+            clientID: 'Ov23limGRkyf4dqU9ZJ3',
+            clientSecret: '4c6613000b6ab9c4266f7c73e6109914f1b6a0b0',
+            admin: ["a-little-bear"],
+            createIssueManually: false,
+            distractionFreeMode: false,
+            perPage: 10,
+            pagerDirection: 'last',
+            proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
+            
+            enableHotKey: true,
+            isLocked: false
+        })
+        gitalk.render('comment-container')});</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><!--!--><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="https://cdn.jsdelivr.net/gh/a-little-bear/picture/img/1280-646950218-panda-in-thailand.jpg" alt="alittlebear"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">alittlebear</p><p class="is-size-6 is-block">（Latex要刷新一下页面，音乐在左下角）</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>太阳系 地球</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">15</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">5</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tag</p><a href="/tags"><p class="title">1</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/a-little-bear" target="_blank" rel="noopener">Follow</a></div><div><hr><p id="hitokoto">:D 一言句子获取中...</p><script type="text/javascript" defer>function getYiyan(){
+                                $.getJSON("https://v1.hitokoto.cn/", function (data) {
+                                if(data){
+                                    $('#hitokoto').html("");
+                                    $('#hitokoto').append("<strong style='color: #3273dc;'>"+data.hitokoto+"</strong>"+
+                                    "<p>"+"From《"+data.from+"》</p><p>Provider-"+data.creator+"</p>");
+                                }});}
+                                $(function (){getYiyan();$('#hitokoto').click(function(){getYiyan();})});</script></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/categories/%E5%85%B6%E4%BB%96/"><span class="level-start"><span class="level-item">其他</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E5%AD%A6%E4%B9%A0/"><span class="level-start"><span class="level-item">学习</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E6%8A%80%E6%9C%AF/"><span class="level-start"><span class="level-item">技术</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"><span class="level-start"><span class="level-item">机器学习</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E9%A1%B9%E7%9B%AE/"><span class="level-start"><span class="level-item">项目</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.png" alt="alittlebear&#039;s blog" height="28"></a><p class="size-small"><span>&copy; 2025 alittlebear</span>  Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a> &amp; <a href="https://github.com/removeif/hexo-theme-amazing" target="_blank">Amazing</a> <br><span>© 版权说明：[本网站所有内容均收集于互联网或自己创作,<br />&nbsp;&nbsp;&nbsp;&nbsp;方便于网友与自己学习交流，如有侵权，请<a href="/message" target="_blank">留言</a>，立即处理]<br /></span><span><span id="statistic-times">loading...</span><script>function createTime(time) {
+            var n = new Date(time);
+            now.setTime(now.getTime() + 250),
+                days = (now - n) / 1e3 / 60 / 60 / 24,
+                dnum = Math.floor(days),
+                hours = (now - n) / 1e3 / 60 / 60 - 24 * dnum,
+                hnum = Math.floor(hours),
+            1 == String(hnum).length && (hnum = "0" + hnum),
+                minutes = (now - n) / 1e3 / 60 - 1440 * dnum - 60 * hnum,
+                mnum = Math.floor(minutes),
+            1 == String(mnum).length && (mnum = "0" + mnum),
+                seconds = (now - n) / 1e3 - 86400 * dnum - 3600 * hnum - 60 * mnum,
+                snum = Math.round(seconds),
+            1 == String(snum).length && (snum = "0" + snum),
+                document.getElementById("statistic-times").innerHTML = "❤️Site from <strong>"+time.split(" ")[0].replace(/\//g,".")+"</strong> has existed <strong>" + dnum + "</strong> d <strong>" + hnum + "</strong> h <strong>" + mnum + "</strong> m <strong>" + snum + "</strong> s！❤️";
+        }var now = new Date();setInterval("createTime('2020/04/23 00:00:00')", 250,"");</script><br></span><div class="size-small"><span>❤️Thx <strong><span id="busuanzi_value_site_uv">99+</span></strong> users <strong><span id="busuanzi_value_site_pv">99+</span></strong> visited！❤️</span></div></p></div><div class="level-end"><div class="sideMusic"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="/js/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script><meting-js style="width: auto;height: 2000px;" server="netease" type="playlist" id="2985973204" theme="#2980b9" loop="all" autoplay="false" order="list" storageName="aplayer-setting" lrctype="0" list-max-height="400px" fixed="true"></meting-js></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" async></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><script src="/js/main.js" defer></script><script>$.getScript('/js/comment-issue-data.js',function(){loadIssueData('Ov23limGRkyf4dqU9ZJ3','4c6613000b6ab9c4266f7c73e6109914f1b6a0b0','a-little-bear','a-little-bear.github.io',false);})</script><!--!--><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.js"></script><script type="text/javascript">var pjax = new Pjax({
+            elements: "a",//代表点击链接就更新
+            selectors: [  //代表要更新的节点
+                ".section",
+                "title"
+            ],
+            cache: true,
+            cacheBust:false
+        })
+
+        function loadBusuanzi(){
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js", function () {});
+        }
+
+        function loadMathJax() { //加载mathjax
+            $.getScript("//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML", function () {
+                MathJax.Hub.Config({ tex2jax: { inlineMath: [['$', '$'], ['\(', '\)']] } });
+                var math = document.getElementsByClassName("entry-content")[0];
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, math]);
+            });
+        };
+
+        // 开始 PJAX 执行的函数
+        document.addEventListener('pjax:send', function () {
+        });
+        
+        // PJAX 完成之后执行的函数，可以和上面的重载放在一起
+        document.addEventListener('pjax:complete', function () {
+            $(".section").css({opacity:1});
+            if(true){
+                $.getScript('/js/comment-issue-data.js',function(){loadIssueData('Ov23limGRkyf4dqU9ZJ3','4c6613000b6ab9c4266f7c73e6109914f1b6a0b0','a-little-bear','a-little-bear.github.io',false);});
+            }
+            if(false){
+                loadMathJax();
+            }
+            loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);
+            loadBackTop();
+            loadBusuanzi();
+            if(typeof loadBanner == 'function'){
+                loadBanner();
+            }
+        });</script></body><script type="text/javascript" src="/js/alittlebear/typing.js"></script></html>
