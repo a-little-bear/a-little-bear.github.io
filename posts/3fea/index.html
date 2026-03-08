@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>聚类，混合模型，和EM算法 - alittlebear&#039;s blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="alittlebear&#039;s blog"><meta name="msapplication-TileImage" content="/img/favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="alittlebear&#039;s blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="无监督学习任务：聚类（Clustering） K-均值（K-mean） 混合高斯模型（Gaussian Mixture Models, GMM） EM算法（Expectation-Maximization Algorithm） 评价指标（Evaluation Metrics） （本文参考朱军老师的《概率机器学习》）"><meta property="og:type" content="article"><meta property="og:title" content="聚类，混合模型，和EM算法"><meta property="og:url" content="https://alittlebear.net/posts/3fea/"><meta property="og:site_name" content="alittlebear&#039;s blog"><meta property="og:description" content="无监督学习任务：聚类（Clustering） K-均值（K-mean） 混合高斯模型（Gaussian Mixture Models, GMM） EM算法（Expectation-Maximization Algorithm） 评价指标（Evaluation Metrics） （本文参考朱军老师的《概率机器学习》）"><meta property="og:locale" content="zh_CN"><meta property="article:published_time" content="2025-11-20T23:58:04.000Z"><meta property="article:modified_time" content="2026-03-08T09:14:09.796Z"><meta property="article:author" content="alittlebear"><meta property="twitter:card" content="summary"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://alittlebear.net/posts/3fea/"},"headline":"alittlebear's blog","image":[],"datePublished":"2025-11-20T23:58:04.000Z","dateModified":"2026-03-08T09:14:09.796Z","author":{"@type":"Person","name":"alittlebear"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject"}},"description":"无监督学习任务：聚类（Clustering） K-均值（K-mean） 混合高斯模型（Gaussian Mixture Models, GMM） EM算法（Expectation-Maximization Algorithm） 评价指标（Evaluation Metrics） （本文参考朱军老师的《概率机器学习》）"}</script><link rel="canonical" href="https://alittlebear.net/posts/3fea/"><link rel="icon" href="/img/favicon.ico"><meta name="referrer" content="no-referrer-when-downgrade"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro|Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&amp;amp;subset=latin,latin-ext|Inconsolata|Itim|Lobster.css"><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="/js/globalUtils.js"></script><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><meta name="generator" content="Hexo 7.3.0"></head><body class="is-2-column has-navbar-fixed-top"><script type="text/javascript" src="/js/alittlebear/night.js"></script><script type="text/javascript" src="/js/alittlebear/focus-mode.js"></script><canvas id="universe"></canvas><script type="text/javascript" src="/js/alittlebear/bg-switcher.js"></script><script type="text/javascript" src="/js/alittlebear/light-theme.js"></script><nav class="navbar navbar-main is-fixed-top"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.png" alt="alittlebear&#039;s blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0" data-i18n-nav="机器学习">机器学习</a><a class="navbar-item" href="/categories/%E6%9D%82%E8%B0%88" data-i18n-nav="杂谈">杂谈</a><a class="navbar-item" href="/categories/%E9%A1%B9%E7%9B%AE" data-i18n-nav="项目">项目</a><a class="navbar-item" href="/categories/%E7%BE%8E%E9%A3%9F%E4%B8%8E%E6%97%A5%E5%B8%B8" data-i18n-nav="美食与日常">美食与日常</a><a class="navbar-item" href="/categories" data-i18n-nav="分类">分类</a><a class="navbar-item" href="/about" data-i18n-nav="关于">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="音乐" href="/music" data-i18n-nav="音乐"><i class="fas fa-music"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="相册" href="/album" data-i18n-nav="相册"><i class="fas fa-image"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="自用" href="/self" data-i18n-nav="自用"><i class="fas fa-id-card"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="网盘" href="https://utoronto-my.sharepoint.com/:f:/g/personal/joseph_siu_mail_utoronto_ca/EiS0mVlUGQRDnNp8IMdeSocBSaH5iRZT5E_Hjp0o6FDODQ?e=DlSmD5" data-i18n-nav="网盘"><i class="fas fa-hdd"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="关于" href="/about" data-i18n-nav="关于"><i class="fas fa-user"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a><a class="navbar-item" id="lang-nav" title="EN/中" href="javascript:;" onClick="toggleLanguage()"><i class="fas fa-language"></i></a><a class="navbar-item" id="light-theme-nav" title="Light Theme" href="javascript:;"><i class="fas fa-adjust" id="light-theme-icon"></i></a><a class="navbar-item" id="bg-switch-nav" title="Switch Background" href="javascript:;"><i class="fas fa-palette" id="bg-switch-icon"></i></a><a class="navbar-item" id="night-nav" title="Night" href="javascript:;"><i class="fas fa-moon" id="night-icon"></i></a></div></div></div></nav><script type="text/javascript" src="/js/i18n.js"></script><script type="text/javascript" src="/js/theme-setting.js"></script><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-plus"> </i>2025-11-20  <a class="commentCountImg" href="/posts/3fea/#comment-container"><span class="display-none-class">8eb3e39905a441725a2dbf66ca6429e7</span><i class="far fa-comment-dots"></i> <span class="commentCount" id="8eb3e39905a441725a2dbf66ca6429e7">0</span>  </a><span class="level-item"><i class="far fa-clock"> </i>13 分钟  <i class="fas fa-pencil-alt"> </i>2.0 k</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">聚类，混合模型，和EM算法</h1><div class="content"><blockquote>
+<p>无监督学习任务：聚类（Clustering）</p>
+<p>K-均值（K-mean）</p>
+<p>混合高斯模型（Gaussian Mixture Models, GMM）</p>
+<p>EM算法（Expectation-Maximization Algorithm）</p>
+<p>评价指标（Evaluation Metrics）</p>
+<p>（本文参考朱军老师的《概率机器学习》）</p>
+<span id="more"></span>
+</blockquote>
+<h1 id="聚类clustering">聚类（Clustering）</h1>
+<p>在有监督的分类问题中，训练数据由若干数据点及他们所属的类别组成，学习的目标是预测新数据应该分到其中哪一类。但对于无标签的数据（尤其是现在大数据时代的大多数数据），可以直接依据其特征本身的分布或特点进行分类（分簇，cluster），这就是聚类作为最开始的一大无监督学习任务（聚类和降维）的核心思想。</p>
+<p>更具体的，为了将数据集分为不同的等价类，可以基于数据的 <span
+class="math inline">\(L_2\)</span> 欧式空间距离（<span
+class="math inline">\(L_1\)</span> 曼哈顿距离、<span
+class="math inline">\(L_\infty\)</span>
+切比雪夫距离、余弦距离、马氏距离），也可以基于如数据之间的其他相似性作为等价类。</p>
+<p>类别之间除了同级关系，还可以是嵌套的层级关系（层级聚类，hierarchical
+clustering）。分类除了硬性的将每个数据点仅划分到一类，也可以软性的划分到多类。</p>
+<p>从另一个角度来看，聚类还可以划分为：</p>
+<ul>
+<li>基于连接（层次聚类）</li>
+<li>基于中心点（K-均值）</li>
+<li>基于概率分布（高斯混合模型）</li>
+<li>基于密度</li>
+<li>基于图</li>
+</ul>
+<p>等。</p>
+<h1 id="k-均值k-mean">K-均值（K-mean）</h1>
+<p>K-均值假设数据可以根据欧氏距离划分为不同的类，并且每个类有一个质心（centroid）。</p>
+<p>于是，根据这个想法，为了找出真实质心，可以进行一下流程：</p>
+<ol type="1">
+<li>初始化：随机选择 <span class="math inline">\(K\)</span>
+个质心。</li>
+<li>分配 (Assignment)：计算每个点到质心的距离，归入最近的簇。</li>
+<li>更新 (Update)：重新计算每个簇的平均值作为新质心。</li>
+<li>重复步骤2-3，直到质心不再变化或达到最大迭代次数。</li>
+</ol>
+<p>可以看到，此算法收敛当且仅当簇内平方误差和收敛到最小： <span
+class="math display">\[
+J \gets \sum_{k=1}^K \sum_{i \in C_k} ||x_i - \mu_k||^2
+\]</span> 这是个非凸优化问题（也是为什么算法要用迭代的形式）。</p>
+<p>由于目标函数的非凸性，算法会收敛到局部最优，为此，可以选取不同的初始质心
+<span class="math inline">\(\{\mu_k\}\)</span>
+进行迭代，选的越多接近全局最优的概率越大。</p>
+<p>当然，有规律的选初始质心比完全随机肯定更好。 Gonzales 在 1985
+年提出了直接选数据点作为质心，并用贪心算法选与上一个质心距离最远的数据点作为下一个中心。Authur
+和 Vassilvitskii 在 2007 年提出的改进算法保证了收敛步数不超过 <span
+class="math inline">\(O(\log K)\)</span>。</p>
+<p>可以看到K-均值十分简单有效，但最大的问题是其欧氏距离的假设限制了类分布的形状
+- 无法处理畸形或者不规则的非圆类内分布。</p>
+<h1 id="混合高斯模型---gmm">混合高斯模型 - GMM</h1>
+<p>K-均值作为硬性分类聚类，无法处理软性分类任务（如划分生物信息到计算机和生物两个分类）。为此，可以扩展质心的“点”为更加概率化的分布。</p>
+<p>常见的概率分布峰数固定，无法作为任意数量的类别（峰）的概率密度函数。为此，假设有
+<span class="math inline">\(K\)</span> 个不同的概率分布及其概率密度函数
+<span
+class="math inline">\(p_k(x)\)</span>，混合分布是这些分布的线性组合：
+<span class="math display">\[
+p(x)=\sum_{k=1}^K \pi_k p_k(x)
+\]</span> 混合高斯模型就是假设分布都是正态的 <span
+class="math inline">\(p_k(x)\sim\mathcal{N}(\mu_k,\Sigma_k)\)</span>。混合高斯模型在扩展点为概率分布的同时，还扩展了类内形状，从仅支持圆变为支持椭圆。</p>
+<p>更具体的，假设数据分布为 <span class="math inline">\(K\)</span>
+个高斯（正态）分布的和，其中每个高斯分布的权重（混合系数）是 <span
+class="math inline">\(\pi_k\)</span>，均值是 <span
+class="math inline">\(\mu_k\)</span>，协方差矩阵是 <span
+class="math inline">\(\Sigma_k\)</span>。概率密度函数可以看到是： <span
+class="math display">\[
+p(x) = \sum_{k=1}^K \pi_k \mathcal{N}(x | \mu_k, \Sigma_k)
+\]</span> 为了学习最优的混合高斯（分布）模型，考虑用最大似然估计： <span
+class="math display">\[
+p(X|\theta) = \prod_{i=1}^N\sum_{k=1}^K \pi_k \mathcal{N}(x | \mu_k,
+\Sigma_k)
+\]</span></p>
+<p>或其 <span class="math inline">\(\log\)</span>-似然函数： <span
+class="math display">\[
+\ln p(X|\theta) = \sum_{i=1}^N \ln \left( \sum_{k=1}^K \pi_k
+\mathcal{N}(x_i | \mu_k, \Sigma_k) \right)
+\]</span></p>
+<h2 id="隐变量">隐变量</h2>
+<p>可以看到上述概率密度函数过于耦合，并且关于 <span
+class="math inline">\(x\)</span> 具体属于哪个类别的信息 <span
+class="math inline">\(p(x)\)</span>
+难以提供。于是，可以通过引进（类别作为）隐变量 <span
+class="math inline">\(Z\)</span> 来给模型提供更多信息： <span
+class="math display">\[
+p(X, Z)=p(Z)p(X|Z)
+\]</span></p>
+<h2 id="em-算法">EM 算法</h2>
+<p>期望最大化（Expectation
+maximization，EM）算法是一种迭代式求解隐变量概率分布模型参数估计的方法，想法和K-均值的算法类似。</p>
+<p>基本的 EM 算法分为两步， E 步和 M 步：</p>
+<ol type="1">
+<li><p>根据当前的参数值 <span
+class="math inline">\(\theta^{（l-1）}\)</span>，计算隐变量的后验分布
+<span
+class="math inline">\(p(Z|X,\theta^{(l-1)})\)</span>，并根据该后验分布计算出对数似然函数的数学期望：
+<span class="math display">\[
+Q(\theta,\theta^{(l-1)})=\sum_Z p(Z|X,\theta^{(l-1)})\log p(X,Z|\theta)
+\]</span> 通过求期望，函数 <span class="math inline">\(Q(\theta,
+\theta^{(l-1)})\)</span>
+只与模型参数和训练数据有关，因此，可以作为对数似然 <span
+class="math inline">\(\log p(X|\theta)\)</span> 的替代。</p></li>
+<li><p>最优化替代函数 <span class="math inline">\(Q(\theta,
+\theta^{(l-1)})\)</span>，更新模型参数：</p></li>
+</ol>
+<p><span class="math display">\[
+\theta^{(l)}=\arg\max_{\theta} Q(\theta,\theta^{(l-1)})
+\]</span></p>
+<h2 id="gmm-的-em-算法">GMM 的 EM 算法</h2>
+<p>替换 <span class="math inline">\(p\)</span> 为混合高斯模型
+GMM，可以看到，E 步变为计算 <span class="math display">\[
+p(Z|X,\theta^{(l-1)}) = \prod_{i=1}^N p(z_i | x_i , \theta^{(l-1)})
+\]</span> 其中 <span class="math display">\[
+\begin{align}
+p(z_i=k|x_i,\theta^{(l-1)}) &amp;= \frac{p(z_i=k)p(x_i|z_i=k)}{p(x_i)}\\
+&amp;=\frac{\pi_k \mathcal{N}(x_i |
+\mu_k^{(l-1)},\Sigma_k^{(l-1)})}{\sum_{k&#39;=1}^K \pi_{k&#39;}^{(l)}
+\mathcal{N}(x_i | \mu_{k&#39;}^{(l-1)},\Sigma_{k&#39;}^{(l-1)})}
+\end{align}
+\]</span> M 步的 <span class="math inline">\(Q\)</span> 变为</p>
+<p><span class="math display">\[
+\begin{align}
+Q(\theta, \theta^{(l-1)}) &amp;= \sum_{i=1}^N \sum_{k=1}^K
+r_{ik}^{(l)}\log p(z_i=k)p(x_i|z_i=k,\theta^{(l-1)})\\
+&amp;= \sum_{i=1}^N\sum_{k=1}^K r_{ik}^{(l)}(\log \pi_k + \log
+\mathcal{N}(x_i | \mu_k,\Sigma_k))
+\end{align}
+\]</span></p>
+<p>为了得到最优 <span class="math inline">\(\theta^{(l)}\)</span>，对
+<span class="math inline">\(Q\)</span> 求偏导并设置为 0： <span
+class="math display">\[
+\begin{align}
+\frac{\partial}{\partial \mu_k}Q(\theta,\theta^{(l-1)}) &amp;=
+\sum_{i=1}^N r_{ik}^{(l)} \frac{\partial}{\partial
+\mu_k}\left[-\frac12(x_i-\mu_k)^\top \Sigma_{k}^{-1}(x_i-\mu_k)\right]\\
+&amp;=\sum_{i=1}^N r_{ik}^{(l)}\Sigma_k^{-1}(x_i-\mu_k) =0\\
+\implies \mu_k^{(l)} &amp;= \frac{\sum_{i=1}^N
+r_{ik}^{(l)}x_i}{\sum_{i=1}^N r_{ik}^{(l)}}
+\end{align}
+\]</span>
+可以看到，这个形式相当于聚类的高斯均值参数是聚类点的加权平均和。</p>
+<p>类似的，对 <span class="math inline">\(\Sigma_k\)</span>
+求偏导并设置为 0，可以得到 <span class="math display">\[
+\Sigma_k^{(l)}=\frac1{N_k}\sum_{i=1}^N
+r_{ik}^{(l)}(x_i-\mu_k)(x_i-\mu_k)^\top
+\]</span> 最后，因 <span class="math inline">\(\sum \pi_k =
+1\)</span>，可以用 Lagrange Multiplier，求解： <span
+class="math display">\[
+Q(\theta,\theta^{(l=1)})+\lambda\left(\sum_{k=1}^K\pi_k-1\right)
+\]</span> 对每个 <span class="math inline">\(\pi_k\)</span>
+求偏导并设置为 0，得到 <span class="math display">\[
+\pi_k^{(l)}=\frac{\sum_{i=1}^N r_{ik}^{(l)}}{N}
+\]</span> 可以看到，所有解析解的参数更新基本结构与
+K-均值基本思想完全一致。</p>
+<p>更具体的，K-均值 可以看作是 EM 算法的非概率模型下的特例。</p>
+<p>变分 EM 想法类似。此外，EM
+算法保证目标函数不下降，于是可以收敛到起码局部最优解。</p>
+<p>​</p>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/202511121656539.jpeg" /></p>
+</div></article></div><div class="card"><div class="card-content"><div class="title is-5" data-i18n="article.comments">评论</div><div id="comment-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.0/dist/gitalk.css"><script> $.getScript('/js/gitalk.min.js', function () {
+            var _gitalkLang = (typeof window._getLang === 'function' && window._getLang() === 'en') ? 'en' : 'zh-CN';
+            var gitalk = new Gitalk({
+            language: _gitalkLang,
+            id: '8eb3e39905a441725a2dbf66ca6429e7',
+            repo: 'a-little-bear.github.io',
+            owner: 'a-little-bear',
+            clientID: 'Ov23limGRkyf4dqU9ZJ3',
+            clientSecret: '4c6613000b6ab9c4266f7c73e6109914f1b6a0b0',
+            admin: ["a-little-bear"],
+            createIssueManually: false,
+            distractionFreeMode: false,
+            perPage: 10,
+            pagerDirection: 'last',
+            proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
+            
+            enableHotKey: true,
+            isLocked: false
+        })
+        gitalk.render('comment-container');
+            // MathJax: 监听评论加载，自动渲染 LaTeX
+            var _cc = document.getElementById('comment-container');
+            if (_cc) {
+                var _mt = null;
+                function _typesetComments() {
+                    if (typeof MathJax !== 'undefined' && MathJax.Hub) {
+                        MathJax.Hub.Queue(["Typeset", MathJax.Hub, _cc]);
+                    } else {
+                        $.getScript("//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML", function() {
+                            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$', '$'], ['\\(', '\\)']] } });
+                            MathJax.Hub.Queue(["Typeset", MathJax.Hub, _cc]);
+                        });
+                    }
+                }
+                var _obs = new MutationObserver(function() {
+                    clearTimeout(_mt);
+                    _mt = setTimeout(_typesetComments, 800);
+                });
+                _obs.observe(_cc, { childList: true, subtree: true });
+            }
+        });</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label" data-i18n="widget.catalogue">目录</h3><ul class="menu-list"><li><a class="is-flex is-mobile" href="#聚类clustering"><span class="mr-2">1</span><span>聚类（Clustering）</span></a></li><li><a class="is-flex is-mobile" href="#k-均值k-mean"><span class="mr-2">2</span><span>K-均值（K-mean）</span></a></li><li><a class="is-flex is-mobile" href="#混合高斯模型---gmm"><span class="mr-2">3</span><span>混合高斯模型 - GMM</span></a><ul class="menu-list"><li><a class="is-flex is-mobile" href="#隐变量"><span class="mr-2">3.1</span><span>隐变量</span></a></li><li><a class="is-flex is-mobile" href="#em-算法"><span class="mr-2">3.2</span><span>EM 算法</span></a></li><li><a class="is-flex is-mobile" href="#gmm-的-em-算法"><span class="mr-2">3.3</span><span>GMM 的 EM 算法</span></a></li></ul></li></ul></div></div><style>.menu-list > li > a.is-active + .menu-list { display: block; }.menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="https://cdn.jsdelivr.net/gh/a-little-bear/picture/img/1280-646950218-panda-in-thailand.jpg" alt="alittlebear"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">alittlebear</p><p class="is-size-6 is-flex justify-content-center" data-i18n-personal="location"><i class="fas fa-map-marker-alt mr-1"></i><span>太阳系 地球</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading" data-i18n="common.post">文章</p><a href="/archives"><p class="title">59</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading" data-i18n="common.category">分类</p><a href="/categories"><p class="title">10</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading" data-i18n="common.tag">标签</p><a href="/tags"><p class="title">1</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/a-little-bear" target="_blank" rel="noopener" data-i18n="widget.follow">Github</a></div><div><hr><p id="hitokoto" data-i18n="widget.hitokoto_loading">:D 一言句子获取中...</p><script type="text/javascript" defer>function getYiyan(){
+                                var lang = (typeof window._getLang === 'function') ? window._getLang() : 'zh-CN';
+                                if (lang === 'en') {
+                                    $.getJSON("https://dummyjson.com/quotes/random", function (data) {
+                                        if(data && data.quote){
+                                            $('#hitokoto').html("");
+                                            $('#hitokoto').append("<strong class='hitokoto-text'>"+data.quote+"</strong>"+
+                                            "<p>— "+data.author+"</p>");
+                                        }
+                                    }).fail(function(){
+                                        $('#hitokoto').html("");
+                                        $('#hitokoto').append("<strong class='hitokoto-text'>Stay hungry, stay foolish.</strong>"+
+                                        "<p>— Steve Jobs</p>");
+                                    });
+                                } else {
+                                    $.getJSON("https://v1.hitokoto.cn/", function (data) {
+                                    if(data){
+                                        $('#hitokoto').html("");
+                                        $('#hitokoto').append("<strong class='hitokoto-text'>"+data.hitokoto+"</strong>"+
+                                        "<p>"+"来源《"+data.from+"》</p><p>提供者-"+data.creator+"</p>");
+                                    }});
+                                }}
+                                $(function (){getYiyan();$('#hitokoto').click(function(){getYiyan();})});</script></div></div></div><div class="card widget" data-type="latest_comment"><div class="card-content"><h3 class="menu-label" data-i18n="widget.latest_comment">最新评论</h3><span class="body_hot_comment" data-i18n="widget.latest_comment_tip">加载中，最新评论有1分钟缓存...</span></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.png" alt="alittlebear&#039;s blog" height="28"></a><p class="size-small"><span>&copy; 2026 alittlebear</span>  Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a> &amp; <a href="https://github.com/removeif/hexo-theme-amazing" target="_blank">Amazing</a> &amp; <a href="https://github.com/a-little-bear/a-little-bear.github.io" target="_blank">Alb</a> <br><span id="footer-copyright">© 版权说明：[本网站所有内容均收集于互联网或自己创作,<br />&nbsp;&nbsp;&nbsp;&nbsp;方便于网友与自己学习交流，如有侵权，请<a href="/message" target="_blank">留言</a>，立即处理]<br /></span><span><span id="statistic-times">loading...</span><script>function createTime(time) {
+            var n = new Date(time);
+            now.setTime(now.getTime() + 250),
+                days = (now - n) / 1e3 / 60 / 60 / 24,
+                dnum = Math.floor(days),
+                hours = (now - n) / 1e3 / 60 / 60 - 24 * dnum,
+                hnum = Math.floor(hours),
+            1 == String(hnum).length && (hnum = "0" + hnum),
+                minutes = (now - n) / 1e3 / 60 - 1440 * dnum - 60 * hnum,
+                mnum = Math.floor(minutes),
+            1 == String(mnum).length && (mnum = "0" + mnum),
+                seconds = (now - n) / 1e3 - 86400 * dnum - 3600 * hnum - 60 * mnum,
+                snum = Math.round(seconds),
+            1 == String(snum).length && (snum = "0" + snum),
+                document.getElementById("statistic-times").innerHTML = "❤️本站自 <strong>"+time.split(" ")[0].replace(/\//g,".")+"</strong> 已运行 <strong>" + dnum + "</strong> 天 <strong>" + hnum + "</strong> 小时 <strong>" + mnum + "</strong> 分 <strong>" + snum + "</strong> 秒！❤️";
+        }var now = new Date();setInterval("createTime('2020/04/23 00:00:00')", 250,"");</script><br></span><div class="size-small"><span id="footer-visitor">❤️感谢 <strong><span id="busuanzi_value_site_uv">99+</span></strong> 小伙伴的 <strong><span id="busuanzi_value_site_pv">99+</span></strong> 次光临！❤️</span></div></p></div><div class="level-end"><div class="sideMusic"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="/js/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script><meting-js style="width: auto;height: 2000px;" server="netease" type="playlist" id="8435661" theme="#2980b9" loop="all" autoplay="false" order="list" storageName="aplayer-setting" lrctype="0" list-max-height="400px" fixed="true"></meting-js><script>window.__sideMusicPlaylists=[{"name":"无法释怀的循环音乐","id":8435661},{"name":"世界顶级古典钢琴曲","id":706851956},{"name":"书店音乐单-安静英文歌","id":39554181},{"name":"历届格莱美金曲","id":517182285},{"name":"不朽的声音(人生最难忘的歌)","id":67191770},{"name":"经典国内老歌","id":2985941712},{"name":"草原歌曲100首","id":2985947572},{"name":"永远听不腻的英文歌","id":2985915860}];</script><script src="/js/playlist-switcher.js"></script></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" async></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/javascript" id="MathJax-script" async>MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      chtml: {
+        matchFontHeight: false
+      }
+    };</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script><!--!--><script src="/js/main.js" defer></script><script>$.getScript('/js/comment-issue-data.js',function(){loadIssueData('Ov23limGRkyf4dqU9ZJ3','4c6613000b6ab9c4266f7c73e6109914f1b6a0b0','a-little-bear','a-little-bear.github.io',false);})</script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script data-pjax src="/js/insight.js" defer></script><script data-pjax>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.js"></script><script type="text/javascript">var pjax = new Pjax({
+            elements: "a",
+            selectors: [".section", "title"],
+            cache: true,
+            cacheBust: false
+        });
+
+        function loadBusuanzi() {
+            $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js", function () {});
+        }
+
+        function loadMathJax() {
+            $.getScript("//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML", function () {
+                MathJax.Hub.Config({ tex2jax: { inlineMath: [['$', '$'], ['\\(', '\\)']] } });
+                var math = document.getElementsByClassName("entry-content")[0];
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, math]);
+            });
+        }
+
+        document.addEventListener('pjax:send', function () {});
+
+        document.addEventListener('pjax:complete', function () {
+            $(".section").css({opacity: 1});
+            if (true) {
+                $.getScript('/js/comment-issue-data.js', function () {
+                    loadIssueData('Ov23limGRkyf4dqU9ZJ3', '4c6613000b6ab9c4266f7c73e6109914f1b6a0b0', 'a-little-bear', 'a-little-bear.github.io', false);
+                });
+            }
+            loadMathJax();
+            loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);
+            loadBackTop();
+            loadBusuanzi();
+            if (typeof loadBanner === 'function') {
+                loadBanner();
+            }
+            if (typeof window._i18nTranslate === 'function') {
+                window._i18nTranslate();
+            }
+        });</script><script type="text/javascript">(function() {
+            $.getScript("//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML", function () {
+                MathJax.Hub.Config({ tex2jax: { inlineMath: [['$', '$'], ['\\(', '\\)']] } });
+                var math = document.getElementsByClassName("entry-content")[0];
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, math]);
+            });
+        })();</script></body><script type="text/javascript" src="/js/alittlebear/typing.js"></script><script type="text/javascript" src="/js/alittlebear/typing-effects.js"></script><script type="text/javascript" src="/js/alittlebear/collapsible-blockquote.js"></script><script type="text/javascript" src="/js/alittlebear/annotations.js"></script></html>

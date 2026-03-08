@@ -1,0 +1,1087 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>强化学习 - alittlebear&#039;s blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="alittlebear&#039;s blog"><meta name="msapplication-TileImage" content="/img/favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="alittlebear&#039;s blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="多臂老虎机 马尔可夫决策过程与贝尔曼方程 Q-Learning 函数近似 DQN AlphaGo PPO 扩散策略 基于朱军老师的ppt"><meta property="og:type" content="article"><meta property="og:title" content="强化学习"><meta property="og:url" content="https://alittlebear.net/posts/4562/"><meta property="og:site_name" content="alittlebear&#039;s blog"><meta property="og:description" content="多臂老虎机 马尔可夫决策过程与贝尔曼方程 Q-Learning 函数近似 DQN AlphaGo PPO 扩散策略 基于朱军老师的ppt"><meta property="og:locale" content="zh_CN"><meta property="article:published_time" content="2026-01-06T07:12:44.000Z"><meta property="article:modified_time" content="2026-03-08T09:14:09.794Z"><meta property="article:author" content="alittlebear"><meta property="twitter:card" content="summary"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://alittlebear.net/posts/4562/"},"headline":"alittlebear's blog","image":[],"datePublished":"2026-01-06T07:12:44.000Z","dateModified":"2026-03-08T09:14:09.794Z","author":{"@type":"Person","name":"alittlebear"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject"}},"description":"多臂老虎机 马尔可夫决策过程与贝尔曼方程 Q-Learning 函数近似 DQN AlphaGo PPO 扩散策略 基于朱军老师的ppt"}</script><link rel="canonical" href="https://alittlebear.net/posts/4562/"><link rel="icon" href="/img/favicon.ico"><meta name="referrer" content="no-referrer-when-downgrade"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro|Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&amp;amp;subset=latin,latin-ext|Inconsolata|Itim|Lobster.css"><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="/js/globalUtils.js"></script><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><meta name="generator" content="Hexo 7.3.0"></head><body class="is-2-column has-navbar-fixed-top"><script type="text/javascript" src="/js/alittlebear/night.js"></script><script type="text/javascript" src="/js/alittlebear/focus-mode.js"></script><canvas id="universe"></canvas><script type="text/javascript" src="/js/alittlebear/bg-switcher.js"></script><script type="text/javascript" src="/js/alittlebear/light-theme.js"></script><nav class="navbar navbar-main is-fixed-top"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.png" alt="alittlebear&#039;s blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0" data-i18n-nav="机器学习">机器学习</a><a class="navbar-item" href="/categories/%E6%9D%82%E8%B0%88" data-i18n-nav="杂谈">杂谈</a><a class="navbar-item" href="/categories/%E9%A1%B9%E7%9B%AE" data-i18n-nav="项目">项目</a><a class="navbar-item" href="/categories/%E7%BE%8E%E9%A3%9F%E4%B8%8E%E6%97%A5%E5%B8%B8" data-i18n-nav="美食与日常">美食与日常</a><a class="navbar-item" href="/categories" data-i18n-nav="分类">分类</a><a class="navbar-item" href="/about" data-i18n-nav="关于">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="音乐" href="/music" data-i18n-nav="音乐"><i class="fas fa-music"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="相册" href="/album" data-i18n-nav="相册"><i class="fas fa-image"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="自用" href="/self" data-i18n-nav="自用"><i class="fas fa-id-card"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="网盘" href="https://utoronto-my.sharepoint.com/:f:/g/personal/joseph_siu_mail_utoronto_ca/EiS0mVlUGQRDnNp8IMdeSocBSaH5iRZT5E_Hjp0o6FDODQ?e=DlSmD5" data-i18n-nav="网盘"><i class="fas fa-hdd"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="关于" href="/about" data-i18n-nav="关于"><i class="fas fa-user"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a><a class="navbar-item" id="lang-nav" title="EN/中" href="javascript:;" onClick="toggleLanguage()"><i class="fas fa-language"></i></a><a class="navbar-item" id="light-theme-nav" title="Light Theme" href="javascript:;"><i class="fas fa-adjust" id="light-theme-icon"></i></a><a class="navbar-item" id="bg-switch-nav" title="Switch Background" href="javascript:;"><i class="fas fa-palette" id="bg-switch-icon"></i></a><a class="navbar-item" id="night-nav" title="Night" href="javascript:;"><i class="fas fa-moon" id="night-icon"></i></a></div></div></div></nav><script type="text/javascript" src="/js/i18n.js"></script><script type="text/javascript" src="/js/theme-setting.js"></script><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-plus"> </i>2026-01-06  <a class="commentCountImg" href="/posts/4562/#comment-container"><span class="display-none-class">cf452f606b629b3b937fd2ea0e741fe9</span><i class="far fa-comment-dots"></i> <span class="commentCount" id="cf452f606b629b3b937fd2ea0e741fe9">0</span>  </a><span class="level-item"><i class="far fa-clock"> </i>1 小时  <i class="fas fa-pencil-alt"> </i>10.2 k</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">强化学习</h1><div class="content"><blockquote>
+<p>多臂老虎机</p>
+<p>马尔可夫决策过程与贝尔曼方程</p>
+<p>Q-Learning</p>
+<p>函数近似</p>
+<p>DQN</p>
+<p>AlphaGo</p>
+<p>PPO</p>
+<p>扩散策略</p>
+<p>基于朱军老师的ppt</p>
+<span id="more"></span>
+</blockquote>
+<h1 id="强化学习基础">强化学习基础</h1>
+<p>强化学习可以看作是模型通过与环境的交互，最大化（长期）收益。将环境换为标签可以看到强化学习变为了有监督学习，而将有监督学习的数据一个个投喂给模型，用标签判断收益，也可以看作是强化学习。</p>
+<p>此外，强化学习可以分为有无对环境建模：</p>
+<ul>
+<li><p>Model-based（有模型）强化学习：</p>
+<ul>
+<li><p>定义：智能体会尝试学习或使用一个“环境模型”。这个模型可以预测：如果在当前状态
+<span class="math inline">\(s\)</span> 采取动作 <span
+class="math inline">\(a\)</span>，下一个状态 <span
+class="math inline">\(s&#39;\)</span> 会是什么，以及会获得多少奖励 <span
+class="math inline">\(r\)</span>。这通常被建模为状态转移概率 <span
+class="math inline">\(p(s&#39; | s, a)\)</span>。</p></li>
+<li><p>核心功能——规划（Planning）：因为有了模型，智能体可以在实际行动之前，在脑海中进行“模拟”。它通过考虑未来的可能性来决定当下的最佳动作。</p></li>
+</ul></li>
+<li><p>Model-free（无模型）强化学习：</p>
+<ul>
+<li><p>定义：智能体不尝试理解环境运行的底层逻辑，而是完全通过试错（Trial-and-Error）来学习。</p></li>
+<li><p>特点：它直接通过经验来学习哪些动作能带来高回报，而不去预测下一个状态的具体样子。目前的许多深度强化学习研究主要集中在这一类方法上。</p></li>
+</ul></li>
+</ul>
+<p>也可以分为同策略和异策略：</p>
+<ul>
+<li><p>On-policy（同策略）：智能体只学习它当前正在执行的那个策略。也就是说，它一边玩，一边用刚才玩出来的数据来改进自己。</p></li>
+<li><p>Off-policy（异策略）：智能体可以学习与当前执行策略不同的策略。这意味着它可以观察别人的行为来学习，或者利用很久以前的旧数据进行学习。</p></li>
+</ul>
+<p>此外，学习方式正如开始对有监督学习的讨论，可以分为离线和在线：</p>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/20260105214212619.png" /></p>
+<p>Online RL（左图）：智能体处于一个实时的循环中。它执行动作 <span
+class="math inline">\(a\)</span> 到环境中，环境反馈状态 <span
+class="math inline">\(s\)</span> 和奖励 <span
+class="math inline">\(r\)</span>，智能体立即根据这些反馈进行学习并改进。</p>
+<p>Offline / Batch
+RL（右图）：智能体不直接与环境交互。它面前有一个预先收集好的数据集（包含大量的
+<span class="math inline">\(\{s, a, r, s&#39;\}\)</span>
+轨迹）。智能体就像看书学习一样，从这些历史数据中挖掘最优策略，而不产生新的实时交互。</p>
+<p>下面的多臂老虎机是无模型强化学习。</p>
+<h2 id="多臂老虎机-multi-armed-bandit">多臂老虎机 (Multi-armed
+Bandit)</h2>
+<h3 id="背景">背景</h3>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/20260105204226527.png" /></p>
+<p>假设老虎机有很多扳手，每个扳手的期望回报不一样，但是玩家无法知道具体的期望回报，只能通过按下扳手后得到的观测值进行预估。</p>
+<p>由于老虎机的回报不是确定的，最大化回报的最简单的想法之一就是所有扳手按足够多的次数，基于大数定理让平均值近似期望回报，然后选择期望回报最多的一致按下。</p>
+<p>但可以看到，前面花费了很多次数用来按期望低的哪些扳手，这就是探索（exploration）与利用（exploitation）：为了找出回报最好的扳手，必须要先花费次数探索探索，探索过程中势必要因为按下非最好回报的扳手而花费更多。所以能平衡这两者至关重要。</p>
+<p>利用
+(Exploitation)：基于历史数据，做目前看来最好的决定。缺点：如果估计是错的，可能永远陷入局部最优。</p>
+<p>探索
+(Exploration)：去尝试那些未知的领域。缺点：可能会试到很差的选择，降低短期收益。</p>
+<p>对于搜索引擎来说（虽然都用 ai
+搜索引擎用的不多了），每一个广告位就像一个老虎机，用户“点击”就是“赢钱”，用户“忽略”就是“输钱”。平台需要通过算法决定展示哪个广告，以最大化点击率（CTR）。</p>
+<h3 id="定义">定义</h3>
+<p>设置：<span class="math inline">\(K\)</span> 个选项，每个选项 <span
+class="math inline">\(a\)</span> 对应一个未知分布 <span
+class="math inline">\(P_a\)</span>（均值为 <span
+class="math inline">\(\mu_a\)</span>）。</p>
+<p>流程：游戏进行 <span class="math inline">\(T\)</span> 轮。在每一轮
+<span class="math inline">\(t\)</span>，我们要选择一个摇臂 <span
+class="math inline">\(j\)</span>。</p>
+<p>反馈：我们会得到一个从分布 <span class="math inline">\(P_j\)</span>
+中采样的随机回报 <span class="math inline">\(X_t\)</span>。</p>
+<p>为了评价选择如何，引入悔恨（regret）：</p>
+<p>考虑最好的选项均值 <span class="math inline">\(\mu^* =
+\max\{\mu_a\}\)</span>，瞬时（instantaneous）悔恨为 <span
+class="math inline">\(r_t = \mu^* - \mu_{a_t}\)</span>，总悔恨为 <span
+class="math inline">\(R_T = \sum r_t\)</span>。</p>
+<p>于是，这个模型的基本目标就是让平均悔恨趋于 0：<span
+class="math inline">\(\frac{R_T}{T} \rightarrow 0\)</span>。
+也就是，让选择的选项收敛到 <span
+class="math inline">\(\mu^*\)</span>。</p>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/20260105205608866.png" /></p>
+<h3 id="epsilon-greedy-algorithm">Epsilon-Greedy Algorithm</h3>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/20260105210012956.png" /></p>
+<p>每次决策的时候，以 <span class="math inline">\(1-\epsilon\)</span>
+的概率：利用，选目前平均分最高的那个摇臂（Arm <span
+class="math inline">\(a^*\)</span>）。以 <span
+class="math inline">\(\epsilon\)</span>
+的概率：探索，闭着眼睛随机选一个。</p>
+<p>只要 <span class="math inline">\(\epsilon_t =
+O(1/t)\)</span>，可以证明 regret 可以控制在 <span
+class="math inline">\(O(K \log T)\)</span>，平均 regret 趋于 0。</p>
+<p>虽然理论确实成立，但可以看到十分简单粗暴，<span
+class="math inline">\(\epsilon\)</span>
+探索的时候所有其他选项都是一致的，但通过先验信息我们可以完全不选某些选项，减少浪费。</p>
+<h3 id="ucb-upper-confidence-bound">UCB (Upper Confidence Bound)</h3>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/20260105210309721.png" /></p>
+<p>引入置信区间的思想，随着尝试次数增加，估计的均值 <span
+class="math inline">\(\mu_a\)</span>
+的置信区间会变窄（越来越确定）。尝试越少，区间越宽，意味着“潜力”越大。</p>
+<p>于是如上图，可以在做决定时，总是假设每个摇臂都能达到它置信区间的上界
+(Upper
+Bound)。如果一个摇臂虽然平均分低，但因为它很久没被试过，置信区间很宽，上界很高，依然选它。</p>
+<p>更具体的，每次选择的时候计算所有选项的 UCB： <span
+class="math display">\[
+UCB(a) = \hat{\mu}_a + \alpha \sqrt{\frac{2 \ln t}{m_a}}
+\]</span> 其中第一项 <span class="math inline">\(\hat{\mu}_a\)</span>
+是利用（Exploitation）；第二项是探索（Exploration），分母 <span
+class="math inline">\(m_a\)</span> (该摇臂尝试次数)
+越小，这一项越大，就会被优先选择。这保证了每个摇臂最终都会被尝试无穷多次，但好的摇臂会被尝试得更多。</p>
+<p>可以证明 regret 是 <span class="math inline">\(O(K \ln
+T)\)</span>，与 Epsilon-Greedy 相比无需控制 <span
+class="math inline">\(\epsilon\)</span>，理论更好。</p>
+<h3 id="thompson-sampling-贝叶斯方法">Thompson Sampling
+(贝叶斯方法)</h3>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/20260105212250060.png" /></p>
+<p>从贝叶斯视角来看，与其对于每个选项维护一个具体的数值，不如维护对每个摇臂获胜概率的信念
+(Belief/Distribution)。</p>
+<p>每次决策时，从每个摇臂的分布里采样一个值 <span
+class="math inline">\(X\)</span>，选择值最大的选项按下，用按下后的观测值更新此选项的后验分布。</p>
+<p>和二元 NB 用 Beta 作为先验分布一样（共轭）。</p>
+<p>每个摇臂维护两个数：成功次数 <span class="math inline">\(S_i\)</span>
+和失败次数 <span class="math inline">\(F_i\)</span>。然后每轮从 <span
+class="math inline">\(Beta(S_i+1, F_i+1)\)</span> 中采样。从 Beta
+分布的角度来看，如果一个摇臂试得少，它的分布就很“扁平”（方差大），采样出来的值这就可能很高（探索）；如果试得多且好，分布就集中在
+1 附近（利用）。</p>
+<p>可以证明，Regret Bound 接近最优。</p>
+<h2 id="马尔可夫决策过程-mdp-与贝尔曼方程">马尔可夫决策过程 (MDP)
+与贝尔曼方程</h2>
+<p><img
+src="C:\Users\Windows11\AppData\Roaming\Typora\typora-user-images\image-20260105212237041.png" /></p>
+<p>前面假设了所有扳手不管什么状态按下相同扳手的期望回报都是一致的
+(没有状态，stateless)，但很多情况如下棋，每一个动作 (Action)
+都会影响环境的状态转移 (State Transition)。</p>
+<p>为此，引入马尔可夫决策过程（Markov Decision
+Process）。马尔可夫决策过程由一个五元组 <span
+class="math inline">\(\mathcal{M} = \langle \mathcal{S}, \mathcal{A},
+\mathcal{P}, \mathcal{R}, \gamma \rangle\)</span> 构成：</p>
+<ol type="1">
+<li><span class="math inline">\(\mathcal{S}\)</span> (State
+space)：状态空间，所有可能情况的集合（比如棋盘上所有棋子的位置）。</li>
+<li><span class="math inline">\(\mathcal{A}\)</span> (Action
+space)：动作空间，Agent 能做的事情（比如上下左右移动）。</li>
+<li><span class="math inline">\(\mathcal{P}\)</span> (Transition
+Probability)：状态转移概率。<span class="math inline">\(P(s&#39;|s,
+a)\)</span> 表示在状态 <span class="math inline">\(s\)</span> 做动作
+<span class="math inline">\(a\)</span> 后，转移到状态 <span
+class="math inline">\(s&#39;\)</span> 的概率。这代表了环境的动力学
+(Dynamics)。</li>
+<li><span class="math inline">\(\mathcal{R}\)</span> (Reward
+Function)：奖励函数 <span class="math inline">\(R(s,
+a)\)</span>。做动作后环境给的反馈。</li>
+<li><span class="math inline">\(\gamma\)</span> (Discount
+Factor)：折扣因子 <span class="math inline">\(\gamma \in [0,
+1]\)</span>。</li>
+</ol>
+<p>马尔科夫性假设了当前状态仅基于前一状态： <span
+class="math display">\[P(S_{t+1} | S_t, A_t, S_{t-1}, A_{t-1}, \dots) =
+P(S_{t+1} | S_t, A_t)\]</span>。</p>
+<p>于是，考虑确定性策略 <span class="math inline">\(a=\pi(s), \pi:
+\mathcal{S}\to \mathcal{A}\)</span> 或随机策略 <span
+class="math inline">\(a \sim \pi(\cdot | s),
+\pi:\mathcal{S}\to\Delta(\mathcal{A})\)</span>（这里 <span
+class="math inline">\(\Delta (\mathcal{A})\)</span> 是 <span
+class="math inline">\(\mathcal{A}\)</span> 分布的集合）
+的模型，其通过选择最优 <span class="math inline">\(\pi\)</span>
+来最大化长期奖励： <span class="math display">\[
+\pi^* \in \arg \max_\pi \mathbb{E} \left[ \sum_{t=1}^\infty \gamma^{t-1}
+r_t | \pi \right]
+\]</span> 这里引入 <span class="math inline">\(\gamma\)</span>
+来削弱后面状态的权重。</p>
+<hr />
+<p>更具体的，定义回报为序列未来的加权（<span
+class="math inline">\(\gamma\)</span>）奖励： <span
+class="math display">\[
+G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \dots =
+\sum_{k=0}^{\infty} \gamma^k R_{t+k+1}
+\]</span> 定义价值函数 <span class="math inline">\(V^\pi(s)\)</span>
+为状态 <span class="math inline">\(s\)</span> 基于策略 <span
+class="math inline">\(\pi\)</span> 的期望回报： <span
+class="math display">\[
+V^\pi(s) = \mathbb{E}_\pi [G_t | S_t = s]
+\]</span> 定义动作价值函数 <span class="math inline">\(Q^\pi(s,
+a)\)</span> 为基于策略 <span class="math inline">\(\pi\)</span> 与状态
+<span class="math inline">\(s\)</span>，动作 <span
+class="math inline">\(a\)</span> 的期望回报： <span
+class="math display">\[
+V^\pi(s) = \sum_{a \in \mathcal{A}} \pi(a|s) Q^\pi(s, a)
+\]</span>
+然后，贝尔曼指出最优决策具有递归性，即整体的最优依赖于局部子问题的最优。也就是，贝尔曼预期方程为：
+<span class="math display">\[
+V^\pi(s) = \sum_{a} \pi(a|s) \sum_{s&#39;} P(s&#39;|s, a) [ R(s,a) +
+\gamma V^\pi(s&#39;) ]
+\]</span> 为了让策略 <span class="math inline">\(\pi\)</span>
+最优，可以让价值函数最大化：<span class="math inline">\(V^*(s) =
+\max_{\pi} V^\pi(s)\)</span>。</p>
+<p>于是贝尔曼最优方程就为（不用考虑 <span
+class="math inline">\(\pi\)</span>）： <span class="math display">\[
+V^*(s) = \max_{a} \sum_{s&#39;} P(s&#39;|s, a) [ R(s,a) + \gamma
+V^*(s&#39;) ]
+\]</span></p>
+<h3 id="最短路径">最短路径</h3>
+<p>考虑更具体的环境。</p>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/20260105215145714.png" /></p>
+<p>对于上图每个节点（状态），可以递归的定义负奖励（花费）为其到目标节点的最低花费。</p>
+<p>于是，可以定义价值函数和动作价值函数： <span class="math display">\[
+V^*(s) = \max_{a \in \mathcal{A}} \{ R(s, a) + \gamma \mathbb{E}_{s&#39;
+\sim P(\cdot|s,a)} [V^*(s&#39;)] \}
+\]</span></p>
+<p><span class="math display">\[
+Q^*(s, a) = R(s, a) + \gamma \mathbb{E}_{s&#39; \sim P(\cdot|s,a)}
+\left[ \max_{a&#39; \in \mathcal{A}} Q^*(s&#39;, a&#39;) \right]
+\]</span></p>
+<h3 id="贝尔曼算子">贝尔曼算子</h3>
+<p>为了分析 <span class="math inline">\(Q^*\)</span>，引入贝尔曼算子
+<span class="math inline">\(\mathcal{B}\)</span> 将 <span
+class="math inline">\(Q\)</span> 映射到 <span
+class="math inline">\(\mathcal{B}Q\)</span>： <span
+class="math display">\[
+\mathcal{B}Q(s, a) := R(s, a) + \gamma \mathbb{E}_{s&#39; \sim
+P(\cdot|s,a)} [\max_{a&#39;} Q(s&#39;, a&#39;)]
+\]</span> 这表示，在状态 <span class="math inline">\(s\)</span> 采取动作
+<span class="math inline">\(a\)</span> 的值等于即时奖励 <span
+class="math inline">\(R\)</span> 加上折扣因子 <span
+class="math inline">\(\gamma\)</span> 乘以下一个状态 <span
+class="math inline">\(s&#39;\)</span> 中所有可能动作的最大预期价值。</p>
+<p>对于某个固定策略 <span class="math inline">\(\pi\)</span>，有： <span
+class="math display">\[
+\mathcal{B}^\pi Q(s, a) := R(s, a) + \gamma \mathbb{E}_{s&#39; \sim
+P(\cdot|s,a)} [Q(s&#39;, \pi(s&#39;))]
+\]</span> 也就是，对于固定 <span
+class="math inline">\(\pi\)</span>，下一个状态 <span
+class="math inline">\(s&#39;\)</span> 动作是确定的（即 <span
+class="math inline">\(\pi(s&#39;)\)</span>），因此不需要取最大值 <span
+class="math inline">\(\max\)</span>。</p>
+<p>现在解释为什么需要引入 <span
+class="math inline">\(\mathcal{B}\)</span>。</p>
+<p>在数学上，如果一个操作施加在某个函数上，结果仍然是该函数本身（即
+<span class="math inline">\(f =
+\mathcal{B}f\)</span>），则称该函数为该算子的不动点。可以看到，最优
+<span class="math inline">\(Q\)</span> 函数 (<span
+class="math inline">\(Q^*\)</span>) 是算子 <span
+class="math inline">\(\mathcal{B}\)</span> 的不动点，即 <span
+class="math inline">\(Q^* = \mathcal{B}Q^*\)</span>。</p>
+<p>并且，<span class="math inline">\(\mathcal{B}\)</span>
+有以下性质：</p>
+<ul>
+<li>最优策略关联： 一旦得到了 <span
+class="math inline">\(Q^*\)</span>，就可以直接推导出最优策略 <span
+class="math inline">\(\pi^*\)</span>。更具体的，在每个状态下，选择能让
+<span class="math inline">\(Q^*\)</span>
+达到最大值的动作即可（贪婪选择）。</li>
+<li>单调性 (Monotonicity)： 如果函数 <span
+class="math inline">\(Q_1\)</span> 在所有点都大于等于 <span
+class="math inline">\(Q_2\)</span>，那么经过算子转换后的 <span
+class="math inline">\(\mathcal{B}Q_1\)</span> 也一定大于等于 <span
+class="math inline">\(\mathcal{B}Q_2\)</span>。这保证了更新过程的稳定性。</li>
+<li>收敛性 (Contraction)： <span
+class="math inline">\(\mathcal{B}\)</span>
+是一个收缩映射。这意味着无论从什么样的初始 <span
+class="math inline">\(Q\)</span> 函数开始，反复应用 <span
+class="math inline">\(\mathcal{B}\)</span>
+算子，函数之间的差距都会不断缩小，最终趋向于同一个值。</li>
+<li>唯一性： 因为它是收缩映射，根据巴拿赫不动点定理，它的不动点 <span
+class="math inline">\(Q^*\)</span> 不仅存在，而且是唯一的。</li>
+</ul>
+<h3 id="寻找最优策略">寻找最优策略</h3>
+<h4 id="值迭代-value-iteration-vi">值迭代 (Value Iteration, VI)</h4>
+<p>值迭代直接在价值函数空间（<span
+class="math inline">\(Q\)</span>）进行操作，不显式地维护一个策略，直到最后才提取策略。</p>
+<p>基于 <span
+class="math inline">\(\mathcal{B}\)</span>，可以设置以下算法得到 <span
+class="math inline">\(Q^*\)</span>：</p>
+<ul>
+<li>随机初始化 <span class="math inline">\(Q_0\)</span>（如 <span
+class="math inline">\(Q_0\equiv 0\)</span>）</li>
+<li>对于 <span class="math inline">\(k=1,2,...\)</span>
+直到收敛，更新：<span class="math inline">\(Q_k\gets
+\mathcal{B}Q_{k-1}\)</span></li>
+</ul>
+<p>由于收缩性质，算法以指数级速度收敛到 <span
+class="math inline">\(Q^*\)</span>。</p>
+<h4 id="策略迭代-policy-iteration-pi">策略迭代 (Policy Iteration,
+PI)</h4>
+<p>策略迭代是一个在“策略空间”进行搜索的过程，通过不断切换更好的策略来达到最优：</p>
+<ul>
+<li>随机初始化策略 <span
+class="math inline">\(\pi_0:\mathcal{S}\to\mathcal{A}\)</span></li>
+<li>对 <span class="math inline">\(k=0,1,2,...\)</span>：
+<ul>
+<li>评估策略（policy evaluation）：计算当前策略 <span
+class="math inline">\(\pi_k\)</span> 的长期价值 <span
+class="math inline">\(Q_k\)</span>。更具体的，求解不动点（线性方程组）<span
+class="math inline">\(\mathcal{B}^{\pi_k} Q =
+Q\)</span>，或者说，对于所有 <span
+class="math inline">\(s,a\)</span>，求解 <span
+class="math inline">\(Q_k(s,a)=R(s,a)+\gamma\sum_{s&#39;}
+P(s&#39;|s,a)Q_k(s&#39;,\pi_k(s&#39;))\)</span></li>
+<li>改进策略（policy improvement）：基于算出的 <span
+class="math inline">\(Q_k\)</span>，将策略更新为最优：<span
+class="math inline">\(\pi_{k+1}(s) \leftarrow \arg \max_a Q_k(s,
+a)\)</span></li>
+</ul></li>
+</ul>
+<p>整体可以看作是 <span class="math inline">\(\pi\)</span> 对所有状态
+<span class="math inline">\(s\)</span>
+同步进行局部优化，直到其对于所有状态都为最优。</p>
+<p>可以证明，上述 <span class="math inline">\(\pi_{k+1}\)</span>
+更新要么严格变好，要么已经是最优。</p>
+<h4 id="vi-和-pi-的区别">VI 和 PI 的区别</h4>
+<table>
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 33%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr>
+<th><strong>特性</strong></th>
+<th><strong>值迭代 (Value Iteration)</strong></th>
+<th><strong>策略迭代 (Policy Iteration)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>操作空间</strong></td>
+<td>价值函数空间 (<span class="math inline">\(Q\)</span>-value
+space)</td>
+<td>策略空间 (Policy space)</td>
+</tr>
+<tr>
+<td><strong>收敛性质</strong></td>
+<td>渐进收敛 (Asymptotic)，无限趋近 <span
+class="math inline">\(Q^*\)</span></td>
+<td>有限时间内收敛 (Finite-time)，因为策略数量有限</td>
+</tr>
+<tr>
+<td><strong>迭代逻辑</strong></td>
+<td><span class="math inline">\(Q_0 \to Q_1 \to Q_2 \dots \to
+Q^*\)</span></td>
+<td><span class="math inline">\(\pi_0 \xrightarrow{Q_0} \pi_1
+\xrightarrow{Q_1} \dots \xrightarrow{Q_{K-1}} \pi_K =
+\pi^*\)</span></td>
+</tr>
+<tr>
+<td><strong>搜索方式</strong></td>
+<td>通过价值函数的逼近来间接找最优</td>
+<td>类似于在策略空间进行“爬山算法” (Hill-climbing)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="无模型学习q-learning">无模型学习：Q-Learning</h2>
+<p>上述过程都假定了奖励 <span class="math inline">\(R\)</span>
+与转移概率 <span class="math inline">\(P\)</span>
+都是已知的。对于一个未知环境可以用 Q-Learning。</p>
+<p>考虑 <span class="math display">\[
+Q_k(s,a)=R(s,a)+\gamma\sum_{s&#39;}
+P(s&#39;|s,a)Q_k(s&#39;,\pi_k(s&#39;))
+\]</span> 假设 <span class="math inline">\(R\)</span> 和 <span
+class="math inline">\(P\)</span> 未知，那么我们可以通过已有数据 <span
+class="math inline">\(\mathcal{D} = (s_1, a_1, r_1, s_2, a_2, r_2,
+\dots)\)</span> 替代、近似。</p>
+<p>也就是，我们的目标是让 <span class="math inline">\(Q(s_t,
+a_t)\)</span> 去逼近 <span class="math inline">\(r_t + \gamma
+\max_{a&#39;} Q(s_{t+1}, a&#39;)\)</span>。</p>
+<p>于是，Q-Learning 通过以下更新学习 <span
+class="math inline">\(Q\)</span>： <span class="math display">\[
+Q(s_t, a_t) \leftarrow Q(s_t, a_t) + \alpha_t \underbrace{(r_t + \gamma
+\max_{a&#39;} Q(s_{t+1}, a&#39;) - Q(s_t, a_t))}_{\text{TD Error
+(时间差分误差)}}
+\]</span> 这里 <span class="math inline">\(\alpha_t\in(0,1)\)</span>
+是学习率。这种方法不需要正确答案（<span class="math inline">\(R,
+P\)</span>），而是自己利用对未来的估计（下一时刻的 <span
+class="math inline">\(Q\)</span>）来更新现在的估计，想法类似于神经网络的权重更新。</p>
+<p>可以看到，Q-learning 的更新是局部的（Local），每次只改一个 <span
+class="math inline">\((s, a)\)</span> 的值。</p>
+<p>Stochastic Approximation theory
+（随机近似理论）指出在满足以下条件时，Q-learning 几乎必然 (Almost
+Surely) 收敛到最优解 <span class="math inline">\(Q^*\)</span>：对于所有
+<span class="math inline">\((s,a)\)</span></p>
+<ol type="1">
+<li><span class="math inline">\(\sum \alpha_t
+\cdot\mathbb{I}\{s_t=s,a_t=a\}=
+\infty\)</span>（步长足够大，能一直学）。</li>
+<li><span class="math inline">\(\sum \alpha_t^2
+\cdot\mathbb{I}\{s_t=s,a_t=a\} &lt;
+\infty\)</span>（步长慢慢变小，最后能稳定）。</li>
+</ol>
+<p>可以看到，所有的 <span class="math inline">\((s, a)\)</span>
+也都要被访问无穷多次。</p>
+<h3 id="多步时序差分">多步时序差分</h3>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/20260106000241660.png" /></p>
+<p>在 1-step
+中，如果终点有一个巨大的奖励，这个信息每次更新只能往回传一个格子。如果有
+100 个格子，模型至少要跑 100 次完整流程才能把奖励信息传到起点。而在
+n-step 中，信息每步可以往回传 <span class="math inline">\(n\)</span>
+个格子，学习速度显著提升。</p>
+<p>此外，1-step 高度依赖模型对下一个状态的“猜测”（即 <span
+class="math inline">\(Q(s&#39;)\)</span>）。如果初始 Q
+值很烂，学习就会很慢。n-step
+引入了更多真实的奖励数据，减少了这种“用错误修正错误”的情况。</p>
+<p>1-step：偏差高（依赖预估），方差低（每步都更新，很稳）。</p>
+<p>n-step：步数越大，偏差越低（更多真实奖励），方差越高（受随机路径影响大）。</p>
+<p>考虑 n-step 的回报 (Return，<span
+class="math inline">\(G_t^n\)</span>)：</p>
+<ul>
+<li><span class="math inline">\(n=1\)</span>: <span
+class="math inline">\(R_{t+1} + \gamma v (S_{t+1})\)</span> (标准
+TD)</li>
+<li><span class="math inline">\(n=2\)</span>: <span
+class="math inline">\(R_{t+1} + \gamma R_{t+2} + \gamma^2
+v(S_{t+2})\)</span></li>
+<li><span class="math inline">\(n=\infty\)</span>: <span
+class="math inline">\(R_{t+1} + \gamma R_{t+2} + \dots\)</span>
+(MC)</li>
+</ul>
+<p>TD 更新公式：<span class="math inline">\(v(S_t) \leftarrow v(S_t) +
+\alpha (G_t^n - v(S_t))\)</span> 。</p>
+<h3 id="epsilon-greedy-探索的-q-learning"><span
+class="math inline">\(\epsilon\)</span>-greedy 探索的 Q-Learning</h3>
+<p>可以看到，Q-Learning 的更新基于数据 <span
+class="math inline">\(\mathcal{D}\)</span>，可以通过探索（exploration）获取。</p>
+<p>用多臂老虎机介绍的 <span
+class="math inline">\(\epsilon\)</span>-greedy 算法 Q-Learning
+可变为：</p>
+<p>输入：探索率 <span class="math inline">\(\epsilon\)</span>，学习率
+<span class="math inline">\(\alpha\)</span>。</p>
+<p>流程：</p>
+<ol type="1">
+<li>对所有 <span class="math inline">\((s,a)\)</span> 初始化 <span
+class="math inline">\(Q(s,a)\gets 0\)</span>。</li>
+<li>观测初始状态 <span class="math inline">\(s_1\)</span>。</li>
+<li>在每一步 <span class="math inline">\(t\)</span>：
+<ul>
+<li>决策：使用 <span class="math inline">\(\epsilon\)</span>-greedy
+策略选择动作 <span class="math inline">\(a_t\)</span>（大部分时候选
+<span class="math inline">\(Q\)</span> 最大的，偶尔随机选）。</li>
+<li>执行：观察奖励 <span class="math inline">\(r_t\)</span> 和新状态
+<span class="math inline">\(s_{t+1}\)</span>。</li>
+<li>学习：利用公式更新 <span class="math inline">\(Q(s_t,
+a_t)\)</span>。</li>
+</ul></li>
+</ol>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/20260106001502303.png" /></p>
+<p>如前面讨论的，还是需要更好的平衡 exploration 和 exploitation。</p>
+<h3 id="基于-bonus-探索的-q-learningucb">基于 Bonus 探索的
+Q-Learning（UCB）</h3>
+<p>与其随机选，可以给每个动作 <span class="math inline">\(a\)</span>
+一个 bonus <span class="math inline">\(B\)</span>： <span
+class="math display">\[
+a_t = \arg\max_a \{ Q(s_t, a) + B(s_t, a) \}
+\]</span> 如 bonus <span class="math inline">\(B\)</span> 可以设计为
+<span class="math inline">\(B(s, a) = \alpha / \sqrt{C(s,
+a)}\)</span>，其中 <span class="math inline">\(C\)</span>
+是动作被选过的次数（这个情况的 bonus 思想就类似于 UCB）。</p>
+<p>这种探索方法也被叫做有指导（guided）的探索。</p>
+<h3 id="其他探索方法">其他探索方法</h3>
+<p><strong>Boltzmann / Softmax Exploration</strong>：根据 Q
+值的分布概率来选，Q 越大概率越大，而不是像 <span
+class="math inline">\(\epsilon\)</span>-greedy 那样非黑即白。</p>
+<p><strong>Thompson Sampling</strong>：基于贝叶斯后验采样的探索。</p>
+<p><strong>Curiosity Driven
+(好奇心驱动)</strong>：通过预测误差等内在奖励（Intrinsic
+Reward）来驱动探索 。</p>
+<h1 id="深度强化学习">深度强化学习</h1>
+<h2 id="函数近似">函数近似</h2>
+<p>之前的方法（如 Q-Table）都假设状态空间 <span
+class="math inline">\(S\)</span> 和动作空间 <span
+class="math inline">\(A\)</span>
+是有限的，且可以精确计算。但如围棋的合法状态数是 <span
+class="math inline">\(2 \times 10^{170}\)</span>，天文数字。</p>
+<p>此外，在自动驾驶等问题中，状态和动作甚至是连续的（Continuous），无法通过
+MDP 制表。</p>
+<p>函数的表达方法：</p>
+<ul>
+<li>Tabular 制表、精确表示：因上面两个问题无法泛化</li>
+<li>Aggregation 聚合：把多个状态粗略地看成一个</li>
+<li>Linearly parametric approximation 线性参数估计：使用特征向量 <span
+class="math inline">\(\phi(s,a)\)</span> 的线性组合来拟合 Q 值<span
+class="math display">\[Q(s,a;\theta) = \theta^\top
+\phi(s,a)\]</span></li>
+<li>Nonlinear parametric approximation
+非线性参数估计：用神经网络拟合</li>
+<li>Non-parametric representations 非参数化表示：核、决策树</li>
+</ul>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/20260106004954378.png" /></p>
+<p>上图使用线性参数估计 Least-Squares Policy Iteration LSPI
+学会了骑自行车。</p>
+<p>更具体的，形式化骑自行车为：</p>
+<ul>
+<li>状态 (<span class="math inline">\(s \in
+\mathbb{R}^6\)</span>)：包括车把角度 <span
+class="math inline">\(\theta\)</span>、车身垂直角度 <span
+class="math inline">\(\omega\)</span>、通往目标的角度 <span
+class="math inline">\(\psi\)</span> 以及它们的导数（速度）。</li>
+<li>动作 (<span class="math inline">\(a \in
+\mathbb{R}^2\)</span>)：施加在车把上的扭矩 <span
+class="math inline">\(\tau\)</span> 和骑手的位移 <span
+class="math inline">\(\nu\)</span> 。</li>
+<li>线性参数：使用多项式基函数 (Polynomial basis) 构造特征 <span
+class="math display">\[Q(s,a;\theta) = \theta_a^\top
+\phi(s)\]</span></li>
+</ul>
+<p>但人工设计特征十分困难，可以用深度学习神经网络自动学习。</p>
+<h2 id="dqn-deep-q-network">DQN (Deep Q-Network)</h2>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/20260106005251990.png" /></p>
+<p>经典的 DQN 网络通过卷积和全连接层从原始像素输出 Q 值。</p>
+<p>更具体的，相比之前 Q-Learning 的更新方法 <span
+class="math inline">\(Q \leftarrow Q + \alpha \cdot
+\text{TD\_Error}\)</span> 直接更新 <span
+class="math inline">\(Q\)</span>，可以利用梯度下降更新 <span
+class="math inline">\(\theta\)</span>： <span class="math display">\[
+\theta \leftarrow \theta + \alpha_t \cdot \delta_t \cdot \nabla_\theta
+Q(s_t, a_t; \theta)
+\]</span> 其中 <span class="math inline">\(\delta_t\)</span> 是 TD
+Error：<span class="math inline">\(r_t + \gamma \max Q(s_{t+1}, \dots) -
+Q(s_t, \dots)\)</span> 。</p>
+<p>因对于线性 FA， <span
+class="math inline">\(Q(s,a;\theta)=\theta^\top\phi(s,a)\)</span>，可以看到其对
+<span class="math inline">\(\theta\)</span> 的梯度就是特征向量 <span
+class="math inline">\(\phi(s,a)\)</span>。</p>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/20260106005723101.png" /></p>
+<p>直接用神经网络结合 Q-learning
+在实践中非常不稳定，可以通过技巧使其更加稳定：</p>
+<ul>
+<li>Experience Replay (经验回放)</li>
+<li>Two-network implementation (双网络/目标网络)</li>
+</ul>
+<h2 id="alphago-与蒙特卡洛树搜索">AlphaGo 与蒙特卡洛树搜索</h2>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/20260106010433960.png" /></p>
+<p>AlphaGo 分为四个模块：</p>
+<blockquote>
+<ol type="1">
+<li>Rollout Policy：快速走子策略 这是 AlphaGo
+中最“简陋”但速度最快的部分，其目标是预测终局胜率。</li>
+</ol>
+<p>技术细节：它不是深度神经网络，而是一个线性 Softmax
+模型。它仅根据局部的棋盘特征（比如周围几格的棋子分布、是否叫吃等）进行决策。</p>
+<p>性能特点：</p>
+<p>极速：其决策速度大约是深度策略网络的 1500 倍（每次选择仅需 2
+微秒）。</p>
+<p>牺牲精度换规模：虽然它的落子准确率仅为 24% 左右（而深度网络超过
+50%），但它能在一秒钟内模拟出成千上万局完整的对弈。</p>
+<p>作用：在 MCTS
+的<strong>“模拟（Simulation）”</strong>阶段，当搜索到达一个叶子节点时，AlphaGo
+会利用 Rollout Policy
+快速“盲下”到终局，根据最后的输赢结果给出一个粗略的胜率评分。</p>
+<ol start="2" type="1">
+<li>SL Policy Network：监督学习策略网络 这是 AlphaGo
+的“基本功”，负责模仿人类高手的直觉。</li>
+</ol>
+<p>训练方式：研究团队从 KGS 围棋服务器抓取了约 3000
+万个职业棋手的落子位置。通过监督学习，让神经网络学习在特定盘面下人类最可能下在哪。</p>
+<p>作用：</p>
+<p>缩小搜索范围：围棋每一步有约 250 种选择，SL
+网络能告诉模型“人类高手通常只看这 3-5
+个点”，从而将搜索树的宽度大大压缩。</p>
+<p>作为基石：它是后面强化学习（RL）网络的训练起点。</p>
+<p>局限性：它只是在“模仿”，无法超越人类现有棋谱的逻辑。</p>
+<ol start="3" type="1">
+<li>RL Policy Network：强化学习策略网络 这是 AlphaGo
+的“进阶进化”，负责突破人类极限。</li>
+</ol>
+<p>训练方式：将 SL
+网络复制一份，然后让模型开启<strong>“左右互搏（Self-play）”</strong>模式。通过数百万局的自我对弈，赢了的步骤加分，输了的扣分（Policy
+Gradient 算法）。</p>
+<p>进化点：它不再追求“像人”，而只追求“赢”。这使得 AlphaGo
+发现了一些人类棋手从未想过的奇招（如对阵李世石时的“神之一手”）。</p>
+<p>核心贡献：RL
+网络的主要产出并不是直接用来下棋，而是为了训练下一个组件——价值网络（Value
+Network）。</p>
+<ol start="4" type="1">
+<li>Value Network：价值网络 这是 AlphaGo
+的“大局观”，负责评估盘面优劣。</li>
+</ol>
+<p>功能：给它一个当前的棋盘图像，它会直接输出一个 0 到 1
+之间的数字，代表当前黑棋或白棋的预计胜率。</p>
+<p>训练难点：直接用棋谱训练会导致过拟合（因为同一局棋的相邻盘面极其相似）。AlphaGo
+采用了 RL
+网络的自我对弈数据，每局只取一个样本，确保了数据的多样性和客观性。</p>
+<p>作用：在 MCTS
+搜索中，它通过“看一眼”直接预测后续胜率，从而减少了搜索树的深度。它与
+Rollout Policy
+的模拟结果相结合，形成了一个极强且稳健的盘面评估函数。</p>
+<p>总结：这四个组件如何协同工作？ 在 AlphaGo
+思考下一步棋时（在线对弈过程）：</p>
+<p>​ Selection（选择）：利用 SL 网络
+的落子概率作为初始指引，优先搜索那些看起来更有可能的路径。</p>
+<p>​
+Evaluation（评估）：当搜索到某一个分支无法继续往下深入时，采用“双重保险”评估法：</p>
+<p>​ 法 A：让 Value Network 扫视一眼，直接给出一个估值。</p>
+<p>​ 法 B：让 Rollout Policy 快速模拟到终局，反馈一个结果。</p>
+<p>Combination（综合）：将法 A 和法 B 的结果按一定权重（通常是
+50/50）加权平均，作为这个分支的最终得分。</p>
+<p>这种“直觉（Policy）+ 大局观（Value）+
+快速推演（Rollout）”的组合，构成了 AlphaGo 决策系统的底层逻辑。</p>
+</blockquote>
+<blockquote>
+<p><strong>MCTS（蒙特卡洛树搜索）</strong>与 Policy
+Network（策略网络）的关系，可以概括为“实战推演”与“直觉引导”的结合。在
+AlphaGo 及其后续版本（如
+AlphaZero）中，这种关系经历了从“辅助”到“深度融合”的演变。</p>
+<p>以下是它们关系的详细分解：</p>
+<ol type="1">
+<li>核心关系：引导搜索 vs. 被搜索精炼</li>
+</ol>
+<ul>
+<li><p>Policy Network 是“直觉” (Guide)：</p>
+<p>如果让 MCTS
+盲目搜索，它会尝试棋盘上所有合法的落子点，这在围棋（搜索空间 <span
+class="math inline">\(10^{170}\)</span>）中是不可行的。Policy Network
+的作用是告诉 MCTS：“别乱看，优先看这几个最有前途的点。”
+它大大缩小了搜索树的宽度。</p></li>
+<li><p>MCTS 是“思考” (Refiner)：</p>
+<p>Policy Network 给出的概率是基于当前盘面的瞬时判断。MCTS
+通过上千次的模拟（推演未来），会对 Policy Network
+的初始建议进行修正和精炼。最终落子的决定权在 MCTS 手中，而非 Policy
+Network。</p></li>
+</ul>
+<hr />
+<h3 id="在-mcts-搜索循环中的具体交互">2. 在 MCTS
+搜索循环中的具体交互</h3>
+<p>在 MCTS 的四个阶段中，Policy Network
+主要在“选择”和“扩展”阶段发挥作用：</p>
+<p>A. 设定先验概率 (Prior Probability)</p>
+<p>当 MCTS 扩展一个新节点时，它会调用 Policy
+Network。网络输出一个概率分布 <span class="math inline">\(P(s,
+a)\)</span>，代表在当前局面 <span class="math inline">\(s\)</span>
+下，每一步棋 <span class="math inline">\(a\)</span>
+的价值。这个概率会被存储在树的边上，作为先验概率。</p>
+<p>B. 影响 UCB 决策公式</p>
+<p>在“选择”分支时，MCTS 使用一个变体公式（通常称为 PUCT）：</p>
+<p><span class="math display">\[Score = Q(s, a) + C(P(s, a) \cdot
+\frac{\sqrt{N_{parent}}}{1 + N_{child}})\]</span></p>
+<ul>
+<li><span class="math inline">\(Q\)</span>
+(价值)：是之前搜索得到的平均胜率。</li>
+<li><span class="math inline">\(P(s, a)\)</span> (Policy
+输出)：这个值越大，该分支被选中的概率就越高。</li>
+<li>关系：在搜索初期，由于 <span class="math inline">\(Q\)</span>
+还没有参考价值，Policy Network (<span class="math inline">\(P\)</span>)
+主导了搜索方向；随着搜索次数增加，<span class="math inline">\(Q\)</span>
+的重要性提升，实战推演的结果开始纠正初始直觉。</li>
+</ul>
+<hr />
+<ol start="3" type="1">
+<li>两种 Policy Network 的不同角色 (AlphaGo 早期版本)</li>
+</ol>
+<p>在经典的 AlphaGo (Lee) 中，其实存在两个策略网络：</p>
+<ol type="1">
+<li>SL Policy (监督学习网络)：用于在 MCTS
+搜索树内提供先验概率。它的精度高，但计算相对慢。</li>
+<li>Rollout Policy (快速走子网络)：用于在 MCTS
+树外的“仿真（Simulation）”阶段。它不属于深度网络，速度极快，负责在几微秒内直接下到终局，给
+MCTS 提供一个粗略的胜负参考。</li>
+</ol>
+<hr />
+<ol start="4" type="1">
+<li>进化：从“模仿者”到“自我老师” (AlphaZero 架构)</li>
+</ol>
+<p>在更先进的 AlphaZero 中，MCTS 和 Policy Network
+的关系变成了一种循环迭代的训练关系：</p>
+<ol type="1">
+<li>MCTS 产生更好的策略：对于一个局面 <span
+class="math inline">\(s\)</span>，Policy Network 可能觉得 <span
+class="math inline">\(A\)</span> 点胜率 40%，<span
+class="math inline">\(B\)</span> 点 60%。但 MCTS 搜索 1600
+次后发现，<span class="math inline">\(A\)</span> 点最终胜率其实是
+80%。此时，MCTS 生成的搜索分布 <span class="math inline">\(\pi\)</span>
+比原始的 Policy 网络 <span class="math inline">\(P\)</span>
+更强大。</li>
+<li>MCTS 指导 Policy 学习：AlphaZero 会把 MCTS 的搜索结果 <span
+class="math inline">\(\pi\)</span> 作为“标签”，回头去训练 Policy
+Network。
+<ul>
+<li><strong>目标</strong>：让神经网络的输出 <span
+class="math inline">\(P\)</span> 越来越接近 MCTS 搜索后的结果 <span
+class="math inline">\(\pi\)</span>。</li>
+</ul></li>
+<li>结果：神经网络通过不断“复盘” MCTS
+的深度思考结果，变得越来越聪明，从而在下一次搜索时能提供更精准的引导。</li>
+</ol>
+<hr />
+<p>总结</p>
+<ul>
+<li>Policy Network
+是“眼”：负责在成千上万的选择中扫视，锁定几个目标。</li>
+<li>MCTS 是“脑”：负责针对这几个目标进行深度算力推演。</li>
+<li>具体联系：Policy Network 初始化了搜索树的权重，而 MCTS
+通过采样和评估不断更新这些权重。最终，AI
+选择的是经过思考（MCTS）后的最佳路径，而不是看起来最美（Policy
+Network）的路径。</li>
+</ul>
+</blockquote>
+<h1 id="rl-总结">RL 总结</h1>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/20260106012056782.png" /></p>
+<h2 id="例子">例子</h2>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/20260106012321705.png" /></p>
+<p>考虑这个射击游戏例子：</p>
+<ol type="1">
+<li><p>信息不完全：只能看到第一人称视角，不知道敌人在哪（部分可观测）。</p>
+<p>针对这种复杂环境，需要更复杂的模块设计。如感知 (Perception)、状态估计
+(State Estimate)、规划 (Planner)、分层学习 (Hierarchical
+Learning)。</p></li>
+<li><p>3D 环境。为了应对庞大的动作空间，使用了“宏动作” (Macro
+actions)，也叫 Combo-Action。比如把 “Turn” + “Shoot”
+组合成一个动作序列，而不是每一步都单独决策。</p></li>
+<li><p>稀疏奖励 (Sparse Reward)：只有游戏结束才知道输赢。</p></li>
+</ol>
+<h1 id="ppo">PPO</h1>
+<blockquote>
+<p><strong>近端策略优化（Proximal Policy Optimization, PPO）</strong>
+是一种在强化学习中广泛使用的<strong>策略梯度（Policy
+Gradient）*<em>算法。其核心要点在于：通过引入*</em>裁剪（Clipping）机制</strong>来限制策略更新的幅度，从而解决了传统算法中容易因更新步长过大而导致训练崩溃的问题。</p>
+<p>PPO 兼顾了实现简单、采样效率高和易于调参的优点，是目前 OpenAI
+等机构默认的首选算法。</p>
+<hr />
+<h2 id="ppo-核心原理与机制详细解析">PPO 核心原理与机制详细解析</h2>
+<h3 id="核心目标信赖域更新">1. 核心目标：信赖域更新</h3>
+<p>在强化学习中，策略更新步长是一个难题：</p>
+<ul>
+<li><p><strong>步长太小</strong>：训练速度极慢。</p></li>
+<li><p>步长太大：新旧策略差异过大，可能导致性能断崖式下跌，且很难恢复。</p>
+<p>PPO 的设计灵感来自
+TRPO（信任区域策略优化），但通过更简单的数学手段实现了类似的稳定性，确保新策略
+<span class="math inline">\(\theta\)</span> 不会偏离旧策略 <span
+class="math inline">\(\theta_{old}\)</span> 太远。</p></li>
+</ul>
+<h3 id="目标函数与裁剪机制ppo-clip">2.
+目标函数与裁剪机制（PPO-Clip）</h3>
+<p>这是 PPO 最具代表性的部分。其损失函数公式如下：</p>
+<p><span class="math display">\[L^{CLIP}(\theta) = \hat{\mathbb{E}}_t
+\left[ \min(r_t(\theta) \hat{A}_t, \text{clip}(r_t(\theta), 1 -
+\epsilon, 1 + \epsilon) \hat{A}_t) \right]\]</span></p>
+<ul>
+<li><strong>概率比率 <span
+class="math inline">\(r_t(\theta)\)</span></strong>：表示动作在当前策略和旧策略下的概率比。</li>
+<li><strong>优势函数 <span
+class="math inline">\(\hat{A}_t\)</span></strong>：衡量当前动作比平均状态好多少。</li>
+<li><strong>裁剪过程</strong>：
+<ul>
+<li>当 <span class="math inline">\(\hat{A}_t &gt;
+0\)</span>（动作表现好）时，我们增加该动作概率，但 <span
+class="math inline">\(r_t(\theta)\)</span> 被限制在 <span
+class="math inline">\(1+\epsilon\)</span> 以内。</li>
+<li>当 <span class="math inline">\(\hat{A}_t &lt;
+0\)</span>（动作表现差）时，我们减少该动作概率，但 <span
+class="math inline">\(r_t(\theta)\)</span> 被限制在 <span
+class="math inline">\(1-\epsilon\)</span> 以外。</li>
+</ul></li>
+<li><strong>作用</strong>：这种“去激励”过度更新的机制，保证了即使环境反馈波动剧烈，模型也能稳健前行。</li>
+</ul>
+<h3 id="重要性采样importance-sampling">3. 重要性采样（Importance
+Sampling）</h3>
+<p>PPO
+属于<strong>同策略（On-policy）</strong>算法的改进版。它利用重要性采样技术，允许在单次迭代中使用同一批采样数据进行多次随机梯度下降（SGD）更新。</p>
+<ul>
+<li>通过概率比率 <span
+class="math inline">\(r_t(\theta)\)</span>，模型可以计算“如果我按照当前策略执行，得到这些奖励的概率是多少”，从而提高了数据的利用率。</li>
+</ul>
+<h3 id="actor-critic-架构">4. Actor-Critic 架构</h3>
+<p>PPO 通常采用 Actor-Critic 结构运行：</p>
+<ul>
+<li><strong>Actor（策略网络）</strong>：负责输出动作。其损失包含上述的
+CLIP 损失。</li>
+<li><strong>Critic（价值网络）</strong>：负责估计状态价值 <span
+class="math inline">\(V(s)\)</span>。其损失通常是均方误差（MSE），用于减小价值估计与实际回报之间的差距。</li>
+<li><strong>熵正则化（Entropy
+Bonus）</strong>：在总损失中加入熵项，鼓励智能体保持一定的探索性，防止过早收敛到局部最优。</li>
+</ul>
+<hr />
+<h2 id="ppo-的主要流程">PPO 的主要流程</h2>
+<ol type="1">
+<li><strong>数据收集</strong>：使用当前策略 <span
+class="math inline">\(\theta_{old}\)</span> 在环境中运行 <span
+class="math inline">\(T\)</span> 个时间步，收集状态、动作和奖励。</li>
+<li><strong>计算优势</strong>：根据收集到的奖励和 Critic
+的预测值，计算每个时间步的优势函数 <span
+class="math inline">\(\hat{A}_t\)</span>（通常使用
+GAE，即广义优势估计）。</li>
+<li><strong>优化循环</strong>：
+<ul>
+<li>在同一批数据上重复进行 <span class="math inline">\(K\)</span> 个
+Epoch 的训练。</li>
+<li>计算 CLIP 损失、价值损失和熵损失的总和。</li>
+<li>通过反向传播更新网络参数 <span
+class="math inline">\(\theta\)</span>。</li>
+</ul></li>
+<li><strong>同步参数</strong>：将更新后的参数设为新的 <span
+class="math inline">\(\theta_{old}\)</span>，进入下一轮循环。</li>
+</ol>
+<hr />
+<h2 id="为什么-ppo-如此流行">为什么 PPO 如此流行？</h2>
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 82%" />
+</colgroup>
+<thead>
+<tr>
+<th><strong>特性</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>稳定性</strong></td>
+<td>裁剪机制有效防止了策略坍塌。</td>
+</tr>
+<tr>
+<td><strong>易用性</strong></td>
+<td>相比 TRPO 复杂的二阶导数计算（KLD 约束），PPO 仅需一阶导数。</td>
+</tr>
+<tr>
+<td><strong>通用性</strong></td>
+<td>无论是在连续控制（机器人）还是离散控制（游戏/LLM）中表现都非常出色。</td>
+</tr>
+<tr>
+<td><strong>RLHF 核心</strong></td>
+<td>在大语言模型的对齐阶段（RLHF），PPO 是目前最主流的微调算法。</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h1 id="扩散策略-diffusion-policies">扩散策略 (Diffusion Policies)</h1>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/20260106013303462.png" /></p>
+<p>传统的图像生成扩散模型将噪音变为图片。</p>
+<p>基于类似想法，扩散策略将噪音变为动作（序列）。</p>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/20260106013357355.png" /></p>
+<p>扩散模型引入的多样性与不确定性解决了三个问题： -
+强大的建模能力：能够拟合复杂的、多模态的人类行为（比如抓杯子既可以从左边抓，也可以从右边抓，传统的高斯策略很难处理这种“多峰”分布）。
+- 多样性 (Diversity)：对于同一个任务，能生成多种不同的解决方案。 -
+兼容性
+(Integration)：天然适合与视觉（Vision）和语言（Language）等基础模型结合
+。</p>
+<p>虽然好用，但扩散策略落地有三大痛点：</p>
+<ul>
+<li>数据稀缺 (Data Scarcity)：机器人数据太少，导致泛化性差 <span
+class="math inline">\(\rightarrow\)</span> 解决方案：RDT-1B。</li>
+<li>推理太慢 (Low
+Frequency)：扩散模型需要几十步迭代去噪，导致控制频率只有
+2-5Hz，无法实时反应 <span class="math inline">\(\rightarrow\)</span>
+解决方案：SRPO。</li>
+<li>对齐困难 (Alignment)：难以计算似然度（Likelihood），导致无法像 LLM
+那样方便地做 RLHF（人类反馈强化学习） <span
+class="math inline">\(\rightarrow\)</span> 解决方案：EDA 。</li>
+</ul>
+<h2 id="rdt-1b">RDT-1B</h2>
+<p><strong>现有 VLA 模型的局限</strong></p>
+<p>目前的 VLA (Vision-Language-Action) 模型（如 RT-2）大多基于
+Transformer 进行离散化预测或回归。</p>
+<p>问题：</p>
+<ul>
+<li>信息丢失：把连续动作强行离散化。</li>
+<li>缺乏多样性：只能输出单一的确定性动作，丢失了行为的丰富性 。</li>
+</ul>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/20260106014049356.png" /></p>
+<p><strong>架构</strong></p>
+<p>核心架构：Diffusion Transformer (DiT)。</p>
+<p>输入：图像（多视角）、本体感知信息（关节角度）、语言指令。</p>
+<p>输出：去噪后的动作序列。</p>
+<p>特点：支持异构动作空间（Heterogeneous action
+spaces），即不管是单臂、双臂还是带轮子的机器人，都能统一处理 。</p>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/20260106014223392.png" /></p>
+<p>痛点：不同机器人的物理参数不一样（有的只有末端执行器 EEF，有的有 7
+个关节）。</p>
+<p>创新：设计了一个统一的动作编码空间。</p>
+<ul>
+<li>保留信息：不像简单的 EEF 映射那样丢失关节信息。</li>
+<li>共享编码器：让数据少的机器人也能借用数据多的机器人的知识 。</li>
+</ul>
+<h2 id="srpo">SRPO</h2>
+<p><strong>核心矛盾</strong></p>
+<p>矛盾：机器人控制通常需要 50Hz
+以上的频率，但标准扩散模型采样一次需要迭代几十步，频率只有 2-5Hz。</p>
+<p>思路：能否从一个预训练好的扩散模型中，蒸馏 (Distill)
+出一个确定性的策略网络，使得它只需要推理一次。</p>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/20260106014820074.png" /></p>
+<h2 id="eda">EDA</h2>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/20260106015547836.png" /></p>
+<p>LLM：Pre-training (GPT) <span
+class="math inline">\(\rightarrow\)</span> Alignment
+(ChatGPT/RLHF)。</p>
+<p>Diffusion Policy：RDT-1B (Pre-training) <span
+class="math inline">\(\rightarrow\)</span> ? (Alignment)。</p>
+<p><strong>什么是扩散对齐</strong></p>
+<p>SFT (Supervised Fine-tuning)：用行为数据让机器人学会“怎么做”。</p>
+<p>RL
+(Alignment)：用奖励信号（Reward）让机器人学会“做得更好”或“适应新任务”
+。</p>
+<p><strong>问题</strong></p>
+<p>难点：PPO 等主流 RL 算法需要计算策略的概率密度 <span
+class="math inline">\(\pi(a|s)\)</span>（Likelihood）。</p>
+<p>冲突：扩散模型是基于 Score Matching 的，它输出的是梯度（Gradient
+fields），而不是概率密度。算不出概率，就没法算 Importance Sampling
+Ratio，也就没法用 PPO。</p>
+<p><strong>EDA 解决方法</strong></p>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/20260106020034287.png" /></p>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/20260106020043965.png" /></p>
+<p>EDA 分为两个阶段：</p>
+<ol type="1">
+<li>提出一种新的扩散建模技术，使其能够直接估计密度 (Direct Density
+Estimation)。</li>
+<li>利用第一阶段得到的密度估计能力，结合 Q-Learning 算出的优势函数
+(Advantage)，对扩散策略进行高效微调。</li>
+</ol>
+</div></article></div><div class="card"><div class="card-content"><div class="title is-5" data-i18n="article.comments">评论</div><div id="comment-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.0/dist/gitalk.css"><script> $.getScript('/js/gitalk.min.js', function () {
+            var _gitalkLang = (typeof window._getLang === 'function' && window._getLang() === 'en') ? 'en' : 'zh-CN';
+            var gitalk = new Gitalk({
+            language: _gitalkLang,
+            id: 'cf452f606b629b3b937fd2ea0e741fe9',
+            repo: 'a-little-bear.github.io',
+            owner: 'a-little-bear',
+            clientID: 'Ov23limGRkyf4dqU9ZJ3',
+            clientSecret: '4c6613000b6ab9c4266f7c73e6109914f1b6a0b0',
+            admin: ["a-little-bear"],
+            createIssueManually: false,
+            distractionFreeMode: false,
+            perPage: 10,
+            pagerDirection: 'last',
+            proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
+            
+            enableHotKey: true,
+            isLocked: false
+        })
+        gitalk.render('comment-container');
+            // MathJax: 监听评论加载，自动渲染 LaTeX
+            var _cc = document.getElementById('comment-container');
+            if (_cc) {
+                var _mt = null;
+                function _typesetComments() {
+                    if (typeof MathJax !== 'undefined' && MathJax.Hub) {
+                        MathJax.Hub.Queue(["Typeset", MathJax.Hub, _cc]);
+                    } else {
+                        $.getScript("//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML", function() {
+                            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$', '$'], ['\\(', '\\)']] } });
+                            MathJax.Hub.Queue(["Typeset", MathJax.Hub, _cc]);
+                        });
+                    }
+                }
+                var _obs = new MutationObserver(function() {
+                    clearTimeout(_mt);
+                    _mt = setTimeout(_typesetComments, 800);
+                });
+                _obs.observe(_cc, { childList: true, subtree: true });
+            }
+        });</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label" data-i18n="widget.catalogue">目录</h3><ul class="menu-list"><li><a class="is-flex is-mobile" href="#强化学习基础"><span class="mr-2">1</span><span>强化学习基础</span></a><ul class="menu-list"><li><a class="is-flex is-mobile" href="#多臂老虎机-multi-armed-bandit"><span class="mr-2">1.1</span><span>多臂老虎机 (Multi-armed
+Bandit)</span></a><ul class="menu-list"><li><a class="is-flex is-mobile" href="#背景"><span class="mr-2">1.1.1</span><span>背景</span></a></li><li><a class="is-flex is-mobile" href="#定义"><span class="mr-2">1.1.2</span><span>定义</span></a></li><li><a class="is-flex is-mobile" href="#epsilon-greedy-algorithm"><span class="mr-2">1.1.3</span><span>Epsilon-Greedy Algorithm</span></a></li><li><a class="is-flex is-mobile" href="#ucb-upper-confidence-bound"><span class="mr-2">1.1.4</span><span>UCB (Upper Confidence Bound)</span></a></li><li><a class="is-flex is-mobile" href="#thompson-sampling-贝叶斯方法"><span class="mr-2">1.1.5</span><span>Thompson Sampling
+(贝叶斯方法)</span></a></li></ul></li><li><a class="is-flex is-mobile" href="#马尔可夫决策过程-mdp-与贝尔曼方程"><span class="mr-2">1.2</span><span>马尔可夫决策过程 (MDP)
+与贝尔曼方程</span></a><ul class="menu-list"><li><a class="is-flex is-mobile" href="#最短路径"><span class="mr-2">1.2.1</span><span>最短路径</span></a></li><li><a class="is-flex is-mobile" href="#贝尔曼算子"><span class="mr-2">1.2.2</span><span>贝尔曼算子</span></a></li><li><a class="is-flex is-mobile" href="#vi-和-pi-的区别"><span class="mr-2">1.2.3</span><span>VI 和 PI 的区别</span></a></li></ul></li><li><a class="is-flex is-mobile" href="#无模型学习q-learning"><span class="mr-2">1.3</span><span>无模型学习：Q-Learning</span></a><ul class="menu-list"><li><a class="is-flex is-mobile" href="#多步时序差分"><span class="mr-2">1.3.1</span><span>多步时序差分</span></a></li><li><a class="is-flex is-mobile" href="#epsilon-greedy-探索的-q-learning"><span class="mr-2">1.3.2</span><span>\(\epsilon\)-greedy 探索的 Q-Learning</span></a></li><li><a class="is-flex is-mobile" href="#基于-bonus-探索的-q-learningucb"><span class="mr-2">1.3.3</span><span>基于 Bonus 探索的
+Q-Learning（UCB）</span></a></li><li><a class="is-flex is-mobile" href="#其他探索方法"><span class="mr-2">1.3.4</span><span>其他探索方法</span></a></li></ul></li></ul></li><li><a class="is-flex is-mobile" href="#深度强化学习"><span class="mr-2">2</span><span>深度强化学习</span></a><ul class="menu-list"><li><a class="is-flex is-mobile" href="#函数近似"><span class="mr-2">2.1</span><span>函数近似</span></a></li><li><a class="is-flex is-mobile" href="#dqn-deep-q-network"><span class="mr-2">2.2</span><span>DQN (Deep Q-Network)</span></a></li><li><a class="is-flex is-mobile" href="#alphago-与蒙特卡洛树搜索"><span class="mr-2">2.3</span><span>AlphaGo 与蒙特卡洛树搜索</span></a><ul class="menu-list"><li><a class="is-flex is-mobile" href="#在-mcts-搜索循环中的具体交互"><span class="mr-2">2.3.1</span><span>2. 在 MCTS
+搜索循环中的具体交互</span></a></li></ul></li></ul></li><li><a class="is-flex is-mobile" href="#rl-总结"><span class="mr-2">3</span><span>RL 总结</span></a><ul class="menu-list"><li><a class="is-flex is-mobile" href="#例子"><span class="mr-2">3.1</span><span>例子</span></a></li></ul></li><li><a class="is-flex is-mobile" href="#ppo"><span class="mr-2">4</span><span>PPO</span></a><ul class="menu-list"><li><a class="is-flex is-mobile" href="#ppo-核心原理与机制详细解析"><span class="mr-2">4.1</span><span>PPO 核心原理与机制详细解析</span></a><ul class="menu-list"><li><a class="is-flex is-mobile" href="#核心目标信赖域更新"><span class="mr-2">4.1.1</span><span>1. 核心目标：信赖域更新</span></a></li><li><a class="is-flex is-mobile" href="#目标函数与裁剪机制ppo-clip"><span class="mr-2">4.1.2</span><span>2.
+目标函数与裁剪机制（PPO-Clip）</span></a></li><li><a class="is-flex is-mobile" href="#重要性采样importance-sampling"><span class="mr-2">4.1.3</span><span>3. 重要性采样（Importance
+Sampling）</span></a></li><li><a class="is-flex is-mobile" href="#actor-critic-架构"><span class="mr-2">4.1.4</span><span>4. Actor-Critic 架构</span></a></li></ul></li><li><a class="is-flex is-mobile" href="#ppo-的主要流程"><span class="mr-2">4.2</span><span>PPO 的主要流程</span></a></li><li><a class="is-flex is-mobile" href="#为什么-ppo-如此流行"><span class="mr-2">4.3</span><span>为什么 PPO 如此流行？</span></a></li></ul></li><li><a class="is-flex is-mobile" href="#扩散策略-diffusion-policies"><span class="mr-2">5</span><span>扩散策略 (Diffusion Policies)</span></a><ul class="menu-list"><li><a class="is-flex is-mobile" href="#rdt-1b"><span class="mr-2">5.1</span><span>RDT-1B</span></a></li><li><a class="is-flex is-mobile" href="#srpo"><span class="mr-2">5.2</span><span>SRPO</span></a></li><li><a class="is-flex is-mobile" href="#eda"><span class="mr-2">5.3</span><span>EDA</span></a></li></ul></li></ul></div></div><style>.menu-list > li > a.is-active + .menu-list { display: block; }.menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="https://cdn.jsdelivr.net/gh/a-little-bear/picture/img/1280-646950218-panda-in-thailand.jpg" alt="alittlebear"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">alittlebear</p><p class="is-size-6 is-flex justify-content-center" data-i18n-personal="location"><i class="fas fa-map-marker-alt mr-1"></i><span>太阳系 地球</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading" data-i18n="common.post">文章</p><a href="/archives"><p class="title">59</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading" data-i18n="common.category">分类</p><a href="/categories"><p class="title">10</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading" data-i18n="common.tag">标签</p><a href="/tags"><p class="title">1</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/a-little-bear" target="_blank" rel="noopener" data-i18n="widget.follow">Github</a></div><div><hr><p id="hitokoto" data-i18n="widget.hitokoto_loading">:D 一言句子获取中...</p><script type="text/javascript" defer>function getYiyan(){
+                                var lang = (typeof window._getLang === 'function') ? window._getLang() : 'zh-CN';
+                                if (lang === 'en') {
+                                    $.getJSON("https://dummyjson.com/quotes/random", function (data) {
+                                        if(data && data.quote){
+                                            $('#hitokoto').html("");
+                                            $('#hitokoto').append("<strong class='hitokoto-text'>"+data.quote+"</strong>"+
+                                            "<p>— "+data.author+"</p>");
+                                        }
+                                    }).fail(function(){
+                                        $('#hitokoto').html("");
+                                        $('#hitokoto').append("<strong class='hitokoto-text'>Stay hungry, stay foolish.</strong>"+
+                                        "<p>— Steve Jobs</p>");
+                                    });
+                                } else {
+                                    $.getJSON("https://v1.hitokoto.cn/", function (data) {
+                                    if(data){
+                                        $('#hitokoto').html("");
+                                        $('#hitokoto').append("<strong class='hitokoto-text'>"+data.hitokoto+"</strong>"+
+                                        "<p>"+"来源《"+data.from+"》</p><p>提供者-"+data.creator+"</p>");
+                                    }});
+                                }}
+                                $(function (){getYiyan();$('#hitokoto').click(function(){getYiyan();})});</script></div></div></div><div class="card widget" data-type="latest_comment"><div class="card-content"><h3 class="menu-label" data-i18n="widget.latest_comment">最新评论</h3><span class="body_hot_comment" data-i18n="widget.latest_comment_tip">加载中，最新评论有1分钟缓存...</span></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.png" alt="alittlebear&#039;s blog" height="28"></a><p class="size-small"><span>&copy; 2026 alittlebear</span>  Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a> &amp; <a href="https://github.com/removeif/hexo-theme-amazing" target="_blank">Amazing</a> &amp; <a href="https://github.com/a-little-bear/a-little-bear.github.io" target="_blank">Alb</a> <br><span id="footer-copyright">© 版权说明：[本网站所有内容均收集于互联网或自己创作,<br />&nbsp;&nbsp;&nbsp;&nbsp;方便于网友与自己学习交流，如有侵权，请<a href="/message" target="_blank">留言</a>，立即处理]<br /></span><span><span id="statistic-times">loading...</span><script>function createTime(time) {
+            var n = new Date(time);
+            now.setTime(now.getTime() + 250),
+                days = (now - n) / 1e3 / 60 / 60 / 24,
+                dnum = Math.floor(days),
+                hours = (now - n) / 1e3 / 60 / 60 - 24 * dnum,
+                hnum = Math.floor(hours),
+            1 == String(hnum).length && (hnum = "0" + hnum),
+                minutes = (now - n) / 1e3 / 60 - 1440 * dnum - 60 * hnum,
+                mnum = Math.floor(minutes),
+            1 == String(mnum).length && (mnum = "0" + mnum),
+                seconds = (now - n) / 1e3 - 86400 * dnum - 3600 * hnum - 60 * mnum,
+                snum = Math.round(seconds),
+            1 == String(snum).length && (snum = "0" + snum),
+                document.getElementById("statistic-times").innerHTML = "❤️本站自 <strong>"+time.split(" ")[0].replace(/\//g,".")+"</strong> 已运行 <strong>" + dnum + "</strong> 天 <strong>" + hnum + "</strong> 小时 <strong>" + mnum + "</strong> 分 <strong>" + snum + "</strong> 秒！❤️";
+        }var now = new Date();setInterval("createTime('2020/04/23 00:00:00')", 250,"");</script><br></span><div class="size-small"><span id="footer-visitor">❤️感谢 <strong><span id="busuanzi_value_site_uv">99+</span></strong> 小伙伴的 <strong><span id="busuanzi_value_site_pv">99+</span></strong> 次光临！❤️</span></div></p></div><div class="level-end"><div class="sideMusic"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="/js/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script><meting-js style="width: auto;height: 2000px;" server="netease" type="playlist" id="8435661" theme="#2980b9" loop="all" autoplay="false" order="list" storageName="aplayer-setting" lrctype="0" list-max-height="400px" fixed="true"></meting-js><script>window.__sideMusicPlaylists=[{"name":"无法释怀的循环音乐","id":8435661},{"name":"世界顶级古典钢琴曲","id":706851956},{"name":"书店音乐单-安静英文歌","id":39554181},{"name":"历届格莱美金曲","id":517182285},{"name":"不朽的声音(人生最难忘的歌)","id":67191770},{"name":"经典国内老歌","id":2985941712},{"name":"草原歌曲100首","id":2985947572},{"name":"永远听不腻的英文歌","id":2985915860}];</script><script src="/js/playlist-switcher.js"></script></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" async></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/javascript" id="MathJax-script" async>MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      chtml: {
+        matchFontHeight: false
+      }
+    };</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script><!--!--><script src="/js/main.js" defer></script><script>$.getScript('/js/comment-issue-data.js',function(){loadIssueData('Ov23limGRkyf4dqU9ZJ3','4c6613000b6ab9c4266f7c73e6109914f1b6a0b0','a-little-bear','a-little-bear.github.io',false);})</script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script data-pjax src="/js/insight.js" defer></script><script data-pjax>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.js"></script><script type="text/javascript">var pjax = new Pjax({
+            elements: "a",
+            selectors: [".section", "title"],
+            cache: true,
+            cacheBust: false
+        });
+
+        function loadBusuanzi() {
+            $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js", function () {});
+        }
+
+        function loadMathJax() {
+            $.getScript("//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML", function () {
+                MathJax.Hub.Config({ tex2jax: { inlineMath: [['$', '$'], ['\\(', '\\)']] } });
+                var math = document.getElementsByClassName("entry-content")[0];
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, math]);
+            });
+        }
+
+        document.addEventListener('pjax:send', function () {});
+
+        document.addEventListener('pjax:complete', function () {
+            $(".section").css({opacity: 1});
+            if (true) {
+                $.getScript('/js/comment-issue-data.js', function () {
+                    loadIssueData('Ov23limGRkyf4dqU9ZJ3', '4c6613000b6ab9c4266f7c73e6109914f1b6a0b0', 'a-little-bear', 'a-little-bear.github.io', false);
+                });
+            }
+            loadMathJax();
+            loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);
+            loadBackTop();
+            loadBusuanzi();
+            if (typeof loadBanner === 'function') {
+                loadBanner();
+            }
+            if (typeof window._i18nTranslate === 'function') {
+                window._i18nTranslate();
+            }
+        });</script><script type="text/javascript">(function() {
+            $.getScript("//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML", function () {
+                MathJax.Hub.Config({ tex2jax: { inlineMath: [['$', '$'], ['\\(', '\\)']] } });
+                var math = document.getElementsByClassName("entry-content")[0];
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, math]);
+            });
+        })();</script></body><script type="text/javascript" src="/js/alittlebear/typing.js"></script><script type="text/javascript" src="/js/alittlebear/typing-effects.js"></script><script type="text/javascript" src="/js/alittlebear/collapsible-blockquote.js"></script><script type="text/javascript" src="/js/alittlebear/annotations.js"></script></html>

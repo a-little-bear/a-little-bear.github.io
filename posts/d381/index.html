@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>深度学习是如何统治所有机器学习的学习类型的 - alittlebear&#039;s blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="alittlebear&#039;s blog"><meta name="msapplication-TileImage" content="/img/favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="alittlebear&#039;s blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="深度学习从刚开始的统治有监督学习，到（Transformer的注意力机制后的）统治无（自）监督学习，其表征学习能力远远超过传统机器学习。 本文从传统机器学习的学习任务种类角度来分析深度学习是如何统治有监督和无（自）监督学习的；此外，还将分析现在的各种生成式模型都基于哪些机器学习的学习规则 - alittlebear’s blog。"><meta property="og:type" content="article"><meta property="og:title" content="深度学习是如何统治所有机器学习的学习类型的"><meta property="og:url" content="https://alittlebear.net/posts/d381/"><meta property="og:site_name" content="alittlebear&#039;s blog"><meta property="og:description" content="深度学习从刚开始的统治有监督学习，到（Transformer的注意力机制后的）统治无（自）监督学习，其表征学习能力远远超过传统机器学习。 本文从传统机器学习的学习任务种类角度来分析深度学习是如何统治有监督和无（自）监督学习的；此外，还将分析现在的各种生成式模型都基于哪些机器学习的学习规则 - alittlebear’s blog。"><meta property="og:locale" content="zh_CN"><meta property="article:published_time" content="2025-11-20T23:16:20.000Z"><meta property="article:modified_time" content="2026-03-08T09:14:09.795Z"><meta property="article:author" content="alittlebear"><meta property="twitter:card" content="summary"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://alittlebear.net/posts/d381/"},"headline":"alittlebear's blog","image":[],"datePublished":"2025-11-20T23:16:20.000Z","dateModified":"2026-03-08T09:14:09.795Z","author":{"@type":"Person","name":"alittlebear"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject"}},"description":"深度学习从刚开始的统治有监督学习，到（Transformer的注意力机制后的）统治无（自）监督学习，其表征学习能力远远超过传统机器学习。 本文从传统机器学习的学习任务种类角度来分析深度学习是如何统治有监督和无（自）监督学习的；此外，还将分析现在的各种生成式模型都基于哪些机器学习的学习规则 - alittlebear’s blog。"}</script><link rel="canonical" href="https://alittlebear.net/posts/d381/"><link rel="icon" href="/img/favicon.ico"><meta name="referrer" content="no-referrer-when-downgrade"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro|Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&amp;amp;subset=latin,latin-ext|Inconsolata|Itim|Lobster.css"><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="/js/globalUtils.js"></script><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><meta name="generator" content="Hexo 7.3.0"></head><body class="is-2-column has-navbar-fixed-top"><script type="text/javascript" src="/js/alittlebear/night.js"></script><script type="text/javascript" src="/js/alittlebear/focus-mode.js"></script><canvas id="universe"></canvas><script type="text/javascript" src="/js/alittlebear/bg-switcher.js"></script><script type="text/javascript" src="/js/alittlebear/light-theme.js"></script><nav class="navbar navbar-main is-fixed-top"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.png" alt="alittlebear&#039;s blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0" data-i18n-nav="机器学习">机器学习</a><a class="navbar-item" href="/categories/%E6%9D%82%E8%B0%88" data-i18n-nav="杂谈">杂谈</a><a class="navbar-item" href="/categories/%E9%A1%B9%E7%9B%AE" data-i18n-nav="项目">项目</a><a class="navbar-item" href="/categories/%E7%BE%8E%E9%A3%9F%E4%B8%8E%E6%97%A5%E5%B8%B8" data-i18n-nav="美食与日常">美食与日常</a><a class="navbar-item" href="/categories" data-i18n-nav="分类">分类</a><a class="navbar-item" href="/about" data-i18n-nav="关于">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="音乐" href="/music" data-i18n-nav="音乐"><i class="fas fa-music"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="相册" href="/album" data-i18n-nav="相册"><i class="fas fa-image"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="自用" href="/self" data-i18n-nav="自用"><i class="fas fa-id-card"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="网盘" href="https://utoronto-my.sharepoint.com/:f:/g/personal/joseph_siu_mail_utoronto_ca/EiS0mVlUGQRDnNp8IMdeSocBSaH5iRZT5E_Hjp0o6FDODQ?e=DlSmD5" data-i18n-nav="网盘"><i class="fas fa-hdd"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="关于" href="/about" data-i18n-nav="关于"><i class="fas fa-user"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a><a class="navbar-item" id="lang-nav" title="EN/中" href="javascript:;" onClick="toggleLanguage()"><i class="fas fa-language"></i></a><a class="navbar-item" id="light-theme-nav" title="Light Theme" href="javascript:;"><i class="fas fa-adjust" id="light-theme-icon"></i></a><a class="navbar-item" id="bg-switch-nav" title="Switch Background" href="javascript:;"><i class="fas fa-palette" id="bg-switch-icon"></i></a><a class="navbar-item" id="night-nav" title="Night" href="javascript:;"><i class="fas fa-moon" id="night-icon"></i></a></div></div></div></nav><script type="text/javascript" src="/js/i18n.js"></script><script type="text/javascript" src="/js/theme-setting.js"></script><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-plus"> </i>2025-11-20  <a class="commentCountImg" href="/posts/d381/#comment-container"><span class="display-none-class">6e4263db32fa666f76c001c696c0d595</span><i class="far fa-comment-dots"></i> <span class="commentCount" id="6e4263db32fa666f76c001c696c0d595">0</span>  </a><span class="level-item"><i class="far fa-clock"> </i>27 分钟  <i class="fas fa-pencil-alt"> </i>4.0 k</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">深度学习是如何统治所有机器学习的学习类型的</h1><div class="content"><blockquote>
+<p>深度学习从刚开始的统治有监督学习，到（Transformer的注意力机制后的）统治无（自）监督学习，其表征学习能力远远超过传统机器学习。</p>
+<p>本文从传统机器学习的学习任务种类角度来分析深度学习是如何统治有监督和无（自）监督学习的；此外，还将分析现在的各种生成式模型都基于哪些<a
+href="https://alittlebear.net/posts/f452/">机器学习的学习规则 -
+alittlebear’s blog</a>。</p>
+<span id="more"></span>
+</blockquote>
+<h1 id="无监督自监督才是王道">无监督、自监督才是王道</h1>
+<p>翻开传统机器学习教科书（如周志华老师的《机器学习》，朱军老师的《概率机器学习》的基础篇），里面基本都是有监督学习的算法：<a
+href="https://alittlebear.net/posts/d785/">（广义）线性模型和贝叶斯分类器</a>、<a
+href="https://alittlebear.net/posts/ea89/">决策树和集成学习</a>、<a
+href="https://alittlebear.net/posts/cdfe/">神经网络</a>、<a
+href="https://alittlebear.net/posts/840f/">支持向量机</a>；只有<a
+href="https://alittlebear.net/posts/3fea/">聚类（K-Means）</a>和<a
+href="https://alittlebear.net/posts/d90e/">降维（PCA）</a>是无监督学习。</p>
+<p>但随着硬件软件的进步，和大数据时代的到来，减少人工智能模型中人工部分的需求越来越多，虽然对有监督学习算法进行一些变种可以扩展为半监督学习，但还是不够。对于十分复杂的任务需求，如图像生成来说，维度过高导致的维度灾难，人工标注的数据量远远达不到模型可以正确拟合的需求。</p>
+<p>基于此，某种意义上的自我生成式模型（从生成式对抗网络、基于妥协的有RLHF【Reinforcement
+Learning from Human
+Feedback，基于人类反馈的强化学习】的大语言模型、到慢慢取消HF的多模态大模型）慢慢取代了传统的回归、分类模型。</p>
+<h2 id="有监督学习">有监督学习</h2>
+<p>有监督学习（Supervised Learning）的核心在于学习一个从输入 <span
+class="math inline">\(x\)</span> 到标签 <span
+class="math inline">\(y\)</span> 的映射函数 <span
+class="math inline">\(f(x) \rightarrow
+y\)</span>。这种学习方法在很长一段时间内统治了工业界，因为它目标明确、误差可导。</p>
+<p>以前受限于硬件条件，对于一个中小型数据集（也基本只能处理中小型的，大小对比大数据时代）获取人工标记不难。并且，这些数据集往往都是十分标准化的，不然贝叶斯错误（噪声）过大导致实际效果并不好。</p>
+<p>然而，随着硬件、软件、互联网等各个方面的发展，模型所需要学习的数据集越来越大。对于一个十分复杂的（流形上的）数据集，表达能力欠缺（如不是万能函数逼近器）的经典（有监督）机器学习算法很难进行拟合。</p>
+<p>并且，这些数据越来越多是自动获取的，而不是人工一个一个确认、标记的。</p>
+<p>这些原因就导致了现在有监督学习很难跟得上大数据时代的需求。并且尽管（有标签的）中小数据集上传统机器学习算法还是较为广泛的使用，现在预训练的（尤其是有双重下降现象）的大模型完成中小数据集的任务还是轻轻松松还简单的，调用api即可解决，尽管算力因为GPU的问题目前还是有点欠缺。就算如此，对比需要真人人工标注的数据还是十分快捷且廉价的。</p>
+<h2 id="半监督学习">半监督学习</h2>
+<p>为了缓解对标注数据的依赖，对于流形假设的数据集，结合无监督学习（聚类）和有监督学习的思想，我们可以仅需每个聚类的一个（或多个以减少误差）标签，这就是半监督学习（Semi-Supervised
+Learning）的思想。</p>
+<p>这种折中方案仅需少量的“有标签数据”，来判断并影响周围“无标签数据”的标签。</p>
+<p>伪标签（pseudo-labeling）：先用少量的有标签数据训练一个初始模型，让它去预测无标签数据，将置信度高的预测结果作为“伪标签”，加入训练集进行迭代。</p>
+<p>数据增强也可以算是半监督学习。假设对于（流形上的）数据，某些扰动不会影响模型预测结果（如对图像的反转、加噪），那么这些扰动后和扰动前的图片都可以作为一个“聚类”被同一个标签影响。这也叫一致性正则化（Consistency
+Regularization）。</p>
+<p>虽然半监督学习在一定程度上降低了标注成本，但它本质上依然没有摆脱“分类/回归”的传统框架，数据还是部分依赖人工标签（如上所说，受限于人工标记的噪声错误、时间和金钱成本）。</p>
+<h2 id="无监督学习自监督学习">无监督学习、自监督学习</h2>
+<p>如我们对未来AI（AGI）的幻想一样，我们希望AI，如果作为一个有”自我思维”的主体的话（物理或者虚拟上的意义），有自我学习、自我进化的能力，也就是完全不依赖人类标签的无监督学习（Unsupervised
+Learning）和其子集自监督学习（Self-Supervised Learning, SSL）。</p>
+<p>无监督学习从之前简单的聚类、降维，到现在包括直接用输入来寻找内在（流形）结构并输出符合结构（流形）的新（输入）数据，这样叫做密度估计（density
+estimation），GAN 和 Diffusion 都是直接尝试去学习输入结构。</p>
+<p>但对于十分复杂的任务（和输入），直接去拟合输入分布因为维度灾难等问题往往十分困难；通过表征学习可以解决一些问题，但如果将这种直接对原始输入空间的生成问题转变为我们熟悉的分类、回归问题，那么很多问题都变得更加简单。</p>
+<p>也就是，与其直接学习 <span
+class="math inline">\(P(X)\)</span>，不如用回归、分类的方法学习 <span
+class="math inline">\(P(X_{\text{masked}} | X_{\text{visible}})\)</span>
+。这对应了传统机器学习中贝叶斯分类器和判别器的关系（参考文章开头超链接）。</p>
+<p>更具体的，提取特征中的一些特征（如 Attention 机制捕捉到的上下文依赖
+Contextual Dependency 和隐表征 Latent
+Representation）并用这些抽象出的高维表征来构建“前置任务”（pretext
+task），例如预测上下文关系或填补缺失片段，反而能避开直接拟合原始像素/数据的困难，更高效地捕捉数据的本质规律。从纯粹的“分布估计”转向了“表征学习”，也就引出了自监督学习：</p>
+<p>自监督学习（现在主流的掩码建模 Masked Modeling 和自回归
+Auto-regressive
+类）将输入作为输出，通过遮挡某些部分来预测这部分遮挡前的输入是什么，如上文所述这天然就对应了生成式模型的运作方式（本质上可以说这类模型还是误差修正学习）。也就是，目前来看
+AI = 大生成式模型。2025 年目前此类模型基本都是基于 Transformer 的
+Attention 机制（创造出来用于解决机器翻译的问题，但现在 Vision
+Transformer，ViT
+等其他模态的注意力机制也十分成熟）的大生成式模型都是主要处理文字的。也就是，2025
+年尤其是早期的很多模型基本都是大语言生成模型。</p>
+<p>随着 2025
+年走向年底，所有主流大模型开始关注并解决多模态的问题。也就是，从开始的文字输入-文字输出，变为现在的视觉、文字、声音混合在一起的多模态输入，然后给出预期的输出（目前主流还是纯文字输出，或者纯图像输出，如
+Gemini 3 的混合输出暂时还没流行）。</p>
+<h1
+id="深度学习对于传统学习目标的融合">深度学习对于传统学习目标的融合</h1>
+<p>如上节讲的，现在 2025
+年基本可以将深度学习和自监督、无监督生成式模型划上等号。下文的深度学习模型都属于此类型。</p>
+<h2 id="误差修正学习">误差修正学习</h2>
+<p>在传统机器学习算法中，误差学习的核心是调整模型权重来让输出对应真实标签。但人工标记的真实标签往往各种成本过高。</p>
+<p>为此，对于时序输入，我们完全可以遮挡（中间或者后面）的一些输入，用其他输入来预测这部分，并通过被遮挡的实际输入来进行修正。也就是，本质上现在的大语言模型还是在最小化误差，进行误差修正学习。</p>
+<p>并且，对于图片输入，GAN、Diffusion
+等生成式模型也基本都是通过比较“生成”出来的图片（噪点）和预期的区别来最小化区别。</p>
+<p>一个良好的大语言模型结构与优化过程完全可以解释成再尝试“理解”文字段落输入并给出其预期的输出。更详细的，对于一个十分庞大且复杂的输入，预期让模型学习一整个函数来逼近这个流形输入，现在的大模型让模型学习不同的函数，然后根据推理输入给出相应的函数。为了保证模型输出所用的不同函数的一致性，逻辑方面目前是通过
+CoT （Chain of Thought 思维链）技术来达成文章内逻辑和数字的一致性。</p>
+<h2 id="竞争学习">竞争学习</h2>
+<p>考虑注意力机制（<span class="math inline">\(Q\)</span>
+为当前输入，<span class="math inline">\(K\)</span> 为相关性字典的键
+key，<span class="math inline">\(V\)</span> 为值 value）： <span
+class="math display">\[
+\text{Attention}(Q, K, V) = \text{softmax}(\frac{QK^\top}{\sqrt{d_k}})V
+\]</span> 可以看到，因为 Softmax 函数的全体输出之和为 1，所有上下文的
+token 都在竞争对当前 token 的关注度。</p>
+<p>这种高度并行的动态竞争，使得模型能够从海量噪声中自动筛选出关键特征，正是特征解耦（Feature
+Disentanglement）的关键点。</p>
+<p>目前数学形式十分良好的稀疏表示（几乎适用所有模型，现在还有很多对大模型稀疏化的热门研究）本质上都可以看作是特征之间的竞争。</p>
+<h2 id="赫布学习">赫布学习</h2>
+<p>这完全对应了注意力机制对于相关词的关联性学习：如果“苹果”和“水果”经常在语境中同时出现，早期的
+Word2Vec 或现代的 Transformer 的 Embedding
+层会将它们的向量拉得很近（如高余弦相似度，取决于具体实现）。</p>
+<p>并且在实际推理中，上述 Attention 公式的点积 <span
+class="math inline">\(Q\cdot K^\top\)</span> 也是在计算当前 token
+和所有键的相关性，只有最相关的键才会纳入考虑。</p>
+<h2 id="玻尔兹曼学习">玻尔兹曼学习</h2>
+<p>传统的受限玻尔兹曼机（RBM）因训练困难而不再流行，但其思想保留在了生成式模型中。</p>
+<p>Softmax 函数本质上还是可以算是一种玻尔兹曼分布（Gibbs
+Distribution）。大模型生成下一个词时，本质上还是在根据当前上下文的“能量状态”进行热力学采样。</p>
+<p>Diffusion
+扩散模型在物理上也对应于非平衡热力学过程。去噪过程可以被视为在一个复杂的能量地貌（Energy
+Landscape）中，沿着能量梯度下降，最终找到数据分布的低能量点（真实图像）。</p>
+<h2 id="基于记忆的学习">基于记忆的学习</h2>
+<p>正如这篇文章提到的：<a
+href="https://alittlebear.net/posts/cdfe/">深度神经网络 - alittlebear’s
+blog</a>，现在过参数化的大模型将海量训练数据压缩到了千亿级的权重参数中。从记住所有细节开始，逐渐优化所有拟合的目标函数，慢慢平滑的排除噪点。</p>
+<p>并且，对于具体的序列，还是通过上述公式，可以看出当前 token
+的分析还是基于其他 token （的加权）。</p>
+<h1 id="表征学习">表征学习</h1>
+<p>可以看到 Attention 机制，或者说更本质的表征学习（Representation
+Learning），完美的融合了后面几种学习方法。这让我们思考，表征学习是否是智能学习的终极范式。人类和动物大脑都是通过
+NMDA
+受体建立神经元彼此的相关性，来通过相关性来模拟因果性。这种表征学习能力，对应了用相关性来模拟因果性，是否就是所能达到的极限？未来AGI之上的的超智能（Superintelligence）是否会发展出更接近因果性本质的学习方式。</p>
+<p>这些我们都不知道，但目前，我们还是可以通过表征学习来模拟大脑，达成主流对于
+AGI （模拟人类而言）的目标和实现。</p>
+<p>回到正题，传统机器学习最大的痛点就是特征工程（Feature
+Engineering），2025年 Kaggle
+很多竞赛还是围绕（数据量不足导致的）特征工程来得分。</p>
+<p>深度学习（基于海量数据学习的）端到端的能力完全解决了人工筛选的特征的信息丢失等问题：</p>
+<ul>
+<li>误差修正提供了优化的动力（方向）。</li>
+<li>竞争学习（Attention）提供了聚焦的能力（筛选关键信息）。</li>
+<li>赫布学习提供了关联的能力（构建语义网络）。</li>
+<li>玻尔兹曼思想提供了生成和采样的数学框架（拟合分布）。</li>
+<li>记忆机制提供了上下文的连贯性。</li>
+</ul>
+<p>只有当一个模型，或者只能充分了解到了输入的本质，才能给出符合逻辑的输出。而学习特征不仅是简单的取代人工提取后的数据，而是一个让模型尝试去理解的过程。</p>
+<p>从这个角度看，我对现在很多模块化的设计流程感到悲观，深度学习的端到端除了现在还没解决的“黑箱问题”，几乎毫无缺点。但我相信随着稀疏化等技术的进步，很快黑箱问题可以缓解甚至完全解决，虽然我对人的思维（或者比人更理想的智能逻辑）能否完全解耦，或者理解计算机的“解耦”有很大的怀疑。</p>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/202511121656539.jpeg" /></p>
+</div></article></div><div class="card"><div class="card-content"><div class="title is-5" data-i18n="article.comments">评论</div><div id="comment-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.0/dist/gitalk.css"><script> $.getScript('/js/gitalk.min.js', function () {
+            var _gitalkLang = (typeof window._getLang === 'function' && window._getLang() === 'en') ? 'en' : 'zh-CN';
+            var gitalk = new Gitalk({
+            language: _gitalkLang,
+            id: '6e4263db32fa666f76c001c696c0d595',
+            repo: 'a-little-bear.github.io',
+            owner: 'a-little-bear',
+            clientID: 'Ov23limGRkyf4dqU9ZJ3',
+            clientSecret: '4c6613000b6ab9c4266f7c73e6109914f1b6a0b0',
+            admin: ["a-little-bear"],
+            createIssueManually: false,
+            distractionFreeMode: false,
+            perPage: 10,
+            pagerDirection: 'last',
+            proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
+            
+            enableHotKey: true,
+            isLocked: false
+        })
+        gitalk.render('comment-container');
+            // MathJax: 监听评论加载，自动渲染 LaTeX
+            var _cc = document.getElementById('comment-container');
+            if (_cc) {
+                var _mt = null;
+                function _typesetComments() {
+                    if (typeof MathJax !== 'undefined' && MathJax.Hub) {
+                        MathJax.Hub.Queue(["Typeset", MathJax.Hub, _cc]);
+                    } else {
+                        $.getScript("//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML", function() {
+                            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$', '$'], ['\\(', '\\)']] } });
+                            MathJax.Hub.Queue(["Typeset", MathJax.Hub, _cc]);
+                        });
+                    }
+                }
+                var _obs = new MutationObserver(function() {
+                    clearTimeout(_mt);
+                    _mt = setTimeout(_typesetComments, 800);
+                });
+                _obs.observe(_cc, { childList: true, subtree: true });
+            }
+        });</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label" data-i18n="widget.catalogue">目录</h3><ul class="menu-list"><li><a class="is-flex is-mobile" href="#无监督自监督才是王道"><span class="mr-2">1</span><span>无监督、自监督才是王道</span></a><ul class="menu-list"><li><a class="is-flex is-mobile" href="#有监督学习"><span class="mr-2">1.1</span><span>有监督学习</span></a></li><li><a class="is-flex is-mobile" href="#半监督学习"><span class="mr-2">1.2</span><span>半监督学习</span></a></li><li><a class="is-flex is-mobile" href="#无监督学习自监督学习"><span class="mr-2">1.3</span><span>无监督学习、自监督学习</span></a></li></ul></li><li><a class="is-flex is-mobile" href="#深度学习对于传统学习目标的融合"><span class="mr-2">2</span><span>深度学习对于传统学习目标的融合</span></a><ul class="menu-list"><li><a class="is-flex is-mobile" href="#误差修正学习"><span class="mr-2">2.1</span><span>误差修正学习</span></a></li><li><a class="is-flex is-mobile" href="#竞争学习"><span class="mr-2">2.2</span><span>竞争学习</span></a></li><li><a class="is-flex is-mobile" href="#赫布学习"><span class="mr-2">2.3</span><span>赫布学习</span></a></li><li><a class="is-flex is-mobile" href="#玻尔兹曼学习"><span class="mr-2">2.4</span><span>玻尔兹曼学习</span></a></li><li><a class="is-flex is-mobile" href="#基于记忆的学习"><span class="mr-2">2.5</span><span>基于记忆的学习</span></a></li></ul></li><li><a class="is-flex is-mobile" href="#表征学习"><span class="mr-2">3</span><span>表征学习</span></a></li></ul></div></div><style>.menu-list > li > a.is-active + .menu-list { display: block; }.menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="https://cdn.jsdelivr.net/gh/a-little-bear/picture/img/1280-646950218-panda-in-thailand.jpg" alt="alittlebear"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">alittlebear</p><p class="is-size-6 is-flex justify-content-center" data-i18n-personal="location"><i class="fas fa-map-marker-alt mr-1"></i><span>太阳系 地球</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading" data-i18n="common.post">文章</p><a href="/archives"><p class="title">59</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading" data-i18n="common.category">分类</p><a href="/categories"><p class="title">10</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading" data-i18n="common.tag">标签</p><a href="/tags"><p class="title">1</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/a-little-bear" target="_blank" rel="noopener" data-i18n="widget.follow">Github</a></div><div><hr><p id="hitokoto" data-i18n="widget.hitokoto_loading">:D 一言句子获取中...</p><script type="text/javascript" defer>function getYiyan(){
+                                var lang = (typeof window._getLang === 'function') ? window._getLang() : 'zh-CN';
+                                if (lang === 'en') {
+                                    $.getJSON("https://dummyjson.com/quotes/random", function (data) {
+                                        if(data && data.quote){
+                                            $('#hitokoto').html("");
+                                            $('#hitokoto').append("<strong class='hitokoto-text'>"+data.quote+"</strong>"+
+                                            "<p>— "+data.author+"</p>");
+                                        }
+                                    }).fail(function(){
+                                        $('#hitokoto').html("");
+                                        $('#hitokoto').append("<strong class='hitokoto-text'>Stay hungry, stay foolish.</strong>"+
+                                        "<p>— Steve Jobs</p>");
+                                    });
+                                } else {
+                                    $.getJSON("https://v1.hitokoto.cn/", function (data) {
+                                    if(data){
+                                        $('#hitokoto').html("");
+                                        $('#hitokoto').append("<strong class='hitokoto-text'>"+data.hitokoto+"</strong>"+
+                                        "<p>"+"来源《"+data.from+"》</p><p>提供者-"+data.creator+"</p>");
+                                    }});
+                                }}
+                                $(function (){getYiyan();$('#hitokoto').click(function(){getYiyan();})});</script></div></div></div><div class="card widget" data-type="latest_comment"><div class="card-content"><h3 class="menu-label" data-i18n="widget.latest_comment">最新评论</h3><span class="body_hot_comment" data-i18n="widget.latest_comment_tip">加载中，最新评论有1分钟缓存...</span></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.png" alt="alittlebear&#039;s blog" height="28"></a><p class="size-small"><span>&copy; 2026 alittlebear</span>  Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a> &amp; <a href="https://github.com/removeif/hexo-theme-amazing" target="_blank">Amazing</a> &amp; <a href="https://github.com/a-little-bear/a-little-bear.github.io" target="_blank">Alb</a> <br><span id="footer-copyright">© 版权说明：[本网站所有内容均收集于互联网或自己创作,<br />&nbsp;&nbsp;&nbsp;&nbsp;方便于网友与自己学习交流，如有侵权，请<a href="/message" target="_blank">留言</a>，立即处理]<br /></span><span><span id="statistic-times">loading...</span><script>function createTime(time) {
+            var n = new Date(time);
+            now.setTime(now.getTime() + 250),
+                days = (now - n) / 1e3 / 60 / 60 / 24,
+                dnum = Math.floor(days),
+                hours = (now - n) / 1e3 / 60 / 60 - 24 * dnum,
+                hnum = Math.floor(hours),
+            1 == String(hnum).length && (hnum = "0" + hnum),
+                minutes = (now - n) / 1e3 / 60 - 1440 * dnum - 60 * hnum,
+                mnum = Math.floor(minutes),
+            1 == String(mnum).length && (mnum = "0" + mnum),
+                seconds = (now - n) / 1e3 - 86400 * dnum - 3600 * hnum - 60 * mnum,
+                snum = Math.round(seconds),
+            1 == String(snum).length && (snum = "0" + snum),
+                document.getElementById("statistic-times").innerHTML = "❤️本站自 <strong>"+time.split(" ")[0].replace(/\//g,".")+"</strong> 已运行 <strong>" + dnum + "</strong> 天 <strong>" + hnum + "</strong> 小时 <strong>" + mnum + "</strong> 分 <strong>" + snum + "</strong> 秒！❤️";
+        }var now = new Date();setInterval("createTime('2020/04/23 00:00:00')", 250,"");</script><br></span><div class="size-small"><span id="footer-visitor">❤️感谢 <strong><span id="busuanzi_value_site_uv">99+</span></strong> 小伙伴的 <strong><span id="busuanzi_value_site_pv">99+</span></strong> 次光临！❤️</span></div></p></div><div class="level-end"><div class="sideMusic"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="/js/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script><meting-js style="width: auto;height: 2000px;" server="netease" type="playlist" id="8435661" theme="#2980b9" loop="all" autoplay="false" order="list" storageName="aplayer-setting" lrctype="0" list-max-height="400px" fixed="true"></meting-js><script>window.__sideMusicPlaylists=[{"name":"无法释怀的循环音乐","id":8435661},{"name":"世界顶级古典钢琴曲","id":706851956},{"name":"书店音乐单-安静英文歌","id":39554181},{"name":"历届格莱美金曲","id":517182285},{"name":"不朽的声音(人生最难忘的歌)","id":67191770},{"name":"经典国内老歌","id":2985941712},{"name":"草原歌曲100首","id":2985947572},{"name":"永远听不腻的英文歌","id":2985915860}];</script><script src="/js/playlist-switcher.js"></script></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" async></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/javascript" id="MathJax-script" async>MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      chtml: {
+        matchFontHeight: false
+      }
+    };</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script><!--!--><script src="/js/main.js" defer></script><script>$.getScript('/js/comment-issue-data.js',function(){loadIssueData('Ov23limGRkyf4dqU9ZJ3','4c6613000b6ab9c4266f7c73e6109914f1b6a0b0','a-little-bear','a-little-bear.github.io',false);})</script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script data-pjax src="/js/insight.js" defer></script><script data-pjax>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.js"></script><script type="text/javascript">var pjax = new Pjax({
+            elements: "a",
+            selectors: [".section", "title"],
+            cache: true,
+            cacheBust: false
+        });
+
+        function loadBusuanzi() {
+            $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js", function () {});
+        }
+
+        function loadMathJax() {
+            $.getScript("//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML", function () {
+                MathJax.Hub.Config({ tex2jax: { inlineMath: [['$', '$'], ['\\(', '\\)']] } });
+                var math = document.getElementsByClassName("entry-content")[0];
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, math]);
+            });
+        }
+
+        document.addEventListener('pjax:send', function () {});
+
+        document.addEventListener('pjax:complete', function () {
+            $(".section").css({opacity: 1});
+            if (true) {
+                $.getScript('/js/comment-issue-data.js', function () {
+                    loadIssueData('Ov23limGRkyf4dqU9ZJ3', '4c6613000b6ab9c4266f7c73e6109914f1b6a0b0', 'a-little-bear', 'a-little-bear.github.io', false);
+                });
+            }
+            loadMathJax();
+            loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);
+            loadBackTop();
+            loadBusuanzi();
+            if (typeof loadBanner === 'function') {
+                loadBanner();
+            }
+            if (typeof window._i18nTranslate === 'function') {
+                window._i18nTranslate();
+            }
+        });</script><script type="text/javascript">(function() {
+            $.getScript("//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML", function () {
+                MathJax.Hub.Config({ tex2jax: { inlineMath: [['$', '$'], ['\\(', '\\)']] } });
+                var math = document.getElementsByClassName("entry-content")[0];
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, math]);
+            });
+        })();</script></body><script type="text/javascript" src="/js/alittlebear/typing.js"></script><script type="text/javascript" src="/js/alittlebear/typing-effects.js"></script><script type="text/javascript" src="/js/alittlebear/collapsible-blockquote.js"></script><script type="text/javascript" src="/js/alittlebear/annotations.js"></script></html>

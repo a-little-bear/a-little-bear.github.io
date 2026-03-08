@@ -1,0 +1,1529 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>生成式模型、判别式模型、指数族分布、和广义线性模型 - alittlebear&#039;s blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="alittlebear&#039;s blog"><meta name="msapplication-TileImage" content="/img/favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="alittlebear&#039;s blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="朴素贝叶斯 Naive Bayes classifier 逻辑回归 Logistic regression 指数族分布 Exponential family distributions 广义线性模型 Generalized linear models 本文分析生成式概率分类模型朴素贝叶斯和判别式概率分类模型逻辑回归的根源，关系，以及他们在广义线性模型框架下的统一。 （基于朱军老师的PPT和教科书"><meta property="og:type" content="article"><meta property="og:title" content="生成式模型、判别式模型、指数族分布、和广义线性模型"><meta property="og:url" content="https://alittlebear.net/posts/d785/"><meta property="og:site_name" content="alittlebear&#039;s blog"><meta property="og:description" content="朴素贝叶斯 Naive Bayes classifier 逻辑回归 Logistic regression 指数族分布 Exponential family distributions 广义线性模型 Generalized linear models 本文分析生成式概率分类模型朴素贝叶斯和判别式概率分类模型逻辑回归的根源，关系，以及他们在广义线性模型框架下的统一。 （基于朱军老师的PPT和教科书"><meta property="og:locale" content="zh_CN"><meta property="article:published_time" content="2025-11-13T20:55:52.000Z"><meta property="article:modified_time" content="2026-03-08T09:14:09.795Z"><meta property="article:author" content="alittlebear"><meta property="twitter:card" content="summary"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://alittlebear.net/posts/d785/"},"headline":"alittlebear's blog","image":[],"datePublished":"2025-11-13T20:55:52.000Z","dateModified":"2026-03-08T09:14:09.795Z","author":{"@type":"Person","name":"alittlebear"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject"}},"description":"朴素贝叶斯 Naive Bayes classifier 逻辑回归 Logistic regression 指数族分布 Exponential family distributions 广义线性模型 Generalized linear models 本文分析生成式概率分类模型朴素贝叶斯和判别式概率分类模型逻辑回归的根源，关系，以及他们在广义线性模型框架下的统一。 （基于朱军老师的PPT和教科书"}</script><link rel="canonical" href="https://alittlebear.net/posts/d785/"><link rel="icon" href="/img/favicon.ico"><meta name="referrer" content="no-referrer-when-downgrade"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro|Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&amp;amp;subset=latin,latin-ext|Inconsolata|Itim|Lobster.css"><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="/js/globalUtils.js"></script><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><meta name="generator" content="Hexo 7.3.0"></head><body class="is-2-column has-navbar-fixed-top"><script type="text/javascript" src="/js/alittlebear/night.js"></script><script type="text/javascript" src="/js/alittlebear/focus-mode.js"></script><canvas id="universe"></canvas><script type="text/javascript" src="/js/alittlebear/bg-switcher.js"></script><script type="text/javascript" src="/js/alittlebear/light-theme.js"></script><nav class="navbar navbar-main is-fixed-top"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.png" alt="alittlebear&#039;s blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0" data-i18n-nav="机器学习">机器学习</a><a class="navbar-item" href="/categories/%E6%9D%82%E8%B0%88" data-i18n-nav="杂谈">杂谈</a><a class="navbar-item" href="/categories/%E9%A1%B9%E7%9B%AE" data-i18n-nav="项目">项目</a><a class="navbar-item" href="/categories/%E7%BE%8E%E9%A3%9F%E4%B8%8E%E6%97%A5%E5%B8%B8" data-i18n-nav="美食与日常">美食与日常</a><a class="navbar-item" href="/categories" data-i18n-nav="分类">分类</a><a class="navbar-item" href="/about" data-i18n-nav="关于">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="音乐" href="/music" data-i18n-nav="音乐"><i class="fas fa-music"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="相册" href="/album" data-i18n-nav="相册"><i class="fas fa-image"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="自用" href="/self" data-i18n-nav="自用"><i class="fas fa-id-card"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="网盘" href="https://utoronto-my.sharepoint.com/:f:/g/personal/joseph_siu_mail_utoronto_ca/EiS0mVlUGQRDnNp8IMdeSocBSaH5iRZT5E_Hjp0o6FDODQ?e=DlSmD5" data-i18n-nav="网盘"><i class="fas fa-hdd"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="关于" href="/about" data-i18n-nav="关于"><i class="fas fa-user"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a><a class="navbar-item" id="lang-nav" title="EN/中" href="javascript:;" onClick="toggleLanguage()"><i class="fas fa-language"></i></a><a class="navbar-item" id="light-theme-nav" title="Light Theme" href="javascript:;"><i class="fas fa-adjust" id="light-theme-icon"></i></a><a class="navbar-item" id="bg-switch-nav" title="Switch Background" href="javascript:;"><i class="fas fa-palette" id="bg-switch-icon"></i></a><a class="navbar-item" id="night-nav" title="Night" href="javascript:;"><i class="fas fa-moon" id="night-icon"></i></a></div></div></div></nav><script type="text/javascript" src="/js/i18n.js"></script><script type="text/javascript" src="/js/theme-setting.js"></script><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-plus"> </i>2025-11-13  <a class="commentCountImg" href="/posts/d785/#comment-container"><span class="display-none-class">3c89b2e7e9749ccd0fde762b256ee1bf</span><i class="far fa-comment-dots"></i> <span class="commentCount" id="3c89b2e7e9749ccd0fde762b256ee1bf">0</span>  </a><span class="level-item"><i class="far fa-clock"> </i>2 小时  <i class="fas fa-pencil-alt"> </i>14.1 k</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">生成式模型、判别式模型、指数族分布、和广义线性模型</h1><div class="content"><blockquote>
+<p>朴素贝叶斯 Naive Bayes classifier</p>
+<p>逻辑回归 Logistic regression</p>
+<p>指数族分布 Exponential family distributions</p>
+<p>广义线性模型 Generalized linear models</p>
+<p>本文分析生成式概率分类模型朴素贝叶斯和判别式概率分类模型逻辑回归的根源，关系，以及他们在广义线性模型框架下的统一。</p>
+<p>（基于朱军老师的PPT和教科书《概率机器学习》）</p>
+</blockquote>
+<span id="more"></span>
+<h1 id="特征空间分布">特征空间分布</h1>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/202511121706801.png" /></p>
+<p>对于以上数据，为了尝试预测一个新数据属于红蓝两类分别的概率，我们先尝试获取两类数据的分布，当然，基于数据我们只能获取到两类的经验分布（empirical
+distribution），这里有两种方法：</p>
+<ol type="1">
+<li>直方图（Histogram） <img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/202511121716415.png" /></li>
+<li>核密度估计（Kernel density estimation,
+KDE），直方图（也就是经验数据）的平滑化（Smoothing）<img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/202511121716050.png" /></li>
+</ol>
+<h2 id="核密度估计kde">核密度估计（KDE）</h2>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/202511121720559.png" /></p>
+<p>图中真实分布可以看作是两个正态分布的加权和</p>
+<p><span class="math display">\[p(x) = 0.4 \times \mathcal{N}(0, 1) +
+0.6 \times \mathcal{N}(6, 1)\]</span></p>
+<p>要估计此分布，我们可以假设每个数据都是一个正态分布<span
+class="math inline">\(\mathcal{N}(0, 1)\)</span>的期望值，叠加<span
+class="math inline">\(N\)</span>个正态分布<span
+class="math inline">\(\mathcal{N}(0, 1)\)</span>然后取平均：</p>
+<p><span class="math display">\[p(\mathbf{x}) = \frac{1}{N}
+\sum_{n=1}^{N} k\left(\frac{\mathbf{x} -
+\mathbf{x}_n}{h}\right)\]</span></p>
+<p><span class="math display">\[k(\mathbf{u}) = \mathcal{N}(\mathbf{0},
+\mathbf{I})\]</span></p>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/202511122246510.png" /></p>
+<p>可以看到，<span
+class="math inline">\(h\)</span>（带宽，Bandwidth）决定了对于经验数据的拟合程度。</p>
+<ul>
+<li><span
+class="math inline">\(h\)</span>越小，越拟合数据，抖动越多</li>
+<li><span class="math inline">\(h\)</span>越大，越平滑，导致欠拟合</li>
+</ul>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/202511122330393.png" /></p>
+<p>然后，有了特征空间的分布（的预测），就可以对新数据用上图占比分析两类的概率了。</p>
+<h1
+id="生成式模型和判别式模型的基本介绍">生成式模型和判别式模型的基本介绍</h1>
+<p>这节先简单介绍两种模型是什么，与他们的相关性，后面会详细介绍他们的比较与优劣。</p>
+<p>考虑垃圾邮件的例子，类别为垃圾邮件和正常邮件，特征为关键词。</p>
+<h2 id="生成式模型generative-model">生成式模型（Generative Model）</h2>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/202511141602054.png" /></p>
+<p>生成式模型<em>学习</em>（不一定真的进行生成这个行为，而是学习生成）每个类别的数据是如何“生成”的。</p>
+<p>如，生成式模型朴素贝叶斯（符号参考下一节）会学习<span
+class="math inline">\(p(x|y)\)</span>，给定类别<span
+class="math inline">\(y\)</span>，每个特征<span
+class="math inline">\(x_i\)</span>的概率分布是怎么样的。</p>
+<p>这样，当考虑新输入（邮件）时，模型会判断这封邮件更像用垃圾邮件的写作模式写作（生成）出来的，还是正常邮件。</p>
+<p>严格来讲，生成式模型假设联合分布<span
+class="math inline">\(P(X,Y)\)</span>（或者分布<span
+class="math inline">\(P(Y)\)</span>和<span
+class="math inline">\(P(X|Y)\)</span>）并从训练数据尝试拟合分布，然后用最有可能的类别作为输出：
+<span class="math display">\[
+\hat{y} = \underset{y}{\mathrm{argmax}} \, P(\mathbf{x}, Y = y) \\
+\hat{y} = \underset{y}{\mathrm{argmax}} \, P(Y = y \mid \mathbf{x})
+\]</span></p>
+<h2 id="判别式模型discriminative-model">判别式模型（Discriminative
+Model）</h2>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/202511141602131.png" /></p>
+<p>判别式模型学习一个决策边界。直接对后验<span
+class="math inline">\(p(y|x)\)</span>建模（“后验”参考下一小节），直接判断特征输入什么时候更像垃圾邮件，什么时候更像写作模式。</p>
+<p>严格来讲，与其像生成式模型一样给出间接输出，判别式模型直接假设分布<span
+class="math inline">\(P(Y|X)\)</span>并训练，最后直接给出输出。</p>
+<h2 id="相关性">相关性</h2>
+<p>根据贝叶斯公式，</p>
+<p><span class="math display">\[p(y \mid x) =
+\frac{p(y,x)}{p(x)}=\frac{p(y) }{p(x)}p(x \mid y)\]</span></p>
+<p>可以看到判别式模型直接对左边进行建模，而生成式模型对右边进行建模（<span
+class="math inline">\(p(x)\)</span>固定，不需要建模）。</p>
+<h1 id="生成式模型朴素贝叶斯-naive-bayes-nb">生成式模型：朴素贝叶斯
+（Naive Bayes, NB）</h1>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/202511122334389.png" /></p>
+<p>上图中<span class="math inline">\(Y\)</span>为类别，<span
+class="math inline">\(x_i\)</span>为特征。NB假设同类下的特征彼此条件性独立（给定类标签）：</p>
+<p><span
+class="math display">\[p(x_1,x_2,x_3,x_4|y)=p(x_1|y)p(x_2|y)p(x_3|y)p(x_4|y)\]</span></p>
+<p>这也是朴素贝叶斯中朴素的来源。</p>
+<p>给定所有特征<span
+class="math inline">\(x_i\)</span>，朴素贝叶斯（NB）反推出这个数据属于哪个类别。也就是，NB通过后验概率<span
+class="math inline">\(p(Y|x)\)</span>“生成”所属类别：</p>
+<p><span class="math display">\[p(y \mid x) =
+\frac{p(y,x)}{p(x)}=\frac{p(y)\times p(x \mid y) }{p(x)}\]</span></p>
+<p><span class="math display">\[y^* = \arg\max_{y\in\mathcal{Y}}
+p(y|x)\]</span></p>
+<ul>
+<li><span
+class="math inline">\(p(y)\)</span>是先验（prior）概率，也就是考虑具体特征<span
+class="math inline">\(x=x_1,...,x_4\)</span>之前，对于类别<span
+class="math inline">\(y\)</span>发生的可能性的“固有/先前”信念。</li>
+<li><span class="math inline">\(p(x\mid
+y)\)</span>是似然（likelihood），也是NB生成能力的体现（通过训练模型）。似然就是给定类别，各特征分别的分布是什么（根据朴素贝叶斯假设类内特征彼此条件独立）。</li>
+<li><span class="math inline">\(p(y |
+x)\)</span>是后验（posterior）概率，也就是在考虑特征后，对于<span
+class="math inline">\(y\)</span>发生的可能性的修正概率。</li>
+</ul>
+<p>因为我们只考虑两个<span class="math inline">\(p(y \mid
+x)\)</span>哪个概率更高，所以可以忽略<span
+class="math inline">\(p(x)\)</span>。</p>
+<p>也就是，NB通过以上贝叶斯公式描述了一个信念（Belief）更新的过程：</p>
+<ol type="1">
+<li>先学习一个先验信念<span
+class="math inline">\(p(y)\)</span>，也就是垃圾邮件和正常邮件各自的占比。</li>
+<li>然后学习似然<span class="math inline">\(p(x|y)\)</span>。</li>
+<li>当新数据<span
+class="math inline">\(X\)</span>出现时，通过贝叶斯公式求出后验概率<span
+class="math inline">\(p(y|x)\)</span>。</li>
+<li>由于我们只考虑哪个<span
+class="math inline">\(p(y|x)\)</span>概率最大，所以可以忽略相同系数<span
+class="math inline">\(1/p(x)\)</span>。</li>
+</ol>
+<p>更概括的去说，NB（生成式分类器）学习联合分布<span
+class="math inline">\(p(y,x)\)</span>来得到<span
+class="math inline">\(p(y \mid x)\)</span>。</p>
+<h2 id="贝叶斯错误">贝叶斯错误</h2>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/202511131427846.png" /></p>
+<p><span class="math display">\[p(error|\mathbf{x}) = \begin{cases}
+p(y=1|\mathbf{x}) &amp; \text{if we decide } y=0 \\ p(y=0|\mathbf{x})
+&amp; \text{if we decide } y=1 \end{cases}\]</span></p>
+<p><span class="math display">\[p(error) = \int_{-\infty}^{\infty}
+p(error|\mathbf{x})p(\mathbf{x})d\mathbf{x}\]</span></p>
+<p>可以看到NB最大化后验概率等价于最小化错误率（对于每个<span
+class="math inline">\(x\)</span>都最小化错误率），所以在所有分类其中NB必然是总（平均）错误率<span
+class="math inline">\(p(error)\)</span>最低的。</p>
+<p>我们定义<em>贝叶斯错误率</em>为此错误率，也就是最优分类器能达到的最低（平均）错误率。</p>
+<p>可以看到，贝叶斯错误率的来源不是模型不够好，而是数据本身具有<em>固有的不确定性</em>。</p>
+<h2 id="类别和特征的概率分布">类别和特征的概率分布</h2>
+<p>然而，类别和特征的真实分布模型并不知道，所以需要通过假设某些分布来近似真实分布。</p>
+<h2 id="二元特征nb">二元特征NB</h2>
+<p>假设类别和特征（<span
+class="math inline">\(d\)</span>个）都是伯努利分布（二元，值只取<span
+class="math inline">\(0,1\)</span>）。</p>
+<p>通过朴素贝叶斯假设，</p>
+<p><span
+class="math display">\[p(x_1,x_2,x_3,x_4|y)=p(x_1|y)p(x_2|y)p(x_3|y)p(x_4|y)\]</span></p>
+<p>学习联合分布<span
+class="math inline">\(p(x,y)=p(y)p(x|y)\)</span>，相当于学习<span
+class="math inline">\(p(y)\)</span>和每个<span
+class="math inline">\(p(x_i|y)\)</span>。</p>
+<p>那么，设定似然为：</p>
+<p><span class="math display">\[p(x_j|y=0, \mathbf{q}) = \begin{cases}
+q_{0j} &amp; \text{if } x_j = 1 \\ 1 - q_{0j} &amp; \text{otherwise}
+\end{cases}\]</span></p>
+<p><span class="math display">\[p(x_j|y=1, \mathbf{q}) = \begin{cases}
+q_{1j} &amp; \text{if } x_j = 1 \\ 1 - q_{1j} &amp; \text{otherwise}
+\end{cases}\]</span></p>
+<p>先验为：</p>
+<p><span class="math display">\[p(y|\pi) = \begin{cases} \pi &amp;
+\text{if } y = 1 \text{ (i.e., bird)} \\ 1 - \pi &amp; \text{otherwise}
+\end{cases}\]</span></p>
+<p>总共需要学习<span class="math inline">\(2d+1\)</span>个参数。</p>
+<p>如果我们<strong>没有</strong>朴素贝叶斯假设的话，可以看到需要学习<span
+class="math inline">\(2^{d+1}\)</span>指数级个参数。</p>
+<h3
+id="最大似然估计maximum-likelihood-estimation-mle">最大似然估计（Maximum
+likelihood estimation, MLE）</h3>
+<p>我们可以用经验数据，通过最大似然估计（MLE）来学习调整上小节的参数。</p>
+<p>假设有（<span class="math inline">\(N\)</span>个数据的）数据集<span
+class="math inline">\(\{x_i,y_i\}_{i\le
+N}\)</span>，我们的目标是让我们的伯努利参数<span
+class="math inline">\(\pi,
+q\)</span>最大化经验数据发生的概率。也就是，寻找哪组参数让样本看起来最合理，最有可能发生。</p>
+<p>假设所有数据都是i.i.d.的，那么</p>
+<p><span class="math display">\[p(\{\mathbf{x}_i, y_i | \pi,
+\mathbf{q}\}) = \prod_{i=1}^{N} p(\mathbf{x}_i, y_i | \pi,
+\mathbf{q})\]</span></p>
+<p>最佳参数为：</p>
+<p><span class="math display">\[(\hat{\pi}, \hat{\mathbf{q}}) = \arg
+\max_{\pi, \mathbf{q}} p(\{\mathbf{x}_i, y_i\} | \pi,
+\mathbf{q})\]</span></p>
+<p>但是，乘积远没有和好计算。于是，根据<span
+class="math inline">\(\log\)</span>函数的单调递增性质，最大化上面乘积等价于最大化其log（假设不存在出现概率为0的数据）。</p>
+<p><span class="math display">\[\log p(\{\mathbf{x}_i, y_i | \pi,
+\mathbf{q}\}) = \sum_{i=1}^{N} \log p(\mathbf{x}_i, y_i | \pi,
+\mathbf{q})\]</span></p>
+<p><span class="math display">\[(\hat{\pi}, \hat{\mathbf{q}}) = \arg
+\max_{\pi, \mathbf{q}} \log p(\{\mathbf{x}_i, y_i\} | \pi,
+\mathbf{q})\]</span></p>
+<p>于是，通过求导并等于0的方式，可以求出最佳参数为：</p>
+<p><span class="math display">\[\hat{\pi} = \frac{N_1}{N} \quad
+\hat{q}_{0j} = \frac{N_0^j}{N_0} \quad \hat{q}_{1j} =
+\frac{N_1^j}{N_1}\]</span></p>
+<p><span class="math display">\[N_k = \sum_{i=1}^{N} \mathbf{I}(y_i = k)
+\ : \  \text{类别为k的数据量} \]</span></p>
+<p><span class="math display">\[N_k^j = \sum_{i=1}^{N} \mathbf{I}(y_i =
+k, x_{ij} = 1) \ : \ \text{类别k内特征为j的数据量}\]</span></p>
+<blockquote>
+<p><span class="math inline">\(\hat{\pi}\)</span>的推导。</p>
+<p>考虑<span class="math inline">\(\sum_{i=1}^{N} \log p(\mathbf{x}_i,
+y_i | \pi, \mathbf{q})\)</span>，对于每个联合分布，拆分成<span
+class="math inline">\(p(\mathbf{x}_i, y_i | \pi, \mathbf{q})=p(y_i |
+\pi, \mathbf{q})p(\mathbf{x}_i | y_i, \pi, \mathbf{q})\)</span>。</p>
+<p>剔除不相关参数，变为<span class="math inline">\(p(y_i |
+\pi)p(\mathbf{x}_i | y_i, \mathbf{q})\)</span>。</p>
+<p>取<span
+class="math inline">\(\log\)</span>，乘积拆分为和，所有样本的第一项第二项分别组在一起，由于第二项对于<span
+class="math inline">\(\pi\)</span>是常数，对<span
+class="math inline">\(\pi\)</span>求偏导其消失，我们只考虑第一项。</p>
+<p>第一项因<span
+class="math inline">\(p(y_i|\pi)\)</span>为伯努利，等于<span
+class="math inline">\(\pi^{y_i}(1-\pi)^{1-y_i}\)</span>，取<span
+class="math inline">\(\log\)</span>为<span
+class="math inline">\(y_i\log\pi+(1-y_i)\log(1-\pi)\)</span>。</p>
+<p>于是，对<span class="math inline">\(\sum_{i=1}^{N} \log
+p(\mathbf{x}_i, y_i | \pi, \mathbf{q})\)</span>求<span
+class="math inline">\(\pi\)</span>的偏导并设为0，变为 <span
+class="math display">\[
+\begin{aligned}
+\frac{\partial}{\partial \pi} \sum_{i=1}^{N} \left[ y_i \log \pi +
+(1-y_i) \log(1-\pi) \right] &amp;= 0 \\
+\sum_{i=1}^{N} \frac{\partial}{\partial \pi} \left[ y_i \log \pi +
+(1-y_i) \log(1-\pi) \right] &amp;= 0 \\
+\sum_{i=1}^{N} \left[ y_i \cdot \frac{1}{\pi} + (1-y_i) \cdot
+\frac{1}{1-\pi} \cdot (-1) \right] &amp;= 0 \\
+\sum_{i=1}^{N} \left[ \frac{y_i}{\pi} - \frac{1-y_i}{1-\pi} \right]
+&amp;= 0 \\
+\frac{1}{\pi} \sum_{i=1}^{N} y_i - \frac{1}{1-\pi} \sum_{i=1}^{N}
+(1-y_i) &amp;= 0 \\
+\frac{N_1}{\pi} - \frac{N_0}{1-\pi} &amp;= 0 \\
+\frac{N_1}{\pi} &amp;= \frac{N_0}{1-\pi} \\
+N_1 (1-\pi) &amp;= N_0 \pi \\
+N_1 - N_1 \pi &amp;= N_0 \pi \\
+N_1 &amp;= N_0 \pi + N_1 \pi \\
+N_1 &amp;= (N_0 + N_1) \pi \\
+N_1 &amp;= N \pi \\
+\hat{\pi} &amp;= \frac{N_1}{N}
+\end{aligned}
+\]</span></p>
+</blockquote>
+<h3 id="mle等价于最小化kl散度">MLE等价于最小化KL散度</h3>
+<p>KL散度的概念参考<a
+href="https://alittlebear.net/posts/f596/">这里</a>。</p>
+<p>MLE可以看到就是在最小化经验分布和模型分布之间的KL散度：</p>
+<p>首先考虑三个相关分布；</p>
+<ol type="1">
+<li>数据的真实分布。模型无法直接得知，需要通过数据来近似，模拟。</li>
+<li>经验分布。观测到的数据代表的分布，当数据没有偏见时，随着样本量增加，经验分布逼近真实分布。</li>
+<li>模型分布。用参数<span class="math inline">\(\pi,
+q\)</span>来近似，表示经验分布。</li>
+</ol>
+<p>数据固定的情况真实分布和经验分布无法改变，只能让模型分布逼近经验分布来尝试对真实分布进行逼近。</p>
+<p>在信息理论中，衡量分布是否“接近”就可以通过KL散度来判断。</p>
+<p>我们现在证明MLE的最优参数等价于最小化KL散度的参数，也就是：</p>
+<p><span class="math display">\[\theta^* = \arg\min_{\theta}
+D_{KL}(P_{true} \| Q_{\theta})\]</span></p>
+<p>这里<span class="math inline">\(P_{true}\)</span>是真实分布，<span
+class="math inline">\(Q_\theta\)</span>是模型分布，<span
+class="math inline">\(\theta=(\pi,q)\)</span>。</p>
+<hr />
+<p>首先，</p>
+<p><span class="math display">\[D_{KL}(P_{true} \| Q_{\theta}) = \int
+P_{true}(x) \log\left(\frac{P_{true}(x)}{Q_{\theta}(x)}\right)
+dx\]</span></p>
+<p>拆分<span class="math inline">\(\log\)</span>，</p>
+<p><span class="math display">\[D_{KL}(P_{true} \| Q_{\theta}) =
+\underbrace{\int P_{true}(x) \log(P_{true}(x)) dx}_{\text{Term 1}} -
+\underbrace{\int P_{true}(x) \log(Q_{\theta}(x)) dx}_{\text{Term
+2}}\]</span></p>
+<p>第一项是<span class="math inline">\(P_{true}\)</span> 的负熵
+(negative entropy)，对于参数<span
+class="math inline">\(\theta\)</span>是常数，忽略。</p>
+<p>第二项是他们的交叉熵，也就是</p>
+<p><span class="math display">\[E_{x \sim
+P_{true}}[\log(Q_{\theta}(x))]\]</span></p>
+<p>即 <span class="math inline">\(\log(Q_{\theta}(x))\)</span>
+在真实分布下的期望。关于交叉熵信息论的定义参考上面超链接。</p>
+<p>所以，最小化KL散度等价于最大化</p>
+<p><span class="math display">\[E_{x \sim
+P_{true}}[\log(Q_{\theta}(x))]\]</span></p>
+<p>我们不知道真实分布（true
+distribution），担可以通过经验分布（empirical
+distribution）模拟、近似真实分布。</p>
+<p><span class="math display">\[E_{x \sim
+P_{true}}[\log(Q_{\theta}(x))]\approx E_{x \sim
+P_{emp}}[\log(Q_{\theta}(x))]\]</span></p>
+<p>但，对于经验分布来说，每个数据点<span
+class="math inline">\(x\)</span>发生的概率就是<span
+class="math inline">\(\frac1n\)</span>，假设有<span
+class="math inline">\(n\)</span>个数据点。</p>
+<p><span class="math display">\[E_{x \sim P_{emp}}[\log(Q_{\theta}(x))]
+= \sum_{i=1}^n P_{emp}(x_i) \log(Q_{\theta}(x_i)) = \sum_{i=1}^n
+\frac{1}{n} \log(Q_{\theta}(x_i))\]</span></p>
+<p>于是，最大化原始目标又变为了最大化（不考虑常数<span
+class="math inline">\(\frac1n\)</span>）</p>
+<p><span
+class="math display">\[\sum_{i=1}^n\log(Q_{\theta}(x_i))\]</span></p>
+<p>这刚好对应了MLE最大化的log-似然（log-likelihood）：</p>
+<p><span class="math display">\[\log p(\{\mathbf{x}_i, y_i\} | \pi,
+\mathbf{q})\]</span></p>
+<blockquote>
+<p>贝叶斯决策里的似然与MLE的似然不一样，语境不同。</p>
+</blockquote>
+<p>所以，他们等价。</p>
+<hr />
+<h3 id="拉普拉斯平滑">拉普拉斯平滑</h3>
+<p>MLE的最佳参数之前提到了为</p>
+<p><span class="math display">\[\hat{\pi} = \frac{N_1}{N} \quad
+\hat{q}_{0j} = \frac{N_0^j}{N_0} \quad \hat{q}_{1j} =
+\frac{N_1^j}{N_1}\]</span></p>
+<p>但是，<span class="math inline">\(N_0,
+N_1\)</span><em>有可能</em>为0（数据稀疏性，也就是零计数问题）。</p>
+<p>为了保证分母不为0，我们用拉普拉斯平滑</p>
+<p><span class="math display">\[\hat{q}_{0j} = \frac{N_0^j + \alpha}{N_0
++ 2\alpha}\]</span></p>
+<p><span class="math display">\[\hat{q}_{1j} = \frac{N_1^j + \alpha}{N_1
++ 2\alpha}\]</span></p>
+<p>其中<span class="math inline">\(\alpha&gt;0\)</span>。</p>
+<p>拉普拉斯平滑看起来是凭空捏造的，但其实是下一小节贝叶斯估计的一个特例。</p>
+<h3
+id="从mle拉普拉斯平滑到最大后验估计">从MLE，拉普拉斯平滑到最大后验估计</h3>
+<p>首先，正如上小节拉普拉斯平滑中提到的，MLE的缺陷就在于其本质上就是“数频率”，对于数据稀疏（部分特征一次都没出现过）的情况，MLE会崩溃。</p>
+<p>为了解决<span
+class="math inline">\(q_{ij}\)</span>无法被定义的问题，我们可以给所有<span
+class="math inline">\(q_{ij}\)</span>一个”初始信念”（假设一个先验分布）。然后，根据观测数据来更新我们的信念，得到一个后验分布。最后，从后验分布中取概率最大的点为<span
+class="math inline">\(q_{ij}\)</span>的估计（也叫做最大后验估计，Maximum
+a Posteriori Estimate，MAP)）。 想法类似于NB信念更新的过程。</p>
+<p>也就是，我们需要一个“先验”，是为了避免 MLE 在数据不足时做出“非 0 即
+1”的极端（过拟合）估计。</p>
+<h4 id="beta分布">Beta分布</h4>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/202511131750287.png" /></p>
+<p>我们选取Beta分布作为参数的先验（对于参数<span
+class="math inline">\(q_{1j}\)</span>）。</p>
+<p><span class="math display">\[p_0(q_{1j} | \alpha_1, \alpha_2) =
+\text{Beta}(\alpha_1, \alpha_2) = \frac{\Gamma(\alpha_1 +
+\alpha_2)}{\Gamma(\alpha_1)\Gamma(\alpha_2)} q_{1j}^{\alpha_1 - 1} (1 -
+q_{1j})^{\alpha_2 - 1}\]</span></p>
+<p>选Beta有几个原因：</p>
+<ol type="1">
+<li><p><span
+class="math inline">\(q_{1j}\)</span>作为伯努利的参数取值<span
+class="math inline">\([0,1]\)</span>，而Beta的定义域（Domain）刚好匹配。</p></li>
+<li><p><strong>共轭先验</strong>（Conjugate
+Prior）。正如上面一条提到的，<span
+class="math inline">\(q_{0j}\)</span>来自伯努利过程（Bernoulli
+process），多个伯努利过程的叠加（求和）就是二项分布（Binomial
+distribution），似然的数学形式对应了<span class="math inline">\(L(q)
+\propto q^k (1-q)^{n-k}\)</span>。</p>
+<p>这与上方Beta分布的概率密度函数（PDF）展开后的形式完全相同。</p>
+<p><span class="math display">\[  \begin{aligned}  \text{Posterior}
+&amp;\propto \text{Likelihood} \times \text{Prior} \\  p(q \mid
+\text{Data}) &amp;\propto \left( q^{N_1^j} (1-q)^{N_1 - N_1^j} \right)
+\times \left( q^{\alpha_1-1} (1-q)^{\alpha_2-1} \right) \\  p(q \mid
+\text{Data}) &amp;\propto q^{(N_1^j + \alpha_1) - 1} \cdot (1-q)^{(N_1 -
+N_1^j + \alpha_2) - 1}  \end{aligned}\]</span></p>
+<p>先验和似然相乘得到的后验仍然是Beta分布。当先验分布（Beta）和似然函数（Binomial/Bernoulli）结合后，能得到一个与先验同类型（也是Beta）的后验分布时，我们称这个先验（Beta）是这个似然（Bernoulli）的“共轭先验”。</p></li>
+</ol>
+<p>Beta作为共轭先验最大的好处就是信念更新仅需要做加法：</p>
+<ul>
+<li>先验信念是 <span class="math inline">\(Beta(\alpha_1,
+\alpha_2)\)</span>。</li>
+<li>观测到 <span class="math inline">\(N_1^j\)</span> 次成功（<span
+class="math inline">\(x_j=1\)</span>）和 <span
+class="math inline">\((N_1 - N_1^j)\)</span> 次失败（<span
+class="math inline">\(x_j=0\)</span>）。</li>
+<li>后验信念<em>自动</em>更新为 <span
+class="math inline">\(Beta(\alpha_1 + N_1^j, \alpha_2 + (N_1 -
+N_1^j))\)</span>。</li>
+</ul>
+<h3 id="贝叶斯估计总结">贝叶斯估计总结</h3>
+<p>考虑更新参数<span class="math inline">\(q_{1j}\)</span>：</p>
+<ol type="1">
+<li>用 <span class="math inline">\(Beta(\alpha_1, \alpha_2)\)</span>
+作为先验。</li>
+<li>观测 <span class="math inline">\(N_1^j\)</span> 次 <span
+class="math inline">\(x_j=1\)</span> 和 <span class="math inline">\((N_1
+- N_1^j)\)</span> 次 <span class="math inline">\(x_j=0\)</span>（总共
+<span class="math inline">\(N_1\)</span> 次观测）。</li>
+<li>后验分布更新为 <span class="math inline">\(Beta(N_1^j + \alpha_1,
+N_1 - N_1^j + \alpha_2)\)</span>。</li>
+<li>MAP估计为新Beta分布的众数（mode，即峰值点）<span
+class="math inline">\(\frac{A-1}{A+B-2}\)</span>。</li>
+<li>代入 <span class="math inline">\(A = N_1^j + \alpha_1\)</span> 和
+<span class="math inline">\(B = N_1 - N_1^j +
+\alpha_2\)</span>得到最终后验估计：</li>
+</ol>
+<p><span class="math display">\[\hat{q}_{1j} = \frac{(N_1^j + \alpha_1)
+- 1}{(N_1^j + \alpha_1) + (N_1 - N_1^j + \alpha_2) - 2} = \frac{N_1^j +
+\alpha_1 - 1}{N_1 + \alpha_1 + \alpha_2 - 2}\]</span></p>
+<p>类似的，参数<span class="math inline">\(q_{0j}\)</span>更新为：</p>
+<p><span class="math display">\[\hat{q}_{0j}  = \frac{N_0^j + \alpha_1 -
+1}{N_0 + \alpha_1 + \alpha_2 - 2}\]</span></p>
+<h4
+id="mle和拉普拉斯平滑作为map估计的特例">MLE和拉普拉斯平滑作为MAP估计的特例</h4>
+<p>MLE：<span class="math inline">\(\hat{q}_{1j} =
+\frac{N_{1}^{j}}{N_{1}}\)</span></p>
+<p>拉普拉斯平滑：<span class="math inline">\(\hat{q}_{1j} =
+\frac{N_{1}^{j}+\alpha}{N_{1}+2\alpha}\)</span></p>
+<p>MAP估计： <span class="math inline">\(\hat{q}_{1j} =
+\frac{N_{1}^{j}+\alpha_{1}-1}{N_{1}+\alpha_{1}+\alpha_{2}-2}\)</span></p>
+<p>令<span
+class="math inline">\(\alpha_1=\alpha_2=1\)</span>（对应了上图的绿线），MAP估计的最优参数退化为MLE。</p>
+<p>解方程组：</p>
+<p><span class="math inline">\(\alpha = \alpha_1 - 1\)</span></p>
+<p><span class="math inline">\(2\alpha = \alpha_1 + \alpha_2 -
+2\)</span></p>
+<p>得到<span class="math inline">\(\alpha_1 = \alpha + 1\)</span>，
+<span class="math inline">\(\alpha_2 = \alpha +
+1\)</span>。于是可以看到拉普拉斯平滑也为MAP估计的一个特例。</p>
+<hr />
+<p>尽管MAP估计理论很泛用，现实中一般用的还是拉普拉斯平滑并仅考虑一个超参数<span
+class="math inline">\(\alpha\)</span>。</p>
+<h2 id="高斯朴素贝叶斯gaussian-naive-bayes-gnb">高斯朴素贝叶斯（Gaussian
+Naive Bayes, GNB）</h2>
+<p>上面假设了类别和特征都是二元（Binary）的，通过简单的扩展可以处理所有离散（Discrete）类型的特征和类别。不仅如此，NB也可以扩展并处理连续的特征、类别。</p>
+<p>高斯朴素贝叶斯假设了先验继续服从伯努利，而似然服从正态（高斯）分布：
+<span class="math display">\[
+Y \sim \text{Bernoulli}(\pi) \\
+P(X_i \mid Y = y) = \mathcal{N}(\mu_{iy}, \sigma_{iu}^2)
+\]</span> 每个参数可以用不同的均值和方差，但参数数量可能过多。</p>
+<p>为此，可以假设：</p>
+<ul>
+<li>方差与类别无关。<span class="math inline">\(\sigma_{i0}^2 =
+\sigma_{i1}^2 = \sigma_i^2\)</span>。</li>
+<li>方差与特征无关。<span class="math inline">\(\sigma_{1y}^2 =
+\sigma_{2y}^2 = \sigma_y^2\)</span>。</li>
+<li>方差与两者都无关。<span class="math inline">\(\sigma\)</span>。</li>
+</ul>
+<h3 id="mle估计参数">MLE估计参数</h3>
+<p><span class="math display">\[
+\hat{\mu}_{ik} = \frac{1}{\sum_{n} \mathbb{I}(y_n = k)} \sum_{n} x_{ni}
+\mathbb{I}(y_n = k) \\
+\hat{\sigma}_{ik}^2 = \frac{1}{\sum_{n} \mathbb{I}(y_n = k)} \sum_{n}
+(x_{ni} - \hat{\mu}_{ik})^2 \mathbb{I}(y_n = k) \\
+h(\mathbf{x}) = \underset{y}{\mathrm{argmax}} \, P(y) \prod_{i} P(x_i
+\mid y)
+\]</span></p>
+<p>和前面的MLE估计类似，可以看到估计的均值就是类别<span
+class="math inline">\(k\)</span>和特征<span
+class="math inline">\(i\)</span>样本的均值；估计的方差就是类别<span
+class="math inline">\(k\)</span>和特征<span
+class="math inline">\(i\)</span>样本的方差。</p>
+<h2 id="树增广朴素贝叶斯tree-augmented-nb">树增广朴素贝叶斯（Tree
+augmented NB）</h2>
+<p>除了类别和特征分布上的扩展，对于朴素贝叶斯假设也可以通过扩展模型结构来松化。如，使用树增强朴素贝叶斯（Tree
+augmented NB）：</p>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/202511140124881.webp" /></p>
+<p>我们松弛了朴素贝叶斯假设，此模型的参数也从原NB的<span
+class="math inline">\(2d+1\)</span>变成了<span
+class="math inline">\(4d+1\)</span>，还是线性，远好于指数。</p>
+<h2 id="贝叶斯模型的决策边界">贝叶斯模型的决策边界</h2>
+<p>NB看起来这么好用，错误率这么低，那么决策边界是否变为非线性了呢？</p>
+<h3 id="同方差高斯朴素贝叶斯-gnb">（同方差）高斯朴素贝叶斯 GNB</h3>
+<p>假设所有参数的正态分布方差与类别无关<span
+class="math inline">\(\sigma_{i0}^2 = \sigma_{i1}^2 =
+\sigma_i^2\)</span>。</p>
+<p>让<span class="math inline">\(X=X_1,...,X_d\)</span>，决策边界是<span
+class="math inline">\(P(Y=0|X) = P(Y=1|X)\)</span>
+的地方，通过贝叶斯公式，这等价于<span
+class="math inline">\(P(X|Y=0)P(Y=0) = P(X|Y=1)P(Y=1)\)</span>。</p>
+<p>取对数几率，这等价于 <span class="math display">\[
+\log \frac{P(X|Y=0)P(Y=0)}{P(X|Y=1)P(Y=1)} = 0\\
+\sum_{i=1}^d \left( \log P(X_i|Y=0) - \log P(X_i|Y=1) \right) + \log
+\frac{P(Y=0)}{P(Y=1)} = 0\\
+\sum_{i=1}^d \left( -\frac{(x_i - \mu_{i0})^2}{2\sigma_i^2} -
+\left(-\frac{(x_i - \mu_{i1})^2}{2\sigma_i^2}\right) \right) + C = 0\\
+\sum_{i=1}^d \frac{1}{2\sigma_i^2} \left( (x_i - \mu_{i1})^2 - (x_i -
+\mu_{i0})^2 \right) + C = 0\\
+\sum_{i=1}^d \underbrace{\left(\frac{\mu_{i0} -
+\mu_{i1}}{\sigma_i^2}\right)}_{w_i} x_i + \underbrace{\left(
+\sum_{i=1}^d \frac{\mu_{i1}^2 - \mu_{i0}^2}{2\sigma_i^2} + C
+\right)}_{w_0} = 0
+\]</span> 上面代入了<span
+class="math inline">\(P(X_i|Y=y)=\mathcal{N}(\mu_{iy},\sigma_i^2)\)</span>，<span
+class="math inline">\(\mathcal{N}(\mu, \sigma^2) \propto
+\exp\left(-\frac{(x - \mu)^2}{2\sigma^2}\right)\)</span>，以及平方和展开
+<span class="math display">\[
+\left( (x_i - \mu_{i1})^2 - (x_i - \mu_{i0})^2 \right) = (x_i^2 -
+2x_i\mu_{i1} + \mu_{i1}^2) - (x_i^2 - 2x_i\mu_{i0} + \mu_{i0}^2)\\
+= -2x_i\mu_{i1} + 2x_i\mu_{i0} + \mu_{i1}^2 - \mu_{i0}^2= 2x_i(\mu_{i0}
+- \mu_{i1}) + (\mu_{i1}^2 - \mu_{i0}^2)
+\]</span> 哇，竟然是线性决策边界（无慈悲）。</p>
+<h3 id="一般多元高斯非朴素贝叶斯">一般多元高斯（非朴素）贝叶斯</h3>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/202511141427511.png" /></p>
+<p>假设我们抛弃朴素贝叶斯特征之间的条件独立性假设。那么，可以将（类内）所有特征合在一起看成一个多元高斯分布：
+<span class="math display">\[
+P_1 = P(Y = 0), \quad P_2 = P(Y = 1) \\
+p_1(X) = p(X \mid Y = 0) = \mathcal{N}(M_1, \Sigma_1) \\
+p_2(X) = p(X \mid Y = 1) = \mathcal{N}(M_2, \Sigma_2)
+\]</span> 这里，我们需要用协方差矩阵<span
+class="math inline">\(\Sigma\)</span>对所有特征对（<span
+class="math inline">\(X_i\)</span>, <span
+class="math inline">\(X_j\)</span>）直接的关系进行建模。这也是对之前的朴素贝叶斯假设的一种泛化，可以看到假设所有特征彼此类内独立时，协方差矩阵<span
+class="math inline">\(\Sigma\)</span>就退化为了对角线矩阵，并且联合分布<span
+class="math inline">\(X\)</span>可以对于每个特征拆分成一个单元正态分布。</p>
+<p>我们将证明如上图所示，如果两类的协方差矩阵相等，那么决策边界就是线性的；如果不相等，那么就是非线性的（二次的）。上一小节的同方差高速朴素贝叶斯就对应了协方差矩阵<span
+class="math inline">\(\Sigma_1=\Sigma_2=\Sigma\)</span>相等的场景，我们也的确推导出了决策边界为线性。</p>
+<p>和上一小节一样，我们考虑决策边界的等式，然后取<span
+class="math inline">\(\ln\)</span>（而非<span
+class="math inline">\(\log\)</span>） <span class="math display">\[
+P(Y=0|X) = P(Y=1|X)\\
+P(X|Y=0)P(Y=0) = P(X|Y=1)P(Y=1)\\
+\ln P(X|Y=0) + \ln P(Y=0) = \ln P(X|Y=1) + \ln P(Y=1)
+\]</span> 然后，将<span
+class="math inline">\(P(X|Y=y)\)</span>展开为多元高斯分布而非<span
+class="math inline">\(d\)</span>个正态分布的乘积，并取<span
+class="math inline">\(\ln\)</span>： <span class="math display">\[
+p(X | M_y, \Sigma_y) = \frac{1}{(2\pi)^{d/2} |\Sigma_y|^{1/2}}
+\exp\left(-\frac{1}{2}(X-M_y)^T \Sigma_y^{-1} (X-M_y)\right)\\
+\ln p(X | M_y, \Sigma_y) = -\frac{1}{2}(X-M_y)^T \Sigma_y^{-1} (X-M_y) -
+\frac{1}{2}\ln|\Sigma_y| - C
+\]</span> 已经可以看到第一项是<span
+class="math inline">\(X\)</span>的二次项而非一次项。展开第一项： <span
+class="math display">\[
+(X-M_y)^T \Sigma_y^{-1} (X-M_y)= (X^T - M_y^T) \Sigma_y^{-1} (X - M_y)\\
+= X^T \Sigma_y^{-1} X - X^T \Sigma_y^{-1} M_y - M_y^T \Sigma_y^{-1} X +
+M_y^T \Sigma_y^{-1} M_y\\
+= X^T \Sigma_y^{-1} X - 2M_y^T \Sigma_y^{-1} X + M_y^T \Sigma_y^{-1} M_y
+\]</span> 代入到刚开始我们推导的决策边界等式 <span
+class="math display">\[
+\ln P(X|Y=0) - \ln P(X|Y=1) + \text{Const} = 0
+\]</span> 我们得到： <span class="math display">\[
+-\frac{1}{2} \left( X^T \Sigma_0^{-1} X - 2M_0^T \Sigma_0^{-1} X + \dots
+\right)- \\
+\left( -\frac{1}{2} \left( X^T \Sigma_1^{-1} X - 2M_1^T \Sigma_1^{-1} X
++ \dots \right) \right) + \text{Const} = 0
+\]</span> 整理一下： <span class="math display">\[
+\underbrace{-\frac{1}{2} X^T (\Sigma_0^{-1} - \Sigma_1^{-1})
+X}_{\text{二次项 (Quadratic Term)}} + \underbrace{(M_0^T \Sigma_0^{-1} -
+M_1^T \Sigma_1^{-1}) X}_{\text{一次项 (Linear Term)}} +
+\underbrace{C&#39;}_{\text{所有常数}} = 0
+\]</span>
+这证明了一般多元高斯（非朴素）贝叶斯模型的决策边界为二次而非线性。</p>
+<h1
+id="同方差高斯朴素贝叶斯等价于逻辑回归的sigmoid函数">（同方差）高斯朴素贝叶斯等价于（逻辑回归的）Sigmoid函数</h1>
+<p>逻辑（Logistic）函数和Sigmoid函数的定义参考<a
+href="https://alittlebear.net/posts/1f4f/">Logit, Logistic, Sigmoid,
+Softmax在MLP的区别 - alittlebear’s blog</a>。</p>
+<p>首先，一般多元高斯贝叶斯对于<span
+class="math inline">\(y=1\)</span>的后验概率是： <span
+class="math display">\[
+p(y=1 \mid \mathbf{x}, \mu, \Sigma, \pi) = \frac{p(y=1, \mathbf{x} \mid
+\mu, \Sigma, \pi)}{p(\mathbf{x} \mid \mu, \Sigma, \pi)}
+\]</span> 考虑朴素贝叶斯的情况，也就是协方差矩阵<span
+class="math inline">\(\Sigma\)</span>为对角矩阵的情况，多元高斯分解为了单元高斯的乘积。</p>
+<p>将<span class="math inline">\(p(\mathbf{x} \mid \mu, \Sigma,
+\pi)\)</span>通过</p>
+<p><span class="math display">\[p(x) = p(x|y=1)p(y=1) +
+p(x|y=0)p(y=0)\]</span></p>
+<p>分解，分子分母同时除以<span
+class="math inline">\(p(x|y=1)p(y=1)\)</span>，然后结合上面关于（同方差）高斯朴素贝叶斯的决策边界推导，可以得到
+<span class="math display">\[
+\begin{aligned}
+p(y=1 \mid \mathbf{x}, \mu, \Sigma, \pi) &amp;= \frac{1}{1 +
+\frac{p(y=0, \mathbf{x} \mid \mu, \Sigma, \pi)}{p(y=1, \mathbf{x} \mid
+\mu, \Sigma, \pi)}} \\
+&amp;= \frac{1}{1 + \frac{(1-\pi) \prod_i \mathcal{N}(x_i \mid \mu_{i0},
+\sigma_i^2)}{\pi \prod_i \mathcal{N}(x_i \mid \mu_{i1}, \sigma_i^2)}} \\
+&amp;= \frac{1}{1 + \exp(-\mathbf{w}^\top \mathbf{x} - w_0)}
+\end{aligned}
+\]</span> 神奇的变为了（下一小节逻辑回归拟合的）Sigmoid函数。</p>
+<p>也就是说，（同方差）高斯朴素贝叶斯在形式上（模型表达能力）等价于下一节讲的逻辑回归模型（直接拟合逻辑Logistic函数，或者说Sigmoid函数作为输出），并且可以看到多元高斯（非朴素）贝叶斯的推广在模型表达能力上优于这两者。</p>
+<h1
+id="判别式模型逻辑回归logistic-regressionlr">判别式模型：逻辑回归（Logistic
+Regression，LR）</h1>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/202511141621388.png" /></p>
+<p>正如上一小节和开始关于判别式模型的描述，逻辑回归模型直接考虑输出概率为Logistic函数，或者说Sigmoid函数（参考上一节超链接）的输出：
+<span class="math display">\[
+P(y = 1 \mid \mathbf{x}) = \frac{1}{1 + \exp(-(w_0 + \mathbf{w}^\top
+\mathbf{x}))}
+\]</span> 更一般的，可以通过添加参数<span
+class="math inline">\(\alpha\)</span> <span class="math display">\[
+\psi_\alpha(v) = \frac{1}{1 + \exp(-\alpha v)}
+\]</span> 来控制Sigmoid函数的陡峭程度。当<span
+class="math inline">\(\alpha\to\infty\)</span>时Sgmoid函数变为阶梯函数（step
+function），阶梯函数对于一些神经网络可能更好，这里不细讲。</p>
+<h2 id="逻辑回归的决策边界">逻辑回归的决策边界</h2>
+<p>正如上一节提到的，逻辑回归的决策边界就是（同方差）高斯朴素贝叶斯的决策边界，线性的。</p>
+<h2 id="多类别逻辑回归">多类别逻辑回归</h2>
+<p>首先，为了简化表示，对于Sigmoid</p>
+<p><span class="math display">\[ P(y = 1 \mid \mathbf{x}) = \frac{1}{1 +
+\exp(-(w_0 + \mathbf{w}^\top \mathbf{x}))} \]</span></p>
+<p>我们增加输入和权重一个维度：</p>
+<p><span class="math display">\[ \text{输入: } \begin{pmatrix} 1 \\
+\mathbf{x} \end{pmatrix} \quad \text{模型权重: } \begin{pmatrix} w_0 \\
+\mathbf{w} \end{pmatrix} \]</span></p>
+<p>来省略<span class="math inline">\(w_0\)</span>的显示：</p>
+<p><span class="math display">\[P(y = 1 \mid \mathbf{x}) = \frac{1}{1 +
+\exp(-\mathbf{w}^\top \mathbf{x})}\]</span></p>
+<p>现在，我们考虑对于多类别数据，如何扩展。</p>
+<h3 id="softmax">Softmax</h3>
+<p>扩展二元Sigmoid为Softmax： <span class="math display">\[
+P(Y=k|x) = \frac{\exp(w_k^\top x)}{\sum_{j=1}^{K} \exp(w_j^\top x)}
+\]</span> 这保证了所有<span
+class="math inline">\(K\)</span>个类别的概率之和为1。</p>
+<h2
+id="最大条件似然估计maximum-conditional-likelihood-estimate-mcle">最大条件似然估计（Maximum
+Conditional Likelihood Estimate, MCLE）</h2>
+<p>这里我们仅考虑二元类别的情况（Sigmoid而不是Softmax）。</p>
+<p>因为逻辑回归不考虑联合分布<span
+class="math inline">\(P(X,Y)\)</span>（或者<span
+class="math inline">\(P(Y)\)</span>和<span
+class="math inline">\(P(X|Y)\)</span>），无法通过MLE的方法找到最优权重<span
+class="math inline">\(w\)</span>。</p>
+<p>所以，我们直接考虑<span
+class="math inline">\(P(Y|X)\)</span>并用其找到最优权重： <span
+class="math display">\[
+\hat{w} = \arg\max_w \prod_{i=1}^N P(y_i | x_i, w)
+\]</span>
+于NB的MLE相同，乘积不好优化，我们对似然（Likelihood）取Log并找对数似然的最优解，他们是相等的。</p>
+<p>通过 <span class="math display">\[
+P(y|x) = P(y=1|x)^y \cdot P(y=0|x)^{1-y}
+\]</span> 我们得到： <span class="math display">\[
+\begin{aligned}
+\mathcal{L}(\mathbf{w}) &amp;= \log \prod_{i=1}^{N} P(y_i \mid
+\mathbf{x}_i, \mathbf{w}) \\
+&amp;= \sum_{i} [y_i \mathbf{w}^\top \mathbf{x}_i - \log(1 +
+\exp(\mathbf{w}^\top \mathbf{x}_i))]\\
+\hat{\mathbf{w}} &amp;= \underset{\mathbf{w}}{\mathrm{argmax}} \,
+\mathcal{L}(\mathbf{w})
+\end{aligned}
+\]</span>
+然而，这个函数不存在闭式解（或者说解析解），但是是凹函数（某些中文教材的凹凸定义相反），所以可以用凸优化的方法（迭代）找到（全局）最优解。</p>
+<h2 id="优化算法">优化算法</h2>
+<p>凸优化最常用的算法就是梯度上升（下降）。</p>
+<h3 id="梯度上升gradient-ascent">梯度上升（Gradient Ascent）</h3>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/202511141707213.png" /></p>
+<p>由于 <span class="math inline">\(\mathcal{L}(w)\)</span>
+是凹函数，我们可以使用梯度上升法来寻找最大值。</p>
+<p>考虑梯度： <span class="math display">\[
+\nabla_{\mathbf{w}} \mathcal{L}(\mathbf{w}) =
+\begin{pmatrix}
+\frac{\partial \mathcal{L}(\mathbf{w})}{\partial w_0} \\
+\vdots \\
+\frac{\partial \mathcal{L}(\mathbf{w})}{\partial w_d}
+\end{pmatrix}
+\]</span> 然后用梯度更新权重： <span class="math display">\[
+\mathbf{w}_{t+1} = \mathbf{w}_t + \eta \nabla_{\mathbf{w}}
+\mathcal{L}(\mathbf{w}) |_{\mathbf{w}_t}
+\]</span> 这里模型超参数<span
+class="math inline">\(\eta\)</span>过小会导致收敛速度过慢（残余错误
+residual
+error不大）；过大收敛会变快但残余错误过大，可能导致迭代时一直震荡无法收敛。</p>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/202511141740327.png" /></p>
+<p>更具体的，Sigmoid函数的梯度通过推导可以看到十分简洁， <span
+class="math display">\[
+\nabla_w \mathcal{L}(w) = \nabla_w \sum_{i=1}^{N} \left[ \dots \right] =
+\sum_{i=1}^{N} \nabla_w \left[ y_i w^{\top}x_i -
+\log(1+\exp(w^{\top}x_i)) \right]
+\]</span> 第一项的梯度为 <span class="math display">\[
+\nabla_w (y_i w^{\top}x_i) = y_i \nabla_w (w^{\top}x_i) = y_i x_i
+\]</span> 第二项的梯度通过链式法则求出。让<span class="math inline">\(u
+= w^{\top}x_i\)</span>，定义<span class="math inline">\(\mu_i =
+P(y=1|x_i, w_t)\)</span>，得出 <span class="math display">\[
+\begin{aligned}
+\frac{d}{du} \left( -\log(1+\exp(u)) \right) &amp;= -
+\frac{1}{1+\exp(u)} \cdot \frac{d}{du}(1+\exp(u))\\
+&amp;= - \frac{1}{1+\exp(u)} \cdot \exp(u)\\
+&amp;= - \frac{\exp(u)}{1+\exp(u)}\\
+\mu_i := P(y=1|x_i, w) &amp;= \frac{1}{1+\exp(-w^{\top}x_i)} =
+\frac{1}{1+\exp(-u)}\\
+&amp;= \frac{1 \cdot \exp(u)}{(1+\exp(-u)) \cdot \exp(u)} =
+\frac{\exp(u)}{\exp(u)+1}\\
+\frac{d}{du} \left( -\log(1+\exp(u)) \right)&amp;=-\mu_i\\
+\nabla_w (-\log(1+\exp(w^{\top}x_i))) &amp;= \left( - \mu_i \right)
+\cdot \nabla_w u = - \mu_i x_i
+\end{aligned}
+\]</span> 合并两项，梯度简化为 <span class="math display">\[
+\nabla_w \mathcal{L}(w) = \sum_i (y_i - \mu_i) x_i
+\]</span> 这也十分符合直觉。<span class="math inline">\((y_i -
+\mu_i^t)\)</span>是第<span
+class="math inline">\(i\)</span>个样本的真实值与预测概率之间的误差。算法让权重<span
+class="math inline">\(w\)</span>沿着误差的方向更新，以减小误差。</p>
+<h3 id="梯度上升的问题">梯度上升的问题</h3>
+<p>梯度上升（下降）作为凸优化最简单的算法，其收敛速度不是最优的。</p>
+<p>如，下面几小节会提到的，可以通过牛顿法（Newton
+method），共轭梯度上升（conjugate gradient
+ascent），迭代重加权最小二乘（iterative reweighted least
+squares，IRLS，一会可以看到对于逻辑回归这等价于牛顿法）来加快收敛速度，减少所需迭代次数。</p>
+<p>此外，权重<span
+class="math inline">\(w\)</span>某些数值过大往往代表了模型过拟合，需要通过正则化来惩罚过大权重数值。</p>
+<h3 id="牛顿法newtons-methodnewton-raphson-method">牛顿法（Newton’s
+Method，Newton-Raphson Method）</h3>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/202511141743571.png" /></p>
+<p>经典牛顿法通过一下更新来迭代找到多项式的根<span
+class="math inline">\(f(x)=0\)</span>： <span class="math display">\[
+x_{t+1}=x_t-\frac{f(x_t)}{f&#39;(x_t)}
+\]</span> 对于我们的问题，为了最大化对数似然 <span
+class="math display">\[
+\mathcal{L}(\mathbf{w}) = \sum_{i} [y_i \mathbf{w}^\top \mathbf{x}_i -
+\log(1 + \exp(\mathbf{w}^\top \mathbf{x}_i))]
+\]</span> 我们需要找到权重<span
+class="math inline">\(w^\star\)</span>最大化<span
+class="math inline">\(\mathcal{L}(w)\)</span>，也就是，让梯度为零（函数为凹函数所以就是全局最大）：
+<span class="math display">\[
+\nabla \mathcal{L}(\mathbf{w}^*) = 0
+\]</span> 把经典牛顿法套过来，迭代过程就变为了 <span
+class="math display">\[
+\mathbf{w}_{t+1} \leftarrow \mathbf{w}_t - H^{-1} \nabla_{\mathbf{w}}
+\mathcal{L}(\mathbf{w}) |_{\mathbf{w}_t}
+\]</span> 其中<span
+class="math inline">\(H\)</span>是Hessian矩阵（二阶导数矩阵） <span
+class="math display">\[
+H = \nabla_{\mathbf{w}}^2 \mathcal{L}(\mathbf{w}) |_{\mathbf{w}_t}
+\]</span> 沿用梯度上升小节的定义<span
+class="math inline">\(\mu_i\)</span>，可以得到具体形式（推导已省略）：
+<span class="math display">\[
+\nabla_{\mathbf{w}} \mathcal{L}(\mathbf{w}) |_{\mathbf{w}_t} = \sum_{i}
+(y_i - \mu_i) \mathbf{x}_i = X(\mathbf{y} - \mathbf{\mu}) \\
+\mu_i = \psi(\mathbf{w}_t^\top \mathbf{x}_i)\\
+H = \nabla_{\mathbf{w}}^2 \mathcal{L}(\mathbf{w}) |_{\mathbf{w}_t} = -
+\sum_{i} \mu_i (1 - \mu_i) \mathbf{x}_i \mathbf{x}_i^\top = - X R X^\top
+\\
+R_{ii} = \mu_i (1 - \mu_i)
+\]</span>
+可以看到牛顿法（以及下面的ILRS）都是二阶方法：使用二阶导数（Hessian矩阵）来更快地逼近最优点。</p>
+<h3
+id="逻辑回归的牛顿法也是迭代重加权最小二乘法iterative-reweighted-least-squaresilrs">逻辑回归的牛顿法也是迭代重加权最小二乘法（iterative
+reweighted least squares，ILRS）</h3>
+<p>上面的牛顿法可以看作是最大化分类任务的条件似然估计（MCLE），通过简单的变换，我们可以发现牛顿法某种意义上也是在最小化平方误差（某种意义上的最小二乘法），也是回归任务的优化目标。</p>
+<p>这也给了我们一些启发，分类模型逻辑回归（或者说决策边界为线性的模型）是否类似回归模型线性回归（两者的区别可以参考<a
+href="https://alittlebear.net/posts/8484">这篇文章</a>）。本文最后的广义线性模型部分就探讨了此问题。</p>
+<h4
+id="标准线性回归最小二乘法的闭式解">标准线性回归最小二乘法的闭式解</h4>
+<p>线性回归模型最小化均方误差（mean square error,
+MSE），等价于最小化平方误差（squared error）</p>
+<p><span class="math display">\[L(w) = ||y - \hat{y}||^2 = ||y - X^\top
+w||^2\]</span></p>
+<p>展开变为 <span class="math display">\[
+\begin{aligned} L(w) &amp;= (y - X^\top w)^\top (y - X^\top w) \\ &amp;=
+(y^\top - w^\top X) (y - X^\top w) \\ &amp;= y^\top y - y^\top X^\top w
+- w^\top X y + w^\top X X^\top w \\ &amp;= y^\top y - 2 w^\top X y +
+w^\top (X X^\top) w\end{aligned}
+\]</span> 求梯度并设其为0来找到最优参数（权重）<span
+class="math inline">\(w\)</span>（可以看到我们可以直接求出闭式解/解析解）
+<span class="math display">\[
+\nabla_w L(w) = 0 - 2 X y + 2 (X X^\top) w=0\\
+- 2 X y + 2 (X X^\top) w = 0\\
+2 (X X^\top) w = 2 X y\\
+(X X^\top) w = X y\\
+(X X^\top)^{-1} (X X^\top) w = (X X^\top)^{-1} X y\\
+w = (X X^\top)^{-1} X y
+\]</span> 这就是最优参数。</p>
+<h4
+id="逻辑回归的牛顿法是迭代重加权最小二乘法">逻辑回归的牛顿法是迭代重加权最小二乘法</h4>
+<p>沿用牛顿法小节的符号，变换牛顿法权重迭代公式， <span
+class="math display">\[
+\begin{aligned}
+\mathbf{w}_{t+1} &amp;= \mathbf{w}_t - H^{-1} \nabla_{\mathbf{w}}
+\mathcal{L}(\mathbf{w}_t) \\
+&amp;= \mathbf{w}_t - (X R X^\top)^{-1} X (\mathbf{\mu} - \mathbf{y}) \\
+&amp;= (X R X^\top)^{-1} \{ X R X^\top \mathbf{w}_t - X (\mathbf{\mu} -
+\mathbf{y}) \} \\
+&amp;= (X R X^\top)^{-1} X R \mathbf{z}\\
+\mathbf{z} &amp;= X^\top \mathbf{w}_t - R^{-1}(\mathbf{\mu} -
+\mathbf{y})
+\end{aligned}
+\]</span> 可以看到，标准最小二乘的闭式解是 <span class="math display">\[
+w = (XX^\top)^{-1} X y
+\]</span> 变形后的牛顿法迭代是 <span class="math display">\[
+w_{t+1} = (X \mathbf{R} X^\top)^{-1} X \mathbf{R} z
+\]</span> 形式完全就是：</p>
+<ul>
+<li>迭代（iterative）。<span class="math inline">\(w_t \to w_{t+1} \to
+w_{t+2} \dots\)</span>。</li>
+<li>重加权（reweighted）。<span
+class="math inline">\(R\)</span>每个迭代都更新。</li>
+<li>最小二乘（least squares）。形式如上是最小二乘问题。</li>
+</ul>
+<p>所以，虽然牛顿法是在最大化条件似然估计，但是对于逻辑回归来说，也是在最小化平方误差，等价于迭代重加权最小二乘法。</p>
+<h3 id="梯度上升和牛顿法ilrs对比">梯度上升和牛顿法/ILRS对比</h3>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/202511141953947.png" /></p>
+<p>上图横轴为迭代次数，纵轴为错误率；红线为IRLS（也就是牛顿法），蓝线为梯度上升（实际为梯度下降）。</p>
+<p>可以看到，IRLS收敛比梯度下降更快（因为是二阶方法）。</p>
+<p>但图中没给出的是，IRLS（作为二阶方法）由于需要计算<span
+class="math inline">\(d\times d\)</span>的Hessian矩阵（<span
+class="math inline">\(d\)</span>为特征数量），计算成本比梯度下降高很多。</p>
+<p>更具体的，IRLS每轮迭代时间复杂度为<span
+class="math inline">\(O(N+d^3)\)</span>，<span
+class="math inline">\(N\)</span>为样本数量，<span
+class="math inline">\(d\)</span>为特征数量；而梯度下降（上升）的每轮迭代时间复杂度为<span
+class="math inline">\(O(Nd)\)</span>。</p>
+<p>下面，我们讨论一些对牛顿法（IRLS法）或梯度下降法的时间复杂度进行改进的算法。</p>
+<h3 id="拟牛顿法quasi-newton-method">拟牛顿法（Quasi-Newton
+Method）</h3>
+<p>https://www.osti.gov/biblio/4252678</p>
+<p>牛顿法（或者说IRLS法）最耗时的操作就是计算<span
+class="math inline">\(d\times d\)</span>的Hessian矩阵。</p>
+<p>拟牛顿法（更具体的，BFGS算法）通过维护一个近似的Hessian矩阵（迭代过程中仅需要<span
+class="math inline">\(O(d^2)\)</span>来更新这个近似矩阵）来替代Hessian矩阵。</p>
+<h3 id="共轭梯度法conjugate-gradient-method">共轭梯度法（Conjugate
+Gradient Method）</h3>
+<p>https://nvlpubs.nist.gov/nistpubs/jres/049/jresv49n6p409_a1b.pdf</p>
+<p>经典的梯度下降算法有很多时间都浪费在了“走回头路”上，于是可以控制算法，让其每步都尽量是往新的方向走。</p>
+<p>共轭梯度法通过结合当前梯度和上一轮方向，来计算更适合的（不走回头路的）梯度。</p>
+<p>相比于牛顿法，共轭梯度法不需要维护<span class="math inline">\(d\times
+d\)</span>的矩阵，仅存储几个向量。对于特征维度<span
+class="math inline">\(d\)</span>特别大的情况更适合。</p>
+<h3
+id="随机梯度下降法stochastic-gradient-descent-sgd">随机梯度下降法（Stochastic
+Gradient Descent, SGD）</h3>
+<p>由于现代分类任务的样本数据量过于庞大（<span
+class="math inline">\(N\)</span>十分大），每次更新都考虑所有<span
+class="math inline">\(N\)</span>个数据在硬件上十分困难。</p>
+<p>为此，现在基本都用随机梯度下降法（及其变种）来迭代。</p>
+<p>更具体的，考虑优化问题 <span class="math display">\[
+\min_{w} \frac{1}{N} \sum_{i=1}^{N} f(\mathbf{w}; \mathbf{x}_i, y_i) +
+\psi(\mathbf{w})
+\]</span> 随机梯度下降法（SGD）每次更新<span
+class="math inline">\(w\)</span>仅考虑<span
+class="math inline">\(N\)</span>个数据中随机的一小部分（random
+mini-batch） <span class="math display">\[
+\mathbf{g}_t = \frac{1}{|B_t|} \sum_{i \in B_t} \nabla_w f(\mathbf{w};
+\mathbf{x}_i, y_i) + \nabla_w \psi(\mathbf{w})
+\]</span> 并用其更新 <span class="math display">\[
+\mathbf{w}_{t+1} = \mathbf{w}_t - \eta_t \mathbf{g}_t;
+\]</span> <img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/202511142030424.gif" /></p>
+<p>（来自 <a
+target="_blank" rel="noopener" href="https://francisbach.com/integration-by-parts-randomized-smoothing-score-functions/">The
+many faces of integration by parts – II : Randomized smoothing and score
+functions – Machine Learning Research Blog</a>）</p>
+<p>对于特定的学习率<span
+class="math inline">\(\eta_t\)</span>（Robbins-Monro条件），可以证明SGD最终一定收敛到最优：
+<span class="math display">\[
+\lim_{t \to \infty} \eta_t = 0, \quad \sum_{t \ge 1} \eta_t = +\infty,
+\quad \sum_{t \ge 1} \eta_t^2 &lt; +\infty
+\]</span></p>
+<ul>
+<li>对于凸函数，SGD一定收敛到全局最优。</li>
+<li>对于非凸函数，SGD一定收敛到局部最优。</li>
+</ul>
+<p>证明参考（证明基本依赖于Martingale或Lyapunov函数）：</p>
+<p><a target="_blank" rel="noopener" href="https://www.columbia.edu/~ww2040/8100F16/RM51.pdf">A
+Stochastic Approximation Method</a></p>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2301.11235">Handbook of Convergence
+Theorems for (Stochastic) Gradient Methods</a></p>
+<p>正如上面提到的，现在数据量这么庞大，基本都是用随机梯度下降算法来优化，因此存在很多其不同的优化算法来优化经典SGD算法的两大基本缺陷：</p>
+<ol type="1">
+<li>SGD在“峡谷”型（一个方向很陡，另一个方向很平）函数表面会来回震荡，收敛很慢。</li>
+<li>所有参数共享一个学习率，且这个学习率需要手动精细调整（调参）。</li>
+</ol>
+<p>下面列出几个SGD变种的特点。</p>
+<table>
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 17%" />
+<col style="width: 15%" />
+<col style="width: 10%" />
+<col style="width: 25%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr>
+<th><strong>算法</strong></th>
+<th><strong>核心思想</strong></th>
+<th><strong>学习率</strong></th>
+<th><strong>动量</strong></th>
+<th><strong>优点</strong></th>
+<th><strong>缺点</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SGD</strong></td>
+<td>沿梯度反方向更新</td>
+<td>固定的，全局</td>
+<td>否</td>
+<td>简单，内存小</td>
+<td>收敛慢，易震荡</td>
+</tr>
+<tr>
+<td><strong>Momentum</strong></td>
+<td>增加“惯性”（速度）</td>
+<td>固定的，全局</td>
+<td>是</td>
+<td>加速收敛，减少震荡</td>
+<td>可能会“冲过头”</td>
+</tr>
+<tr>
+<td><strong>NAG</strong></td>
+<td>“预判”的动量</td>
+<td>固定的，全局</td>
+<td>是 (更智能)</td>
+<td>比 Momentum 抖动小，收敛快</td>
+<td>略微复杂</td>
+</tr>
+<tr>
+<td><strong>Adagrad</strong></td>
+<td>历史梯度平方和</td>
+<td>自适应，单调递减</td>
+<td>否</td>
+<td>适合稀疏数据</td>
+<td>学习率会过早“死亡”</td>
+</tr>
+<tr>
+<td><strong>Rmsprop</strong></td>
+<td>历史梯度平方的均值</td>
+<td>自适应，非单调</td>
+<td>否</td>
+<td>解决 Adagrad 的死亡问题</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>Adam</strong></td>
+<td>Momentum + Rmsprop</td>
+<td>自适应，非单调</td>
+<td>是 (自适应)</td>
+<td>结合两者优点，稳健，常用</td>
+<td>内存占用略大</td>
+</tr>
+</tbody>
+</table>
+<p>具体公式可以参考朱军老师的《概率机器学习》、</p>
+<p>可以看到，这些变种基本围绕两个核心思想：动量法（momentum）和自适应学习率（adaptive
+learning rate）。</p>
+<h4 id="动量法momentum">动量法（Momentum）</h4>
+<p>通过引用类似于物理的“速度”概念来加速SGD。</p>
+<p>动量法的基本思想是在SGD基础上增加一个动量（“速度”向量），其基于过去所有更新方向的指数衰减平均。</p>
+<p>对于SGD第一个缺陷，动量可以抵消掉那些来回震荡的梯度。</p>
+<p>不过，正如现实中存在惯性，动量可能会导致迭代过程中在（局部或者全局）最低点附近来回震荡。</p>
+<p>为此，SGD变种<strong>NAG</strong>（Nesterov Accelerated
+Gradient）给动量加了某种“预判”来减少过冲（overshooting）问题。</p>
+<p>更具体的，标准的动量是先计算当前梯度，再叠加上一步的动量。NAG则是先按照上一步的动量“预跳”一下，在那个“未来”的位置计算梯度，再用这个梯度来修正最终的更新方向。</p>
+<h4 id="自适应学习率adaptive-learning-rate">自适应学习率（Adaptive
+learning rate）</h4>
+<p>通过为每一个参数自动调整其学习率，来对更需要学习的参数进行更多调整。</p>
+<p><strong>Adagrad</strong>（adaptive
+gradient）为每个参数分配一个单独的学习率，学习率动态的基于过去所有梯度平方和的平方根。于是，Adagrad会给那些不经常更新的参数一个较大的学习率。但问题是，梯度平方和随着迭代次数单调递增，这导致学习率会不断衰减，影响后续学习。</p>
+<p>为此，<strong>Rmsprop</strong>（root mean square
+propagation）在Adagrad的基础上使用指数衰减移动平均来计算梯度平方和的平方根；这使得Rmsprop只关注近期的梯度大小。</p>
+<hr />
+<p>目前最流行的变种是<strong>Adam</strong>（adaptive moment
+estimation），其结合了动量法和Rmsprop的自适应学习率。</p>
+<p>下面是SGD及其几个变种对于同一个任务的迭代动画：</p>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/202511142050727.gif" /></p>
+<p>（来自[<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1609.04747">1609.04747] An
+overview of gradient descent optimization algorithms</a>，<a
+target="_blank" rel="noopener" href="https://www.ruder.io/optimizing-gradient-descent/">An overview of
+gradient descent optimization algorithms</a>）</p>
+<h1 id="朴素贝叶斯-v.s.-逻辑回归">朴素贝叶斯 v.s. 逻辑回归</h1>
+<p>在2001，Ng和Jordan就通过朴素贝叶斯和逻辑回归考察了生成式模型和判别式模型的一些区别：</p>
+<p><a
+target="_blank" rel="noopener" href="https://ai.stanford.edu/~ang/papers/nips01-discriminativegenerative.pdf">On
+Discriminative vs. Generative Classifiers: A comparison of logistic
+regression and naive Bayes</a></p>
+<h2 id="概念上的不同">概念上的不同</h2>
+<p>通过前面的关于同方差高斯朴素贝叶斯模型和逻辑回归的等价关系，可以看到他们的模型表达能力在特殊情况相等。</p>
+<p>不过对于更一般的情况，因为他们考虑的分布不同，且优化的目标也不同，往往有一些差异。</p>
+<h2 id="数据无限多">数据无限多</h2>
+<p>假设数据无限多。如果朴素贝叶斯假设（特征条件独立）确实成立的话，那么基于上面论文，有
+<span class="math display">\[
+\epsilon_{\text{Dis}, \infty}\sim\epsilon_{\text{Gen}, \infty}
+\]</span>
+其中Dis为判别discriminative的缩写，Gen为生成generative的缩写。</p>
+<p>如果不成立的话， <span class="math display">\[
+\epsilon_{\text{Dis}, \infty}&lt;\epsilon_{\text{Gen}, \infty}
+\]</span> 跟直观上一样，朴素贝叶斯的表现就不如逻辑回归了。</p>
+<h2 id="数据有限">数据有限</h2>
+<p>对于现实情况（尤其是数据量不多的时候），假设有<span
+class="math inline">\(N\)</span>个数据点，<span
+class="math inline">\(d\)</span>个特征： <span class="math display">\[
+\epsilon_{\text{Dis}, n} \leq \epsilon_{\text{Dis}, \infty} +
+O\left(\sqrt{\frac{d}{N}}\right) \\
+\epsilon_{\text{Gen}, n} \leq \epsilon_{\text{Gen}, \infty} +
+O\left(\sqrt{\frac{\log d}{N}}\right)
+\]</span> 朴素贝叶斯仅需要<span class="math inline">\(N=O(\log
+d)\)</span>个数据来保证错误率收敛；而逻辑回归需要<span
+class="math inline">\(N=O(d)\)</span>个数据。</p>
+<p>根本原因在于，朴素贝叶斯假设导致了每个特征之间独立，并且参数之间非耦合（not
+coupled，不相互依赖）。所以朴素贝叶斯模型所需的样本数<span
+class="math inline">\(N\)</span>只需要克服总参数的不确定性，而这种不确定性只随特征维度<span
+class="math inline">\(d\)</span>对数级增长。</p>
+<p>而逻辑回归是直接学习维度的联合估计（joint
+estimation），参数之间耦合（相互依赖）。为了准确稳定地估计一个<span
+class="math inline">\(d\)</span>维的向量<span
+class="math inline">\(w\)</span>，所需的样本量<span
+class="math inline">\(N\)</span>必须线性地依赖于特征维度<span
+class="math inline">\(d\)</span>。这也体现了维度的诅咒（Curse of
+Dimensionality）这一概念。</p>
+<h2 id="实验比较">实验比较</h2>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/202511142154102.png" /></p>
+<p>在经典数据集上，可以看到，他们实际中各有千秋。</p>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/202511142159723.png" /></p>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/202511142156509.png" /></p>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2302.02334">Revisiting Discriminative
+vs. Generative Classifiers: Theory and Implications</a></p>
+<p>这篇论文比较了朴素贝叶斯和逻辑回归作用在深度学习提取的特征上时的表现（结果如上面两个图）。可以看到关于两者错误率收敛所需数据量的结果依旧成立。</p>
+<h1 id="指数族exponential-family">指数族（Exponential Family）</h1>
+<p>指数族分布是统计学中一类重要的概率分布，它包含了许多常见的分布，如伯努利、多项、高斯、泊松、伽马等。</p>
+<p>对于随机变量<span
+class="math inline">\(X\)</span>，如果一个概率分布有一下形式，那么就称其为指数族分布：
+<span class="math display">\[
+\begin{aligned}
+p(\mathbf{x} \mid \mathbf{\eta}) &amp;= h(\mathbf{x}) \exp
+\left(\mathbf{\eta}^\top T(\mathbf{x}) - A(\mathbf{\eta})\right) \\
+&amp;= \frac{1}{Z(\mathbf{\eta})} h(\mathbf{x}) \exp
+\left(\mathbf{\eta}^\top T(\mathbf{x})\right)
+\end{aligned}
+\]</span> 其中：</p>
+<ul>
+<li><span
+class="math inline">\(\eta\)</span>是自然参数（natural/canonical
+parameter）。</li>
+<li><span class="math inline">\(T(x)\)</span>是充分统计量（sufficient
+statistic）。</li>
+<li><span class="math inline">\(h(x)\)</span>是基础函数。</li>
+<li><span class="math inline">\(A(\eta)=\log
+Z(\eta)\)</span>是对数归一化函数（log
+normalizer），用来保证概率综合为1。</li>
+</ul>
+<p>可以从指数族的角度给不同分布的参数优化（MLE等）一个统一的框架。</p>
+<h2 id="指数族分布参数转换例子">指数族分布参数转换例子</h2>
+<h3 id="多元高斯分布">多元高斯分布</h3>
+<p>考虑高斯分布 <span class="math display">\[
+\begin{aligned}
+p(\mathbf{x} \mid \mathbf{\mu}, \mathbf{\Sigma}) &amp;=
+\frac{1}{(2\pi)^{d/2}|\mathbf{\Sigma}|^{1/2}} \exp
+\left(-\frac{1}{2}(\mathbf{x}-\mathbf{\mu})^\top
+\mathbf{\Sigma}^{-1}(\mathbf{x}-\mathbf{\mu})\right) \\
+&amp;= \frac{1}{(2\pi)^{d/2}|\mathbf{\Sigma}|^{1/2}} \exp
+\left(-\frac{1}{2}\text{tr}(\mathbf{\Sigma}^{-1}\mathbf{x}\mathbf{x}^\top)
++ \mathbf{\mu}^\top \mathbf{\Sigma}^{-1}\mathbf{x} -
+\frac{1}{2}\mathbf{\mu}^\top \mathbf{\Sigma}^{-1}\mathbf{\mu} -
+\frac{1}{2}\log|\mathbf{\Sigma}|\right)
+\end{aligned}
+\]</span> 通过下面定义可以将其转换为指数族分布的形式： <span
+class="math display">\[
+\begin{align}
+\mathbf{\eta} &amp;= \left[\mathbf{\Sigma}^{-1}\mathbf{\mu};
+-\frac{1}{2}\text{vec}(\mathbf{\Sigma}^{-1})\right] = [\mathbf{\eta}_1;
+\text{vec}(\mathbf{\eta}_2)], \quad \mathbf{\eta}_1 =
+\mathbf{\Sigma}^{-1}\mathbf{\mu} \quad \mathbf{\eta}_2 =
+-\frac{1}{2}\mathbf{\Sigma}^{-1}\\
+T(\mathbf{x}) &amp;= \left[\mathbf{x};
+\text{vec}(\mathbf{x}\mathbf{x}^\top)\right]\\
+A(\mathbf{\eta}) &amp;= \frac{1}{2}\mathbf{\mu}^\top
+\mathbf{\Sigma}^{-1}\mathbf{\mu} + \log|\mathbf{\Sigma}| =
+-\frac{1}{2}\text{tr}(\mathbf{\eta}_2\mathbf{\eta}_1\mathbf{\eta}_1^\top)
+- \frac{1}{2}\log(-2\mathbf{\eta}_2)\\
+h(\mathbf{x}) &amp;= (2\pi)^{-d/2}
+\end{align}
+\]</span></p>
+<h3 id="多项分布">多项分布</h3>
+<p>考虑多项分布 <span class="math display">\[
+\begin{aligned}
+p(\mathbf{x} \mid \mathbf{\pi}) &amp;= \prod_{i=1}^{d} \pi_i^{x_i} =
+\exp \left(\sum_{i} x_i \ln \pi_i\right) \\
+&amp;= \exp \left(\sum_{i=1}^{d-1} x_i \ln \pi_i +
+\left(1-\sum_{i=1}^{d-1} x_i\right) \ln \left(1-\sum_{i=1}^{d-1}
+\pi_i\right)\right) \\
+&amp;= \exp \left(\sum_{i=1}^{d-1} x_i \ln
+\frac{\pi_i}{1-\sum_{i=1}^{d-1} \pi_i} + \ln \left(1-\sum_{i=1}^{d-1}
+\pi_i\right)\right)
+\end{aligned}
+\]</span> 下组定义转换其为指数族分布： <span class="math display">\[
+\begin{align}
+\mathbf{\eta} &amp;= [\ln(\pi_i/\pi_d); 0]\\
+T(\mathbf{x}) &amp;= \mathbf{x}\\
+A(\mathbf{\eta}) &amp;= -\ln \left(1-\sum_{i=1}^{d-1} \pi_i\right)= \ln
+\left(\sum_{i=1}^{d} e^{\eta_i}\right)\\
+h(\mathbf{x}) &amp;= 1
+\end{align}
+\]</span></p>
+<h2 id="矩生成moment-generating">矩生成（Moment generating）</h2>
+<p>指数族分布最强大的特性之一是其对数归一化函数<span
+class="math inline">\(A(\eta)\)</span>与分布的矩（如均值和方差）之间存在直接关系：</p>
+<ul>
+<li><p>一阶导数（均值）：对 <span class="math inline">\(A(\eta)\)</span>
+求一阶导数，得到充分统计量 <span class="math inline">\(T(x)\)</span>
+的期望（即矩参数 <span class="math inline">\(\mu\)</span>）。 <span
+class="math display">\[
+\nabla_{\eta}A(\eta) = \mathbb{E}_{p(x|\eta)}[T(x)] \triangleq \mu
+\]</span></p></li>
+<li><p>二阶导数（方差）：对 <span class="math inline">\(A(\eta)\)</span>
+求二阶导数，得到 <span class="math inline">\(T(x)\)</span> 的方差。
+<span class="math display">\[
+\nabla_{\eta}^{2}A(\eta) = Var[T(x)]&gt;0
+\]</span></p></li>
+</ul>
+<p>并且，由于方差在连续分布通常大于0（不然就退化成了单点分布，或成为狄拉克<span
+class="math inline">\(\delta\)</span>函数），<span
+class="math inline">\(A(\eta)\)</span>二阶导严格大于0，所以<span
+class="math inline">\(A(\eta)\)</span>是严格凸函数。这也表明了<span
+class="math inline">\(\mu=\nabla_\eta A(\eta)\)</span>作为<span
+class="math inline">\(A(\eta)\)</span>的一阶导严格单调递增，于是我们就有了自然参数<span
+class="math inline">\(\eta\)</span>和矩参数<span
+class="math inline">\(\mu\)</span>之间的一对一关系： <span
+class="math display">\[
+\eta \triangleq \psi(\mu)
+\]</span> 上面的<span
+class="math inline">\(\psi\)</span>是一个一对一映射（保证了参数之间转换的可逆性）。</p>
+<h2
+id="独立同分布的联合分布也是指数族">独立同分布的联合分布也是指数族</h2>
+<p><span class="math display">\[
+\begin{aligned}
+p(D \mid \mathbf{\eta}) &amp;= \prod_{i} h(\mathbf{x}_i) \exp
+\left(\mathbf{\eta}^\top T(\mathbf{x}_i) - A(\mathbf{\eta})\right) \\
+&amp;= \left(\prod_{i} h(\mathbf{x}_i)\right) \exp
+\left(\mathbf{\eta}^\top \sum_{i} T(\mathbf{x}_i) - N
+A(\mathbf{\eta})\right)
+\end{aligned}
+\]</span></p>
+<p>并且，充分统计量<span
+class="math inline">\(T\)</span>为所有样本的充分统计量总和： <span
+class="math display">\[
+\sum_{i} T(\mathbf{x}_i)
+\]</span></p>
+<h2
+id="指数族分布的最大似然估计mle对应了统计学的矩匹配moment-matching">指数族分布的最大似然估计MLE对应了统计学的矩匹配（Moment
+matching）</h2>
+<blockquote>
+<p>矩匹配是一种参数估计方法 。它的核心思想是：</p>
+<ul>
+<li><p>理论矩（Theoretical
+Moment）：即分布的统计矩（如均值、方差等，通常是关于模型参数的函数）。</p></li>
+<li><p>经验矩（Empirical
+Moment）：即从样本数据中计算出来的统计矩（如样本均值、样本方差）。</p></li>
+</ul>
+<p>矩匹配的过程就是设置理论矩等于经验矩，然后解方程组来求得最优参数的估计值。</p>
+</blockquote>
+<p>对于独立同分布数据，考虑其指数族形式的对数似然 <span
+class="math display">\[
+\mathcal{L}(\mathbf{\eta}; D) = \sum_{n} \log h(\mathbf{x}_n) +
+\left(\mathbf{\eta}^\top \sum_{n} T(\mathbf{x}_n)\right) - N
+A(\mathbf{\eta})
+\]</span> 取对于<span
+class="math inline">\(\eta\)</span>的梯度，设为0，可以得到最优矩参数
+<span class="math display">\[
+\begin{align}
+\nabla_{\mathbf{\eta}} \mathcal{L}(\mathbf{\eta}; D) &amp;= \sum_{n}
+T(\mathbf{x}_n) - N \nabla_{\mathbf{\eta}} A(\mathbf{\eta}) = 0\\
+\nabla_{\mathbf{\eta}} A(\mathbf{\eta}) &amp;= \frac{1}{N} \sum_{n}
+T(\mathbf{x}_n)\\
+\hat{\mathbf{\mu}}_{\text{MLE}} &amp;= \frac{1}{N} \sum_{n}
+T(\mathbf{x}_n)
+\end{align}
+\]</span> 可以看到最优矩参数<span
+class="math inline">\(\hat{\mathbf{\mu}}_{\text{MLE}}\)</span>（仅需要充分统计量<span
+class="math inline">\(T\)</span>来计算）刚好对应了样本数据的最优经验矩。所以，MLE就是矩匹配。</p>
+<p>从这个角度来看，对于指数族分布，用矩匹配的方式，先根据样本充分统计量<span
+class="math inline">\(T\)</span>找到最优矩参数<span
+class="math inline">\(\hat{\mathbf{\mu}}_{\text{MLE}}\)</span>，然后（用一对一函数<span
+class="math inline">\(\psi\)</span>）匹配到自由自然参数<span
+class="math inline">\(\eta\)</span>。这么计算避免了对许多参数进行复杂的迭代优化。</p>
+<h2 id="最优矩参数hatmathbfmu_textmle的例子">最优矩参数<span
+class="math inline">\(\hat{\mathbf{\mu}}_{\text{MLE}}\)</span>的例子</h2>
+<h3 id="高斯分布">高斯分布</h3>
+<p>对于高斯分布，充分统计量<span
+class="math inline">\(T(x)\)</span>是一个向量，包含了<span
+class="math inline">\(x\)</span>和 <span
+class="math inline">\(xx^\top\)</span>的向量化形式<span
+class="math inline">\([x;vec(xx^{\top})]\)</span>。 <span
+class="math display">\[
+\begin{align*}
+\mathbf{\eta} &amp;= \left[\mathbf{\Sigma}^{-1}\mathbf{\mu};
+-\frac{1}{2}\text{vec}(\mathbf{\Sigma}^{-1})\right]\\
+T(\mathbf{x}) &amp;= \left[\mathbf{x};
+\text{vec}(\mathbf{x}\mathbf{x}^\top)\right] \\
+A(\mathbf{\eta}) &amp;= \frac{1}{2}\mathbf{\mu}^\top
+\mathbf{\Sigma}^{-1}\mathbf{\mu} + \log|\mathbf{\Sigma}| \\
+h(\mathbf{x}) &amp;= (2\pi)^{-d/2}\\
+&amp;\Rightarrow \hat{\mathbf{\mu}}_{\text{MLE}}= \frac{1}{N} \sum_{n}
+T_1(\mathbf{x}_n) = \frac{1}{N} \sum_{n} \mathbf{x}_n
+\end{align*}
+\]</span></p>
+<h3 id="多项分布-1">多项分布</h3>
+<p>对于多项分布和下面的泊松分布，充分统计量<span
+class="math inline">\(T(x)\)</span>就是特征<span
+class="math inline">\(x\)</span>本身。 <span class="math display">\[
+\begin{align*}
+\mathbf{\eta} &amp;= [\ln(\pi_i/\pi_d); 0] \\
+T(\mathbf{x}) &amp;= \mathbf{x} \\
+A(\mathbf{\eta}) &amp;= -\ln \left(1-\sum_{i=1}^{d-1} \pi_i\right) \\
+h(\mathbf{x}) &amp;= 1\\
+&amp;\Rightarrow \hat{\mathbf{\mu}}_{\text{MLE}} = \frac{1}{N} \sum_{n}
+\mathbf{x}_n
+\end{align*}
+\]</span></p>
+<h3 id="泊松分布">泊松分布</h3>
+<p><span class="math display">\[
+\begin{align*}
+\eta &amp;= \log \lambda \\
+T(x) &amp;= x \\
+A(\eta) &amp;= \lambda = e^\eta \\
+h(x) &amp;= \frac{1}{x!}\\
+\Rightarrow \hat{\mu}_{\text{MLE}} &amp;= \frac{1}{N} \sum_{n} x_n
+\end{align*}
+\]</span></p>
+<h1
+id="广义线性模型generalized-linear-models-glims">广义线性模型（Generalized
+Linear Models, GLIMs）</h1>
+<p>上一节的指数族尝试将不同分布（的参数优化）囊括在同一个框架下；而这一节的广义线性模型如之前提到的，基于指数族分布的框架，尝试将线性回归、逻辑回归等模型囊括在同一个框架下。</p>
+<h2 id="基本定义">基本定义</h2>
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/202511142343037.png" /></p>
+<p>广义线性模型包含了三个核心假设：</p>
+<h3 id="响应变量的条件分布属于指数族">响应变量的条件分布属于指数族</h3>
+<p>给定输入<span class="math inline">\(X\)</span>，输出（相应变量）<span
+class="math inline">\(y\)</span>的条件概率分布<span
+class="math inline">\(P(y|X)\)</span><em>假设</em>为指数族分布。</p>
+<p>这个假设决定了要解决的问题类型。</p>
+<ul>
+<li>如果<span
+class="math inline">\(y\)</span>是连续值（房价预测），选择高斯分布（对应线性回归）。</li>
+<li>如果<span
+class="math inline">\(y\)</span>是二元值（是/否），选择伯努利分布（对应逻辑回归）。</li>
+<li>如果<span
+class="math inline">\(y\)</span>是计数（网页点击量），选择泊松分布。</li>
+</ul>
+<h3 id="预测器为线性">预测器为线性</h3>
+<p>模型的输入 <span class="math inline">\(X\)</span>
+<em>假设</em>是通过一个线性组合来影响输出： <span
+class="math display">\[
+\xi = \theta^{\top}X
+\]</span> 这里的<span class="math inline">\(\xi:=\theta^\top
+X\)</span>被称为线性预测器（linear predictor）。</p>
+<p>这个假设也是名称广义线性模型中线性的由来。</p>
+<h3 id="链接函数的存在">链接函数的存在</h3>
+<p><em>假设</em>存在响应函数<span
+class="math inline">\(f\)</span>链接线性预测器<span
+class="math inline">\(\xi\)</span>和响应变量<span
+class="math inline">\(y\)</span>的期望<span
+class="math inline">\(\mu\)</span>： <span class="math display">\[
+\mathbb{E}_p[y]=\mu = f(\xi) = f(\theta^{\top}X)
+\]</span> 响应函数<span
+class="math inline">\(f\)</span>确保了线性预测器<span
+class="math inline">\(\xi\)</span>能够映射输入<span
+class="math inline">\(X\)</span>到正确的<span
+class="math inline">\(\mu\)</span>值。</p>
+<ul>
+<li>对于逻辑回归，响应函数<span class="math inline">\(f(\xi) =
+\frac{1}{1+e^{-\xi}}\)</span>把输入的线性组合<span
+class="math inline">\(\xi=\theta^\top X=w^\top
+X+w_0\)</span>映射到区间<span
+class="math inline">\((0,1)\)</span>。</li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 7%" />
+<col style="width: 11%" />
+<col style="width: 30%" />
+<col style="width: 13%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr>
+<th><strong>模型</strong></th>
+<th><strong>分布</strong></th>
+<th><strong>线性预测器 ξ</strong></th>
+<th><strong>自然参数 η</strong></th>
+<th><strong>矩参数 μ (E[y])</strong></th>
+<th><strong>响应函数 f(ξ)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>线性回归</strong></td>
+<td>高斯分布</td>
+<td><span class="math inline">\(\theta^{\top}X\)</span></td>
+<td><span class="math inline">\(\eta = \mu\)</span></td>
+<td><span class="math inline">\(\mu\)</span></td>
+<td><span class="math inline">\(f(\xi) = \xi\)</span>（恒等函数）</td>
+</tr>
+<tr>
+<td><strong>逻辑回归</strong></td>
+<td>伯努利分布</td>
+<td><span class="math inline">\(\theta^{\top}X\)</span></td>
+<td><span class="math inline">\(\eta =
+\log\left(\frac{\mu}{1-\mu}\right)\)</span></td>
+<td><span class="math inline">\(\mu\)</span></td>
+<td><span class="math inline">\(f(\xi) =
+\frac{1}{1+e^{-\xi}}\)</span>（Sigmoid）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="标准响应函数">标准响应函数</h2>
+<p>我们进一步增加对于链接函数的假设；一会可以看到限制下的广义线性模型的参数求解都极其简洁（和指数族求解最优矩参数<span
+class="math inline">\(\mu\)</span>一样）。</p>
+<p>考虑上一节中矩生成定义的一对一映射函数<span
+class="math inline">\(\psi\)</span>： <span class="math display">\[
+\eta \triangleq \psi(\mu)
+\]</span> 现在，假设响应函数<span
+class="math inline">\(f\)</span>为标准响应函数<span
+class="math inline">\(f=\psi^{-1}\)</span>。</p>
+<p>从上图可以看到，自然参数<span
+class="math inline">\(\eta=\psi(\mu)=\psi(f(\xi))\)</span>，代入假设得到<span
+class="math inline">\(\eta=\xi\)</span>。</p>
+<p>那就是，响应函数假设等价于假设线性预测器<span
+class="math inline">\(\xi\)</span>等于自然参数<span
+class="math inline">\(\eta\)</span>。</p>
+<p>当然，最基本的线性回归和逻辑回归的响应函数都满足此假设：</p>
+<ul>
+<li>对于线性回归，<span class="math inline">\(\eta\)</span>恰好等于<span
+class="math inline">\(\mu\)</span>，所以<span
+class="math inline">\(\eta=\xi=\theta^\top
+X\)</span>，满足标准响应函数假设。</li>
+<li>对于逻辑回归，<span
+class="math inline">\(\eta=\log\left(\frac{\mu}{1-\mu}\right)\)</span>直接等于线性预测器<span
+class="math inline">\(\xi:=\theta^\top X\)</span>。</li>
+</ul>
+<h2
+id="广义线性模型的最大似然估计mle">广义线性模型的最大似然估计MLE</h2>
+<p>考虑指数组分布为：<br />
+<span class="math display">\[
+\begin{gather}
+p(x \mid \eta) = h(x) \exp \left(\eta^\top T(x) - A(\eta)\right)
+\end{gather}
+\]</span></p>
+<p>对数似然为<br />
+<span class="math display">\[
+\begin{aligned}
+\mathcal{L}(\mathbf{\theta}; D) &amp;= \sum_{n} \log h(y_n) + \sum_{n}
+(\eta_n y_n - A(\eta_n)) \\
+\eta_n &amp;= \psi(\mu_n), \quad \mu_n = f(\xi_n), \quad \xi_n =
+\mathbf{\theta}^\top \mathbf{x}_n
+\end{aligned}
+\]</span> 导数为 <span class="math display">\[
+\begin{aligned}
+\nabla_{\mathbf{\theta}} \mathcal{L} &amp;= \sum_{n} \left(y_n
+\nabla_{\mathbf{\theta}}\eta_n - \frac{d A(\eta_n)}{d\eta_n}
+\nabla_{\mathbf{\theta}}\eta_n\right)\\
+&amp;= \sum_{n} (y_n - \mu_n) \nabla_{\mathbf{\theta}}\eta_n
+\end{aligned}
+\]</span> 可以看到求解让梯度为0的<span
+class="math inline">\(\theta\)</span>并不简单。</p>
+<h2
+id="标准响应函数假设下的广义线性模型的最大似然估计mle">标准响应函数假设下的广义线性模型的最大似然估计MLE</h2>
+<p>但是如果（根据标准响应函数假设）<span
+class="math inline">\(\eta_n=\theta^\top x_n\)</span>，那么<span
+class="math inline">\(\nabla_\theta
+\eta_n=x_n\)</span>大大简化对数似然的导数： <span
+class="math display">\[
+\begin{align}
+\nabla_{\theta}\mathcal{L} &amp;= \sum_{n}(y_{n}-\mu_{n})x_{n}\\
+&amp;= X(y-\mu)
+\end{align}
+\]</span> 这完完全全就是上文逻辑回归的优化算法小节需要优化的形式。</p>
+<p>于是，可以用各种各样的算法，如牛顿法（也是IRLS法）、随机梯度下降（上升）等方法来在线学习并优化最优模型参数<span
+class="math inline">\(\theta\)</span>； <span class="math display">\[
+\mathbf{\theta}_{t+1} = \mathbf{\theta}_t + \rho(y_n -
+\mu_n^t)\mathbf{x}_n\\
+\mu_n^t = f(\mathbf{\theta}_t^\top \mathbf{x}_n)
+\]</span></p>
+<hr />
+<p><img
+src="https://raw.githubusercontent.com/a-little-bear/picture/master/img/202511121656539.jpeg" /></p>
+</div></article></div><div class="card"><div class="card-content"><div class="title is-5" data-i18n="article.comments">评论</div><div id="comment-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.0/dist/gitalk.css"><script> $.getScript('/js/gitalk.min.js', function () {
+            var _gitalkLang = (typeof window._getLang === 'function' && window._getLang() === 'en') ? 'en' : 'zh-CN';
+            var gitalk = new Gitalk({
+            language: _gitalkLang,
+            id: '3c89b2e7e9749ccd0fde762b256ee1bf',
+            repo: 'a-little-bear.github.io',
+            owner: 'a-little-bear',
+            clientID: 'Ov23limGRkyf4dqU9ZJ3',
+            clientSecret: '4c6613000b6ab9c4266f7c73e6109914f1b6a0b0',
+            admin: ["a-little-bear"],
+            createIssueManually: false,
+            distractionFreeMode: false,
+            perPage: 10,
+            pagerDirection: 'last',
+            proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
+            
+            enableHotKey: true,
+            isLocked: false
+        })
+        gitalk.render('comment-container');
+            // MathJax: 监听评论加载，自动渲染 LaTeX
+            var _cc = document.getElementById('comment-container');
+            if (_cc) {
+                var _mt = null;
+                function _typesetComments() {
+                    if (typeof MathJax !== 'undefined' && MathJax.Hub) {
+                        MathJax.Hub.Queue(["Typeset", MathJax.Hub, _cc]);
+                    } else {
+                        $.getScript("//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML", function() {
+                            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$', '$'], ['\\(', '\\)']] } });
+                            MathJax.Hub.Queue(["Typeset", MathJax.Hub, _cc]);
+                        });
+                    }
+                }
+                var _obs = new MutationObserver(function() {
+                    clearTimeout(_mt);
+                    _mt = setTimeout(_typesetComments, 800);
+                });
+                _obs.observe(_cc, { childList: true, subtree: true });
+            }
+        });</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label" data-i18n="widget.catalogue">目录</h3><ul class="menu-list"><li><a class="is-flex is-mobile" href="#特征空间分布"><span class="mr-2">1</span><span>特征空间分布</span></a><ul class="menu-list"><li><a class="is-flex is-mobile" href="#核密度估计kde"><span class="mr-2">1.1</span><span>核密度估计（KDE）</span></a></li></ul></li><li><a class="is-flex is-mobile" href="#生成式模型和判别式模型的基本介绍"><span class="mr-2">2</span><span>生成式模型和判别式模型的基本介绍</span></a><ul class="menu-list"><li><a class="is-flex is-mobile" href="#生成式模型generative-model"><span class="mr-2">2.1</span><span>生成式模型（Generative Model）</span></a></li><li><a class="is-flex is-mobile" href="#判别式模型discriminative-model"><span class="mr-2">2.2</span><span>判别式模型（Discriminative
+Model）</span></a></li><li><a class="is-flex is-mobile" href="#相关性"><span class="mr-2">2.3</span><span>相关性</span></a></li></ul></li><li><a class="is-flex is-mobile" href="#生成式模型朴素贝叶斯-naive-bayes-nb"><span class="mr-2">3</span><span>生成式模型：朴素贝叶斯
+（Naive Bayes, NB）</span></a><ul class="menu-list"><li><a class="is-flex is-mobile" href="#贝叶斯错误"><span class="mr-2">3.1</span><span>贝叶斯错误</span></a></li><li><a class="is-flex is-mobile" href="#类别和特征的概率分布"><span class="mr-2">3.2</span><span>类别和特征的概率分布</span></a></li><li><a class="is-flex is-mobile" href="#二元特征nb"><span class="mr-2">3.3</span><span>二元特征NB</span></a><ul class="menu-list"><li><a class="is-flex is-mobile" href="#最大似然估计maximum-likelihood-estimation-mle"><span class="mr-2">3.3.1</span><span>最大似然估计（Maximum
+likelihood estimation, MLE）</span></a></li><li><a class="is-flex is-mobile" href="#mle等价于最小化kl散度"><span class="mr-2">3.3.2</span><span>MLE等价于最小化KL散度</span></a></li><li><a class="is-flex is-mobile" href="#拉普拉斯平滑"><span class="mr-2">3.3.3</span><span>拉普拉斯平滑</span></a></li><li><a class="is-flex is-mobile" href="#beta分布"><span class="mr-2">3.3.4</span><span>Beta分布</span></a></li><li><a class="is-flex is-mobile" href="#mle和拉普拉斯平滑作为map估计的特例"><span class="mr-2">3.3.5</span><span>MLE和拉普拉斯平滑作为MAP估计的特例</span></a></li></ul></li><li><a class="is-flex is-mobile" href="#高斯朴素贝叶斯gaussian-naive-bayes-gnb"><span class="mr-2">3.4</span><span>高斯朴素贝叶斯（Gaussian
+Naive Bayes, GNB）</span></a><ul class="menu-list"><li><a class="is-flex is-mobile" href="#mle估计参数"><span class="mr-2">3.4.1</span><span>MLE估计参数</span></a></li></ul></li><li><a class="is-flex is-mobile" href="#树增广朴素贝叶斯tree-augmented-nb"><span class="mr-2">3.5</span><span>树增广朴素贝叶斯（Tree
+augmented NB）</span></a></li><li><a class="is-flex is-mobile" href="#贝叶斯模型的决策边界"><span class="mr-2">3.6</span><span>贝叶斯模型的决策边界</span></a><ul class="menu-list"><li><a class="is-flex is-mobile" href="#同方差高斯朴素贝叶斯-gnb"><span class="mr-2">3.6.1</span><span>（同方差）高斯朴素贝叶斯 GNB</span></a></li><li><a class="is-flex is-mobile" href="#一般多元高斯非朴素贝叶斯"><span class="mr-2">3.6.2</span><span>一般多元高斯（非朴素）贝叶斯</span></a></li></ul></li></ul></li><li><a class="is-flex is-mobile" href="#同方差高斯朴素贝叶斯等价于逻辑回归的sigmoid函数"><span class="mr-2">4</span><span>（同方差）高斯朴素贝叶斯等价于（逻辑回归的）Sigmoid函数</span></a></li><li><a class="is-flex is-mobile" href="#判别式模型逻辑回归logistic-regressionlr"><span class="mr-2">5</span><span>判别式模型：逻辑回归（Logistic
+Regression，LR）</span></a><ul class="menu-list"><li><a class="is-flex is-mobile" href="#逻辑回归的决策边界"><span class="mr-2">5.1</span><span>逻辑回归的决策边界</span></a></li><li><a class="is-flex is-mobile" href="#多类别逻辑回归"><span class="mr-2">5.2</span><span>多类别逻辑回归</span></a><ul class="menu-list"><li><a class="is-flex is-mobile" href="#softmax"><span class="mr-2">5.2.1</span><span>Softmax</span></a></li></ul></li><li><a class="is-flex is-mobile" href="#最大条件似然估计maximum-conditional-likelihood-estimate-mcle"><span class="mr-2">5.3</span><span>最大条件似然估计（Maximum
+Conditional Likelihood Estimate, MCLE）</span></a></li><li><a class="is-flex is-mobile" href="#优化算法"><span class="mr-2">5.4</span><span>优化算法</span></a><ul class="menu-list"><li><a class="is-flex is-mobile" href="#梯度上升gradient-ascent"><span class="mr-2">5.4.1</span><span>梯度上升（Gradient Ascent）</span></a></li><li><a class="is-flex is-mobile" href="#梯度上升的问题"><span class="mr-2">5.4.2</span><span>梯度上升的问题</span></a></li><li><a class="is-flex is-mobile" href="#牛顿法newtons-methodnewton-raphson-method"><span class="mr-2">5.4.3</span><span>牛顿法（Newton’s
+Method，Newton-Raphson Method）</span></a></li><li><a class="is-flex is-mobile" href="#逻辑回归的牛顿法是迭代重加权最小二乘法"><span class="mr-2">5.4.4</span><span>逻辑回归的牛顿法是迭代重加权最小二乘法</span></a></li><li><a class="is-flex is-mobile" href="#梯度上升和牛顿法ilrs对比"><span class="mr-2">5.4.5</span><span>梯度上升和牛顿法/ILRS对比</span></a></li><li><a class="is-flex is-mobile" href="#拟牛顿法quasi-newton-method"><span class="mr-2">5.4.6</span><span>拟牛顿法（Quasi-Newton
+Method）</span></a></li><li><a class="is-flex is-mobile" href="#共轭梯度法conjugate-gradient-method"><span class="mr-2">5.4.7</span><span>共轭梯度法（Conjugate
+Gradient Method）</span></a></li><li><a class="is-flex is-mobile" href="#自适应学习率adaptive-learning-rate"><span class="mr-2">5.4.8</span><span>自适应学习率（Adaptive
+learning rate）</span></a></li></ul></li></ul></li><li><a class="is-flex is-mobile" href="#朴素贝叶斯-v.s.-逻辑回归"><span class="mr-2">6</span><span>朴素贝叶斯 v.s. 逻辑回归</span></a><ul class="menu-list"><li><a class="is-flex is-mobile" href="#概念上的不同"><span class="mr-2">6.1</span><span>概念上的不同</span></a></li><li><a class="is-flex is-mobile" href="#数据无限多"><span class="mr-2">6.2</span><span>数据无限多</span></a></li><li><a class="is-flex is-mobile" href="#数据有限"><span class="mr-2">6.3</span><span>数据有限</span></a></li><li><a class="is-flex is-mobile" href="#实验比较"><span class="mr-2">6.4</span><span>实验比较</span></a></li></ul></li><li><a class="is-flex is-mobile" href="#指数族exponential-family"><span class="mr-2">7</span><span>指数族（Exponential Family）</span></a><ul class="menu-list"><li><a class="is-flex is-mobile" href="#指数族分布参数转换例子"><span class="mr-2">7.1</span><span>指数族分布参数转换例子</span></a><ul class="menu-list"><li><a class="is-flex is-mobile" href="#多元高斯分布"><span class="mr-2">7.1.1</span><span>多元高斯分布</span></a></li><li><a class="is-flex is-mobile" href="#多项分布"><span class="mr-2">7.1.2</span><span>多项分布</span></a></li></ul></li><li><a class="is-flex is-mobile" href="#矩生成moment-generating"><span class="mr-2">7.2</span><span>矩生成（Moment generating）</span></a></li><li><a class="is-flex is-mobile" href="#独立同分布的联合分布也是指数族"><span class="mr-2">7.3</span><span>独立同分布的联合分布也是指数族</span></a></li><li><a class="is-flex is-mobile" href="#指数族分布的最大似然估计mle对应了统计学的矩匹配moment-matching"><span class="mr-2">7.4</span><span>指数族分布的最大似然估计MLE对应了统计学的矩匹配（Moment
+matching）</span></a></li><li><a class="is-flex is-mobile" href="#最优矩参数hatmathbfmu_textmle的例子"><span class="mr-2">7.5</span><span>最优矩参数\(\hat{\mathbf{\mu}}_{\text{MLE}}\)的例子</span></a><ul class="menu-list"><li><a class="is-flex is-mobile" href="#高斯分布"><span class="mr-2">7.5.1</span><span>高斯分布</span></a></li><li><a class="is-flex is-mobile" href="#多项分布-1"><span class="mr-2">7.5.2</span><span>多项分布</span></a></li><li><a class="is-flex is-mobile" href="#泊松分布"><span class="mr-2">7.5.3</span><span>泊松分布</span></a></li></ul></li></ul></li><li><a class="is-flex is-mobile" href="#广义线性模型generalized-linear-models-glims"><span class="mr-2">8</span><span>广义线性模型（Generalized
+Linear Models, GLIMs）</span></a><ul class="menu-list"><li><a class="is-flex is-mobile" href="#基本定义"><span class="mr-2">8.1</span><span>基本定义</span></a><ul class="menu-list"><li><a class="is-flex is-mobile" href="#响应变量的条件分布属于指数族"><span class="mr-2">8.1.1</span><span>响应变量的条件分布属于指数族</span></a></li><li><a class="is-flex is-mobile" href="#预测器为线性"><span class="mr-2">8.1.2</span><span>预测器为线性</span></a></li><li><a class="is-flex is-mobile" href="#链接函数的存在"><span class="mr-2">8.1.3</span><span>链接函数的存在</span></a></li></ul></li><li><a class="is-flex is-mobile" href="#标准响应函数"><span class="mr-2">8.2</span><span>标准响应函数</span></a></li><li><a class="is-flex is-mobile" href="#广义线性模型的最大似然估计mle"><span class="mr-2">8.3</span><span>广义线性模型的最大似然估计MLE</span></a></li><li><a class="is-flex is-mobile" href="#标准响应函数假设下的广义线性模型的最大似然估计mle"><span class="mr-2">8.4</span><span>标准响应函数假设下的广义线性模型的最大似然估计MLE</span></a></li></ul></li></ul></div></div><style>.menu-list > li > a.is-active + .menu-list { display: block; }.menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="https://cdn.jsdelivr.net/gh/a-little-bear/picture/img/1280-646950218-panda-in-thailand.jpg" alt="alittlebear"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">alittlebear</p><p class="is-size-6 is-flex justify-content-center" data-i18n-personal="location"><i class="fas fa-map-marker-alt mr-1"></i><span>太阳系 地球</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading" data-i18n="common.post">文章</p><a href="/archives"><p class="title">59</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading" data-i18n="common.category">分类</p><a href="/categories"><p class="title">10</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading" data-i18n="common.tag">标签</p><a href="/tags"><p class="title">1</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/a-little-bear" target="_blank" rel="noopener" data-i18n="widget.follow">Github</a></div><div><hr><p id="hitokoto" data-i18n="widget.hitokoto_loading">:D 一言句子获取中...</p><script type="text/javascript" defer>function getYiyan(){
+                                var lang = (typeof window._getLang === 'function') ? window._getLang() : 'zh-CN';
+                                if (lang === 'en') {
+                                    $.getJSON("https://dummyjson.com/quotes/random", function (data) {
+                                        if(data && data.quote){
+                                            $('#hitokoto').html("");
+                                            $('#hitokoto').append("<strong class='hitokoto-text'>"+data.quote+"</strong>"+
+                                            "<p>— "+data.author+"</p>");
+                                        }
+                                    }).fail(function(){
+                                        $('#hitokoto').html("");
+                                        $('#hitokoto').append("<strong class='hitokoto-text'>Stay hungry, stay foolish.</strong>"+
+                                        "<p>— Steve Jobs</p>");
+                                    });
+                                } else {
+                                    $.getJSON("https://v1.hitokoto.cn/", function (data) {
+                                    if(data){
+                                        $('#hitokoto').html("");
+                                        $('#hitokoto').append("<strong class='hitokoto-text'>"+data.hitokoto+"</strong>"+
+                                        "<p>"+"来源《"+data.from+"》</p><p>提供者-"+data.creator+"</p>");
+                                    }});
+                                }}
+                                $(function (){getYiyan();$('#hitokoto').click(function(){getYiyan();})});</script></div></div></div><div class="card widget" data-type="latest_comment"><div class="card-content"><h3 class="menu-label" data-i18n="widget.latest_comment">最新评论</h3><span class="body_hot_comment" data-i18n="widget.latest_comment_tip">加载中，最新评论有1分钟缓存...</span></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.png" alt="alittlebear&#039;s blog" height="28"></a><p class="size-small"><span>&copy; 2026 alittlebear</span>  Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a> &amp; <a href="https://github.com/removeif/hexo-theme-amazing" target="_blank">Amazing</a> &amp; <a href="https://github.com/a-little-bear/a-little-bear.github.io" target="_blank">Alb</a> <br><span id="footer-copyright">© 版权说明：[本网站所有内容均收集于互联网或自己创作,<br />&nbsp;&nbsp;&nbsp;&nbsp;方便于网友与自己学习交流，如有侵权，请<a href="/message" target="_blank">留言</a>，立即处理]<br /></span><span><span id="statistic-times">loading...</span><script>function createTime(time) {
+            var n = new Date(time);
+            now.setTime(now.getTime() + 250),
+                days = (now - n) / 1e3 / 60 / 60 / 24,
+                dnum = Math.floor(days),
+                hours = (now - n) / 1e3 / 60 / 60 - 24 * dnum,
+                hnum = Math.floor(hours),
+            1 == String(hnum).length && (hnum = "0" + hnum),
+                minutes = (now - n) / 1e3 / 60 - 1440 * dnum - 60 * hnum,
+                mnum = Math.floor(minutes),
+            1 == String(mnum).length && (mnum = "0" + mnum),
+                seconds = (now - n) / 1e3 - 86400 * dnum - 3600 * hnum - 60 * mnum,
+                snum = Math.round(seconds),
+            1 == String(snum).length && (snum = "0" + snum),
+                document.getElementById("statistic-times").innerHTML = "❤️本站自 <strong>"+time.split(" ")[0].replace(/\//g,".")+"</strong> 已运行 <strong>" + dnum + "</strong> 天 <strong>" + hnum + "</strong> 小时 <strong>" + mnum + "</strong> 分 <strong>" + snum + "</strong> 秒！❤️";
+        }var now = new Date();setInterval("createTime('2020/04/23 00:00:00')", 250,"");</script><br></span><div class="size-small"><span id="footer-visitor">❤️感谢 <strong><span id="busuanzi_value_site_uv">99+</span></strong> 小伙伴的 <strong><span id="busuanzi_value_site_pv">99+</span></strong> 次光临！❤️</span></div></p></div><div class="level-end"><div class="sideMusic"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="/js/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script><meting-js style="width: auto;height: 2000px;" server="netease" type="playlist" id="8435661" theme="#2980b9" loop="all" autoplay="false" order="list" storageName="aplayer-setting" lrctype="0" list-max-height="400px" fixed="true"></meting-js><script>window.__sideMusicPlaylists=[{"name":"无法释怀的循环音乐","id":8435661},{"name":"世界顶级古典钢琴曲","id":706851956},{"name":"书店音乐单-安静英文歌","id":39554181},{"name":"历届格莱美金曲","id":517182285},{"name":"不朽的声音(人生最难忘的歌)","id":67191770},{"name":"经典国内老歌","id":2985941712},{"name":"草原歌曲100首","id":2985947572},{"name":"永远听不腻的英文歌","id":2985915860}];</script><script src="/js/playlist-switcher.js"></script></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" async></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/javascript" id="MathJax-script" async>MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      chtml: {
+        matchFontHeight: false
+      }
+    };</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script><!--!--><script src="/js/main.js" defer></script><script>$.getScript('/js/comment-issue-data.js',function(){loadIssueData('Ov23limGRkyf4dqU9ZJ3','4c6613000b6ab9c4266f7c73e6109914f1b6a0b0','a-little-bear','a-little-bear.github.io',false);})</script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script data-pjax src="/js/insight.js" defer></script><script data-pjax>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.js"></script><script type="text/javascript">var pjax = new Pjax({
+            elements: "a",
+            selectors: [".section", "title"],
+            cache: true,
+            cacheBust: false
+        });
+
+        function loadBusuanzi() {
+            $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js", function () {});
+        }
+
+        function loadMathJax() {
+            $.getScript("//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML", function () {
+                MathJax.Hub.Config({ tex2jax: { inlineMath: [['$', '$'], ['\\(', '\\)']] } });
+                var math = document.getElementsByClassName("entry-content")[0];
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, math]);
+            });
+        }
+
+        document.addEventListener('pjax:send', function () {});
+
+        document.addEventListener('pjax:complete', function () {
+            $(".section").css({opacity: 1});
+            if (true) {
+                $.getScript('/js/comment-issue-data.js', function () {
+                    loadIssueData('Ov23limGRkyf4dqU9ZJ3', '4c6613000b6ab9c4266f7c73e6109914f1b6a0b0', 'a-little-bear', 'a-little-bear.github.io', false);
+                });
+            }
+            loadMathJax();
+            loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);
+            loadBackTop();
+            loadBusuanzi();
+            if (typeof loadBanner === 'function') {
+                loadBanner();
+            }
+            if (typeof window._i18nTranslate === 'function') {
+                window._i18nTranslate();
+            }
+        });</script><script type="text/javascript">(function() {
+            $.getScript("//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML", function () {
+                MathJax.Hub.Config({ tex2jax: { inlineMath: [['$', '$'], ['\\(', '\\)']] } });
+                var math = document.getElementsByClassName("entry-content")[0];
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, math]);
+            });
+        })();</script></body><script type="text/javascript" src="/js/alittlebear/typing.js"></script><script type="text/javascript" src="/js/alittlebear/typing-effects.js"></script><script type="text/javascript" src="/js/alittlebear/collapsible-blockquote.js"></script><script type="text/javascript" src="/js/alittlebear/annotations.js"></script></html>
